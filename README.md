@@ -130,23 +130,23 @@ To evaluate the application instantly without manual signup:
 
 1. **0:00 - 0:25 | Authentication & Hero Selection**:
    - Open app at `http://localhost:5173`.
-   - Show signup with Hero Class selection (Warrior, Mage, Rogue, Paladin) with previewed stat perks, or use the one-click demo login (`hero@zephyr.com`).
-2. **0:25 - 0:55 | Quest Creation & Attributes**:
-   - Click **"Summon Quest"**.
-   - Create a quest (e.g., *"Finish DSA Problem"*, Category: Intellect, Difficulty: Hard).
-   - Point out the dynamic bounty calculation (+150 XP, +60 Gold, +2 Gems).
-3. **0:55 - 1:25 | Tactile Completion & Level Up Celebration**:
-   - Check off the newly created quest.
-   - Listen to the procedural audio chime, watch the floating rewards, and notice the boss health bar take strike damage!
-   - Trigger a Level-Up: show the celebratory modal with Canvas Confetti fireworks and stat increases.
-4. **1:25 - 1:55 | Armoury & Equipment Loadout**:
-   - Navigate to **"Armoury"**.
-   - Purchase an item using quest gold (e.g. *Archmage Spellblade* or *Plate of the Iron Vanguard*).
-   - Click **"Equip"**; hear the metallic clink and show the stat buffs applied to the Character Sheet and Attribute Radar.
-5. **1:55 - 2:20 | Proof of PostgreSQL Persistence**:
-   - Navigate to **"Chronicles"** to show the immutable activity log.
+   - Show instantaneous load (<400ms) with dark fantasy Ambient Embers.
+   - Use the one-click demo login (`hero@zephyr.com` / `zephyr123`) or register with class selection (Warrior, Mage, Rogue, Paladin).
+2. **0:25 - 0:55 | Command Center & Tactical Sidebar**:
+   - Point out the dual-column Command Center layout: left side displays the active Quest Board; right side showcases the live World Boss Raid encounter and the equipped Paperdoll Loadout Card.
+   - Use the **1-Click Quick-Add Bar** or press <kbd>N</kbd> to summon a task with dynamic bounties (+XP, +Gold, +Gems).
+3. **0:55 - 1:25 | Tactile Feedback & Boss Strikes**:
+   - Check off a quest: hear the procedural audio chime, watch the Floating Combat Text (`+XP`, `+Gold`, `⚔️ -Boss DMG`), and see the boss take screen-shake damage in real-time!
+   - For habits, demonstrate the `+1 Rep` quick streak increment button.
+   - Review the collapsible **Conquered Chronicles** accordion keeping the active board organized.
+4. **1:25 - 1:55 | Armoury, Loadout Paperdoll & Character Sheet**:
+   - Navigate to **"Armoury"** (<kbd>3</kbd>) or click the loadout card.
+   - Buy and equip forged gear; watch the loadout card update immediately with weapon and armor badges.
+   - Visit **"Character Sheet"** (<kbd>4</kbd>): demonstrate the 6-axis SVG attribute radar polygon, milestone progression roadmap, and active Title selector dropdown.
+5. **1:55 - 2:20 | Proof of PostgreSQL 17 Persistence**:
+   - Navigate to **"Chronicles"** (<kbd>5</kbd>) showing the audit activity log.
    - Perform a hard browser refresh (`Ctrl + F5` / `Cmd + R`).
-   - Demonstrate that all character stats, inventory, quest completion states, and streak counts persist completely from PostgreSQL.
+   - Demonstrate that 100% of character stats, loadout gear, completed quests, and boss health remain strictly persisted in PostgreSQL 17.
 
 ---
 
