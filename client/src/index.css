@@ -219,8 +219,72 @@ html.light .rpg-box-glow {
 
 /* Smooth card hover lift */
 .card-hover-lift {
-  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.25s ease;
 }
 .card-hover-lift:hover {
-  transform: translateY(-2px);
+  transform: translateY(-3px);
+}
+
+/* Staggered card fade-in-up animation */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Shimmer effect for headers & legendary cards */
+@keyframes shimmerSweep {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+.animate-shimmer {
+  background: linear-gradient(90deg, rgba(245, 158, 11, 0) 0%, rgba(245, 158, 11, 0.2) 50%, rgba(245, 158, 11, 0) 100%);
+  background-size: 200% 100%;
+  animation: shimmerSweep 3s infinite linear;
+}
+
+/* Glowing breathing border for active quests */
+@keyframes pulseBorderGlow {
+  0%, 100% {
+    box-shadow: 0 0 15px rgba(245, 158, 11, 0.15), inset 0 0 15px rgba(245, 158, 11, 0.05);
+  }
+  50% {
+    box-shadow: 0 0 28px rgba(245, 158, 11, 0.35), inset 0 0 22px rgba(245, 158, 11, 0.1);
+  }
+}
+
+.animate-glow-breathing {
+  animation: pulseBorderGlow 2.5s ease-in-out infinite;
+}
+
+/* Boss creature subtle idle breathing & floating */
+@keyframes creatureFloat {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-8px) rotate(1deg);
+  }
+}
+
+.animate-creature-idle {
+  animation: creatureFloat 4s ease-in-out infinite;
+}
+
+/* Button click tactile squish */
+.btn-tactile {
+  transition: transform 0.12s cubic-bezier(0.16, 1, 0.3, 1), filter 0.15s ease;
+}
+.btn-tactile:active {
+  transform: scale(0.96);
 }

@@ -162,7 +162,7 @@ export const CharacterSheet: React.FC = () => {
           ].map((m) => (
             <div
               key={m.lvl}
-              className={`p-3 rounded-xl border flex flex-col items-center text-center transition ${
+              className={`card-hover-lift p-3 rounded-xl border flex flex-col items-center text-center transition ${
                 m.unlocked
                   ? 'bg-amber-950/20 border-amber-500/40 text-amber-300 shadow-sm'
                   : 'bg-slate-900/40 border-slate-800/80 text-slate-500 opacity-60'
@@ -283,7 +283,7 @@ export const CharacterSheet: React.FC = () => {
               return (
                 <div 
                   key={stat.key}
-                  className="bg-slate-900/70 border border-slate-800 rounded-xl p-3.5 space-y-2 hover:border-slate-700 transition"
+                  className="card-hover-lift bg-slate-900/70 border border-slate-800 rounded-xl p-3.5 space-y-2 hover:border-amber-500/40 transition shadow-sm"
                 >
                   <div className="flex items-center justify-between">
                     <div className="flex items-center space-x-2">

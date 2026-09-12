@@ -119,8 +119,8 @@ export const BossRaid: React.FC<BossRaidProps> = ({ lastDamage }) => {
             isDefeated
               ? 'bg-slate-900 border-slate-700 opacity-70 grayscale'
               : isHit
-              ? 'animate-boss-hit bg-red-900/60 border-red-400'
-              : 'bg-gradient-to-tr from-red-950 via-red-900/60 to-slate-900 border-red-500/60 shadow-[0_0_40px_rgba(239,68,68,0.3)] animate-pulse-glow'
+              ? 'animate-boss-hit bg-red-900/70 border-red-400 ring-4 ring-red-500/50'
+              : 'bg-gradient-to-tr from-red-950 via-red-900/60 to-slate-900 border-red-500/60 shadow-[0_0_40px_rgba(239,68,68,0.35)] animate-pulse-glow animate-creature-idle'
           }`}>
             {isDefeated ? (
               <div className="text-center p-2">
@@ -130,7 +130,10 @@ export const BossRaid: React.FC<BossRaidProps> = ({ lastDamage }) => {
                 </span>
               </div>
             ) : (
-              <Flame className="w-20 h-20 text-red-500 fill-red-600/60 animate-bounce" />
+              <div className="relative flex items-center justify-center">
+                <Flame className="w-20 h-20 text-red-500 fill-red-600/70 drop-shadow-[0_0_20px_rgba(239,68,68,0.8)]" />
+                <Skull className="w-7 h-7 text-amber-300 absolute -bottom-1 opacity-90" />
+              </div>
             )}
           </div>
 

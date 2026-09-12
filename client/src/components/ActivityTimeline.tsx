@@ -80,7 +80,7 @@ export const ActivityTimeline: React.FC = () => {
             return (
               <div 
                 key={log.id} 
-                className="bg-[#101626] border border-slate-800/90 rounded-xl p-4 flex items-center justify-between gap-4 hover:border-slate-700 transition"
+                className="card-hover-lift animate-fade-in-up bg-[#101626] border border-slate-800/90 rounded-xl p-4 flex items-center justify-between gap-4 hover:border-amber-500/40 transition shadow-sm"
               >
                 <div className="flex items-center space-x-3.5 min-w-0">
                   <div className={`w-9 h-9 rounded-lg border flex items-center justify-center flex-shrink-0 ${meta.color}`}>

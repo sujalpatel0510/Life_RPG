@@ -89,7 +89,7 @@ export const EquippedLoadoutCard: React.FC<EquippedLoadoutCardProps> = ({ onOpen
               return (
                 <div
                   key={s.key}
-                  className={`relative rounded-2xl border p-3 flex items-center justify-between transition-all ${getRarityGlow(item.rarity)}`}
+                  className={`card-hover-lift relative rounded-2xl border p-3 flex items-center justify-between transition-all ${getRarityGlow(item.rarity)}`}
                 >
                   <div className="flex items-center space-x-3 min-w-0">
                     <div className="w-9 h-9 rounded-xl bg-slate-950/80 border border-current flex items-center justify-center flex-shrink-0 text-amber-400">

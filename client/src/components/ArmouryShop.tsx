@@ -206,7 +206,7 @@ export const ArmouryShop: React.FC = () => {
             return (
               <div 
                 key={item.id}
-                className={`relative rounded-2xl border p-5 flex flex-col justify-between transition-all duration-300 ${getRarityStyle(item.rarity)}`}
+                className={`relative card-hover-lift animate-fade-in-up rounded-2xl border p-5 flex flex-col justify-between transition-all duration-300 shadow-md ${getRarityStyle(item.rarity)}`}
               >
                 <div>
                   <div className="flex items-start justify-between gap-3">

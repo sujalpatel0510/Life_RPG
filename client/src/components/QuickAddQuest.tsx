@@ -78,7 +78,7 @@ export const QuickAddQuest: React.FC<QuickAddQuestProps> = ({ onAdd }) => {
         <button
           type="submit"
           disabled={!title.trim() || isSubmitting}
-          className="flex items-center space-x-1.5 px-3 py-1.5 rounded-xl bg-amber-500 hover:bg-amber-400 disabled:opacity-40 disabled:hover:bg-amber-500 text-slate-950 font-bold text-xs transition shadow flex-shrink-0"
+          className="btn-tactile flex items-center space-x-1.5 px-3 py-1.5 rounded-xl bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-400 hover:to-amber-500 disabled:opacity-40 text-slate-950 font-bold text-xs transition shadow-md shadow-amber-500/20 flex-shrink-0 cursor-pointer"
           title="Press Enter to Summon"
         >
           <span>{isSubmitting ? 'Summoning...' : 'Add'}</span>
