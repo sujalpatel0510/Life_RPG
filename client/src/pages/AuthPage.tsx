@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import { useSound } from '../context/SoundContext';
-import { useTheme } from '../context/ThemeContext';
 import { HeroClass } from '../types';
 import { 
   Shield, 
@@ -14,10 +13,9 @@ import {
   Mail, 
   User as UserIcon, 
   ArrowRight,
-  Check,
-  Sun,
-  Moon
+  Check
 } from 'lucide-react';
+import { ThemeToggle } from '../components/ThemeToggle';
 
 
 interface AuthPageProps {
@@ -29,7 +27,6 @@ export const AuthPage: React.FC<AuthPageProps> = ({ defaultTab }) => {
   const location = useLocation();
   const { login, register } = useAuth();
   const { playClick, playCoin } = useSound();
-  const { theme, toggleTheme } = useTheme();
 
   const isRegisterRoute = defaultTab === 'register' || location.pathname === '/register';
   const [isLogin, setIsLogin] = useState(!isRegisterRoute);
@@ -123,21 +120,7 @@ export const AuthPage: React.FC<AuthPageProps> = ({ defaultTab }) => {
     <div className="min-h-screen flex items-center justify-center p-4 bg-gradient-to-br from-slate-100 via-white to-indigo-50/50 dark:from-[#060810] dark:via-[#0b0f1d] dark:to-[#04060c] relative">
       {/* Top-Right Theme Toggle */}
       <div className="absolute top-4 right-4 z-20">
-        <button
-          onClick={() => {
-            playClick();
-            toggleTheme();
-          }}
-          className="btn-tactile p-2.5 rounded-xl bg-white dark:bg-slate-800/80 hover:bg-slate-100 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700/80 transition shadow-lg"
-          title={theme === 'dark' ? 'Switch to Parchment Light Theme' : 'Switch to Dark Realm Theme'}
-          aria-label="Toggle Theme"
-        >
-          {theme === 'dark' ? (
-            <Sun className="w-5 h-5 text-amber-400 hover:rotate-90 transition-transform duration-300" />
-          ) : (
-            <Moon className="w-5 h-5 text-indigo-500 hover:-rotate-12 transition-transform duration-300" />
-          )}
-        </button>
+        <ThemeToggle size="md" />
       </div>
 
       <div className="relative w-full max-w-xl bg-white dark:bg-[#0f1526]/90 border border-slate-200 dark:border-slate-700/80 rounded-3xl p-6 sm:p-10 shadow-2xl backdrop-blur-xl text-slate-900 dark:text-slate-100">

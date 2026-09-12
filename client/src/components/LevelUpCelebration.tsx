@@ -14,6 +14,10 @@ export const LevelUpCelebration: React.FC<LevelUpCelebrationProps> = ({ newLevel
   useEffect(() => {
     playLevelUp();
 
+    // Respect users who prefer reduced motion: skip confetti fireworks
+    const reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (reduceMotion) return;
+
     // Trigger fireworks
     const duration = 2.5 * 1000;
     const animationEnd = Date.now() + duration;

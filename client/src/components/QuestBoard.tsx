@@ -255,7 +255,7 @@ export const QuestBoard: React.FC<QuestBoardProps> = ({
       {loading ? (
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           {[1, 2, 3, 4].map((n) => (
-            <div key={n} className="h-32 rounded-2xl bg-slate-100 dark:bg-slate-900/40 border border-slate-200 dark:border-slate-800 animate-pulse" />
+            <div key={n} className="h-32 rounded-2xl bg-slate-100 dark:bg-slate-900/40 border border-slate-200 dark:border-slate-800 skeleton" />
           ))}
         </div>
       ) : activeQuests.length > 0 ? (
@@ -315,7 +315,7 @@ export const QuestBoard: React.FC<QuestBoardProps> = ({
 
 
           {showCompleted && (
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4 animate-in fade-in duration-200">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4 animate-fade-in">
               {completedQuests.map((quest) => (
                 <QuestCard
                   key={quest.id}

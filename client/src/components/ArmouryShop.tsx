@@ -193,7 +193,7 @@ export const ArmouryShop: React.FC = () => {
       {loading ? (
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
           {[1, 2, 3, 4, 5, 6].map((n) => (
-            <div key={n} className="h-56 rounded-2xl bg-slate-100 dark:bg-slate-900/40 border border-slate-200 dark:border-slate-800 animate-pulse" />
+            <div key={n} className="h-56 rounded-2xl bg-slate-100 dark:bg-slate-900/40 border border-slate-200 dark:border-slate-800 skeleton" />
           ))}
         </div>
       ) : (

@@ -84,9 +84,9 @@ export const BossRaid: React.FC<BossRaidProps> = ({ lastDamage }) => {
 
   if (loading) {
     return (
-      <div className="p-8 rounded-2xl bg-white dark:bg-[#101626] border border-slate-200 dark:border-slate-800 animate-pulse text-center space-y-4 shadow-sm">
-        <div className="w-24 h-24 mx-auto rounded-full bg-slate-200 dark:bg-slate-800" />
-        <div className="h-6 w-48 mx-auto bg-slate-200 dark:bg-slate-800 rounded" />
+      <div className="p-8 rounded-2xl border border-slate-200 dark:border-slate-800 text-center space-y-4 skeleton">
+        <div className="w-24 h-24 mx-auto rounded-full bg-slate-200 dark:bg-slate-800 skeleton" />
+        <div className="h-6 w-48 mx-auto bg-slate-200 dark:bg-slate-800 rounded skeleton" />
       </div>
     );
   }

@@ -12,7 +12,7 @@ const MainApp: React.FC = () => {
 
   if (isLoading) {
     return (
-      <div className="min-h-screen flex flex-col items-center justify-center bg-slate-50 dark:bg-[#070a12] text-slate-800 dark:text-slate-200 transition-colors duration-200">
+      <div className="min-h-screen flex flex-col items-center justify-center bg-slate-50 dark:bg-[#070a12] text-slate-800 dark:text-slate-200 transition-colors duration-300">
         <div className="w-16 h-16 rounded-2xl bg-gradient-to-tr from-rose-600 to-red-800 flex items-center justify-center shadow-lg shadow-rose-600/25 border border-rose-400/50 mb-4 animate-pulse">
           <Shield className="w-8 h-8 text-white fill-rose-300" />
         </div>

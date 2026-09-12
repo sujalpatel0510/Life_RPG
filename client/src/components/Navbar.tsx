@@ -2,7 +2,6 @@ import React from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import { useSound } from '../context/SoundContext';
-import { useTheme } from '../context/ThemeContext';
 import { 
   Shield, 
   Flame, 
@@ -20,11 +19,9 @@ import {
   History,
   Keyboard,
   Wand2,
-  Zap,
-  HelpCircle,
-  Sun,
-  Moon
+  Zap
 } from 'lucide-react';
+import { ThemeToggle } from './ThemeToggle';
 
 interface NavbarProps {
   activeTab: string;
@@ -37,7 +34,6 @@ export const Navbar: React.FC<NavbarProps> = ({ activeTab, setActiveTab, onOpenH
   const location = useLocation();
   const { character, logout } = useAuth();
   const { isMuted, toggleMute, playClick } = useSound();
-  const { theme, toggleTheme } = useTheme();
 
   if (!character) return null;
 
@@ -77,7 +73,7 @@ export const Navbar: React.FC<NavbarProps> = ({ activeTab, setActiveTab, onOpenH
 
 
   return (
-    <header className="sticky top-0 z-40 bg-white/95 dark:bg-[#0c111e]/90 backdrop-blur-md border-b border-slate-200 dark:border-slate-800/80 shadow-sm transition-colors duration-200">
+    <header className="sticky top-0 z-40 bg-white/95 dark:bg-[#0c111e]/90 backdrop-blur-md border-b border-slate-200 dark:border-slate-800/80 shadow-sm transition-colors duration-300">
       {/* Top Banner - Hero Vitals & Currencies */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-2.5">
         <div className="flex flex-wrap items-center justify-between gap-4">
@@ -174,21 +170,7 @@ export const Navbar: React.FC<NavbarProps> = ({ activeTab, setActiveTab, onOpenH
             </div>
 
             {/* Theme Toggle Button (Light / Dark) */}
-            <button
-              onClick={() => {
-                playClick();
-                toggleTheme();
-              }}
-              className="btn-tactile p-2 rounded-lg bg-slate-100 dark:bg-slate-800/80 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-300 border border-slate-300 dark:border-slate-700 transition shadow-sm"
-              title={theme === 'dark' ? 'Switch to Parchment Light Theme' : 'Switch to Dark Realm Theme'}
-              aria-label="Toggle Theme"
-            >
-              {theme === 'dark' ? (
-                <Sun className="w-4 h-4 text-amber-400 hover:rotate-90 transition-transform duration-300" />
-              ) : (
-                <Moon className="w-4 h-4 text-indigo-500 hover:-rotate-12 transition-transform duration-300" />
-              )}
-            </button>
+            <ThemeToggle />
 
               {/* Hotkeys Modal Button */}
             <button

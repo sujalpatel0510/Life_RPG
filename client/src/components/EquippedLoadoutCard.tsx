@@ -76,7 +76,7 @@ export const EquippedLoadoutCard: React.FC<EquippedLoadoutCardProps> = ({ onOpen
       {loading ? (
         <div className="space-y-2.5">
           {[1, 2, 3].map((n) => (
-            <div key={n} className="h-14 rounded-xl bg-slate-100 dark:bg-slate-900/60 border border-slate-200 dark:border-slate-800 animate-pulse" />
+            <div key={n} className="h-14 rounded-xl bg-slate-100 dark:bg-slate-900/60 border border-slate-200 dark:border-slate-800 skeleton" />
           ))}
         </div>
       ) : (

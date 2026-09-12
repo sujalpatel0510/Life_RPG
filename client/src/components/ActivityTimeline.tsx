@@ -61,7 +61,7 @@ export const ActivityTimeline: React.FC = () => {
       {loading ? (
         <div className="space-y-3">
           {[1, 2, 3, 4].map(n => (
-            <div key={n} className="h-16 rounded-xl bg-slate-100 dark:bg-slate-900/40 border border-slate-200 dark:border-slate-800 animate-pulse" />
+            <div key={n} className="h-16 rounded-xl bg-slate-100 dark:bg-slate-900/40 border border-slate-200 dark:border-slate-800 skeleton" />
           ))}
         </div>
       ) : logs.length > 0 ? (

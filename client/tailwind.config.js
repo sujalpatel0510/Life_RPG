@@ -34,8 +34,9 @@ export default {
         'pulse-glow': 'pulseGlow 2.5s cubic-bezier(0.4, 0, 0.6, 1) infinite',
         'float': 'float 3.5s ease-in-out infinite',
         'tab-enter': 'tabEnter 0.28s cubic-bezier(0.16, 1, 0.3, 1) forwards',
-        'scale-pop': 'scalePop 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275)',
+'scale-pop': 'scalePop 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275)',
         'shimmer': 'shimmer 2s linear infinite',
+        'spin-slow': 'spin 3s linear infinite',
       },
       keyframes: {
         pulseGlow: {
@@ -55,9 +56,13 @@ export default {
           '70%': { transform: 'scale(1.03)' },
           '100%': { transform: 'scale(1)' },
         },
-        shimmer: {
+shimmer: {
           '0%': { backgroundPosition: '-200% 0' },
           '100%': { backgroundPosition: '200% 0' },
+        },
+        spin: {
+          'from': { transform: 'rotate(0deg)' },
+          'to': { transform: 'rotate(360deg)' },
         }
       }
     },

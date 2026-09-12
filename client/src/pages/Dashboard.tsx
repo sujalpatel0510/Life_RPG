@@ -11,7 +11,6 @@ import { HotkeyGuideModal } from '../components/HotkeyGuideModal';
 import { FloatingCombatText, FloatingTextItem } from '../components/FloatingCombatText';
 import { useAuth } from '../context/AuthContext';
 import { useSound } from '../context/SoundContext';
-import { useTheme } from '../context/ThemeContext';
 import { AmbientEmbers } from '../components/AmbientEmbers';
 import { EquippedLoadoutCard } from '../components/EquippedLoadoutCard';
 import { Database, ShieldCheck, Cpu, Keyboard } from 'lucide-react';
@@ -27,7 +26,6 @@ export const Dashboard: React.FC<DashboardProps> = ({ activeTab: propActiveTab }
   const location = useLocation();
   const { character } = useAuth();
   const { toggleMute, playClick } = useSound();
-  const { toggleTheme } = useTheme();
 
   // Compute active tab from prop or route pathname
   const activeTab = useMemo(() => {
@@ -99,10 +97,6 @@ export const Dashboard: React.FC<DashboardProps> = ({ activeTab: propActiveTab }
         e.preventDefault();
         playClick();
         setActiveTab('history');
-      } else if (key === 't') {
-        e.preventDefault();
-        playClick();
-        toggleTheme();
       } else if (key === 'm') {
         e.preventDefault();
         toggleMute();
@@ -122,7 +116,7 @@ export const Dashboard: React.FC<DashboardProps> = ({ activeTab: propActiveTab }
   }, [playClick, toggleMute]);
 
   return (
-    <div className="min-h-screen relative flex flex-col bg-slate-50 dark:bg-[#0b0f19] text-slate-900 dark:text-slate-100 selection:bg-indigo-600 selection:text-white overflow-x-hidden">
+    <div className="min-h-screen relative flex flex-col bg-slate-50 dark:bg-[#0b0f19] text-slate-900 dark:text-slate-100 selection:bg-indigo-600 selection:text-white overflow-x-hidden transition-colors duration-300">
       
       {/* Dark Fantasy Floating Ambient Embers Background */}
       <AmbientEmbers />

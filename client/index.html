@@ -21,12 +21,16 @@
     <noscript>
       <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700;900&family=Inter:wght@300;400;500;600;700;800&display=swap">
     </noscript>
-    <script>
+<script>
       (function() {
         try {
           var saved = localStorage.getItem('liferpg_theme');
+          var prefersLight = (window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches);
+          var theme = saved === 'light' || saved === 'dark'
+            ? saved
+            : (prefersLight ? 'light' : 'dark');
           var root = document.documentElement;
-          if (saved === 'light') {
+          if (theme === 'light') {
             root.classList.remove('dark');
             root.classList.add('light');
           } else {
