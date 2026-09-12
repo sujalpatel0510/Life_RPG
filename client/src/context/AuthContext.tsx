@@ -46,11 +46,11 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     }
 
     try {
-      // Timeout after 4 seconds to guarantee no indefinite hanging
+      // Timeout after 3.5 seconds to guarantee no indefinite hanging if backend is cold
       const controller = new AbortController();
-      const timeoutId = setTimeout(() => controller.abort(), 4000);
+      const timeoutId = setTimeout(() => controller.abort(), 3500);
 
-      const data = await api.auth.getMe();
+      const data = await api.auth.getMe(controller.signal);
       clearTimeout(timeoutId);
 
       if (data && data.user) {
@@ -59,8 +59,8 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
         localStorage.setItem('liferpg_user_cache', JSON.stringify(data.user));
       }
     } catch (err) {
-      console.error('Failed to verify session in background:', err);
-      // If error is 401 or token expired, log out
+      console.warn('Background session verification note:', err);
+      // If error is 401 or token expired and no cached user, log out
       if (!initialUser) {
         logout();
       }
@@ -74,31 +74,22 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
   }, []);
 
   const login = async (credentials: any) => {
-    setIsLoading(true);
-    try {
-      const data = await api.auth.login(credentials);
-      localStorage.setItem('liferpg_token', data.token);
-      localStorage.setItem('liferpg_user_cache', JSON.stringify(data.user));
-      setToken(data.token);
-      setUser(data.user);
-      setCharacter(data.user.character);
-    } finally {
-      setIsLoading(false);
-    }
+    // Keep user on AuthPage with in-button spinner instead of full-screen unmount
+    const data = await api.auth.login(credentials);
+    localStorage.setItem('liferpg_token', data.token);
+    localStorage.setItem('liferpg_user_cache', JSON.stringify(data.user));
+    setToken(data.token);
+    setUser(data.user);
+    setCharacter(data.user.character);
   };
 
   const register = async (payload: any) => {
-    setIsLoading(true);
-    try {
-      const data = await api.auth.register(payload);
-      localStorage.setItem('liferpg_token', data.token);
-      localStorage.setItem('liferpg_user_cache', JSON.stringify(data.user));
-      setToken(data.token);
-      setUser(data.user);
-      setCharacter(data.user.character);
-    } finally {
-      setIsLoading(false);
-    }
+    const data = await api.auth.register(payload);
+    localStorage.setItem('liferpg_token', data.token);
+    localStorage.setItem('liferpg_user_cache', JSON.stringify(data.user));
+    setToken(data.token);
+    setUser(data.user);
+    setCharacter(data.user.character);
   };
 
   const logout = () => {

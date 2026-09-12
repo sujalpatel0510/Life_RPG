@@ -1,4 +1,4 @@
-﻿import { Request, Response } from 'express';
+import { Request, Response } from 'express';
 import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
 import prisma from '../utils/prisma';
@@ -123,11 +123,6 @@ export const login = async (req: Request, res: Response): Promise<void> => {
       },
       include: {
         character: true,
-        inventory: {
-          include: {
-            item: true,
-          },
-        },
       },
     });
 
@@ -154,7 +149,6 @@ export const login = async (req: Request, res: Response): Promise<void> => {
         email: user.email,
         username: user.username,
         character: user.character,
-        inventory: user.inventory,
       },
     });
   } catch (error: any) {

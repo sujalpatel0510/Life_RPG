@@ -37,6 +37,12 @@ const safeFetch = async (input: RequestInfo | URL, init?: RequestInit): Promise<
 };
 
 export const api = {
+  health: {
+    check: async (signal?: AbortSignal) => {
+      const res = await safeFetch(`${API_BASE}/health`, { signal });
+      return handleResponse(res);
+    },
+  },
   auth: {
     register: async (payload: any) => {
       const res = await safeFetch(`${API_BASE}/auth/register`, {
@@ -54,9 +60,10 @@ export const api = {
       });
       return handleResponse(res);
     },
-    getMe: async () => {
+    getMe: async (signal?: AbortSignal) => {
       const res = await safeFetch(`${API_BASE}/auth/me`, {
         headers: getHeaders(),
+        signal,
       });
       return handleResponse(res);
     },

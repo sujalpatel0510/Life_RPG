@@ -13,9 +13,11 @@ import {
   Mail, 
   User as UserIcon, 
   ArrowRight,
-  Check
+  Check,
+  Loader2
 } from 'lucide-react';
 import { ThemeToggle } from '../components/ThemeToggle';
+import { api } from '../utils/api';
 
 
 interface AuthPageProps {
@@ -48,6 +50,12 @@ export const AuthPage: React.FC<AuthPageProps> = ({ defaultTab }) => {
   const [heroClass, setHeroClass] = useState<HeroClass>('WARRIOR');
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
+  const [wakeUpNotice, setWakeUpNotice] = useState(false);
+
+  // Pre-warm the backend and PostgreSQL connection pool immediately while user enters credentials
+  useEffect(() => {
+    api.health.check().catch(() => {});
+  }, []);
 
   const classes: { id: HeroClass; name: string; icon: any; perks: string; desc: string }[] = [
     { 
@@ -84,7 +92,12 @@ export const AuthPage: React.FC<AuthPageProps> = ({ defaultTab }) => {
     e.preventDefault();
     setError('');
     setLoading(true);
+    setWakeUpNotice(false);
     playClick();
+
+    const wakeTimer = setTimeout(() => {
+      setWakeUpNotice(true);
+    }, 2000);
 
     try {
       if (isLogin) {
@@ -105,6 +118,8 @@ export const AuthPage: React.FC<AuthPageProps> = ({ defaultTab }) => {
     } catch (err: any) {
       setError(err.message || 'Authentication quest failed.');
     } finally {
+      clearTimeout(wakeTimer);
+      setWakeUpNotice(false);
       setLoading(false);
     }
   };
@@ -303,14 +318,23 @@ export const AuthPage: React.FC<AuthPageProps> = ({ defaultTab }) => {
             </div>
           </div>
 
+          {/* Cold-Start PostgreSQL Sync Notice */}
+          {loading && wakeUpNotice && (
+            <div className="p-3 rounded-xl bg-amber-50 dark:bg-amber-950/40 border border-amber-200 dark:border-amber-500/40 text-amber-800 dark:text-amber-300 text-xs flex items-center gap-2 animate-fade-in">
+              <Loader2 className="w-4 h-4 animate-spin text-amber-600 dark:text-amber-400 flex-shrink-0" />
+              <span>Awakening cloud server & PostgreSQL connection pool... Please hold!</span>
+            </div>
+          )}
+
           {/* Submit Action */}
           <button
             type="submit"
             disabled={loading}
             className="btn-tactile w-full py-3.5 mt-2 rounded-xl btn-primary text-white font-fantasy font-black text-sm tracking-wider shadow-lg shadow-indigo-600/25 transition transform hover:-translate-y-0.5 active:translate-y-0 disabled:opacity-50 flex items-center justify-center space-x-2"
           >
-            <span>{loading ? 'OPENING PORTAL...' : isLogin ? 'COMMENCE EXPEDITION' : 'AWAKEN HERO'}</span>
-            <ArrowRight className="w-4 h-4" />
+            {loading && <Loader2 className="w-4 h-4 animate-spin mr-1" />}
+            <span>{loading ? 'CONNECTING REALM...' : isLogin ? 'COMMENCE EXPEDITION' : 'AWAKEN HERO'}</span>
+            {!loading && <ArrowRight className="w-4 h-4" />}
           </button>
         </form>
 
