@@ -158,10 +158,12 @@ export const CharacterSheet: React.FC = () => {
             { lvl: 3, title: 'Veteran', perk: '+10% Gold Rewards', unlocked: character.level >= 3 },
             { lvl: 5, title: 'Master', perk: 'Relic Slot Synergy', unlocked: character.level >= 5 },
             { lvl: 10, title: 'Grandmaster', perk: 'Mythic Title & Glow', unlocked: character.level >= 10 },
-          ].map((m) => (
+          ].map((m, idx) => (
             <div
               key={m.lvl}
               className={`card-hover-lift p-3 rounded-xl border flex flex-col items-center text-center transition ${
+                idx === 4 ? 'col-span-2 sm:col-span-1' : ''
+              } ${
                 m.unlocked
                   ? 'bg-indigo-50 dark:bg-indigo-950/20 border-indigo-300 dark:border-indigo-500/40 text-indigo-900 dark:text-indigo-300 shadow-sm'
                   : 'bg-slate-50 dark:bg-[#151722] border-slate-200 dark:border-[#222533] text-slate-500 opacity-60'

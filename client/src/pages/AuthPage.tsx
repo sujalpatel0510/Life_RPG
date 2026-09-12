@@ -243,13 +243,13 @@ export const AuthPage: React.FC<AuthPageProps> = ({ defaultTab }) => {
                 onChange={(e) => setEmail(e.target.value)}
                 placeholder={isLogin ? 'e.g., hero@zephyr.com or AegisKnight' : 'hero@domain.com'}
                 required
-                className="w-full pl-10 pr-4 py-2.5 rounded-xl input text-sm focus:outline-none focus:border-indigo-500 transition shadow-sm"
+                className="w-full pl-10 pr-4 py-2.5 rounded-xl input text-base sm:text-sm focus:outline-none focus:border-indigo-500 transition shadow-sm"
               />
             </div>
           </div>
 
           {!isLogin && (
-            <div className="grid grid-cols-2 gap-3">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
               <div>
                 <label className="block text-xs font-bold uppercase tracking-wider text-body mb-1.5">
                   Account Handle *
@@ -262,7 +262,7 @@ export const AuthPage: React.FC<AuthPageProps> = ({ defaultTab }) => {
                     onChange={(e) => setUsername(e.target.value)}
                     placeholder="ShadowHunter"
                     required
-                    className="w-full pl-10 pr-4 py-2.5 rounded-xl input text-sm focus:outline-none focus:border-indigo-500 transition shadow-sm"
+                    className="w-full pl-10 pr-4 py-2.5 rounded-xl input text-base sm:text-sm focus:outline-none focus:border-indigo-500 transition shadow-sm"
                   />
                 </div>
               </div>
@@ -278,7 +278,7 @@ export const AuthPage: React.FC<AuthPageProps> = ({ defaultTab }) => {
                     value={characterName}
                     onChange={(e) => setCharacterName(e.target.value)}
                     placeholder="Sir Valerius"
-                    className="w-full pl-10 pr-4 py-2.5 rounded-xl input text-sm focus:outline-none focus:border-indigo-500 transition shadow-sm"
+                    className="w-full pl-10 pr-4 py-2.5 rounded-xl input text-base sm:text-sm focus:outline-none focus:border-indigo-500 transition shadow-sm"
                   />
                 </div>
               </div>
@@ -298,7 +298,7 @@ export const AuthPage: React.FC<AuthPageProps> = ({ defaultTab }) => {
                 onChange={(e) => setPassword(e.target.value)}
                 placeholder="••••••••"
                 required
-                className="w-full pl-10 pr-4 py-2.5 rounded-xl input text-sm focus:outline-none focus:border-indigo-500 transition shadow-sm"
+                className="w-full pl-10 pr-4 py-2.5 rounded-xl input text-base sm:text-sm focus:outline-none focus:border-indigo-500 transition shadow-sm"
               />
             </div>
           </div>

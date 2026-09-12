@@ -70,7 +70,7 @@ export const QuickAddQuest: React.FC<QuickAddQuestProps> = ({ onAdd }) => {
           value={title}
           onChange={(e) => setTitle(e.target.value)}
           placeholder="Quick add quest objective... (e.g., '10 LeetCode MCQs', 'Drink 1L Water', 'Review PR')"
-          className="flex-1 bg-transparent text-title placeholder:text-muted text-xs sm:text-sm focus:outline-none px-2"
+          className="flex-1 bg-transparent text-title placeholder:text-muted text-base sm:text-sm placeholder:text-xs sm:placeholder:text-sm focus:outline-none px-2"
           disabled={isSubmitting}
         />
 

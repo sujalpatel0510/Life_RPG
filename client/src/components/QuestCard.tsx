@@ -92,7 +92,7 @@ export const QuestCard: React.FC<QuestCardProps> = ({ quest, onComplete, onEdit,
           onClick={handleComplete}
           disabled={isCompleting || (quest.isCompleted && quest.questType !== 'HABIT')}
           aria-label={quest.isCompleted ? 'Completed Quest' : 'Complete Quest'}
-          className={`mt-0.5 flex-shrink-0 w-8 h-8 rounded-xl border-2 flex items-center justify-center transition-all duration-200 transform btn-tactile sparkle-burst ${
+          className={`mt-0.5 flex-shrink-0 w-9 h-9 sm:w-8 sm:h-8 rounded-xl border-2 flex items-center justify-center transition-all duration-200 transform btn-tactile sparkle-burst ${
             quest.isCompleted
               ? 'bg-gradient-to-tr from-emerald-600 to-teal-500 border-emerald-400 text-white shadow-[0_0_15px_rgba(16,185,129,0.5)]'
               : 'border-slate-300 dark:border-[#252d4a] bg-slate-100 dark:bg-[#1d2340] hover:border-indigo-500 text-transparent hover:text-indigo-500 hover:scale-105 active:scale-95 shadow-sm'
@@ -170,28 +170,28 @@ export const QuestCard: React.FC<QuestCardProps> = ({ quest, onComplete, onEdit,
         </div>
 
         {/* Action Buttons (Edit / Delete) */}
-        <div className="flex items-center space-x-1 opacity-80 group-hover:opacity-100 transition">
+        <div className="flex items-center space-x-0.5 sm:space-x-1 opacity-90 sm:opacity-80 sm:group-hover:opacity-100 transition">
           <button
             onClick={() => {
               playClick();
               onEdit(quest);
             }}
-            className="p-1.5 rounded-lg hover:bg-slate-100 dark:hover:bg-[#1d2340] text-slate-400 hover:text-slate-700 dark:hover:text-slate-200 transition"
+            className="p-2 sm:p-1.5 rounded-lg hover:bg-slate-100 dark:hover:bg-[#1d2340] text-slate-500 dark:text-slate-400 hover:text-slate-700 dark:hover:text-slate-200 transition"
             title="Edit Quest"
             aria-label="Edit Quest"
           >
-            <Edit3 className="w-3.5 h-3.5" />
+            <Edit3 className="w-4 h-4 sm:w-3.5 sm:h-3.5" />
           </button>
           <button
             onClick={() => {
               playClick();
               onDelete(quest.id);
             }}
-            className="p-1.5 rounded-lg hover:bg-rose-100 dark:hover:bg-rose-950/40 text-slate-400 hover:text-rose-600 dark:hover:text-rose-400 transition"
+            className="p-2 sm:p-1.5 rounded-lg hover:bg-rose-100 dark:hover:bg-rose-950/40 text-slate-500 dark:text-slate-400 hover:text-rose-600 dark:hover:text-rose-400 transition"
             title="Banish Quest"
             aria-label="Delete Quest"
           >
-            <Trash2 className="w-3.5 h-3.5" />
+            <Trash2 className="w-4 h-4 sm:w-3.5 sm:h-3.5" />
           </button>
         </div>
       </div>

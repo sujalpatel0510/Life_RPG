@@ -89,12 +89,12 @@ export const QuestModal: React.FC<QuestModalProps> = ({
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/75 backdrop-blur-sm animate-modal-backdrop">
-      <div className="relative w-full max-w-lg surface rounded-2xl shadow-2xl overflow-hidden animate-modal-card">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 bg-black/75 backdrop-blur-sm animate-modal-backdrop">
+      <div className="relative w-[95%] sm:w-full max-w-lg surface rounded-2xl shadow-2xl overflow-hidden animate-modal-card">
         
         {/* Modal Header */}
-        <div className="flex items-center justify-between px-6 py-4 border-b border-slate-200 dark:border-[#222533] bg-slate-50 dark:bg-[#151722]">
-          <h2 className="font-fantasy text-xl font-bold text-title flex items-center gap-2">
+        <div className="flex items-center justify-between px-5 sm:px-6 py-3.5 sm:py-4 border-b border-slate-200 dark:border-[#222533] bg-slate-50 dark:bg-[#151722]">
+          <h2 className="font-fantasy text-lg sm:text-xl font-bold text-title flex items-center gap-2">
             <Sparkles className="w-5 h-5 text-indigo-500" />
             {questToEdit ? 'Reforge Quest Objective' : 'Summon New Quest'}
           </h2>
@@ -110,7 +110,7 @@ export const QuestModal: React.FC<QuestModalProps> = ({
         </div>
 
         {/* Modal Form */}
-        <form onSubmit={handleSubmit} className="p-6 space-y-4 max-h-[80vh] overflow-y-auto">
+        <form onSubmit={handleSubmit} className="p-4 sm:p-6 space-y-3.5 sm:space-y-4 max-h-[82vh] overflow-y-auto">
           {error && (
             <div className="p-3 rounded-lg bg-rose-50 dark:bg-rose-950/40 border border-rose-200 dark:border-rose-500/40 text-rose-800 dark:text-rose-300 text-xs font-semibold">
               {error}
@@ -127,7 +127,7 @@ export const QuestModal: React.FC<QuestModalProps> = ({
               value={title}
               onChange={(e) => setTitle(e.target.value)}
               placeholder="e.g., Read 20 pages of System Design, 1 Hour Gym Workout..."
-              className="w-full px-3.5 py-2.5 rounded-xl input text-sm focus:outline-none focus:border-indigo-500 transition"
+              className="w-full px-3.5 py-2.5 rounded-xl input text-base sm:text-sm focus:outline-none focus:border-indigo-500 transition"
               autoFocus
             />
           </div>
@@ -142,7 +142,7 @@ export const QuestModal: React.FC<QuestModalProps> = ({
               onChange={(e) => setDescription(e.target.value)}
               placeholder="Add specifics, criteria, or sub-tasks..."
               rows={2}
-              className="w-full px-3.5 py-2.5 rounded-xl input text-sm focus:outline-none focus:border-indigo-500 transition resize-none"
+              className="w-full px-3.5 py-2.5 rounded-xl input text-base sm:text-sm focus:outline-none focus:border-indigo-500 transition resize-none"
             />
           </div>
 
@@ -208,7 +208,7 @@ export const QuestModal: React.FC<QuestModalProps> = ({
                   type="button"
                   key={d.id}
                   onClick={() => setDifficulty(d.id)}
-                  className={`btn-tactile py-2 px-1 text-center rounded-lg border text-xs font-bold transition ${
+                  className={`btn-tactile py-1.5 sm:py-2 px-0.5 sm:px-1 text-center rounded-lg border text-[10px] sm:text-xs font-bold transition ${
                     difficulty === d.id
                       ? 'bg-indigo-50 dark:bg-indigo-950/20 border-indigo-400 dark:border-indigo-500 text-indigo-900 dark:text-indigo-400 shadow-sm font-extrabold'
                       : 'border-slate-200 dark:border-[#222533] bg-slate-50 dark:bg-[#151722] text-slate-600 dark:text-slate-400 hover:border-slate-300 dark:hover:border-[#2f3346]'

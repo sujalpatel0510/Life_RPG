@@ -586,3 +586,11 @@ html.dark .rpg-box-glow {
 .item-glow-rare {
   box-shadow: 0 0 20px -3px rgba(20, 184, 166, 0.4);
 }
+
+/* Safe area inset support for mobile screens (e.g. iPhone home indicators) */
+.pb-safe {
+  padding-bottom: max(env(safe-area-inset-bottom, 0px), 0.5rem);
+}
+.pt-safe {
+  padding-top: max(env(safe-area-inset-top, 0px), 0.5rem);
+}
