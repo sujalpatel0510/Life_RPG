@@ -35,16 +35,16 @@
 
 /* Surface containers - cards, panels, modals */
 .surface {
-  @apply bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-slate-900 dark:text-slate-100;
+  @apply bg-white dark:bg-[#0e1424] border border-slate-200/90 dark:border-slate-800 text-slate-900 dark:text-slate-100 shadow-sm transition-colors duration-200;
 }
 .surface-elevated {
-  @apply bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-900 dark:text-slate-100 shadow-lg;
+  @apply bg-white dark:bg-[#121a2e] border border-slate-200 dark:border-slate-700/80 text-slate-900 dark:text-slate-100 shadow-md transition-colors duration-200;
 }
 .surface-panel {
-  @apply bg-slate-50 dark:bg-slate-900/50 border border-slate-200 dark:border-slate-800 text-slate-900 dark:text-slate-100;
+  @apply bg-slate-50/80 dark:bg-slate-900/50 border border-slate-200/80 dark:border-slate-800 text-slate-900 dark:text-slate-100;
 }
 .surface-overlay {
-  @apply bg-white/95 dark:bg-slate-900/95 border border-slate-200 dark:border-slate-800/80 text-slate-900 dark:text-slate-100 backdrop-blur-sm;
+  @apply bg-white/95 dark:bg-[#0c111e]/95 border border-slate-200 dark:border-slate-800/80 text-slate-900 dark:text-slate-100 backdrop-blur-md;
 }
 
 /* Input fields */
@@ -93,32 +93,13 @@
   @apply bg-slate-200 dark:bg-slate-800 border border-slate-300 dark:border-slate-700;
 }
 
-/* Scrollbar (handled in base but here for reference) */
-/* ===== END SEMANTIC UTILITIES ===== */
-
-/* Global Smooth Theme Interpolation */
-html body,
-html div,
-html header,
-html footer,
-html main,
-html section,
-html nav,
-html aside,
-html form,
-html button,
-html input,
-html textarea,
-html select,
-html a,
-html label,
-html span,
-html ul,
-html li {
-  transition-property: background-color, border-color, color, fill, stroke;
-  transition-duration: 300ms;
-  transition-timing-function: ease;
+/* Scoped Theme Smooth Transition */
+.theme-transition {
+  transition-property: background-color, border-color, color;
+  transition-duration: 250ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
+
 
 /* Unified Astral Indigo & Obsidian Semantic Cards & Surfaces */
 .rpg-card {

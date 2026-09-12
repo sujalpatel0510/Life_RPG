@@ -180,14 +180,14 @@ export const QuestBoard: React.FC<QuestBoardProps> = ({
       {/* Control Bar: Search, Filters & Detailed Summon Button */}
       <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3">
         {/* Search */}
-        <div className="relative flex-1 max-w-md">
-          <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
+        <div className="relative flex-1">
+          <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400 dark:text-slate-500" />
           <input
             type="text"
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            placeholder="Search active quests or lore..."
-            className="w-full pl-10 pr-4 py-2.5 rounded-xl input text-xs sm:text-sm focus:outline-none focus:border-indigo-500 transition shadow-sm"
+            placeholder="Search active quests, tags, or lore..."
+            className="w-full pl-10 pr-4 py-2.5 rounded-2xl input text-xs sm:text-sm focus:outline-none focus:border-indigo-500 transition shadow-sm"
           />
         </div>
 
@@ -198,58 +198,64 @@ export const QuestBoard: React.FC<QuestBoardProps> = ({
             setQuestToEdit(null);
             setModalOpen(true);
           }}
-          className="btn-tactile flex items-center justify-center space-x-2 px-5 py-2.5 rounded-xl btn-primary text-white font-fantasy font-bold text-xs sm:text-sm shadow-lg shadow-indigo-600/25 transition transform hover:-translate-y-0.5 active:translate-y-0 flex-shrink-0"
+          className="btn-tactile flex items-center justify-center space-x-2 px-5 py-2.5 rounded-2xl btn-primary text-white font-fantasy font-bold text-xs sm:text-sm shadow-lg shadow-indigo-600/25 transition transform hover:-translate-y-0.5 active:translate-y-0 flex-shrink-0"
         >
           <Plus className="w-4 h-4 stroke-[3]" />
           <span>DETAILED SUMMON (N)</span>
         </button>
       </div>
 
-      {/* Cadence Filters with Count Badges */}
-      <div className="flex items-center space-x-2 overflow-x-auto pb-1 no-scrollbar">
-        {cadences.map((c) => (
-          <button
-            key={c.id}
-            onClick={() => {
-              playClick();
-              setActiveCadence(c.id);
-            }}
-            className={`btn-tactile flex items-center space-x-1.5 px-3.5 py-1.5 rounded-xl text-xs font-semibold whitespace-nowrap transition-all ${
-              activeCadence === c.id
-                ? 'bg-indigo-600 text-white shadow-md font-bold ring-2 ring-indigo-400/40'
-                : 'bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-400 border border-slate-200 dark:border-slate-700 hover:border-indigo-400/60 hover:text-slate-900 dark:hover:text-slate-200 shadow-sm'
-            }`}
-          >
-            <span>{c.label}</span>
-            <span className={`text-[10px] px-1.5 py-0.2 rounded-full font-bold ${
-              activeCadence === c.id ? 'bg-black/30 text-white' : 'bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400'
-            }`}>
-              {c.count}
-            </span>
-          </button>
-        ))}
+      {/* Cadence Segmented Controller & Category Pills */}
+      <div className="space-y-3">
+        {/* Cadence Tabs (Segmented bar) */}
+        <div className="inline-flex items-center p-1 rounded-2xl bg-slate-100 dark:bg-[#0b101c] border border-slate-200/90 dark:border-slate-800 overflow-x-auto no-scrollbar max-w-full">
+          {cadences.map((c) => (
+            <button
+              key={c.id}
+              onClick={() => {
+                playClick();
+                setActiveCadence(c.id);
+              }}
+              className={`btn-tactile flex items-center space-x-1.5 px-3.5 py-1.5 rounded-xl text-xs font-semibold whitespace-nowrap transition-all ${
+                activeCadence === c.id
+                  ? 'bg-white dark:bg-indigo-600 text-indigo-700 dark:text-white shadow-sm font-bold border border-slate-200/50 dark:border-transparent'
+                  : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-200'
+              }`}
+            >
+              <span>{c.label}</span>
+              <span className={`text-[10px] px-1.5 py-0.2 rounded-full font-bold ${
+                activeCadence === c.id 
+                  ? 'bg-indigo-50 dark:bg-black/30 text-indigo-700 dark:text-white' 
+                  : 'bg-slate-200/70 dark:bg-slate-800 text-slate-600 dark:text-slate-400'
+              }`}>
+                {c.count}
+              </span>
+            </button>
+          ))}
+        </div>
+
+        {/* Category Pills */}
+        <div className="flex items-center space-x-2 overflow-x-auto pb-1 no-scrollbar">
+          <Filter className="w-3.5 h-3.5 text-slate-400 dark:text-slate-500 flex-shrink-0 ml-1" />
+          {categories.map((cat) => (
+            <button
+              key={cat.id}
+              onClick={() => {
+                playClick();
+                setActiveCategory(cat.id);
+              }}
+              className={`btn-tactile px-3 py-1 rounded-xl text-[11px] font-semibold whitespace-nowrap transition ${
+                activeCategory === cat.id
+                  ? 'bg-indigo-50 dark:bg-indigo-950/60 text-indigo-800 dark:text-indigo-300 border border-indigo-300 dark:border-indigo-600/50 shadow-sm font-bold'
+                  : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-200 bg-white dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700/80'
+              }`}
+            >
+              {cat.label}
+            </button>
+          ))}
+        </div>
       </div>
 
-      {/* Category Pills */}
-      <div className="flex items-center space-x-2 overflow-x-auto pb-1 no-scrollbar">
-        <Filter className="w-3.5 h-3.5 text-slate-400 dark:text-slate-500 flex-shrink-0 ml-1" />
-        {categories.map((cat) => (
-          <button
-            key={cat.id}
-            onClick={() => {
-              playClick();
-              setActiveCategory(cat.id);
-            }}
-            className={`btn-tactile px-2.5 py-1 rounded-lg text-[11px] font-semibold whitespace-nowrap transition ${
-              activeCategory === cat.id
-                ? 'bg-indigo-50 dark:bg-indigo-950/50 text-indigo-800 dark:text-indigo-300 border border-indigo-300 dark:border-indigo-600/50 shadow-sm font-bold'
-                : 'text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-slate-200 bg-white/60 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700'
-            }`}
-          >
-            {cat.label}
-          </button>
-        ))}
-      </div>
 
       {/* Quest Grid */}
       {loading ? (

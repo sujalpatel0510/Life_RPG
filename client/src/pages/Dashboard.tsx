@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useCallback, useMemo } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { Navbar } from '../components/Navbar';
+import { HeroCommandBanner } from '../components/HeroCommandBanner';
 import { QuestBoard } from '../components/QuestBoard';
 import { BossRaid } from '../components/BossRaid';
 import { ArmouryShop } from '../components/ArmouryShop';
@@ -11,6 +12,7 @@ import { HotkeyGuideModal } from '../components/HotkeyGuideModal';
 import { FloatingCombatText, FloatingTextItem } from '../components/FloatingCombatText';
 import { useAuth } from '../context/AuthContext';
 import { useSound } from '../context/SoundContext';
+import { useTheme } from '../context/ThemeContext';
 import { AmbientEmbers } from '../components/AmbientEmbers';
 import { EquippedLoadoutCard } from '../components/EquippedLoadoutCard';
 import { Database, ShieldCheck, Cpu, Keyboard } from 'lucide-react';
@@ -132,10 +134,16 @@ export const Dashboard: React.FC<DashboardProps> = ({ activeTab: propActiveTab }
       />
 
       {/* Main Content Area */}
-      <main className="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8 space-y-8 z-10">
+      <main className="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8 space-y-6 sm:space-y-8 z-10">
         
+        {/* Top Hero Command Center */}
+        <HeroCommandBanner 
+          onOpenSummonModal={() => setIsSummonModalOpen(true)}
+          onNavigateTab={setActiveTab}
+        />
+
         {activeTab === 'quests' && (
-          <div key="quests" className="animate-tab-enter grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+          <div key="quests" className="animate-tab-enter grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-start">
             {/* Left 8 Cols: Primary Quest Journal & Quick-Add */}
             <div className="lg:col-span-8 space-y-6">
               <QuestBoard 
@@ -148,15 +156,20 @@ export const Dashboard: React.FC<DashboardProps> = ({ activeTab: propActiveTab }
             </div>
 
             {/* Right 4 Cols: Tactical Sidebar (Boss Raid + Equipped Gear) */}
-            <div className="lg:col-span-4 space-y-6 sticky top-24">
-              {/* World Boss Encounter */}
-              <BossRaid lastDamage={lastBossDamage} />
+            <div className="lg:col-span-4 space-y-6 lg:sticky lg:top-24">
+              {/* World Boss Encounter (Compact Tactical Sidebar View) */}
+              <BossRaid 
+                lastDamage={lastBossDamage} 
+                compact={true} 
+                onNavigateArena={() => setActiveTab('boss')}
+              />
 
               {/* Active Hero Loadout Paperdoll */}
               <EquippedLoadoutCard onOpenArmoury={() => setActiveTab('armoury')} />
             </div>
           </div>
         )}
+
 
         {activeTab === 'boss' && (
           <div key="boss" className="animate-tab-enter space-y-6">
