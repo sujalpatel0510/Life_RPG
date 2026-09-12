@@ -114,7 +114,7 @@ export const Navbar: React.FC<NavbarProps> = ({ activeTab, setActiveTab, onOpenH
                 </span>
                 <span className="font-mono text-[10px] text-slate-500 dark:text-slate-400">{character.currentXp} / {character.nextLevelXp} ({xpPercent}%)</span>
               </div>
-              <div className="w-full bg-slate-200 dark:bg-slate-800/80 rounded-full h-2.5 overflow-hidden border border-slate-300 dark:border-slate-700/60 p-0.5">
+              <div className="w-full bg-slate-200 dark:bg-slate-800/80 rounded-full h-2.5 overflow-hidden border border-slate-300 dark:border-slate-700/60 p-0.5 progress-shine">
                 <div 
                   className="bg-gradient-to-r from-indigo-600 via-violet-500 to-cyan-400 h-full rounded-full transition-all duration-500 ease-out shadow-[0_0_12px_rgba(99,102,241,0.5)]"
                   style={{ width: `${xpPercent}%` }}
@@ -130,7 +130,7 @@ export const Navbar: React.FC<NavbarProps> = ({ activeTab, setActiveTab, onOpenH
                 </span>
                 <span className="font-mono text-[10px] text-slate-500 dark:text-slate-400">{character.hp} / {character.maxHp} HP</span>
               </div>
-              <div className="w-full bg-slate-200 dark:bg-slate-800/80 rounded-full h-2 overflow-hidden border border-slate-300 dark:border-slate-700/60 p-0.5">
+              <div className="w-full bg-slate-200 dark:bg-slate-800/80 rounded-full h-2 overflow-hidden border border-slate-300 dark:border-slate-700/60 p-0.5 progress-shine">
                 <div 
                   className="bg-gradient-to-r from-rose-600 to-red-500 h-full rounded-full transition-all duration-300 ease-out"
                   style={{ width: `${hpPercent}%` }}
@@ -220,7 +220,7 @@ export const Navbar: React.FC<NavbarProps> = ({ activeTab, setActiveTab, onOpenH
             <span>XP: {character.currentXp} / {character.nextLevelXp}</span>
             <span>HP: {character.hp} / {character.maxHp}</span>
           </div>
-          <div className="w-full bg-slate-200 dark:bg-slate-800 rounded-full h-2 overflow-hidden border border-slate-300 dark:border-slate-700">
+          <div className="w-full bg-slate-200 dark:bg-slate-800 rounded-full h-2 overflow-hidden border border-slate-300 dark:border-slate-700 progress-shine">
             <div 
               className="bg-gradient-to-r from-indigo-600 via-violet-500 to-cyan-400 h-full rounded-full transition-all duration-300"
               style={{ width: `${xpPercent}%` }}

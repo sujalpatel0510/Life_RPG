@@ -370,17 +370,33 @@ html.light ::-webkit-scrollbar-thumb {
   animation: modalScaleUp 0.25s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
-/* Smooth card hover lift with glow */
+/* Smooth card hover lift with dynamic colored glow */
 .card-hover-lift {
   transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.25s ease;
+  --card-glow: rgba(99, 102, 241, 0.25);
+  --card-glow-strong: rgba(99, 102, 241, 0.35);
 }
 .card-hover-lift:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 12px 28px -6px rgba(99, 102, 241, 0.15), 0 4px 10px -2px rgba(0, 0, 0, 0.1);
+  transform: translateY(-4px);
+  box-shadow: 
+    0 16px 36px -8px var(--card-glow),
+    0 6px 16px -4px rgba(0, 0, 0, 0.08),
+    0 0 0 1px var(--card-glow-strong);
 }
 html.light .card-hover-lift:hover {
-  box-shadow: 0 12px 24px -4px rgba(15, 23, 42, 0.08), 0 4px 10px -2px rgba(15, 23, 42, 0.04);
+  box-shadow: 
+    0 16px 32px -6px var(--card-glow),
+    0 6px 14px -3px rgba(15, 23, 42, 0.06),
+    0 0 0 1px var(--card-glow-strong);
 }
+
+/* Contextual glow variants for cards */
+.card-glow-indigo  { --card-glow: rgba(99, 102, 241, 0.25);  --card-glow-strong: rgba(99, 102, 241, 0.35); }
+.card-glow-emerald { --card-glow: rgba(16, 185, 129, 0.25);  --card-glow-strong: rgba(16, 185, 129, 0.35); }
+.card-glow-amber   { --card-glow: rgba(245, 158, 11, 0.25);  --card-glow-strong: rgba(245, 158, 11, 0.35); }
+.card-glow-cyan    { --card-glow: rgba(6, 182, 212, 0.25);   --card-glow-strong: rgba(6, 182, 212, 0.35); }
+.card-glow-violet  { --card-glow: rgba(139, 92, 246, 0.25);  --card-glow-strong: rgba(139, 92, 246, 0.35); }
+.card-glow-rose    { --card-glow: rgba(244, 63, 94, 0.25);   --card-glow-strong: rgba(244, 63, 94, 0.35); }
 
 /* Staggered card fade-in-up animation */
 @keyframes fadeInUp {
@@ -440,15 +456,197 @@ html.light .card-hover-lift:hover {
   animation: creatureFloat 4s ease-in-out infinite;
 }
 
-/* Button click tactile squish & hover lift */
+/* Button click tactile squish, hover lift, press shadow-inner & ripple */
 .btn-tactile {
   transition: transform 0.15s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.15s ease, filter 0.15s ease;
+  position: relative;
+  overflow: hidden;
 }
 .btn-tactile:hover {
   transform: translateY(-1px);
 }
 .btn-tactile:active {
   transform: scale(0.96) translateY(0px) !important;
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.15);
+}
+
+/* Ripple sparkle effect on click */
+.btn-tactile::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at center, rgba(255,255,255,0.35) 0%, transparent 70%);
+  opacity: 0;
+  transform: scale(0.5);
+  pointer-events: none;
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.4s ease;
+}
+.btn-tactile:active::after {
+  opacity: 1;
+  transform: scale(2.5);
+  transition: transform 0.1s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.1s;
+}
+
+/* Sparkle burst for primary actions (quest complete, level up, etc.) */
+.sparkle-burst {
+  position: relative;
+  overflow: visible;
+}
+.sparkle-burst::before,
+.sparkle-burst::after {
+  content: '';
+  position: absolute;
+  inset: -4px;
+  background: conic-gradient(from 0deg, transparent 0%, currentColor 10%, transparent 20%);
+  opacity: 0;
+  pointer-events: none;
+  animation: sparkleSpin 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+.sparkle-burst::after {
+  animation-delay: 0.1s;
+  inset: -8px;
+}
+@keyframes sparkleSpin {
+  0% { transform: rotate(0deg) scale(0.5); opacity: 1; }
+  100% { transform: rotate(360deg) scale(1.5); opacity: 0; }
+}
+
+/* Enhanced floating combat text with bounce curve */
+@keyframes floatUpFadeEnhanced {
+  0% {
+    opacity: 0;
+    transform: translateY(12px) scale(0.8) rotate(-2deg);
+  }
+  15% {
+    opacity: 1;
+    transform: translateY(-4px) scale(1.15) rotate(1deg);
+  }
+  35% {
+    transform: translateY(-18px) scale(1.02) rotate(-0.5deg);
+  }
+  65% {
+    opacity: 0.95;
+    transform: translateY(-35px) scale(1) rotate(0deg);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-55px) scale(0.85) rotate(1deg);
+  }
+}
+
+.animate-float-up-enhanced {
+  animation: floatUpFadeEnhanced 1.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+}
+
+/* Gradient shine sweep for progress bars (XP, HP, etc.) */
+.progress-shine {
+  position: relative;
+  overflow: hidden;
+}
+.progress-shine::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.45) 40%,
+    rgba(255, 255, 255, 0.65) 50%,
+    rgba(255, 255, 255, 0.45) 60%,
+    transparent 100%
+  );
+  background-size: 200% 100%;
+  animation: progressShineSweep 1.8s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+  pointer-events: none;
+}
+html.dark .progress-shine::after {
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(148, 163, 184, 0.25) 40%,
+    rgba(148, 163, 184, 0.4) 50%,
+    rgba(148, 163, 184, 0.25) 60%,
+    transparent 100%
+  );
+}
+
+@keyframes progressShineSweep {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+/* Enhanced boss hit reaction: stronger shake + flash + scale pop */
+@keyframes bossHitReaction {
+  0%, 100% { transform: translate(0, 0) rotate(0deg) scale(1); filter: none; }
+  10%  { transform: translate(-6px, 3px) rotate(-2deg) scale(1.02); filter: brightness(1.8) drop-shadow(0 0 20px rgba(244, 63, 94, 0.9)); }
+  20%  { transform: translate(5px, -2px) rotate(1.5deg) scale(0.99); filter: brightness(1.5) drop-shadow(0 0 15px rgba(244, 63, 94, 0.7)); }
+  30%  { transform: translate(-4px, -1px) rotate(-1deg) scale(1.01); filter: brightness(1.3) drop-shadow(0 0 10px rgba(244, 63, 94, 0.5)); }
+  40%  { transform: translate(3px, 2px) rotate(0.5deg) scale(0.995); }
+  50%  { transform: translate(-2px, 1px) rotate(-0.5deg) scale(1); }
+  60%  { transform: translate(0, 0) rotate(0deg) scale(1); }
+}
+
+.animate-boss-hit-enhanced {
+  animation: bossHitReaction 0.55s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Polished modal transitions with spring easing */
+@keyframes modalBackdropFadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes modalCardSpringUp {
+  from {
+    opacity: 0;
+    transform: scale(0.92) translateY(16px);
+  }
+  50% {
+    transform: scale(1.02) translateY(-4px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+.animate-modal-backdrop {
+  animation: modalBackdropFadeIn 0.22s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.animate-modal-card {
+  animation: modalCardSpringUp 0.38s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Smooth tab switching with slide + crossfade */
+@keyframes tabSlideIn {
+  from {
+    opacity: 0;
+    transform: translateX(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes tabSlideOut {
+  from {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+}
+
+.animate-tab-slide-in {
+  animation: tabSlideIn 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.animate-tab-slide-out {
+  animation: tabSlideOut 0.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
 /* Hide horizontal scrollbars on pill/nav rows while keeping scrollability */

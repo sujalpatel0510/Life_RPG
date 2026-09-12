@@ -110,7 +110,7 @@ export const BossRaid: React.FC<BossRaidProps> = ({ lastDamage }) => {
           
           {/* Floating Damage Text Popup */}
           {floatingDamage && (
-            <div className="absolute -top-6 left-1/2 -translate-x-1/2 z-30 font-fantasy font-black text-2xl text-rose-500 drop-shadow-[0_2px_8px_rgba(244,63,94,0.9)] animate-float-up pointer-events-none whitespace-nowrap">
+            <div className="absolute -top-6 left-1/2 -translate-x-1/2 z-30 font-fantasy font-black text-2xl text-rose-500 drop-shadow-[0_2px_8px_rgba(244,63,94,0.9)] animate-float-up-enhanced pointer-events-none whitespace-nowrap">
               💥 -{floatingDamage} DMG!
             </div>
           )}
@@ -119,7 +119,7 @@ export const BossRaid: React.FC<BossRaidProps> = ({ lastDamage }) => {
             isDefeated
               ? 'bg-slate-100 dark:bg-slate-900 border-slate-300 dark:border-slate-700 opacity-70 grayscale'
               : isHit
-              ? 'animate-boss-hit bg-rose-500/20 border-rose-400 ring-4 ring-rose-500/50'
+              ? 'animate-boss-hit-enhanced bg-rose-500/20 border-rose-400 ring-4 ring-rose-500/50'
               : 'bg-gradient-to-tr from-indigo-100 via-white to-slate-100 dark:from-indigo-900/30 dark:via-slate-900/50 dark:to-slate-950 border-indigo-300 dark:border-indigo-500/40 shadow-[0_0_40px_rgba(99,102,241,0.15)] dark:shadow-[0_0_40px_rgba(99,102,241,0.25)] animate-pulse-glow animate-creature-idle'
           }`}>
 

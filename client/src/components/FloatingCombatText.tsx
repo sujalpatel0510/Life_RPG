@@ -18,7 +18,7 @@ export const FloatingCombatText: React.FC<FloatingCombatTextProps> = ({ items })
       {items.map((item) => (
         <div
           key={item.id}
-          className="absolute animate-float-up font-fantasy font-black text-sm sm:text-base tracking-wider drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]"
+          className="absolute animate-float-up-enhanced font-fantasy font-black text-sm sm:text-base tracking-wider drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]"
           style={{
             left: `${item.x}px`,
             top: `${item.y}px`,

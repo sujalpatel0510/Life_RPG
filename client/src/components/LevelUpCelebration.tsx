@@ -47,8 +47,8 @@ export const LevelUpCelebration: React.FC<LevelUpCelebrationProps> = ({ newLevel
   }, [newLevel]);
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-md animate-fade-in">
-      <div className="relative max-w-md w-full bg-white dark:bg-gradient-to-b dark:from-[#161f36] dark:to-[#0d1222] border-2 border-indigo-500 rounded-2xl p-6 sm:p-8 text-center shadow-[0_0_50px_rgba(99,102,241,0.35)] animate-scale-up text-slate-900 dark:text-slate-100">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-md animate-modal-backdrop">
+      <div className="relative max-w-md w-full bg-white dark:bg-gradient-to-b dark:from-[#161f36] dark:to-[#0d1222] border-2 border-indigo-500 rounded-2xl p-6 sm:p-8 text-center shadow-[0_0_50px_rgba(99,102,241,0.35)] animate-modal-card text-slate-900 dark:text-slate-100">
         
         {/* Glow Halo */}
         <div className="absolute -top-12 left-1/2 -translate-x-1/2 w-24 h-24 rounded-full bg-gradient-to-tr from-indigo-600 via-indigo-500 to-violet-600 flex items-center justify-center shadow-[0_0_30px_rgba(99,102,241,0.8)] border-4 border-white dark:border-slate-900">

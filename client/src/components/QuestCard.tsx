@@ -77,11 +77,11 @@ export const QuestCard: React.FC<QuestCardProps> = ({ quest, onComplete, onEdit,
 
   return (
     <div 
-      className={`group relative card-hover-lift animate-fade-in-up bg-white dark:bg-[#101626]/90 border rounded-2xl p-4 sm:p-5 transition-all duration-300 shadow-sm ${
+      className={`group relative card-hover-lift card-glow-indigo animate-fade-in-up bg-white dark:bg-[#101626]/90 border rounded-2xl p-4 sm:p-5 transition-all duration-300 shadow-sm ${
         justCompleted
           ? 'border-indigo-500 bg-indigo-950/30 scale-[1.02] shadow-[0_0_30px_rgba(99,102,241,0.4)] ring-2 ring-indigo-500/50'
           : quest.isCompleted 
-          ? 'border-slate-200 dark:border-slate-800/60 opacity-60 bg-slate-50 dark:bg-slate-900/40' 
+          ? 'card-glow-emerald border-slate-200 dark:border-slate-800/60 opacity-60 bg-slate-50 dark:bg-slate-900/40' 
           : 'border-slate-200 dark:border-slate-800/90 hover:border-indigo-500/50 hover:shadow-[0_8px_25px_-5px_rgba(99,102,241,0.15)]'
       }`}
     >
@@ -92,7 +92,7 @@ export const QuestCard: React.FC<QuestCardProps> = ({ quest, onComplete, onEdit,
           onClick={handleComplete}
           disabled={isCompleting || (quest.isCompleted && quest.questType !== 'HABIT')}
           aria-label={quest.isCompleted ? 'Completed Quest' : 'Complete Quest'}
-          className={`mt-0.5 flex-shrink-0 w-8 h-8 rounded-xl border-2 flex items-center justify-center transition-all duration-200 transform btn-tactile ${
+          className={`mt-0.5 flex-shrink-0 w-8 h-8 rounded-xl border-2 flex items-center justify-center transition-all duration-200 transform btn-tactile sparkle-burst ${
             quest.isCompleted
               ? 'bg-gradient-to-tr from-emerald-600 to-teal-500 border-emerald-400 text-white shadow-[0_0_15px_rgba(16,185,129,0.5)]'
               : 'border-slate-300 dark:border-slate-700 bg-slate-100 dark:bg-slate-900/90 hover:border-indigo-500 text-transparent hover:text-indigo-500 hover:scale-105 active:scale-95 shadow-sm'

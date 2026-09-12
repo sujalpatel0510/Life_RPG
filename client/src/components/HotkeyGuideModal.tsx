@@ -26,8 +26,8 @@ export const HotkeyGuideModal: React.FC<HotkeyGuideModalProps> = ({ isOpen, onCl
   ];
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm animate-fade-in">
-      <div className="relative w-full max-w-md bg-white dark:bg-[#111827] border border-indigo-500/50 rounded-2xl p-6 shadow-2xl animate-scale-up text-slate-900 dark:text-slate-100">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm animate-modal-backdrop">
+      <div className="relative w-full max-w-md bg-white dark:bg-[#111827] border border-indigo-500/50 rounded-2xl p-6 shadow-2xl animate-modal-card text-slate-900 dark:text-slate-100">
         
         {/* Header */}
         <div className="flex items-center justify-between pb-4 border-b border-slate-200 dark:border-slate-800">
