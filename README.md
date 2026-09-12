@@ -263,31 +263,7 @@ All protected endpoints require `Authorization: Bearer <token>` in headers.
 
 ---
 
-## 🎬 11. Evaluator Video Demonstration Script (90–180 Seconds)
-
-1. **0:00 - 0:25 | Authentication & Hero Selection**:
-   - Open app at **[https://life-rpg-weld.vercel.app](https://life-rpg-weld.vercel.app)**.
-   - Show instantaneous load with dark fantasy Ambient Embers.
-   - Use the one-click demo login (`hero@zephyr.com` / `zephyr123`) or register with class selection (Warrior, Mage, Rogue, Paladin).
-2. **0:25 - 0:50 | Command Center & Dual-Theme Switcher**:
-   - Point out the widescreen Command Center layout (`max-w-[1800px]`): left side displays the active Quest Board; right side showcases the live World Boss Raid encounter and the equipped Paperdoll Loadout Card.
-   - Toggle theme using the top-right dual-pill (☀️ Light / 🌙 Dark or press <kbd>T</kbd>): observe instant, zero-lag synchronization across all cards and text.
-3. **0:50 - 1:20 | Tactile Feedback & Boss Strikes**:
-   - Use the **1-Click Quick-Add Bar** or press <kbd>N</kbd> to summon a task with dynamic bounties (+XP, +Gold, +Gems).
-   - Check off a quest: hear the procedural audio chime, watch the Floating Combat Text (`+XP`, `+Gold`, `⚔️ -Boss DMG`), and see the boss take screen-shake damage in real-time!
-   - Review the collapsible **Conquered Chronicles** accordion keeping the active board organized.
-4. **1:20 - 1:45 | Armoury, Loadout Paperdoll & Character Sheet**:
-   - Navigate to **"Armoury"** (<kbd>3</kbd>) or click the loadout card.
-   - Buy and equip forged gear; watch the loadout card update immediately with weapon and armor badges.
-   - Visit **"Character Sheet"** (<kbd>4</kbd>): demonstrate the 6-axis SVG attribute radar polygon, milestone progression roadmap, and active Title selector dropdown.
-5. **1:45 - 2:10 | Proof of PostgreSQL 17 Persistence**:
-   - Navigate to **"Chronicles"** (<kbd>5</kbd>) showing the audit activity log.
-   - Perform a hard browser refresh (`Ctrl + F5` / `Cmd + R`).
-   - Demonstrate that 100% of character stats, loadout gear, completed quests, and boss health remain strictly persisted in PostgreSQL 17.
-
----
-
-## 🛡️ 12. Security & Anti-Cheat Safeguards
+## 🛡️ 11. Security & Anti-Cheat Safeguards
 
 - ✅ **Server-Side Stat Validation**: All XP calculations, level thresholds, and damage calculations are enforced by the Node.js backend to prevent client tampering.
 - ✅ **Relational Foreign Key Integrity**: Cascading deletes and relation constraints prevent orphaned quests or duplicate inventories.
@@ -296,7 +272,3 @@ All protected endpoints require `Authorization: Bearer <token>` in headers.
 - ✅ **No Fake LocalStorage Persistence**: All player attributes, inventory, and completed quests live in PostgreSQL.
 
 ---
-
-## 📜 13. License
-
-This project is open-source and available under the [MIT License](LICENSE).
