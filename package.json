@@ -1,0 +1,16 @@
+﻿{
+  "name": "life-rpg-root",
+  "version": "1.0.0",
+  "description": "Life RPG - Gamified Productivity & Habit Platform",
+  "private": true,
+  "scripts": {
+    "dev:server": "npm --prefix server run dev",
+    "dev:client": "npm --prefix client run dev",
+    "build": "npm --prefix server run build && npm --prefix client run build",
+    "prisma:push": "npm --prefix server run prisma:push",
+    "prisma:seed": "npm --prefix server run seed"
+  },
+  "keywords": ["rpg", "gamification", "postgresql", "react", "express"],
+  "author": "Tech Zephyr Life RPG Team",
+  "license": "MIT"
+}
