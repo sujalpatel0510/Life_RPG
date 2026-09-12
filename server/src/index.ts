@@ -19,12 +19,12 @@ const PORT = process.env.PORT || 5000;
 // Security & Parsing Middlewares
 app.use(helmet());
 
-const configuredClients = process.env.CLIENT_URL 
-  ? process.env.CLIENT_URL.split(',').map(s => s.trim().replace(/\/$/, '')) 
+const configuredClients: string[] = process.env.CLIENT_URL 
+  ? process.env.CLIENT_URL.split(',').map((s: string) => s.trim().replace(/\/$/, '')) 
   : ['http://localhost:5173', 'http://127.0.0.1:5173'];
 
 app.use(cors({
-  origin: (origin, callback) => {
+  origin: (origin: string | undefined, callback: (err: Error | null, allow?: boolean) => void) => {
     // Allow server-to-server, curl, Postman, or health checks with no origin header
     if (!origin) return callback(null, true);
     // Allow explicitly configured origins, wildcard, localhost, or any vercel.app deployment preview
