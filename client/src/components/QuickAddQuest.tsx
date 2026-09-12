@@ -107,8 +107,8 @@ export const QuickAddQuest: React.FC<QuickAddQuestProps> = ({ onAdd }) => {
                 }}
                 className={`flex items-center space-x-1 px-2 py-0.5 rounded-lg border text-[11px] font-semibold transition ${
                   isSelected
-                    ? 'bg-slate-800 border-amber-500/60 text-amber-300 ring-1 ring-amber-400/30'
-                    : 'border-slate-800/80 bg-slate-900/40 text-slate-400 hover:text-slate-200'
+                    ? 'bg-amber-100 dark:bg-slate-800 border-amber-400 dark:border-amber-500/60 text-amber-900 dark:text-amber-300 ring-1 ring-amber-400/30'
+                    : 'border-slate-200 dark:border-slate-800/80 bg-white/50 dark:bg-slate-900/40 text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-200'
                 }`}
               >
                 <Icon className="w-3 h-3" />
@@ -130,8 +130,8 @@ export const QuickAddQuest: React.FC<QuickAddQuestProps> = ({ onAdd }) => {
               }}
               className={`px-2 py-0.5 rounded-md text-[10px] font-bold uppercase transition ${
                 questType === type
-                  ? 'bg-amber-500/20 text-amber-400 border border-amber-500/40'
-                  : 'text-slate-500 hover:text-slate-300'
+                  ? 'bg-amber-500/20 text-amber-800 dark:text-amber-400 border border-amber-400 dark:border-amber-500/40 font-extrabold'
+                  : 'text-slate-500 hover:text-slate-900 dark:hover:text-slate-300'
               }`}
             >
               {type}

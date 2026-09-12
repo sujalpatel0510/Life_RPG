@@ -214,15 +214,15 @@ export const QuestBoard: React.FC<QuestBoardProps> = ({
               playClick();
               setActiveCadence(c.id);
             }}
-            className={`flex items-center space-x-1.5 px-3.5 py-1.5 rounded-xl text-xs font-semibold whitespace-nowrap transition ${
+            className={`btn-tactile flex items-center space-x-1.5 px-3.5 py-1.5 rounded-xl text-xs font-semibold whitespace-nowrap transition-all ${
               activeCadence === c.id
-                ? 'bg-amber-500 text-slate-950 shadow-md font-bold'
-                : 'bg-[#101626] text-slate-400 border border-slate-800 hover:border-slate-700 hover:text-slate-200'
+                ? 'bg-amber-500 text-slate-950 shadow-md font-bold ring-2 ring-amber-400/40'
+                : 'bg-white dark:bg-[#101626] text-slate-600 dark:text-slate-400 border border-slate-200 dark:border-slate-800 hover:border-amber-400/60 hover:text-slate-900 dark:hover:text-slate-200 shadow-sm'
             }`}
           >
             <span>{c.label}</span>
-            <span className={`text-[10px] px-1.5 py-0.2 rounded-full ${
-              activeCadence === c.id ? 'bg-slate-950/30 text-slate-950' : 'bg-slate-800 text-slate-400'
+            <span className={`text-[10px] px-1.5 py-0.2 rounded-full font-bold ${
+              activeCadence === c.id ? 'bg-slate-950/20 text-slate-950' : 'bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400'
             }`}>
               {c.count}
             </span>
@@ -232,7 +232,7 @@ export const QuestBoard: React.FC<QuestBoardProps> = ({
 
       {/* Category Pills */}
       <div className="flex items-center space-x-2 overflow-x-auto pb-1 no-scrollbar">
-        <Filter className="w-3.5 h-3.5 text-slate-500 flex-shrink-0 ml-1" />
+        <Filter className="w-3.5 h-3.5 text-slate-400 dark:text-slate-500 flex-shrink-0 ml-1" />
         {categories.map((cat) => (
           <button
             key={cat.id}
@@ -240,10 +240,10 @@ export const QuestBoard: React.FC<QuestBoardProps> = ({
               playClick();
               setActiveCategory(cat.id);
             }}
-            className={`px-2.5 py-1 rounded-lg text-[11px] font-medium whitespace-nowrap transition ${
+            className={`btn-tactile px-2.5 py-1 rounded-lg text-[11px] font-semibold whitespace-nowrap transition ${
               activeCategory === cat.id
-                ? 'bg-slate-800 text-amber-300 border border-amber-500/50 shadow-sm'
-                : 'text-slate-500 hover:text-slate-300 bg-slate-900/50'
+                ? 'bg-amber-100 dark:bg-slate-800 text-amber-800 dark:text-amber-300 border border-amber-300 dark:border-amber-500/50 shadow-sm'
+                : 'text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-slate-200 bg-white/60 dark:bg-slate-900/50 border border-slate-200 dark:border-slate-800'
             }`}
           >
             {cat.label}

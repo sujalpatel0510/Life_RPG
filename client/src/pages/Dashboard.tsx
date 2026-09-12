@@ -139,7 +139,7 @@ export const Dashboard: React.FC = () => {
   }, [playClick, toggleMute]);
 
   return (
-    <div className="min-h-screen relative flex flex-col bg-[#070a12] text-slate-100 selection:bg-amber-500 selection:text-black overflow-x-hidden">
+    <div className="min-h-screen relative flex flex-col bg-slate-50 dark:bg-[#0b0f19] text-slate-900 dark:text-slate-100 selection:bg-amber-500 selection:text-black overflow-x-hidden">
       
       {/* Dark Fantasy Floating Ambient Embers Background */}
       <AmbientEmbers />
@@ -184,11 +184,11 @@ export const Dashboard: React.FC = () => {
         {activeTab === 'boss' && (
           <div className="space-y-6">
             <BossRaid lastDamage={lastBossDamage} />
-            <div className="bg-[#101626] border border-slate-800 rounded-3xl p-6 sm:p-8">
-              <h3 className="font-fantasy text-xl font-bold text-slate-100 mb-2">
+            <div className="bg-white dark:bg-[#111827] border border-slate-200 dark:border-slate-800 rounded-3xl p-6 sm:p-8 shadow-sm">
+              <h3 className="font-fantasy text-xl font-bold text-slate-900 dark:text-slate-100 mb-2">
                 Conquest & Raid Guide
               </h3>
-              <p className="text-xs sm:text-sm text-slate-400 leading-relaxed max-w-2xl">
+              <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-400 leading-relaxed max-w-2xl">
                 To inflict critical strikes upon this raid behemoth, complete real-world tasks in your Quest Log. 
                 Higher difficulty quests, your Character Strength attribute, and equipped weapons in your Armoury deal massive bonus damage multipliers!
               </p>
@@ -218,14 +218,14 @@ export const Dashboard: React.FC = () => {
       />
 
       {/* Footer / Hackathon Compliance Bar */}
-      <footer className="border-t border-slate-800/80 bg-[#060911] py-6 text-xs text-slate-500">
+      <footer className="border-t border-slate-200 dark:border-slate-800/80 bg-white dark:bg-[#060911] py-6 text-xs text-slate-600 dark:text-slate-500 shadow-inner">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4">
           <div className="flex items-center space-x-3">
-            <span className="font-fantasy font-bold text-slate-300">LIFE RPG</span>
+            <span className="font-fantasy font-bold text-slate-900 dark:text-slate-300">LIFE RPG</span>
             <span>• Tech Zephyr 4.0 Hackathon Build</span>
             <button
               onClick={() => setIsHotkeysOpen(true)}
-              className="hidden sm:inline-flex items-center gap-1 text-[11px] text-amber-400 hover:text-amber-300 ml-2"
+              className="hidden sm:inline-flex items-center gap-1 text-[11px] text-amber-700 dark:text-amber-400 hover:text-amber-800 dark:hover:text-amber-300 ml-2 font-medium"
             >
               <Keyboard className="w-3.5 h-3.5" />
               <span>Press '?' for Hotkeys</span>
@@ -233,13 +233,13 @@ export const Dashboard: React.FC = () => {
           </div>
 
           <div className="flex flex-wrap items-center gap-4 text-[11px]">
-            <span className="flex items-center gap-1 text-emerald-400 font-medium">
+            <span className="flex items-center gap-1 text-emerald-700 dark:text-emerald-400 font-semibold">
               <Database className="w-3.5 h-3.5" /> PostgreSQL 17 Connected
             </span>
-            <span className="flex items-center gap-1 text-blue-400 font-medium">
+            <span className="flex items-center gap-1 text-blue-700 dark:text-blue-400 font-semibold">
               <Cpu className="w-3.5 h-3.5" /> Express + Prisma Backend
             </span>
-            <span className="flex items-center gap-1 text-amber-400 font-medium">
+            <span className="flex items-center gap-1 text-amber-700 dark:text-amber-400 font-semibold">
               <ShieldCheck className="w-3.5 h-3.5" /> Anti-Cheat Server Engine
             </span>
           </div>

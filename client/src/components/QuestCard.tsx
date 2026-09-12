@@ -116,21 +116,21 @@ export const QuestCard: React.FC<QuestCardProps> = ({ quest, onComplete, onEdit,
             </span>
 
             {/* Type Tag */}
-            <span className="px-1.5 py-0.5 rounded-md text-[10px] bg-slate-800 text-slate-400 font-medium">
+            <span className="px-1.5 py-0.5 rounded-md text-[10px] bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-300 font-medium border border-slate-300 dark:border-slate-700">
               {quest.questType}
             </span>
 
             {/* Habit Streak and Increment button */}
             {quest.questType === 'HABIT' && (
-              <div className="inline-flex items-center gap-1 bg-orange-950/40 px-2 py-0.5 rounded-lg border border-orange-500/30">
+              <div className="inline-flex items-center gap-1 bg-amber-50 dark:bg-orange-950/40 px-2 py-0.5 rounded-lg border border-amber-300 dark:border-orange-500/30">
                 <Flame className="w-3 h-3 fill-orange-500 text-orange-500" />
-                <span className="text-[11px] text-orange-400 font-bold">{quest.streakCount} Streak</span>
+                <span className="text-[11px] text-amber-700 dark:text-orange-400 font-bold">{quest.streakCount} Streak</span>
                 <button
                   type="button"
                   onClick={handleComplete}
                   disabled={isCompleting}
                   title="Increment habit streak"
-                  className="ml-1 px-1.5 py-0.2 rounded bg-orange-500/20 hover:bg-orange-500/40 text-orange-300 hover:text-white text-[10px] font-bold transition"
+                  className="ml-1 px-1.5 py-0.2 rounded bg-amber-200 dark:bg-orange-500/20 hover:bg-amber-300 dark:hover:bg-orange-500/40 text-amber-900 dark:text-orange-300 hover:text-black dark:hover:text-white text-[10px] font-bold transition"
                 >
                   +1 Rep
                 </button>
@@ -138,8 +138,8 @@ export const QuestCard: React.FC<QuestCardProps> = ({ quest, onComplete, onEdit,
             )}
           </div>
 
-          <h3 className={`font-semibold text-sm sm:text-base text-slate-100 leading-snug transition ${
-            quest.isCompleted ? 'line-through text-slate-400' : 'group-hover:text-amber-200'
+          <h3 className={`font-semibold text-sm sm:text-base text-slate-900 dark:text-slate-100 leading-snug transition ${
+            quest.isCompleted ? 'line-through text-slate-400 dark:text-slate-500' : 'group-hover:text-amber-600 dark:group-hover:text-amber-200'
           }`}>
             {quest.title}
           </h3>
@@ -152,17 +152,17 @@ export const QuestCard: React.FC<QuestCardProps> = ({ quest, onComplete, onEdit,
 
           {/* Reward Badges */}
           <div className="flex items-center gap-3 mt-3 text-xs font-semibold">
-            <span className="flex items-center gap-1 text-amber-400">
-              <Sparkles className="w-3.5 h-3.5 text-amber-400" />
+            <span className="flex items-center gap-1 text-amber-600 dark:text-amber-400 bg-amber-50 dark:bg-amber-950/30 px-2 py-0.5 rounded-md border border-amber-200 dark:border-amber-500/20">
+              <Sparkles className="w-3.5 h-3.5 text-amber-500" />
               +{quest.xpReward} XP
             </span>
-            <span className="flex items-center gap-1 text-yellow-300">
-              <Coins className="w-3.5 h-3.5 text-yellow-400" />
+            <span className="flex items-center gap-1 text-amber-700 dark:text-yellow-300 bg-yellow-50 dark:bg-yellow-950/30 px-2 py-0.5 rounded-md border border-yellow-200 dark:border-yellow-500/20">
+              <Coins className="w-3.5 h-3.5 text-yellow-500" />
               +{quest.goldReward} Gold
             </span>
             {quest.gemReward > 0 && (
-              <span className="flex items-center gap-1 text-cyan-400">
-                <Gem className="w-3.5 h-3.5 text-cyan-400" />
+              <span className="flex items-center gap-1 text-cyan-600 dark:text-cyan-400 bg-cyan-50 dark:bg-cyan-950/30 px-2 py-0.5 rounded-md border border-cyan-200 dark:border-cyan-500/20">
+                <Gem className="w-3.5 h-3.5 text-cyan-500" />
                 +{quest.gemReward} Gem
               </span>
             )}

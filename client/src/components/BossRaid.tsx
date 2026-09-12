@@ -150,13 +150,13 @@ export const BossRaid: React.FC<BossRaidProps> = ({ lastDamage }) => {
               <span>{isDefeated ? 'Raid Victorious' : 'Active World Raid'}</span>
             </div>
 
-            <h2 className="font-fantasy text-2xl sm:text-3xl font-black text-slate-100">
+            <h2 className="font-fantasy text-2xl sm:text-3xl font-black text-slate-900 dark:text-slate-100">
               {boss.name}
             </h2>
-            <p className="text-xs sm:text-sm text-red-400 font-medium italic">
+            <p className="text-xs sm:text-sm text-red-600 dark:text-red-400 font-medium italic">
               "{boss.title}"
             </p>
-            <p className="text-xs text-slate-400 mt-2 max-w-xl">
+            <p className="text-xs text-slate-600 dark:text-slate-400 mt-2 max-w-xl">
               {boss.description}
             </p>
           </div>
@@ -164,15 +164,15 @@ export const BossRaid: React.FC<BossRaidProps> = ({ lastDamage }) => {
           {/* Boss HP Bar */}
           <div className="space-y-1.5 max-w-xl">
             <div className="flex justify-between text-xs font-bold">
-              <span className="text-slate-300 flex items-center gap-1.5">
-                <Target className="w-4 h-4 text-red-400" /> Raid Boss Vitality
+              <span className="text-slate-700 dark:text-slate-300 flex items-center gap-1.5">
+                <Target className="w-4 h-4 text-red-500" /> Raid Boss Vitality
               </span>
-              <span className={hpPercent > 30 ? 'text-red-400' : 'text-amber-400 animate-pulse'}>
+              <span className={hpPercent > 30 ? 'text-red-600 dark:text-red-400' : 'text-amber-600 dark:text-amber-400 animate-pulse'}>
                 {boss.hp} / {boss.maxHp} HP ({hpPercent}%)
               </span>
             </div>
 
-            <div className="w-full bg-slate-900 rounded-full h-4 overflow-hidden border border-slate-700/80 p-0.5 shadow-inner">
+            <div className="w-full bg-slate-200 dark:bg-slate-900 rounded-full h-4 overflow-hidden border border-slate-300 dark:border-slate-700/80 p-0.5 shadow-inner">
               <div 
                 className={`h-full rounded-full transition-all duration-500 ease-out ${
                   hpPercent > 50 
@@ -188,19 +188,19 @@ export const BossRaid: React.FC<BossRaidProps> = ({ lastDamage }) => {
 
           {/* Raid Mechanics & Victory Rewards */}
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2 max-w-xl">
-            <div className="bg-slate-900/70 border border-slate-800/80 rounded-xl p-3 flex items-center space-x-3 text-left">
-              <Sword className="w-6 h-6 text-amber-400 flex-shrink-0" />
+            <div className="bg-white dark:bg-slate-900/70 border border-slate-200 dark:border-slate-800/80 rounded-xl p-3 flex items-center space-x-3 text-left shadow-sm">
+              <Sword className="w-6 h-6 text-amber-500 flex-shrink-0" />
               <div>
-                <span className="text-[11px] font-bold text-slate-300 block">Strike Action</span>
-                <span className="text-[10px] text-slate-400">Completing quests unleashes real physical damage based on your STR & weapons.</span>
+                <span className="text-[11px] font-bold text-slate-800 dark:text-slate-300 block">Strike Action</span>
+                <span className="text-[10px] text-slate-600 dark:text-slate-400">Completing quests unleashes real physical damage based on your STR & weapons.</span>
               </div>
             </div>
 
-            <div className="bg-slate-900/70 border border-slate-800/80 rounded-xl p-3 flex items-center space-x-3 text-left">
-              <Trophy className="w-6 h-6 text-yellow-400 flex-shrink-0" />
+            <div className="bg-white dark:bg-slate-900/70 border border-slate-200 dark:border-slate-800/80 rounded-xl p-3 flex items-center space-x-3 text-left shadow-sm">
+              <Trophy className="w-6 h-6 text-yellow-500 flex-shrink-0" />
               <div>
-                <span className="text-[11px] font-bold text-slate-300 block">Bounty Rewards</span>
-                <span className="text-[10px] text-yellow-400/90 font-semibold">
+                <span className="text-[11px] font-bold text-slate-800 dark:text-slate-300 block">Bounty Rewards</span>
+                <span className="text-[10px] text-amber-800 dark:text-yellow-400/90 font-semibold">
                   +{boss.rewardGold} Gold, +{boss.rewardXp} XP & Title "{boss.rewardBadge}"
                 </span>
               </div>

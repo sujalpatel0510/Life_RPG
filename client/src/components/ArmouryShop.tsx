@@ -95,12 +95,12 @@ export const ArmouryShop: React.FC = () => {
 
   const getRarityStyle = (rarity: string) => {
     switch (rarity) {
-      case 'COMMON': return 'border-slate-700 bg-slate-900/60 text-slate-300';
-      case 'UNCOMMON': return 'border-emerald-500/40 bg-emerald-950/20 text-emerald-400';
-      case 'RARE': return 'border-blue-500/50 bg-blue-950/30 text-blue-400 item-glow-rare';
-      case 'EPIC': return 'border-purple-500/50 bg-purple-950/30 text-purple-300 item-glow-epic';
-      case 'LEGENDARY': return 'border-amber-500/60 bg-amber-950/30 text-amber-300 item-glow-legendary animate-pulse-glow';
-      default: return 'border-slate-700 bg-slate-900/60 text-slate-300';
+      case 'COMMON': return 'border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900/60 text-slate-800 dark:text-slate-300';
+      case 'UNCOMMON': return 'border-emerald-300 dark:border-emerald-500/40 bg-emerald-50/50 dark:bg-emerald-950/20 text-emerald-900 dark:text-emerald-400';
+      case 'RARE': return 'border-blue-300 dark:border-blue-500/50 bg-blue-50/50 dark:bg-blue-950/30 text-blue-900 dark:text-blue-400 item-glow-rare';
+      case 'EPIC': return 'border-purple-300 dark:border-purple-500/50 bg-purple-50/50 dark:bg-purple-950/30 text-purple-900 dark:text-purple-300 item-glow-epic';
+      case 'LEGENDARY': return 'border-amber-300 dark:border-amber-500/60 bg-amber-50/60 dark:bg-amber-950/30 text-amber-950 dark:text-amber-300 item-glow-legendary animate-pulse-glow';
+      default: return 'border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900/60 text-slate-800 dark:text-slate-300';
     }
   };
 
@@ -134,26 +134,26 @@ export const ArmouryShop: React.FC = () => {
     <div className="space-y-6">
       
       {/* Armoury Header */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 bg-[#101626] border border-slate-800 rounded-2xl p-6">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 bg-white dark:bg-[#111827] border border-slate-200 dark:border-slate-800 rounded-2xl p-6 shadow-sm">
         <div>
-          <h2 className="font-fantasy text-2xl font-bold text-slate-100 flex items-center gap-2.5">
-            <ShoppingBag className="w-6 h-6 text-amber-400" />
+          <h2 className="font-fantasy text-2xl font-bold text-slate-900 dark:text-slate-100 flex items-center gap-2.5">
+            <ShoppingBag className="w-6 h-6 text-amber-500 dark:text-amber-400" />
             The Royal Armoury & Item Emporium
           </h2>
-          <p className="text-xs sm:text-sm text-slate-400 mt-1">
+          <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-400 mt-1">
             Exchange your quest gold and gems for equipment that boosts your real-world productivity stats and boss damage.
           </p>
         </div>
 
         {/* Treasury Display */}
         {character && (
-          <div className="flex items-center space-x-3 bg-slate-900/90 border border-slate-700 px-4 py-2.5 rounded-xl flex-shrink-0">
-            <div className="flex items-center space-x-1.5 text-amber-400 font-bold text-sm">
+          <div className="flex items-center space-x-3 bg-slate-50 dark:bg-slate-900/90 border border-slate-200 dark:border-slate-700 px-4 py-2.5 rounded-xl flex-shrink-0">
+            <div className="flex items-center space-x-1.5 text-amber-700 dark:text-amber-400 font-bold text-sm">
               <Coins className="w-4 h-4" />
               <span>{character.gold} Gold</span>
             </div>
-            <div className="h-4 w-px bg-slate-700" />
-            <div className="flex items-center space-x-1.5 text-cyan-400 font-bold text-sm">
+            <div className="h-4 w-px bg-slate-300 dark:bg-slate-700" />
+            <div className="flex items-center space-x-1.5 text-cyan-700 dark:text-cyan-400 font-bold text-sm">
               <Gem className="w-4 h-4" />
               <span>{character.gems} Gems</span>
             </div>
@@ -163,9 +163,9 @@ export const ArmouryShop: React.FC = () => {
 
       {/* Status Toast */}
       {statusMessage && (
-        <div className="p-3.5 rounded-xl bg-slate-900 border border-amber-500/50 text-amber-300 text-xs sm:text-sm font-semibold flex items-center justify-between shadow-lg animate-fade-in">
+        <div className="p-3.5 rounded-xl bg-amber-50 dark:bg-slate-900 border border-amber-300 dark:border-amber-500/50 text-amber-900 dark:text-amber-300 text-xs sm:text-sm font-semibold flex items-center justify-between shadow-lg animate-fade-in">
           <span>{statusMessage}</span>
-          <button onClick={() => setStatusMessage(null)} className="text-amber-400 hover:text-amber-200">✕</button>
+          <button onClick={() => setStatusMessage(null)} className="text-amber-700 dark:text-amber-400 hover:text-amber-900 dark:hover:text-amber-200">✕</button>
         </div>
       )}
 
@@ -178,10 +178,10 @@ export const ArmouryShop: React.FC = () => {
               playClick();
               setSelectedCategory(c.id);
             }}
-            className={`px-4 py-2 rounded-xl text-xs font-semibold whitespace-nowrap transition ${
+            className={`btn-tactile px-4 py-2 rounded-xl text-xs font-semibold whitespace-nowrap transition ${
               selectedCategory === c.id
                 ? 'bg-amber-500 text-slate-950 font-bold shadow-md'
-                : 'bg-[#101626] text-slate-400 border border-slate-800 hover:border-slate-700 hover:text-slate-200'
+                : 'bg-white dark:bg-slate-900/60 text-slate-600 dark:text-slate-400 border border-slate-200 dark:border-slate-800 hover:border-slate-300 dark:hover:border-slate-700 hover:text-slate-950 dark:hover:text-slate-200'
             }`}
           >
             {c.label}
@@ -224,47 +224,47 @@ export const ArmouryShop: React.FC = () => {
                     </div>
                   </div>
 
-                  <h3 className="font-fantasy text-base font-bold text-slate-100 mt-3">
+                  <h3 className="font-fantasy text-base font-bold text-slate-900 dark:text-slate-100 mt-3">
                     {item.name}
                   </h3>
-                  <p className="text-xs text-slate-400 mt-1 line-clamp-2">
+                  <p className="text-xs text-slate-600 dark:text-slate-400 mt-1 line-clamp-2">
                     {item.description}
                   </p>
 
                   {/* Stat Bonus Tags */}
                   <div className="flex flex-wrap gap-1.5 mt-3">
                     {item.statBonusStr > 0 && (
-                      <span className="px-2 py-0.5 rounded text-[10px] font-bold bg-red-950/60 text-red-400 border border-red-500/30">
+                      <span className="badge-stat-str px-2 py-0.5 rounded text-[10px] font-bold">
                         +{item.statBonusStr} STR
                       </span>
                     )}
                     {item.statBonusInt > 0 && (
-                      <span className="px-2 py-0.5 rounded text-[10px] font-bold bg-blue-950/60 text-blue-400 border border-blue-500/30">
+                      <span className="badge-stat-int px-2 py-0.5 rounded text-[10px] font-bold">
                         +{item.statBonusInt} INT
                       </span>
                     )}
                     {item.statBonusVit > 0 && (
-                      <span className="px-2 py-0.5 rounded text-[10px] font-bold bg-emerald-950/60 text-emerald-400 border border-emerald-500/30">
+                      <span className="badge-stat-vit px-2 py-0.5 rounded text-[10px] font-bold">
                         +{item.statBonusVit} VIT
                       </span>
                     )}
                     {item.statBonusWis > 0 && (
-                      <span className="px-2 py-0.5 rounded text-[10px] font-bold bg-purple-950/60 text-purple-300 border border-purple-500/30">
+                      <span className="badge-stat-wis px-2 py-0.5 rounded text-[10px] font-bold">
                         +{item.statBonusWis} WIS
                       </span>
                     )}
                     {item.statBonusAgi > 0 && (
-                      <span className="px-2 py-0.5 rounded text-[10px] font-bold bg-orange-950/60 text-orange-400 border border-orange-500/30">
+                      <span className="badge-stat-agi px-2 py-0.5 rounded text-[10px] font-bold">
                         +{item.statBonusAgi} AGI
                       </span>
                     )}
                     {item.statBonusCha > 0 && (
-                      <span className="px-2 py-0.5 rounded text-[10px] font-bold bg-pink-950/60 text-pink-400 border border-pink-500/30">
+                      <span className="badge-stat-cha px-2 py-0.5 rounded text-[10px] font-bold">
                         +{item.statBonusCha} CHA
                       </span>
                     )}
                     {item.damageBonus > 0 && (
-                      <span className="px-2 py-0.5 rounded text-[10px] font-bold bg-yellow-950/60 text-yellow-400 border border-yellow-500/30">
+                      <span className="badge-boss px-2 py-0.5 rounded text-[10px] font-bold">
                         +{item.damageBonus} BOSS DMG
                       </span>
                     )}
@@ -272,13 +272,13 @@ export const ArmouryShop: React.FC = () => {
                 </div>
 
                 {/* Price and Action Buttons */}
-                <div className="mt-5 pt-3 border-t border-slate-800/80 flex items-center justify-between gap-3">
+                <div className="mt-5 pt-3 border-t border-slate-200 dark:border-slate-800/80 flex items-center justify-between gap-3">
                   <div className="flex items-center space-x-2 text-xs font-bold">
-                    <span className="text-amber-400 flex items-center gap-1">
+                    <span className="badge-gold px-2 py-0.5 rounded-lg flex items-center gap-1 font-bold">
                       <Coins className="w-3.5 h-3.5" /> {item.priceGold}
                     </span>
                     {item.priceGems > 0 && (
-                      <span className="text-cyan-400 flex items-center gap-1">
+                      <span className="badge-gem px-2 py-0.5 rounded-lg flex items-center gap-1 font-bold">
                         <Gem className="w-3.5 h-3.5" /> {item.priceGems}
                       </span>
                     )}
@@ -290,10 +290,10 @@ export const ArmouryShop: React.FC = () => {
                         <button
                           onClick={() => handleEquip(item)}
                           disabled={equippingId === item.id}
-                          className={`px-4 py-1.5 rounded-xl text-xs font-bold transition flex items-center gap-1.5 ${
+                          className={`px-4 py-1.5 rounded-xl text-xs font-bold transition flex items-center gap-1.5 btn-tactile ${
                             isEquipped
                               ? 'bg-emerald-600 text-white shadow-md hover:bg-emerald-500'
-                              : 'bg-slate-800 text-slate-200 hover:bg-slate-700 border border-slate-700'
+                              : 'bg-slate-100 dark:bg-slate-800 text-slate-800 dark:text-slate-200 hover:bg-slate-200 dark:hover:bg-slate-700 border border-slate-300 dark:border-slate-700'
                           }`}
                         >
                           {isEquipped && <Check className="w-3.5 h-3.5 stroke-[3]" />}
