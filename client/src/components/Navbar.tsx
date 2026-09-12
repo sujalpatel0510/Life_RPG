@@ -93,7 +93,7 @@ export const Navbar: React.FC<NavbarProps> = ({ activeTab, setActiveTab, onOpenH
 
   return (
     <>
-      <header className="sticky top-0 z-40 surface-overlay border-b border-slate-200 dark:border-[#222533] shadow-sm">
+      <header className="fixed top-0 left-0 right-0 z-40 surface-overlay border-b border-slate-200 dark:border-[#222533] shadow-sm backdrop-blur-xl">
         {/* Top Banner - Hero Vitals & Controls */}
         <div className="w-full max-w-[1800px] mx-auto px-4 sm:px-6 lg:px-10 xl:px-12 py-2.5">
           <div className="flex items-center justify-between gap-3">
@@ -308,6 +308,9 @@ export const Navbar: React.FC<NavbarProps> = ({ activeTab, setActiveTab, onOpenH
           </div>
         </div>
       </header>
+
+      {/* Spacer to prevent content from sliding underneath fixed header */}
+      <div className="h-[62px] md:h-[110px] w-full flex-shrink-0 pointer-events-none" aria-hidden="true" />
 
       {/* Mobile Hamburger Navigation Drawer Overlay */}
       {isMobileMenuOpen && (
