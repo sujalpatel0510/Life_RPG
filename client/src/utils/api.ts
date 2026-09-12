@@ -24,10 +24,21 @@ const handleResponse = async (res: Response) => {
   return data;
 };
 
+const safeFetch = async (input: RequestInfo | URL, init?: RequestInit): Promise<Response> => {
+  try {
+    return await fetch(input, init);
+  } catch (err: any) {
+    if (!navigator.onLine || err.message?.includes('Failed to fetch') || err.name === 'TypeError') {
+      throw new Error('Connection to the realm database was interrupted. Check your internet connection.');
+    }
+    throw err;
+  }
+};
+
 export const api = {
   auth: {
     register: async (payload: any) => {
-      const res = await fetch(`${API_BASE}/auth/register`, {
+      const res = await safeFetch(`${API_BASE}/auth/register`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(payload),
@@ -35,7 +46,7 @@ export const api = {
       return handleResponse(res);
     },
     login: async (payload: any) => {
-      const res = await fetch(`${API_BASE}/auth/login`, {
+      const res = await safeFetch(`${API_BASE}/auth/login`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(payload),
@@ -43,7 +54,7 @@ export const api = {
       return handleResponse(res);
     },
     getMe: async () => {
-      const res = await fetch(`${API_BASE}/auth/me`, {
+      const res = await safeFetch(`${API_BASE}/auth/me`, {
         headers: getHeaders(),
       });
       return handleResponse(res);
@@ -56,13 +67,13 @@ export const api = {
       if (params?.questType) query.append('questType', params.questType);
       if (params?.isCompleted !== undefined) query.append('isCompleted', String(params.isCompleted));
 
-      const res = await fetch(`${API_BASE}/quests?${query.toString()}`, {
+      const res = await safeFetch(`${API_BASE}/quests?${query.toString()}`, {
         headers: getHeaders(),
       });
       return handleResponse(res);
     },
     create: async (data: any) => {
-      const res = await fetch(`${API_BASE}/quests`, {
+      const res = await safeFetch(`${API_BASE}/quests`, {
         method: 'POST',
         headers: getHeaders(),
         body: JSON.stringify(data),
@@ -70,7 +81,7 @@ export const api = {
       return handleResponse(res);
     },
     update: async (id: string, data: any) => {
-      const res = await fetch(`${API_BASE}/quests/${id}`, {
+      const res = await safeFetch(`${API_BASE}/quests/${id}`, {
         method: 'PUT',
         headers: getHeaders(),
         body: JSON.stringify(data),
@@ -78,14 +89,14 @@ export const api = {
       return handleResponse(res);
     },
     delete: async (id: string) => {
-      const res = await fetch(`${API_BASE}/quests/${id}`, {
+      const res = await safeFetch(`${API_BASE}/quests/${id}`, {
         method: 'DELETE',
         headers: getHeaders(),
       });
       return handleResponse(res);
     },
     complete: async (id: string) => {
-      const res = await fetch(`${API_BASE}/quests/${id}/complete`, {
+      const res = await safeFetch(`${API_BASE}/quests/${id}/complete`, {
         method: 'POST',
         headers: getHeaders(),
       });
@@ -94,13 +105,13 @@ export const api = {
   },
   shop: {
     getItems: async () => {
-      const res = await fetch(`${API_BASE}/shop/items`, {
+      const res = await safeFetch(`${API_BASE}/shop/items`, {
         headers: getHeaders(),
       });
       return handleResponse(res);
     },
     buy: async (itemId: string) => {
-      const res = await fetch(`${API_BASE}/shop/buy`, {
+      const res = await safeFetch(`${API_BASE}/shop/buy`, {
         method: 'POST',
         headers: getHeaders(),
         body: JSON.stringify({ itemId }),
@@ -108,7 +119,7 @@ export const api = {
       return handleResponse(res);
     },
     equip: async (itemId: string) => {
-      const res = await fetch(`${API_BASE}/shop/equip`, {
+      const res = await safeFetch(`${API_BASE}/shop/equip`, {
         method: 'POST',
         headers: getHeaders(),
         body: JSON.stringify({ itemId }),
@@ -118,13 +129,13 @@ export const api = {
   },
   boss: {
     getActive: async () => {
-      const res = await fetch(`${API_BASE}/boss`, {
+      const res = await safeFetch(`${API_BASE}/boss`, {
         headers: getHeaders(),
       });
       return handleResponse(res);
     },
     resurrect: async () => {
-      const res = await fetch(`${API_BASE}/boss/resurrect`, {
+      const res = await safeFetch(`${API_BASE}/boss/resurrect`, {
         method: 'POST',
         headers: getHeaders(),
       });
@@ -133,13 +144,13 @@ export const api = {
   },
   character: {
     get: async () => {
-      const res = await fetch(`${API_BASE}/character`, {
+      const res = await safeFetch(`${API_BASE}/character`, {
         headers: getHeaders(),
       });
       return handleResponse(res);
     },
     update: async (data: any) => {
-      const res = await fetch(`${API_BASE}/character`, {
+      const res = await safeFetch(`${API_BASE}/character`, {
         method: 'PUT',
         headers: getHeaders(),
         body: JSON.stringify(data),
