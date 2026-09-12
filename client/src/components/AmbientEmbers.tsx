@@ -35,9 +35,9 @@ export const AmbientEmbers: React.FC = () => {
     }
 
     const particleCount = Math.min(35, Math.floor(width / 40));
-    // Crimson Blood Moon (Ruby, Crimson, Silver-slate)
-    const darkColors = ['#e11d48', '#f43f5e', '#fb7185', '#cbd5e1', '#9f1239'];
-    const lightColors = ['#e11d48', '#be123c', '#475569', '#9f1239'];
+    // Astral Indigo, Arcane Cyan, and Ethereal Silver
+    const darkColors = ['#6366f1', '#8b5cf6', '#06b6d4', '#38bdf8', '#cbd5e1'];
+    const lightColors = ['#4f46e5', '#7c3aed', '#0284c7', '#0891b2', '#64748b'];
     const colors = theme === 'light' ? lightColors : darkColors;
     const particles: Particle[] = [];
 

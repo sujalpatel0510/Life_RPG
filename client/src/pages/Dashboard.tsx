@@ -139,7 +139,7 @@ export const Dashboard: React.FC = () => {
   }, [playClick, toggleMute]);
 
   return (
-    <div className="min-h-screen relative flex flex-col bg-slate-50 dark:bg-[#0b0f19] text-slate-900 dark:text-slate-100 selection:bg-rose-600 selection:text-white overflow-x-hidden">
+    <div className="min-h-screen relative flex flex-col bg-slate-50 dark:bg-[#0b0f19] text-slate-900 dark:text-slate-100 selection:bg-indigo-600 selection:text-white overflow-x-hidden">
       
       {/* Dark Fantasy Floating Ambient Embers Background */}
       <AmbientEmbers />
@@ -158,7 +158,7 @@ export const Dashboard: React.FC = () => {
       <main className="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8 space-y-8 z-10">
         
         {activeTab === 'quests' && (
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+          <div key="quests" className="animate-tab-enter grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
             {/* Left 8 Cols: Primary Quest Journal & Quick-Add */}
             <div className="lg:col-span-8 space-y-6">
               <QuestBoard 
@@ -182,7 +182,7 @@ export const Dashboard: React.FC = () => {
         )}
 
         {activeTab === 'boss' && (
-          <div className="space-y-6">
+          <div key="boss" className="animate-tab-enter space-y-6">
             <BossRaid lastDamage={lastBossDamage} />
             <div className="bg-white dark:bg-[#111827] border border-slate-200 dark:border-slate-800 rounded-3xl p-6 sm:p-8 shadow-sm">
               <h3 className="font-fantasy text-xl font-bold text-slate-900 dark:text-slate-100 mb-2">
@@ -196,11 +196,23 @@ export const Dashboard: React.FC = () => {
           </div>
         )}
 
-        {activeTab === 'armoury' && <ArmouryShop />}
+        {activeTab === 'armoury' && (
+          <div key="armoury" className="animate-tab-enter">
+            <ArmouryShop />
+          </div>
+        )}
 
-        {activeTab === 'character' && <CharacterSheet />}
+        {activeTab === 'character' && (
+          <div key="character" className="animate-tab-enter">
+            <CharacterSheet />
+          </div>
+        )}
 
-        {activeTab === 'history' && <ActivityTimeline />}
+        {activeTab === 'history' && (
+          <div key="history" className="animate-tab-enter">
+            <ActivityTimeline />
+          </div>
+        )}
       </main>
 
       {/* Level Up Celebration Modal */}
@@ -225,7 +237,7 @@ export const Dashboard: React.FC = () => {
             <span>• Tech Zephyr 4.0 Hackathon Build</span>
             <button
               onClick={() => setIsHotkeysOpen(true)}
-              className="hidden sm:inline-flex items-center gap-1 text-[11px] text-rose-700 dark:text-rose-400 hover:text-rose-800 dark:hover:text-rose-300 ml-2 font-medium"
+              className="hidden sm:inline-flex items-center gap-1 text-[11px] text-indigo-600 dark:text-indigo-400 hover:text-indigo-700 dark:hover:text-indigo-300 ml-2 font-medium"
             >
               <Keyboard className="w-3.5 h-3.5" />
               <span>Press '?' for Hotkeys</span>
@@ -236,10 +248,10 @@ export const Dashboard: React.FC = () => {
             <span className="flex items-center gap-1 text-emerald-700 dark:text-emerald-400 font-semibold">
               <Database className="w-3.5 h-3.5" /> PostgreSQL 17 Connected
             </span>
-            <span className="flex items-center gap-1 text-blue-700 dark:text-blue-400 font-semibold">
+            <span className="flex items-center gap-1 text-cyan-700 dark:text-cyan-400 font-semibold">
               <Cpu className="w-3.5 h-3.5" /> Express + Prisma Backend
             </span>
-            <span className="flex items-center gap-1 text-rose-700 dark:text-rose-400 font-semibold">
+            <span className="flex items-center gap-1 text-indigo-700 dark:text-indigo-400 font-semibold">
               <ShieldCheck className="w-3.5 h-3.5" /> Anti-Cheat Server Engine
             </span>
           </div>

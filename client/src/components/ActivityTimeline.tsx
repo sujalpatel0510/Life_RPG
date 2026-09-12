@@ -50,7 +50,7 @@ export const ActivityTimeline: React.FC = () => {
     <div className="space-y-6">
       <div className="bg-white dark:bg-[#111827] border border-slate-200 dark:border-slate-800 rounded-2xl p-6 shadow-sm">
         <h2 className="font-fantasy text-2xl font-bold text-slate-900 dark:text-slate-100 flex items-center gap-2.5">
-          <History className="w-6 h-6 text-rose-600 dark:text-rose-400" />
+          <History className="w-6 h-6 text-indigo-600 dark:text-indigo-400" />
           Chronicles of Heroic Feats
         </h2>
         <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-400 mt-1">
@@ -80,7 +80,7 @@ export const ActivityTimeline: React.FC = () => {
             return (
               <div 
                 key={log.id} 
-                className="card-hover-lift animate-fade-in-up bg-white dark:bg-[#111827] border border-slate-200 dark:border-slate-800/90 rounded-xl p-4 flex items-center justify-between gap-4 hover:border-rose-500/40 transition shadow-sm"
+                className="card-hover-lift animate-fade-in-up bg-white dark:bg-[#111827] border border-slate-200 dark:border-slate-800/90 rounded-xl p-4 flex items-center justify-between gap-4 hover:border-indigo-500/40 transition shadow-sm"
               >
                 <div className="flex items-center space-x-3.5 min-w-0">
                   <div className={`w-9 h-9 rounded-lg border flex items-center justify-center flex-shrink-0 ${meta.color}`}>
@@ -105,7 +105,7 @@ export const ActivityTimeline: React.FC = () => {
 
                 <div className="text-right flex-shrink-0">
                   {details.xpEarned && (
-                    <div className="text-xs font-bold text-rose-700 dark:text-rose-400">
+                    <div className="text-xs font-bold text-indigo-700 dark:text-indigo-400">
                       +{details.xpEarned} XP
                     </div>
                   )}

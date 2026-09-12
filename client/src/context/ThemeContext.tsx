@@ -1,4 +1,4 @@
-﻿import React, { createContext, useContext, useState, useEffect } from 'react';
+import React, { createContext, useContext, useState, useEffect } from 'react';
 
 export type Theme = 'dark' | 'light';
 
@@ -14,7 +14,18 @@ export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({ childre
   const [theme, setThemeState] = useState<Theme>(() => {
     try {
       const saved = localStorage.getItem('liferpg_theme') as Theme;
-      return saved === 'light' ? 'light' : 'dark';
+      if (saved === 'light' || saved === 'dark') {
+        const root = document.documentElement;
+        if (saved === 'light') {
+          root.classList.remove('dark');
+          root.classList.add('light');
+        } else {
+          root.classList.remove('light');
+          root.classList.add('dark');
+        }
+        return saved;
+      }
+      return 'dark';
     } catch {
       return 'dark';
     }

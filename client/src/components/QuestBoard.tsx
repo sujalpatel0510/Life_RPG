@@ -95,9 +95,9 @@ export const QuestBoard: React.FC<QuestBoardProps> = ({
       const clickY = e.clientY || window.innerHeight / 2;
 
       // Trigger floating combat text
-      onAddFloatingText(`+${res.reward.xp} XP`, '#f43f5e', clickX - 20, clickY - 20);
+      onAddFloatingText(`+${res.reward.xp} XP`, '#6366f1', clickX - 20, clickY - 20);
       setTimeout(() => {
-        onAddFloatingText(`+${res.reward.gold} Gold`, '#fb7185', clickX + 15, clickY - 35);
+        onAddFloatingText(`+${res.reward.gold} Gold`, '#f59e0b', clickX + 15, clickY - 35);
       }, 120);
 
       // Handle boss strike damage
@@ -105,7 +105,7 @@ export const QuestBoard: React.FC<QuestBoardProps> = ({
         playAttack();
         onBossDamage(res.bossEncounter.damageDealt);
         setTimeout(() => {
-          onAddFloatingText(`⚔️ -${res.bossEncounter.damageDealt} Boss DMG!`, '#e11d48', clickX - 10, clickY - 55);
+          onAddFloatingText(`⚔️ -${res.bossEncounter.damageDealt} Boss DMG!`, '#f43f5e', clickX - 10, clickY - 55);
         }, 240);
       }
 
@@ -187,7 +187,7 @@ export const QuestBoard: React.FC<QuestBoardProps> = ({
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
             placeholder="Search active quests or lore..."
-            className="w-full pl-10 pr-4 py-2.5 rounded-xl bg-white dark:bg-[#101626] border border-slate-300 dark:border-slate-700/80 text-slate-900 dark:text-slate-200 placeholder-slate-400 dark:placeholder-slate-500 text-xs sm:text-sm focus:outline-none focus:border-rose-500 transition shadow-sm"
+            className="w-full pl-10 pr-4 py-2.5 rounded-xl bg-white dark:bg-[#101626] border border-slate-300 dark:border-slate-700/80 text-slate-900 dark:text-slate-200 placeholder-slate-400 dark:placeholder-slate-500 text-xs sm:text-sm focus:outline-none focus:border-indigo-500 transition shadow-sm"
           />
         </div>
 
@@ -198,7 +198,7 @@ export const QuestBoard: React.FC<QuestBoardProps> = ({
             setQuestToEdit(null);
             setModalOpen(true);
           }}
-          className="flex items-center justify-center space-x-2 px-5 py-2.5 rounded-xl bg-gradient-to-r from-rose-600 to-red-600 hover:from-rose-500 hover:to-red-500 text-white font-fantasy font-bold text-xs sm:text-sm shadow-lg shadow-rose-600/25 transition transform hover:-translate-y-0.5 active:translate-y-0 flex-shrink-0"
+          className="btn-tactile flex items-center justify-center space-x-2 px-5 py-2.5 rounded-xl bg-gradient-to-r from-indigo-600 via-indigo-500 to-violet-600 hover:from-indigo-500 hover:to-violet-500 text-white font-fantasy font-bold text-xs sm:text-sm shadow-lg shadow-indigo-600/25 transition transform hover:-translate-y-0.5 active:translate-y-0 flex-shrink-0"
         >
           <Plus className="w-4 h-4 stroke-[3]" />
           <span>DETAILED SUMMON (N)</span>
@@ -216,8 +216,8 @@ export const QuestBoard: React.FC<QuestBoardProps> = ({
             }}
             className={`btn-tactile flex items-center space-x-1.5 px-3.5 py-1.5 rounded-xl text-xs font-semibold whitespace-nowrap transition-all ${
               activeCadence === c.id
-                ? 'bg-rose-600 text-white shadow-md font-bold ring-2 ring-rose-400/40'
-                : 'bg-white dark:bg-[#101626] text-slate-600 dark:text-slate-400 border border-slate-200 dark:border-slate-800 hover:border-rose-400/60 hover:text-slate-900 dark:hover:text-slate-200 shadow-sm'
+                ? 'bg-indigo-600 text-white shadow-md font-bold ring-2 ring-indigo-400/40'
+                : 'bg-white dark:bg-[#101626] text-slate-600 dark:text-slate-400 border border-slate-200 dark:border-slate-800 hover:border-indigo-400/60 hover:text-slate-900 dark:hover:text-slate-200 shadow-sm'
             }`}
           >
             <span>{c.label}</span>
@@ -242,7 +242,7 @@ export const QuestBoard: React.FC<QuestBoardProps> = ({
             }}
             className={`btn-tactile px-2.5 py-1 rounded-lg text-[11px] font-semibold whitespace-nowrap transition ${
               activeCategory === cat.id
-                ? 'bg-rose-100 dark:bg-rose-950/40 text-rose-800 dark:text-rose-300 border border-rose-300 dark:border-rose-600/50 shadow-sm'
+                ? 'bg-indigo-100 dark:bg-indigo-950/50 text-indigo-800 dark:text-indigo-300 border border-indigo-300 dark:border-indigo-600/50 shadow-sm font-bold'
                 : 'text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-slate-200 bg-white/60 dark:bg-slate-900/50 border border-slate-200 dark:border-slate-800'
             }`}
           >
@@ -276,15 +276,15 @@ export const QuestBoard: React.FC<QuestBoardProps> = ({
       ) : (
         /* Empty State */
         <div className="text-center py-16 px-4 rounded-3xl bg-white dark:bg-[#0e1424] border border-dashed border-slate-300 dark:border-slate-800 space-y-4 shadow-sm">
-          <div className="w-16 h-16 mx-auto rounded-2xl bg-rose-500/10 border border-rose-500/20 flex items-center justify-center">
-            <Sparkles className="w-8 h-8 text-rose-500" />
+          <div className="w-16 h-16 mx-auto rounded-2xl bg-indigo-500/10 border border-indigo-500/20 flex items-center justify-center">
+            <Sparkles className="w-8 h-8 text-indigo-500" />
           </div>
           <div>
             <h3 className="font-fantasy text-lg font-bold text-slate-900 dark:text-slate-200">
               No Active Quests in Your Journal
             </h3>
             <p className="text-xs text-slate-500 dark:text-slate-400 max-w-sm mx-auto mt-1">
-              Type in the Quick-Add bar above or press <kbd className="px-1.5 py-0.5 rounded bg-slate-200 dark:bg-slate-800 text-rose-600 dark:text-rose-400 font-mono text-[10px]">N</kbd> to summon your first objective.
+              Type in the Quick-Add bar above or press <kbd className="px-1.5 py-0.5 rounded bg-slate-200 dark:bg-slate-800 text-indigo-600 dark:text-indigo-400 font-mono text-[10px]">N</kbd> to summon your first objective.
             </p>
           </div>
         </div>

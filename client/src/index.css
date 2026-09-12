@@ -4,20 +4,20 @@
 
 @layer base {
   :root {
-    --bg-primary: #090a0f;
-    --bg-card: #12141e;
-    --bg-panel: #181b28;
-    --border-card: #232738;
-    --accent-crimson: #e11d48;
-    --accent-ruby: #f43f5e;
+    --bg-primary: #090d16;
+    --bg-card: #111827;
+    --bg-panel: #162035;
+    --border-card: #1e293b;
+    --accent-indigo: #6366f1;
+    --accent-cyan: #06b6d4;
     --text-title: #f8fafc;
     --text-body: #cbd5e1;
     --text-muted: #94a3b8;
   }
 
   html.dark body {
-    background-color: #090a0f;
-    color: #e2e8f0;
+    background-color: #090d16;
+    color: #f1f5f9;
   }
 
   html.light body {
@@ -30,12 +30,24 @@
   }
 }
 
-/* Unified Crimson & Onyx Semantic Cards & Surfaces */
+/* Global Smooth Theme Interpolation */
+html body,
+html div,
+html header,
+html footer,
+html main,
+html section {
+  transition-property: background-color, border-color, color, fill, stroke;
+  transition-duration: 200ms;
+  transition-timing-function: ease;
+}
+
+/* Unified Astral Indigo & Obsidian Semantic Cards & Surfaces */
 .rpg-card {
-  background-color: #12141e;
-  border: 1px solid #232738;
-  color: #e2e8f0;
-  transition: all 0.25s ease;
+  background-color: #111827;
+  border: 1px solid #1e293b;
+  color: #f1f5f9;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 html.light .rpg-card {
@@ -46,30 +58,30 @@ html.light .rpg-card {
 }
 
 .rpg-panel {
-  background-color: #181b28;
-  border: 1px solid #232738;
+  background-color: #162035;
+  border: 1px solid #1e293b;
 }
 
 html.light .rpg-panel {
-  background-color: #f8fafc !important;
+  background-color: #f1f5f9 !important;
   border-color: #e2e8f0 !important;
 }
 
 /* Light & Dark High-Contrast Semantic Badges */
 .badge-gold {
-  background-color: rgba(225, 29, 72, 0.12);
-  color: #fb7185;
-  border: 1px solid rgba(225, 29, 72, 0.35);
+  background-color: rgba(245, 158, 11, 0.12);
+  color: #fbbf24;
+  border: 1px solid rgba(245, 158, 11, 0.35);
 }
 html.light .badge-gold {
-  background-color: #ffe4e6 !important;
-  color: #9f1239 !important;
-  border-color: #fecdd3 !important;
+  background-color: #fef3c7 !important;
+  color: #b45309 !important;
+  border-color: #fde68a !important;
 }
 
 .badge-gem {
   background-color: rgba(6, 182, 212, 0.12);
-  color: #67e8f9;
+  color: #22d3ee;
   border: 1px solid rgba(6, 182, 212, 0.35);
 }
 html.light .badge-gem {
@@ -85,48 +97,48 @@ html.light .badge-gem {
 }
 html.light .badge-streak {
   background-color: #ffedd5 !important;
-  color: #9a3412 !important;
+  color: #c2410c !important;
   border-color: #fdba74 !important;
 }
 
 .badge-boss {
-  background-color: rgba(225, 29, 72, 0.18);
-  color: #fda4af;
-  border: 1px solid rgba(225, 29, 72, 0.45);
+  background-color: rgba(99, 102, 241, 0.15);
+  color: #a5b4fc;
+  border: 1px solid rgba(99, 102, 241, 0.4);
 }
 html.light .badge-boss {
-  background-color: #ffe4e6 !important;
-  color: #881337 !important;
-  border-color: #f43f5e !important;
+  background-color: #e0e7ff !important;
+  color: #3730a3 !important;
+  border-color: #c7d2fe !important;
 }
 
 /* Character Attribute Specific Badges */
 .badge-stat-str {
-  background-color: rgba(225, 29, 72, 0.15);
-  color: #fda4af;
-  border: 1px solid rgba(225, 29, 72, 0.35);
+  background-color: rgba(239, 68, 68, 0.15);
+  color: #fca5a5;
+  border: 1px solid rgba(239, 68, 68, 0.35);
 }
 html.light .badge-stat-str {
-  background-color: #ffe4e6 !important;
-  color: #9f1239 !important;
-  border-color: #fecdd3 !important;
+  background-color: #fee2e2 !important;
+  color: #b91c1c !important;
+  border-color: #fca5a5 !important;
 }
 
 .badge-stat-int {
-  background-color: rgba(59, 130, 246, 0.15);
-  color: #93c5fd;
-  border: 1px solid rgba(59, 130, 246, 0.3);
+  background-color: rgba(99, 102, 241, 0.15);
+  color: #a5b4fc;
+  border: 1px solid rgba(99, 102, 241, 0.35);
 }
 html.light .badge-stat-int {
-  background-color: #dbeafe !important;
-  color: #1e40af !important;
-  border-color: #93c5fd !important;
+  background-color: #e0e7ff !important;
+  color: #4338ca !important;
+  border-color: #c7d2fe !important;
 }
 
 .badge-stat-vit {
   background-color: rgba(16, 185, 129, 0.15);
   color: #6ee7b7;
-  border: 1px solid rgba(16, 185, 129, 0.3);
+  border: 1px solid rgba(16, 185, 129, 0.35);
 }
 html.light .badge-stat-vit {
   background-color: #d1fae5 !important;
@@ -167,9 +179,10 @@ html.light .badge-stat-cha {
   border-color: #f9a8d4 !important;
 }
 
-/* Light Theme Overrides & Silver Paladin RPG Styling */
+/* Light Theme Overrides & Clean Modern Paladin Styling */
 html.light .bg-\[\#070a12\],
 html.light .bg-\[\#090a0f\],
+html.light .bg-\[\#090d16\],
 html.light .bg-\[\#0c0e14\] {
   background-color: #f8fafc !important;
 }
@@ -178,7 +191,7 @@ html.light .bg-\[\#0c111e\]\/90,
 html.light .bg-\[\#0c111e\] {
   background-color: rgba(255, 255, 255, 0.95) !important;
   border-color: #e2e8f0 !important;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.04) !important;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03) !important;
 }
 
 html.light .bg-\[\#090d17\]\/95 {
@@ -191,11 +204,12 @@ html.light .bg-\[\#101626\]\/90,
 html.light .bg-\[\#0f1526\],
 html.light .bg-\[\#0f1526\]\/90,
 html.light .bg-\[\#0e1424\],
+html.light .bg-\[\#111827\],
 html.light .bg-\[\#12141e\],
 html.light .bg-\[\#13151f\] {
   background-color: #ffffff !important;
   border-color: #e2e8f0 !important;
-  box-shadow: 0 4px 20px -2px rgba(15, 23, 42, 0.06) !important;
+  box-shadow: 0 4px 20px -2px rgba(15, 23, 42, 0.05) !important;
 }
 
 html.light .bg-\[\#060911\] {
@@ -218,59 +232,64 @@ html.light textarea::placeholder {
 
 html.light .bg-gradient-to-b.from-\[\#141b2e\].via-\[\#0d1222\].to-\[\#070b16\],
 html.light .bg-gradient-to-b.from-\[\#181f33\].via-\[\#121827\].to-\[\#0b0f19\],
-html.light .bg-gradient-to-b.from-\[\#1f141a\].via-\[\#171017\].to-\[\#0d0a0f\] {
-  background: linear-gradient(to bottom, #fff1f2, #ffffff, #f8fafc) !important;
-  border-color: #fecdd3 !important;
+html.light .bg-gradient-to-b.from-\[\#141b2d\].to-\[\#0b0f19\] {
+  background: linear-gradient(to bottom, #f0f4ff, #ffffff, #f8fafc) !important;
+  border-color: #c7d2fe !important;
 }
 
-html.light .bg-gradient-to-br.from-\[\#060810\].via-\[\#0b0f1d\].to-\[\#04060c\],
-html.light .bg-gradient-to-br.from-\[\#0a0508\].via-\[\#10080d\].to-\[\#060408\] {
+html.light .bg-gradient-to-br.from-\[\#060810\].via-\[\#0b0f1d\].to-\[\#04060c\] {
   background: linear-gradient(to bottom right, #f8fafc, #f1f5f9, #e2e8f0) !important;
 }
 
 html.light .boss-glow {
-  box-shadow: 0 10px 30px -5px rgba(225, 29, 72, 0.15) !important;
+  box-shadow: 0 10px 30px -5px rgba(99, 102, 241, 0.12) !important;
 }
 
 html.light .rpg-box-glow {
-  box-shadow: 0 10px 30px -5px rgba(225, 29, 72, 0.15) !important;
+  box-shadow: 0 10px 30px -5px rgba(99, 102, 241, 0.12) !important;
 }
 
-/* Custom RPG Scrollbars */
+/* Custom Modern Obsidian / Indigo Scrollbars */
 ::-webkit-scrollbar {
-  width: 8px;
-  height: 8px;
+  width: 7px;
+  height: 7px;
 }
 ::-webkit-scrollbar-track {
-  background: #090a0f;
+  background: #090d16;
+}
+html.light ::-webkit-scrollbar-track {
+  background: #f1f5f9;
 }
 ::-webkit-scrollbar-thumb {
-  background: #232738;
+  background: #1e293b;
   border-radius: 4px;
 }
+html.light ::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+}
 ::-webkit-scrollbar-thumb:hover {
-  background: #e11d48;
+  background: #6366f1;
 }
 
 /* Glowing RPG Card borders */
 .rpg-box-glow {
-  box-shadow: 0 0 25px -5px rgba(225, 29, 72, 0.25), 0 0 10px -5px rgba(0, 0, 0, 0.6);
+  box-shadow: 0 0 25px -5px rgba(99, 102, 241, 0.25), 0 0 10px -5px rgba(0, 0, 0, 0.6);
 }
 
 .boss-glow {
-  box-shadow: 0 0 35px -5px rgba(225, 29, 72, 0.35), 0 0 15px -5px rgba(0, 0, 0, 0.8);
+  box-shadow: 0 0 35px -5px rgba(99, 102, 241, 0.3), 0 0 15px -5px rgba(0, 0, 0, 0.8);
 }
 
 .item-glow-legendary {
-  box-shadow: 0 0 20px -3px rgba(245, 158, 11, 0.4);
+  box-shadow: 0 0 22px -3px rgba(245, 158, 11, 0.45);
 }
 
 .item-glow-epic {
-  box-shadow: 0 0 20px -3px rgba(168, 85, 247, 0.4);
+  box-shadow: 0 0 20px -3px rgba(139, 92, 246, 0.4);
 }
 
 .item-glow-rare {
-  box-shadow: 0 0 20px -3px rgba(59, 130, 246, 0.4);
+  box-shadow: 0 0 20px -3px rgba(6, 182, 212, 0.4);
 }
 
 /* Floating combat text animation */
@@ -300,7 +319,7 @@ html.light .rpg-box-glow {
 /* Boss damage shake & flash */
 @keyframes bossDamageShake {
   0%, 100% { transform: translate(0, 0) rotate(0deg); }
-  20% { transform: translate(-4px, 2px) rotate(-1deg); filter: brightness(1.8) drop-shadow(0 0 15px rgba(239, 68, 68, 0.8)); }
+  20% { transform: translate(-4px, 2px) rotate(-1deg); filter: brightness(1.7) drop-shadow(0 0 15px rgba(99, 102, 241, 0.8)); }
   40% { transform: translate(4px, -2px) rotate(1deg); }
   60% { transform: translate(-3px, -1px) rotate(0deg); }
   80% { transform: translate(3px, 1px) rotate(0deg); }
@@ -327,24 +346,28 @@ html.light .rpg-box-glow {
 }
 
 @keyframes modalScaleUp {
-  from { opacity: 0; transform: scale(0.94) translateY(8px); }
+  from { opacity: 0; transform: scale(0.95) translateY(10px); }
   to { opacity: 1; transform: scale(1) translateY(0); }
 }
 
 .animate-fade-in {
-  animation: modalFadeIn 0.25s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  animation: modalFadeIn 0.22s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
 .animate-scale-up {
-  animation: modalScaleUp 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  animation: modalScaleUp 0.25s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
-/* Smooth card hover lift */
+/* Smooth card hover lift with glow */
 .card-hover-lift {
   transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.25s ease;
 }
 .card-hover-lift:hover {
   transform: translateY(-3px);
+  box-shadow: 0 12px 28px -6px rgba(99, 102, 241, 0.15), 0 4px 10px -2px rgba(0, 0, 0, 0.1);
+}
+html.light .card-hover-lift:hover {
+  box-shadow: 0 12px 24px -4px rgba(15, 23, 42, 0.08), 0 4px 10px -2px rgba(15, 23, 42, 0.04);
 }
 
 /* Staggered card fade-in-up animation */
@@ -360,7 +383,23 @@ html.light .rpg-box-glow {
 }
 
 .animate-fade-in-up {
-  animation: fadeInUp 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  animation: fadeInUp 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Tab entrance animation */
+@keyframes tabEnterKey {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-tab-enter {
+  animation: tabEnterKey 0.25s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
 /* Shimmer effect for headers & legendary cards */
@@ -370,23 +409,9 @@ html.light .rpg-box-glow {
 }
 
 .animate-shimmer {
-  background: linear-gradient(90deg, rgba(245, 158, 11, 0) 0%, rgba(245, 158, 11, 0.2) 50%, rgba(245, 158, 11, 0) 100%);
+  background: linear-gradient(90deg, rgba(99, 102, 241, 0) 0%, rgba(99, 102, 241, 0.25) 50%, rgba(99, 102, 241, 0) 100%);
   background-size: 200% 100%;
   animation: shimmerSweep 3s infinite linear;
-}
-
-/* Glowing breathing border for active quests */
-@keyframes pulseBorderGlow {
-  0%, 100% {
-    box-shadow: 0 0 15px rgba(245, 158, 11, 0.15), inset 0 0 15px rgba(245, 158, 11, 0.05);
-  }
-  50% {
-    box-shadow: 0 0 28px rgba(245, 158, 11, 0.35), inset 0 0 22px rgba(245, 158, 11, 0.1);
-  }
-}
-
-.animate-glow-breathing {
-  animation: pulseBorderGlow 2.5s ease-in-out infinite;
 }
 
 /* Boss creature subtle idle breathing & floating */
@@ -403,10 +428,13 @@ html.light .rpg-box-glow {
   animation: creatureFloat 4s ease-in-out infinite;
 }
 
-/* Button click tactile squish */
+/* Button click tactile squish & hover lift */
 .btn-tactile {
-  transition: transform 0.12s cubic-bezier(0.16, 1, 0.3, 1), filter 0.15s ease;
+  transition: transform 0.15s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.15s ease, filter 0.15s ease;
+}
+.btn-tactile:hover {
+  transform: translateY(-1px);
 }
 .btn-tactile:active {
-  transform: scale(0.96);
+  transform: scale(0.96) translateY(0px) !important;
 }

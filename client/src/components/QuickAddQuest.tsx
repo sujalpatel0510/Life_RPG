@@ -25,12 +25,12 @@ export const QuickAddQuest: React.FC<QuickAddQuestProps> = ({ onAdd }) => {
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   const categories: { id: StatCategory; label: string; icon: any; color: string }[] = [
-    { id: 'INTELLECT', label: 'Intellect', icon: Brain, color: 'text-blue-400 hover:border-blue-500/50' },
-    { id: 'STRENGTH', label: 'Strength', icon: Dumbbell, color: 'text-red-400 hover:border-red-500/50' },
-    { id: 'VITALITY', label: 'Vitality', icon: Heart, color: 'text-emerald-400 hover:border-emerald-500/50' },
-    { id: 'WISDOM', label: 'Wisdom', icon: BookOpen, color: 'text-purple-400 hover:border-purple-500/50' },
-    { id: 'AGILITY', label: 'Agility', icon: Zap, color: 'text-orange-400 hover:border-orange-500/50' },
-    { id: 'CHARISMA', label: 'Charisma', icon: Users, color: 'text-pink-400 hover:border-pink-500/50' },
+    { id: 'INTELLECT', label: 'Intellect', icon: Brain, color: 'text-cyan-500 hover:border-cyan-500/50' },
+    { id: 'STRENGTH', label: 'Strength', icon: Dumbbell, color: 'text-indigo-500 hover:border-indigo-500/50' },
+    { id: 'VITALITY', label: 'Vitality', icon: Heart, color: 'text-emerald-500 hover:border-emerald-500/50' },
+    { id: 'WISDOM', label: 'Wisdom', icon: BookOpen, color: 'text-violet-500 hover:border-violet-500/50' },
+    { id: 'AGILITY', label: 'Agility', icon: Zap, color: 'text-amber-500 hover:border-amber-500/50' },
+    { id: 'CHARISMA', label: 'Charisma', icon: Users, color: 'text-fuchsia-500 hover:border-fuchsia-500/50' },
   ];
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -57,10 +57,10 @@ export const QuickAddQuest: React.FC<QuickAddQuestProps> = ({ onAdd }) => {
   return (
     <form 
       onSubmit={handleSubmit}
-      className="bg-white dark:bg-[#101626]/90 border border-slate-300 dark:border-slate-700/80 hover:border-rose-500/40 rounded-2xl p-2.5 sm:p-3 shadow-sm dark:shadow-lg transition-all duration-300 focus-within:border-rose-500/60 focus-within:shadow-[0_0_20px_rgba(225,29,72,0.15)]"
+      className="bg-white dark:bg-[#101626]/90 border border-slate-300 dark:border-slate-700/80 hover:border-indigo-500/40 rounded-2xl p-2.5 sm:p-3 shadow-sm dark:shadow-lg transition-all duration-300 focus-within:border-indigo-500/60 focus-within:shadow-[0_0_20px_rgba(99,102,241,0.15)]"
     >
       <div className="flex items-center gap-2">
-        <div className="w-8 h-8 rounded-xl bg-rose-500/10 border border-rose-500/30 flex items-center justify-center flex-shrink-0 text-rose-500">
+        <div className="w-8 h-8 rounded-xl bg-indigo-500/10 border border-indigo-500/30 flex items-center justify-center flex-shrink-0 text-indigo-500">
           <Sparkles className="w-4 h-4" />
         </div>
 
@@ -78,7 +78,7 @@ export const QuickAddQuest: React.FC<QuickAddQuestProps> = ({ onAdd }) => {
         <button
           type="submit"
           disabled={!title.trim() || isSubmitting}
-          className="btn-tactile flex items-center space-x-1.5 px-3 py-1.5 rounded-xl bg-gradient-to-r from-rose-600 to-red-600 hover:from-rose-500 hover:to-red-500 disabled:opacity-40 text-white font-bold text-xs transition shadow-md shadow-rose-600/20 flex-shrink-0 cursor-pointer"
+          className="btn-tactile flex items-center space-x-1.5 px-3.5 py-1.5 rounded-xl bg-gradient-to-r from-indigo-600 via-indigo-500 to-violet-600 hover:from-indigo-500 hover:to-violet-500 disabled:opacity-40 text-white font-bold text-xs transition shadow-md shadow-indigo-600/20 flex-shrink-0 cursor-pointer"
           title="Press Enter to Summon"
         >
           <span>{isSubmitting ? 'Summoning...' : 'Add'}</span>
@@ -105,9 +105,9 @@ export const QuickAddQuest: React.FC<QuickAddQuestProps> = ({ onAdd }) => {
                   playClick();
                   setCategory(c.id);
                 }}
-                className={`flex items-center space-x-1 px-2 py-0.5 rounded-lg border text-[11px] font-semibold transition ${
+                className={`btn-tactile flex items-center space-x-1 px-2 py-0.5 rounded-lg border text-[11px] font-semibold transition ${
                   isSelected
-                    ? 'bg-rose-100 dark:bg-rose-950/40 border-rose-400 dark:border-rose-500/60 text-rose-900 dark:text-rose-300 ring-1 ring-rose-400/30'
+                    ? 'bg-indigo-50 dark:bg-indigo-950/40 border-indigo-400 dark:border-indigo-500/60 text-indigo-900 dark:text-indigo-300 ring-1 ring-indigo-400/30 font-bold'
                     : 'border-slate-200 dark:border-slate-800/80 bg-white/50 dark:bg-slate-900/40 text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-200'
                 }`}
               >
@@ -128,9 +128,9 @@ export const QuickAddQuest: React.FC<QuickAddQuestProps> = ({ onAdd }) => {
                 playClick();
                 setQuestType(type);
               }}
-              className={`px-2 py-0.5 rounded-md text-[10px] font-bold uppercase transition ${
+              className={`btn-tactile px-2 py-0.5 rounded-md text-[10px] font-bold uppercase transition ${
                 questType === type
-                  ? 'bg-rose-500/20 text-rose-800 dark:text-rose-400 border border-rose-400 dark:border-rose-500/40 font-extrabold'
+                  ? 'bg-indigo-500/20 text-indigo-800 dark:text-indigo-400 border border-indigo-400 dark:border-indigo-500/40 font-extrabold'
                   : 'text-slate-500 hover:text-slate-900 dark:hover:text-slate-300'
               }`}
             >

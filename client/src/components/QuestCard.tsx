@@ -32,19 +32,19 @@ export const QuestCard: React.FC<QuestCardProps> = ({ quest, onComplete, onEdit,
   const getCategoryMeta = (cat: string) => {
     switch (cat) {
       case 'STRENGTH':
-        return { label: 'Strength', icon: Dumbbell, color: 'text-rose-600 dark:text-rose-400 bg-rose-50 dark:bg-rose-950/40 border-rose-200 dark:border-rose-500/30' };
+        return { label: 'Strength', icon: Dumbbell, color: 'text-indigo-600 dark:text-indigo-400 bg-indigo-50 dark:bg-indigo-950/40 border-indigo-200 dark:border-indigo-500/30' };
       case 'INTELLECT':
-        return { label: 'Intellect', icon: Brain, color: 'text-blue-600 dark:text-blue-400 bg-blue-50 dark:bg-blue-950/40 border-blue-200 dark:border-blue-500/30' };
+        return { label: 'Intellect', icon: Brain, color: 'text-cyan-600 dark:text-cyan-400 bg-cyan-50 dark:bg-cyan-950/40 border-cyan-200 dark:border-cyan-500/30' };
       case 'VITALITY':
         return { label: 'Vitality', icon: Heart, color: 'text-emerald-600 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-950/40 border-emerald-200 dark:border-emerald-500/30' };
       case 'WISDOM':
-        return { label: 'Wisdom', icon: BookOpen, color: 'text-purple-600 dark:text-purple-400 bg-purple-50 dark:bg-purple-950/40 border-purple-200 dark:border-purple-500/30' };
+        return { label: 'Wisdom', icon: BookOpen, color: 'text-violet-600 dark:text-violet-400 bg-violet-50 dark:bg-violet-950/40 border-violet-200 dark:border-violet-500/30' };
       case 'AGILITY':
-        return { label: 'Agility', icon: Zap, color: 'text-amber-600 dark:text-orange-400 bg-amber-50 dark:bg-orange-950/40 border-amber-200 dark:border-orange-500/30' };
+        return { label: 'Agility', icon: Zap, color: 'text-amber-600 dark:text-amber-400 bg-amber-50 dark:bg-amber-950/40 border-amber-200 dark:border-amber-500/30' };
       case 'CHARISMA':
-        return { label: 'Charisma', icon: Users, color: 'text-pink-600 dark:text-pink-400 bg-pink-50 dark:bg-pink-950/40 border-pink-200 dark:border-pink-500/30' };
+        return { label: 'Charisma', icon: Users, color: 'text-fuchsia-600 dark:text-fuchsia-400 bg-fuchsia-50 dark:bg-fuchsia-950/40 border-fuchsia-200 dark:border-fuchsia-500/30' };
       default:
-        return { label: 'General', icon: Sparkles, color: 'text-rose-600 dark:text-rose-400 bg-rose-50 dark:bg-rose-950/40 border-rose-200 dark:border-rose-500/30' };
+        return { label: 'General', icon: Sparkles, color: 'text-indigo-600 dark:text-indigo-400 bg-indigo-50 dark:bg-indigo-950/40 border-indigo-200 dark:border-indigo-500/30' };
     }
   };
 
@@ -52,9 +52,9 @@ export const QuestCard: React.FC<QuestCardProps> = ({ quest, onComplete, onEdit,
     switch (diff) {
       case 'TRIVIAL': return 'text-slate-600 dark:text-slate-400 border-slate-200 dark:border-slate-700 bg-slate-100 dark:bg-slate-800/60';
       case 'EASY': return 'text-emerald-700 dark:text-emerald-400 border-emerald-200 dark:border-emerald-500/30 bg-emerald-50 dark:bg-emerald-950/30';
-      case 'MEDIUM': return 'text-rose-700 dark:text-rose-400 border-rose-200 dark:border-rose-500/30 bg-rose-50 dark:bg-rose-950/30';
-      case 'HARD': return 'text-orange-700 dark:text-orange-400 border-orange-200 dark:border-orange-500/30 bg-orange-50 dark:bg-orange-950/30';
-      case 'EPIC': return 'text-red-700 dark:text-red-400 border-red-300 dark:border-red-500/40 bg-red-50 dark:bg-red-950/40 animate-pulse';
+      case 'MEDIUM': return 'text-indigo-700 dark:text-indigo-400 border-indigo-200 dark:border-indigo-500/30 bg-indigo-50 dark:bg-indigo-950/30';
+      case 'HARD': return 'text-violet-700 dark:text-violet-400 border-violet-200 dark:border-violet-500/30 bg-violet-50 dark:bg-violet-950/30';
+      case 'EPIC': return 'text-rose-700 dark:text-rose-400 border-rose-300 dark:border-rose-500/40 bg-rose-50 dark:bg-rose-950/40 animate-pulse';
       default: return 'text-slate-600 dark:text-slate-400 border-slate-200 dark:border-slate-700';
     }
   };
@@ -79,10 +79,10 @@ export const QuestCard: React.FC<QuestCardProps> = ({ quest, onComplete, onEdit,
     <div 
       className={`group relative card-hover-lift animate-fade-in-up bg-white dark:bg-[#101626]/90 border rounded-2xl p-4 sm:p-5 transition-all duration-300 shadow-sm ${
         justCompleted
-          ? 'border-rose-500 bg-rose-950/30 scale-[1.02] shadow-[0_0_30px_rgba(225,29,72,0.4)] ring-2 ring-rose-500/50'
+          ? 'border-indigo-500 bg-indigo-950/30 scale-[1.02] shadow-[0_0_30px_rgba(99,102,241,0.4)] ring-2 ring-indigo-500/50'
           : quest.isCompleted 
           ? 'border-slate-200 dark:border-slate-800/60 opacity-60 bg-slate-50 dark:bg-slate-900/40' 
-          : 'border-slate-200 dark:border-slate-800/90 hover:border-rose-500/50 hover:shadow-[0_8px_25px_-5px_rgba(225,29,72,0.15)]'
+          : 'border-slate-200 dark:border-slate-800/90 hover:border-indigo-500/50 hover:shadow-[0_8px_25px_-5px_rgba(99,102,241,0.15)]'
       }`}
     >
       <div className="flex items-start justify-between gap-3 sm:gap-4">
@@ -95,7 +95,7 @@ export const QuestCard: React.FC<QuestCardProps> = ({ quest, onComplete, onEdit,
           className={`mt-0.5 flex-shrink-0 w-8 h-8 rounded-xl border-2 flex items-center justify-center transition-all duration-200 transform btn-tactile ${
             quest.isCompleted
               ? 'bg-gradient-to-tr from-emerald-600 to-teal-500 border-emerald-400 text-white shadow-[0_0_15px_rgba(16,185,129,0.5)]'
-              : 'border-slate-300 dark:border-slate-700 bg-slate-100 dark:bg-slate-900/90 hover:border-rose-500 text-transparent hover:text-rose-500 hover:scale-105 active:scale-95 shadow-sm'
+              : 'border-slate-300 dark:border-slate-700 bg-slate-100 dark:bg-slate-900/90 hover:border-indigo-500 text-transparent hover:text-indigo-500 hover:scale-105 active:scale-95 shadow-sm'
           } ${isCompleting ? 'scale-125' : ''}`}
         >
           <Check className={`w-4 h-4 stroke-[3] ${quest.isCompleted ? 'text-white' : ''}`} />
@@ -122,15 +122,15 @@ export const QuestCard: React.FC<QuestCardProps> = ({ quest, onComplete, onEdit,
 
             {/* Habit Streak and Increment button */}
             {quest.questType === 'HABIT' && (
-              <div className="inline-flex items-center gap-1 bg-rose-50 dark:bg-rose-950/40 px-2 py-0.5 rounded-lg border border-rose-300 dark:border-rose-500/30">
-                <Flame className="w-3 h-3 fill-rose-500 text-rose-500" />
-                <span className="text-[11px] text-rose-700 dark:text-rose-400 font-bold">{quest.streakCount} Streak</span>
+              <div className="inline-flex items-center gap-1 bg-amber-50 dark:bg-amber-950/40 px-2 py-0.5 rounded-lg border border-amber-300 dark:border-amber-500/30">
+                <Flame className="w-3 h-3 fill-amber-500 text-amber-500" />
+                <span className="text-[11px] text-amber-700 dark:text-amber-400 font-bold">{quest.streakCount} Streak</span>
                 <button
                   type="button"
                   onClick={handleComplete}
                   disabled={isCompleting}
                   title="Increment habit streak"
-                  className="ml-1 px-1.5 py-0.2 rounded bg-rose-200 dark:bg-rose-500/20 hover:bg-rose-300 dark:hover:bg-rose-500/40 text-rose-900 dark:text-rose-300 hover:text-black dark:hover:text-white text-[10px] font-bold transition"
+                  className="ml-1 px-1.5 py-0.2 rounded bg-amber-200 dark:bg-amber-500/20 hover:bg-amber-300 dark:hover:bg-amber-500/40 text-amber-900 dark:text-amber-300 hover:text-black dark:hover:text-white text-[10px] font-bold transition"
                 >
                   +1 Rep
                 </button>
@@ -139,7 +139,7 @@ export const QuestCard: React.FC<QuestCardProps> = ({ quest, onComplete, onEdit,
           </div>
 
           <h3 className={`font-semibold text-sm sm:text-base text-slate-900 dark:text-slate-100 leading-snug transition ${
-            quest.isCompleted ? 'line-through text-slate-400 dark:text-slate-500' : 'group-hover:text-rose-600 dark:group-hover:text-rose-300'
+            quest.isCompleted ? 'line-through text-slate-400 dark:text-slate-500' : 'group-hover:text-indigo-600 dark:group-hover:text-indigo-300'
           }`}>
             {quest.title}
           </h3>
@@ -152,8 +152,8 @@ export const QuestCard: React.FC<QuestCardProps> = ({ quest, onComplete, onEdit,
 
           {/* Reward Badges */}
           <div className="flex items-center gap-3 mt-3 text-xs font-semibold">
-            <span className="flex items-center gap-1 text-rose-600 dark:text-rose-400 bg-rose-50 dark:bg-rose-950/30 px-2 py-0.5 rounded-md border border-rose-200 dark:border-rose-500/20">
-              <Sparkles className="w-3.5 h-3.5 text-rose-500" />
+            <span className="flex items-center gap-1 text-indigo-600 dark:text-indigo-400 bg-indigo-50 dark:bg-indigo-950/30 px-2 py-0.5 rounded-md border border-indigo-200 dark:border-indigo-500/20">
+              <Sparkles className="w-3.5 h-3.5 text-indigo-500" />
               +{quest.xpReward} XP
             </span>
             <span className="flex items-center gap-1 text-amber-700 dark:text-amber-300 bg-amber-50 dark:bg-amber-950/30 px-2 py-0.5 rounded-md border border-amber-200 dark:border-amber-500/20">
@@ -176,7 +176,7 @@ export const QuestCard: React.FC<QuestCardProps> = ({ quest, onComplete, onEdit,
               playClick();
               onEdit(quest);
             }}
-            className="p-1.5 rounded-lg hover:bg-slate-800 text-slate-400 hover:text-slate-200 transition"
+            className="p-1.5 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-400 hover:text-slate-700 dark:hover:text-slate-200 transition"
             title="Edit Quest"
             aria-label="Edit Quest"
           >
@@ -187,7 +187,7 @@ export const QuestCard: React.FC<QuestCardProps> = ({ quest, onComplete, onEdit,
               playClick();
               onDelete(quest.id);
             }}
-            className="p-1.5 rounded-lg hover:bg-rose-950/40 text-slate-400 hover:text-rose-400 transition"
+            className="p-1.5 rounded-lg hover:bg-rose-100 dark:hover:bg-rose-950/40 text-slate-400 hover:text-rose-600 dark:hover:text-rose-400 transition"
             title="Banish Quest"
             aria-label="Delete Quest"
           >
