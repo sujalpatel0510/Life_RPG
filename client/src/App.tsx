@@ -1,0 +1,38 @@
+import React from 'react';
+import { AuthProvider, useAuth } from './context/AuthContext';
+import { SoundProvider } from './context/SoundContext';
+import { AuthPage } from './pages/AuthPage';
+import { Dashboard } from './pages/Dashboard';
+import { Shield, Loader2 } from 'lucide-react';
+
+const MainApp: React.FC = () => {
+  const { isAuthenticated, isLoading } = useAuth();
+
+  if (isLoading) {
+    return (
+      <div className="min-h-screen flex flex-col items-center justify-center bg-[#070a12] text-slate-200">
+        <div className="w-16 h-16 rounded-2xl bg-gradient-to-tr from-amber-500 to-amber-700 flex items-center justify-center shadow-lg shadow-amber-500/20 border border-amber-400/50 mb-4 animate-pulse">
+          <Shield className="w-8 h-8 text-slate-950 fill-amber-300" />
+        </div>
+        <div className="flex items-center space-x-2 text-sm font-fantasy font-bold text-amber-400">
+          <Loader2 className="w-4 h-4 animate-spin" />
+          <span>Synchronizing with PostgreSQL Realm...</span>
+        </div>
+      </div>
+    );
+  }
+
+  return isAuthenticated ? <Dashboard /> : <AuthPage />;
+};
+
+export const App: React.FC = () => {
+  return (
+    <AuthProvider>
+      <SoundProvider>
+        <MainApp />
+      </SoundProvider>
+    </AuthProvider>
+  );
+};
+
+export default App;
