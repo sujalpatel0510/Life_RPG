@@ -15,15 +15,20 @@ import {
   Scroll,
   ShoppingBag,
   User,
-  History
+  History,
+  Keyboard,
+  Wand2,
+  Zap,
+  HelpCircle
 } from 'lucide-react';
 
 interface NavbarProps {
   activeTab: string;
   setActiveTab: (tab: string) => void;
+  onOpenHotkeys: () => void;
 }
 
-export const Navbar: React.FC<NavbarProps> = ({ activeTab, setActiveTab }) => {
+export const Navbar: React.FC<NavbarProps> = ({ activeTab, setActiveTab, onOpenHotkeys }) => {
   const { character, logout } = useAuth();
   const { isMuted, toggleMute, playClick } = useSound();
 
@@ -32,12 +37,35 @@ export const Navbar: React.FC<NavbarProps> = ({ activeTab, setActiveTab }) => {
   const xpPercent = Math.min(100, Math.round((character.currentXp / character.nextLevelXp) * 100));
   const hpPercent = Math.min(100, Math.round((character.hp / character.maxHp) * 100));
 
+  const getClassIcon = (heroClass: string) => {
+    switch (heroClass) {
+      case 'WARRIOR': return Sword;
+      case 'MAGE': return Wand2;
+      case 'ROGUE': return Zap;
+      case 'PALADIN': return Shield;
+      default: return Shield;
+    }
+  };
+
+  const getClassCrestStyle = (heroClass: string) => {
+    switch (heroClass) {
+      case 'WARRIOR': return 'from-red-500 to-amber-600 border-red-400/50 shadow-red-500/20';
+      case 'MAGE': return 'from-blue-500 to-purple-600 border-blue-400/50 shadow-blue-500/20';
+      case 'ROGUE': return 'from-amber-500 to-orange-600 border-orange-400/50 shadow-orange-500/20';
+      case 'PALADIN': return 'from-amber-400 to-yellow-500 border-yellow-400/50 shadow-yellow-500/20';
+      default: return 'from-amber-500 to-amber-700 border-amber-400/50 shadow-amber-500/20';
+    }
+  };
+
+  const ClassIcon = getClassIcon(character.heroClass);
+  const crestGradient = getClassCrestStyle(character.heroClass);
+
   const navItems = [
-    { id: 'quests', label: 'Quest Log', icon: Scroll },
-    { id: 'boss', label: 'World Boss', icon: Sword },
-    { id: 'armoury', label: 'Armoury', icon: ShoppingBag },
-    { id: 'character', label: 'Hero Sheet', icon: User },
-    { id: 'history', label: 'Chronicles', icon: History },
+    { id: 'quests', label: 'Quest Log', icon: Scroll, shortcut: '1' },
+    { id: 'boss', label: 'World Boss', icon: Sword, shortcut: '2' },
+    { id: 'armoury', label: 'Armoury', icon: ShoppingBag, shortcut: '3' },
+    { id: 'character', label: 'Hero Sheet', icon: User, shortcut: '4' },
+    { id: 'history', label: 'Chronicles', icon: History, shortcut: '5' },
   ];
 
   return (
@@ -49,10 +77,10 @@ export const Navbar: React.FC<NavbarProps> = ({ activeTab, setActiveTab }) => {
           {/* Logo & Hero Identity */}
           <div className="flex items-center space-x-3">
             <div className="relative">
-              <div className="w-11 h-11 rounded-xl bg-gradient-to-br from-amber-500 to-amber-700 flex items-center justify-center shadow-lg shadow-amber-500/20 border border-amber-400/40">
-                <Shield className="w-6 h-6 text-slate-950 fill-amber-300" />
+              <div className={`w-11 h-11 rounded-xl bg-gradient-to-br ${crestGradient} flex items-center justify-center shadow-lg border`}>
+                <ClassIcon className="w-6 h-6 text-slate-950 fill-slate-950/20" />
               </div>
-              <div className="absolute -bottom-1 -right-1 bg-slate-900 border border-amber-500/50 rounded-full px-1.5 py-0.2 text-[10px] font-bold text-amber-400">
+              <div className="absolute -bottom-1 -right-1 bg-slate-900 border border-amber-500/60 rounded-full px-1.5 py-0.2 text-[10px] font-bold text-amber-400">
                 Lv.{character.level}
               </div>
             </div>
@@ -62,7 +90,7 @@ export const Navbar: React.FC<NavbarProps> = ({ activeTab, setActiveTab }) => {
                 <span className="font-fantasy text-base font-bold text-slate-100 tracking-wide">
                   {character.name}
                 </span>
-                <span className="text-[11px] px-2 py-0.5 rounded-full bg-slate-800 text-amber-400/90 font-medium border border-slate-700">
+                <span className="text-[11px] px-2 py-0.5 rounded-full bg-slate-800 text-amber-400/90 font-semibold border border-slate-700">
                   {character.heroClass}
                 </span>
               </div>
@@ -94,7 +122,7 @@ export const Navbar: React.FC<NavbarProps> = ({ activeTab, setActiveTab }) => {
             <div>
               <div className="flex justify-between text-[11px] font-semibold text-slate-300 mb-0.5">
                 <span className="flex items-center gap-1 text-rose-400">
-                  <Heart className="w-3 h-3 fill-rose-500/40" /> Health
+                  <Heart className="w-3 h-3 fill-rose-500/40" /> Health Pool
                 </span>
                 <span>{character.hp} / {character.maxHp} HP</span>
               </div>
@@ -107,8 +135,8 @@ export const Navbar: React.FC<NavbarProps> = ({ activeTab, setActiveTab }) => {
             </div>
           </div>
 
-          {/* Currencies, Streaks & Controls */}
-          <div className="flex items-center space-x-3 sm:space-x-4">
+          {/* Currencies, Streaks, Hotkeys & Controls */}
+          <div className="flex items-center space-x-2 sm:space-x-3">
             
             {/* Streak Counter */}
             <div 
@@ -122,7 +150,7 @@ export const Navbar: React.FC<NavbarProps> = ({ activeTab, setActiveTab }) => {
             {/* Gold */}
             <div 
               className="flex items-center space-x-1.5 bg-amber-950/40 border border-amber-500/30 px-2.5 py-1 rounded-lg text-amber-300"
-              title="Gold Coins"
+              title="Gold Treasury"
             >
               <Coins className="w-4 h-4 text-amber-400" />
               <span className="text-xs font-bold">{character.gold}</span>
@@ -137,14 +165,27 @@ export const Navbar: React.FC<NavbarProps> = ({ activeTab, setActiveTab }) => {
               <span className="text-xs font-bold">{character.gems}</span>
             </div>
 
+            {/* Hotkeys Modal Button */}
+            <button
+              onClick={() => {
+                playClick();
+                onOpenHotkeys();
+              }}
+              className="p-2 rounded-lg bg-slate-800/80 hover:bg-slate-700 text-slate-300 border border-slate-700 transition"
+              title="Keyboard Shortcuts (?)"
+              aria-label="Keyboard Shortcuts"
+            >
+              <Keyboard className="w-4 h-4 text-amber-400" />
+            </button>
+
             {/* Audio Toggle */}
             <button
               onClick={() => {
                 toggleMute();
                 playClick();
               }}
-              className="p-2 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 border border-slate-700 transition"
-              title={isMuted ? 'Unmute Sound Effects' : 'Mute Sound Effects'}
+              className="p-2 rounded-lg bg-slate-800/80 hover:bg-slate-700 text-slate-300 border border-slate-700 transition"
+              title={isMuted ? 'Unmute Sound Effects (M)' : 'Mute Sound Effects (M)'}
               aria-label={isMuted ? 'Unmute Sound Effects' : 'Mute Sound Effects'}
             >
               {isMuted ? <VolumeX className="w-4 h-4 text-rose-400" /> : <Volume2 className="w-4 h-4 text-emerald-400" />}
@@ -180,7 +221,7 @@ export const Navbar: React.FC<NavbarProps> = ({ activeTab, setActiveTab }) => {
         </div>
       </div>
 
-      {/* Navigation Tabs */}
+      {/* Navigation Tabs with Shortcut badges */}
       <div className="border-t border-slate-800/60 bg-[#090d17]/95">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <nav className="flex space-x-1 sm:space-x-4 overflow-x-auto py-2 no-scrollbar" aria-label="Tabs">
@@ -202,6 +243,9 @@ export const Navbar: React.FC<NavbarProps> = ({ activeTab, setActiveTab }) => {
                 >
                   <Icon className={`w-4 h-4 ${isActive ? 'text-amber-400' : 'text-slate-400'}`} />
                   <span>{item.label}</span>
+                  <span className="hidden lg:inline text-[9px] px-1 rounded bg-slate-800 text-slate-500 font-mono">
+                    {item.shortcut}
+                  </span>
                 </button>
               );
             })}

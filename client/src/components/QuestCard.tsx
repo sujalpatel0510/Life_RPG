@@ -19,7 +19,7 @@ import {
 
 interface QuestCardProps {
   quest: Quest;
-  onComplete: (id: string) => Promise<void>;
+  onComplete: (id: string, e: React.MouseEvent) => Promise<void>;
   onEdit: (quest: Quest) => void;
   onDelete: (id: string) => Promise<void>;
 }
@@ -27,6 +27,7 @@ interface QuestCardProps {
 export const QuestCard: React.FC<QuestCardProps> = ({ quest, onComplete, onEdit, onDelete }) => {
   const { playClick, playQuestComplete } = useSound();
   const [isCompleting, setIsCompleting] = useState(false);
+  const [justCompleted, setJustCompleted] = useState(false);
 
   const getCategoryMeta = (cat: string) => {
     switch (cat) {
@@ -61,71 +62,75 @@ export const QuestCard: React.FC<QuestCardProps> = ({ quest, onComplete, onEdit,
   const catMeta = getCategoryMeta(quest.category);
   const CategoryIcon = catMeta.icon;
 
-  const handleComplete = async () => {
+  const handleComplete = async (e: React.MouseEvent) => {
     if (quest.isCompleted && quest.questType !== 'HABIT') return;
     setIsCompleting(true);
+    setJustCompleted(true);
     playQuestComplete();
     try {
-      await onComplete(quest.id);
+      await onComplete(quest.id, e);
     } finally {
       setIsCompleting(false);
+      setTimeout(() => setJustCompleted(false), 800);
     }
   };
 
   return (
     <div 
-      className={`group relative bg-[#101626] border rounded-xl p-4 transition-all duration-300 ${
-        quest.isCompleted 
+      className={`group relative bg-[#101626]/90 border rounded-2xl p-4 sm:p-5 transition-all duration-300 ${
+        justCompleted
+          ? 'border-amber-400 bg-amber-950/20 scale-[1.02] shadow-[0_0_25px_rgba(245,158,11,0.3)]'
+          : quest.isCompleted 
           ? 'border-slate-800/60 opacity-60 bg-slate-900/40' 
-          : 'border-slate-800 hover:border-amber-500/40 hover:shadow-[0_0_20px_rgba(245,158,11,0.08)]'
+          : 'border-slate-800 hover:border-amber-500/40 hover:shadow-[0_0_20px_rgba(245,158,11,0.1)]'
       }`}
     >
-      <div className="flex items-start justify-between gap-3">
+      <div className="flex items-start justify-between gap-3 sm:gap-4">
         
         {/* Checkmark Action Button */}
         <button
           onClick={handleComplete}
           disabled={isCompleting || (quest.isCompleted && quest.questType !== 'HABIT')}
           aria-label={quest.isCompleted ? 'Completed Quest' : 'Complete Quest'}
-          className={`mt-0.5 flex-shrink-0 w-7 h-7 rounded-lg border flex items-center justify-center transition-all ${
+          className={`mt-0.5 flex-shrink-0 w-8 h-8 rounded-xl border-2 flex items-center justify-center transition-all duration-200 transform ${
             quest.isCompleted
-              ? 'bg-emerald-600 border-emerald-500 text-white'
-              : 'border-slate-700 bg-slate-900/80 hover:border-amber-500 text-transparent hover:text-amber-400/60'
-          } ${isCompleting ? 'scale-125 duration-150' : ''}`}
+              ? 'bg-emerald-600 border-emerald-500 text-white shadow-[0_0_12px_rgba(16,185,129,0.5)]'
+              : 'border-slate-700 bg-slate-900/80 hover:border-amber-500 text-transparent hover:text-amber-400/80 hover:scale-105 active:scale-95'
+          } ${isCompleting ? 'scale-125' : ''}`}
         >
           <Check className={`w-4 h-4 stroke-[3] ${quest.isCompleted ? 'text-white' : ''}`} />
         </button>
 
         {/* Quest Information */}
         <div className="flex-1 min-w-0">
-          <div className="flex flex-wrap items-center gap-2 mb-1">
+          <div className="flex flex-wrap items-center gap-2 mb-1.5">
             {/* Category Tag */}
-            <span className={`inline-flex items-center gap-1 px-2 py-0.5 rounded-md text-[11px] font-semibold border ${catMeta.color}`}>
+            <span className={`inline-flex items-center gap-1 px-2.5 py-0.5 rounded-lg text-[11px] font-semibold border ${catMeta.color}`}>
               <CategoryIcon className="w-3 h-3" />
               {catMeta.label}
             </span>
 
             {/* Difficulty Badge */}
-            <span className={`px-2 py-0.5 rounded-md text-[10px] font-bold uppercase tracking-wider border ${getDifficultyColor(quest.difficulty)}`}>
+            <span className={`px-2 py-0.5 rounded-lg text-[10px] font-bold uppercase tracking-wider border ${getDifficultyColor(quest.difficulty)}`}>
               {quest.difficulty}
             </span>
 
             {/* Type Tag */}
-            <span className="px-1.5 py-0.5 rounded text-[10px] bg-slate-800 text-slate-400 font-medium">
+            <span className="px-1.5 py-0.5 rounded-md text-[10px] bg-slate-800 text-slate-400 font-medium">
               {quest.questType}
             </span>
 
             {/* Habit Streak if applicable */}
             {quest.questType === 'HABIT' && quest.streakCount > 0 && (
-              <span className="inline-flex items-center gap-0.5 text-[11px] text-orange-400 font-bold">
+              <span className="inline-flex items-center gap-0.5 text-[11px] text-orange-400 font-bold bg-orange-950/40 px-2 py-0.5 rounded-lg border border-orange-500/30">
                 <Flame className="w-3 h-3 fill-orange-500" />
-                {quest.streakCount}
+                {quest.streakCount} Streak
               </span>
             )}
           </div>
 
-          <h3 className={`font-semibold text-sm sm:text-base text-slate-100 leading-snug ${
-            quest.isCompleted ? 'line-through text-slate-400' : ''
+          <h3 className={`font-semibold text-sm sm:text-base text-slate-100 leading-snug transition ${
+            quest.isCompleted ? 'line-through text-slate-400' : 'group-hover:text-amber-200'
           }`}>
             {quest.title}
           </h3>
