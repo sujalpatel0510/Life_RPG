@@ -15,16 +15,58 @@ import { AmbientEmbers } from '../components/AmbientEmbers';
 import { EquippedLoadoutCard } from '../components/EquippedLoadoutCard';
 import { Database, ShieldCheck, Cpu, Keyboard } from 'lucide-react';
 
+const VALID_TABS = ['quests', 'boss', 'armoury', 'character', 'history'];
+
 export const Dashboard: React.FC = () => {
   const { character } = useAuth();
   const { toggleMute, playClick } = useSound();
   const { toggleTheme } = useTheme();
-  const [activeTab, setActiveTab] = useState<string>('quests');
+
+  // Read initial tab from URL hash (#/quests, #/boss, #/armoury, etc.) or default to 'quests'
+  const getInitialTab = (): string => {
+    const hash = window.location.hash.replace(/^#\/?/, '').toLowerCase();
+    return VALID_TABS.includes(hash) ? hash : 'quests';
+  };
+
+  const [activeTab, setActiveTabState] = useState<string>(getInitialTab);
   const [levelUpModal, setLevelUpModal] = useState<number | null>(null);
   const [isHotkeysOpen, setIsHotkeysOpen] = useState(false);
   const [isSummonModalOpen, setIsSummonModalOpen] = useState(false);
   const [lastBossDamage, setLastBossDamage] = useState<{ amount: number; timestamp: number } | null>(null);
   const [floatingTexts, setFloatingTexts] = useState<FloatingTextItem[]>([]);
+
+  // Function to set active tab and update the browser URL
+  const setActiveTab = useCallback((tab: string) => {
+    if (!VALID_TABS.includes(tab)) return;
+    setActiveTabState(tab);
+    if (window.location.hash !== `#/${tab}`) {
+      window.history.pushState(null, '', `#/${tab}`);
+    }
+  }, []);
+
+  // Listen for browser Back/Forward navigation (popstate & hashchange)
+  useEffect(() => {
+    const handleLocationChange = () => {
+      const hash = window.location.hash.replace(/^#\/?/, '').toLowerCase();
+      if (VALID_TABS.includes(hash)) {
+        setActiveTabState(hash);
+      } else {
+        setActiveTabState('quests');
+      }
+    };
+
+    // Ensure default hash is present in URL if empty
+    if (!window.location.hash) {
+      window.history.replaceState(null, '', '#/quests');
+    }
+
+    window.addEventListener('popstate', handleLocationChange);
+    window.addEventListener('hashchange', handleLocationChange);
+    return () => {
+      window.removeEventListener('popstate', handleLocationChange);
+      window.removeEventListener('hashchange', handleLocationChange);
+    };
+  }, []);
 
   // Add floating combat text
   const addFloatingText = useCallback((text: string, color: string, x: number, y: number) => {

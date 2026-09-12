@@ -250,9 +250,11 @@ export const Navbar: React.FC<NavbarProps> = ({ activeTab, setActiveTab, onOpenH
               const Icon = item.icon;
               const isActive = activeTab === item.id;
               return (
-                <button
+                <a
                   key={item.id}
-                  onClick={() => {
+                  href={`#/${item.id}`}
+                  onClick={(e) => {
+                    e.preventDefault();
                     playClick();
                     setActiveTab(item.id);
                   }}
@@ -267,7 +269,7 @@ export const Navbar: React.FC<NavbarProps> = ({ activeTab, setActiveTab, onOpenH
                   <span className="hidden lg:inline text-[9px] px-1 rounded bg-slate-800 text-slate-500 font-mono">
                     {item.shortcut}
                   </span>
-                </button>
+                </a>
               );
             })}
           </nav>
