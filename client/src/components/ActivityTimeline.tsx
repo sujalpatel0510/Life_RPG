@@ -48,12 +48,12 @@ export const ActivityTimeline: React.FC = () => {
 
   return (
     <div className="space-y-6">
-      <div className="bg-white dark:bg-[#111827] border border-slate-200 dark:border-slate-800 rounded-2xl p-6 shadow-sm">
-        <h2 className="font-fantasy text-2xl font-bold text-slate-900 dark:text-slate-100 flex items-center gap-2.5">
+      <div className="surface rounded-2xl p-6 shadow-sm">
+        <h2 className="font-fantasy text-2xl font-bold text-title flex items-center gap-2.5">
           <History className="w-6 h-6 text-indigo-600 dark:text-indigo-400" />
           Chronicles of Heroic Feats
         </h2>
-        <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-400 mt-1">
+        <p className="text-xs sm:text-sm text-body mt-1">
           Immutable historical audit log of completed quests, armoury transactions, and stat milestones recorded in PostgreSQL.
         </p>
       </div>
@@ -61,7 +61,7 @@ export const ActivityTimeline: React.FC = () => {
       {loading ? (
         <div className="space-y-3">
           {[1, 2, 3, 4].map(n => (
-            <div key={n} className="h-16 rounded-xl bg-slate-100 dark:bg-slate-900/40 border border-slate-200 dark:border-slate-800 skeleton" />
+            <div key={n} className="h-16 rounded-xl bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 skeleton" />
           ))}
         </div>
       ) : logs.length > 0 ? (
@@ -80,7 +80,7 @@ export const ActivityTimeline: React.FC = () => {
             return (
               <div 
                 key={log.id} 
-                className="card-hover-lift animate-fade-in-up bg-white dark:bg-[#111827] border border-slate-200 dark:border-slate-800/90 rounded-xl p-4 flex items-center justify-between gap-4 hover:border-indigo-500/40 transition shadow-sm"
+                className="card-hover-lift animate-fade-in-up surface border border-slate-200 dark:border-slate-700 rounded-xl p-4 flex items-center justify-between gap-4 hover:border-indigo-500/40 transition shadow-sm"
               >
                 <div className="flex items-center space-x-3.5 min-w-0">
                   <div className={`w-9 h-9 rounded-lg border flex items-center justify-center flex-shrink-0 ${meta.color}`}>
@@ -88,7 +88,7 @@ export const ActivityTimeline: React.FC = () => {
                   </div>
                   <div className="min-w-0">
                     <div className="flex items-center space-x-2">
-                      <span className="text-xs font-bold text-slate-900 dark:text-slate-200">
+                      <span className="text-xs font-bold text-title">
                         {meta.label}
                       </span>
                       {details.category && (
@@ -97,7 +97,7 @@ export const ActivityTimeline: React.FC = () => {
                         </span>
                       )}
                     </div>
-                    <p className="text-xs text-slate-600 dark:text-slate-400 truncate">
+                    <p className="text-xs text-body truncate">
                       {details.questTitle || details.itemName || 'Milestone achieved'}
                     </p>
                   </div>
@@ -114,7 +114,7 @@ export const ActivityTimeline: React.FC = () => {
                       -{details.costGold} Gold
                     </div>
                   )}
-                  <span className="text-[10px] text-slate-500 flex items-center gap-1 mt-0.5 justify-end">
+                  <span className="text-[10px] text-muted flex items-center gap-1 mt-0.5 justify-end">
                     <Clock className="w-3 h-3" />
                     {date}
                   </span>
@@ -124,9 +124,9 @@ export const ActivityTimeline: React.FC = () => {
           })}
         </div>
       ) : (
-        <div className="text-center py-16 px-4 rounded-2xl bg-white dark:bg-[#0e1424] border border-slate-200 dark:border-slate-800 shadow-sm">
+        <div className="text-center py-16 px-4 rounded-2xl surface border border-slate-200 dark:border-slate-700 shadow-sm">
           <History className="w-10 h-10 text-slate-400 dark:text-slate-600 mx-auto mb-2" />
-          <p className="text-sm text-slate-600 dark:text-slate-400">No heroic feats recorded yet in this chronicle.</p>
+          <p className="text-sm text-body">No heroic feats recorded yet in this chronicle.</p>
         </div>
       )}
     </div>

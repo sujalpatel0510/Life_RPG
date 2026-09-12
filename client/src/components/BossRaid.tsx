@@ -84,9 +84,9 @@ export const BossRaid: React.FC<BossRaidProps> = ({ lastDamage }) => {
 
   if (loading) {
     return (
-      <div className="p-8 rounded-2xl border border-slate-200 dark:border-slate-800 text-center space-y-4 skeleton">
-        <div className="w-24 h-24 mx-auto rounded-full bg-slate-200 dark:bg-slate-800 skeleton" />
-        <div className="h-6 w-48 mx-auto bg-slate-200 dark:bg-slate-800 rounded skeleton" />
+      <div className="p-8 rounded-2xl border border-slate-200 dark:border-slate-700 text-center space-y-4 skeleton">
+        <div className="w-24 h-24 mx-auto rounded-full bg-slate-100 dark:bg-slate-800 skeleton" />
+        <div className="h-6 w-48 mx-auto bg-slate-100 dark:bg-slate-800 rounded skeleton" />
       </div>
     );
   }
@@ -97,7 +97,7 @@ export const BossRaid: React.FC<BossRaidProps> = ({ lastDamage }) => {
   const isDefeated = boss.hp <= 0;
 
   return (
-    <div className="relative overflow-hidden rounded-3xl bg-gradient-to-b from-indigo-50/80 via-white to-slate-50 dark:from-[#131b2e] dark:via-[#0d1322] dark:to-[#070b16] border border-indigo-200 dark:border-indigo-500/30 p-6 sm:p-8 boss-glow shadow-md dark:shadow-2xl transition-all">
+    <div className="relative overflow-hidden rounded-3xl bg-gradient-to-b from-indigo-50/80 via-white to-slate-50 dark:from-slate-900 dark:via-slate-950 dark:to-slate-900 border border-indigo-200 dark:border-indigo-500/30 p-6 sm:p-8 boss-glow shadow-md dark:shadow-2xl transition-all">
       
       {/* Background Ambient Runes */}
       <div className="absolute -top-16 -right-16 w-72 h-72 bg-indigo-500/10 rounded-full blur-3xl pointer-events-none" />
@@ -117,7 +117,7 @@ export const BossRaid: React.FC<BossRaidProps> = ({ lastDamage }) => {
 
           <div className={`w-36 h-36 sm:w-44 sm:h-44 rounded-2xl flex items-center justify-center border-2 transition-all duration-300 ${
             isDefeated
-              ? 'bg-slate-100 dark:bg-slate-900 border-slate-300 dark:border-slate-700 opacity-70 grayscale'
+              ? 'bg-slate-100 dark:bg-slate-800 border-slate-300 dark:border-slate-700 opacity-70 grayscale'
               : isHit
               ? 'animate-boss-hit-enhanced bg-rose-500/20 border-rose-400 ring-4 ring-rose-500/50'
               : 'bg-gradient-to-tr from-indigo-100 via-white to-slate-100 dark:from-indigo-900/30 dark:via-slate-900/50 dark:to-slate-950 border-indigo-300 dark:border-indigo-500/40 shadow-[0_0_40px_rgba(99,102,241,0.15)] dark:shadow-[0_0_40px_rgba(99,102,241,0.25)] animate-pulse-glow animate-creature-idle'
@@ -133,12 +133,12 @@ export const BossRaid: React.FC<BossRaidProps> = ({ lastDamage }) => {
             ) : (
               <div className="relative flex items-center justify-center">
                 <Flame className="w-20 h-20 text-rose-500 fill-rose-600/70 drop-shadow-[0_0_20px_rgba(244,63,94,0.8)]" />
-                <Skull className="w-7 h-7 text-slate-100 absolute -bottom-1 opacity-90" />
+                <Skull className="w-7 h-7 text-slate-100 dark:text-slate-900 absolute -bottom-1 opacity-90" />
               </div>
             )}
           </div>
 
-          <div className="absolute -bottom-2.5 left-1/2 -translate-x-1/2 px-3 py-0.5 rounded-full bg-white dark:bg-slate-950 border border-indigo-400/50 text-[11px] font-bold text-indigo-700 dark:text-indigo-400 whitespace-nowrap shadow">
+          <div className="absolute -bottom-2.5 left-1/2 -translate-x-1/2 px-3 py-0.5 rounded-full bg-white dark:bg-slate-800 border border-indigo-400/50 text-[11px] font-bold text-indigo-700 dark:text-indigo-400 whitespace-nowrap shadow">
             {isDefeated ? 'Boss Slayed!' : `Tier ${boss.level} World Boss`}
           </div>
         </div>
@@ -151,13 +151,13 @@ export const BossRaid: React.FC<BossRaidProps> = ({ lastDamage }) => {
               <span>{isDefeated ? 'Raid Victorious' : 'Active World Raid'}</span>
             </div>
 
-            <h2 className="font-fantasy text-2xl sm:text-3xl font-black text-slate-900 dark:text-slate-100">
+            <h2 className="font-fantasy text-2xl sm:text-3xl font-black text-title">
               {boss.name}
             </h2>
             <p className="text-xs sm:text-sm text-indigo-600 dark:text-indigo-400 font-medium italic">
               "{boss.title}"
             </p>
-            <p className="text-xs text-slate-600 dark:text-slate-400 mt-2 max-w-xl">
+            <p className="text-xs text-body mt-2 max-w-xl">
               {boss.description}
             </p>
           </div>
@@ -173,7 +173,7 @@ export const BossRaid: React.FC<BossRaidProps> = ({ lastDamage }) => {
               </span>
             </div>
 
-            <div className="w-full bg-slate-200 dark:bg-slate-900 rounded-full h-4 overflow-hidden border border-slate-300 dark:border-slate-700/80 p-0.5 shadow-inner">
+            <div className="w-full progress-track rounded-full h-4 overflow-hidden p-0.5 shadow-inner">
               <div 
                 className={`h-full rounded-full transition-all duration-500 ease-out ${
                   hpPercent > 50 
@@ -189,7 +189,7 @@ export const BossRaid: React.FC<BossRaidProps> = ({ lastDamage }) => {
 
           {/* Raid Mechanics & Victory Rewards */}
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2 max-w-xl">
-            <div className="bg-white/80 dark:bg-slate-900/70 border border-slate-200 dark:border-slate-800/80 rounded-xl p-3 flex items-center space-x-3 text-left shadow-sm">
+            <div className="bg-white/80 dark:bg-slate-800/70 border border-slate-200 dark:border-slate-700/80 rounded-xl p-3 flex items-center space-x-3 text-left shadow-sm">
               <Sword className="w-6 h-6 text-indigo-600 dark:text-indigo-400 flex-shrink-0" />
               <div>
                 <span className="text-[11px] font-bold text-slate-800 dark:text-slate-300 block">Strike Action</span>
@@ -197,7 +197,7 @@ export const BossRaid: React.FC<BossRaidProps> = ({ lastDamage }) => {
               </div>
             </div>
 
-            <div className="bg-white/80 dark:bg-slate-900/70 border border-slate-200 dark:border-slate-800/80 rounded-xl p-3 flex items-center space-x-3 text-left shadow-sm">
+            <div className="bg-white/80 dark:bg-slate-800/70 border border-slate-200 dark:border-slate-700/80 rounded-xl p-3 flex items-center space-x-3 text-left shadow-sm">
               <Trophy className="w-6 h-6 text-amber-500 flex-shrink-0" />
               <div>
                 <span className="text-[11px] font-bold text-slate-800 dark:text-slate-300 block">Bounty Rewards</span>
@@ -214,7 +214,7 @@ export const BossRaid: React.FC<BossRaidProps> = ({ lastDamage }) => {
               <button
                 onClick={handleResurrect}
                 disabled={isResurrecting}
-                className="btn-tactile inline-flex items-center space-x-2 px-6 py-2.5 rounded-xl bg-gradient-to-r from-indigo-600 via-indigo-500 to-violet-600 hover:from-indigo-500 hover:to-violet-500 text-white font-fantasy font-black text-xs sm:text-sm tracking-wide shadow-lg shadow-indigo-600/30 transition transform hover:-translate-y-0.5"
+                className="btn-tactile inline-flex items-center space-x-2 px-6 py-2.5 rounded-xl btn-primary text-white font-fantasy font-black text-xs sm:text-sm tracking-wide shadow-lg shadow-indigo-600/30 transition transform hover:-translate-y-0.5"
               >
                 <RefreshCw className={`w-4 h-4 ${isResurrecting ? 'animate-spin' : ''}`} />
                 <span>SUMMON NEXT BEHEMOTH</span>

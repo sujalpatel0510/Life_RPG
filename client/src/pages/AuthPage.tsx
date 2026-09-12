@@ -117,13 +117,13 @@ export const AuthPage: React.FC<AuthPageProps> = ({ defaultTab }) => {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center p-4 bg-gradient-to-br from-slate-100 via-white to-indigo-50/50 dark:from-[#060810] dark:via-[#0b0f1d] dark:to-[#04060c] relative">
+    <div className="min-h-screen flex items-center justify-center p-4 bg-gradient-to-br from-slate-100 via-white to-indigo-50/50 dark:from-slate-950 dark:via-slate-900 dark:to-slate-950 relative">
       {/* Top-Right Theme Toggle */}
       <div className="absolute top-4 right-4 z-20">
         <ThemeToggle size="md" />
       </div>
 
-      <div className="relative w-full max-w-xl bg-white dark:bg-[#0f1526]/90 border border-slate-200 dark:border-slate-700/80 rounded-3xl p-6 sm:p-10 shadow-2xl backdrop-blur-xl text-slate-900 dark:text-slate-100">
+      <div className="relative w-full max-w-xl surface border border-slate-200 dark:border-slate-700/80 rounded-3xl p-6 sm:p-10 shadow-2xl backdrop-blur-xl">
         
         {/* Glow Halo Background */}
         <div className="absolute -top-10 left-1/2 -translate-x-1/2 w-48 h-48 bg-indigo-500/10 rounded-full blur-3xl pointer-events-none" />
@@ -134,16 +134,16 @@ export const AuthPage: React.FC<AuthPageProps> = ({ defaultTab }) => {
             <Shield className="w-8 h-8 text-white fill-white/20" />
           </div>
 
-          <h1 className="font-fantasy text-3xl sm:text-4xl font-black text-slate-900 dark:text-slate-100 tracking-wider">
+          <h1 className="font-fantasy text-3xl sm:text-4xl font-black text-title tracking-wider">
             LIFE RPG
           </h1>
-          <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-400 max-w-sm mx-auto">
+          <p className="text-xs sm:text-sm text-body max-w-sm mx-auto">
             Transform everyday tasks, habits, and workouts into an epic role-playing progression adventure.
           </p>
         </div>
 
         {/* Tab Switcher (Login / Register) */}
-        <div className="grid grid-cols-2 p-1 bg-slate-100 dark:bg-slate-900/90 border border-slate-200 dark:border-slate-800 rounded-xl mb-6">
+        <div className="grid grid-cols-2 p-1 bg-slate-100 dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 rounded-xl mb-6">
           <button
             type="button"
             onClick={() => {
@@ -155,7 +155,7 @@ export const AuthPage: React.FC<AuthPageProps> = ({ defaultTab }) => {
             className={`btn-tactile py-2 text-xs sm:text-sm font-bold rounded-lg transition ${
               isLogin 
                 ? 'bg-indigo-600 text-white shadow' 
-                : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-200'
+                : 'text-slate-600 dark:text-slate-400 hover:text-title dark:hover:text-slate-200'
             }`}
           >
             ENTER REALM (LOGIN)
@@ -171,7 +171,7 @@ export const AuthPage: React.FC<AuthPageProps> = ({ defaultTab }) => {
             className={`btn-tactile py-2 text-xs sm:text-sm font-bold rounded-lg transition ${
               !isLogin 
                 ? 'bg-indigo-600 text-white shadow' 
-                : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-200'
+                : 'text-slate-600 dark:text-slate-400 hover:text-title dark:hover:text-slate-200'
             }`}
           >
             FORGE HERO (SIGNUP)
@@ -192,7 +192,7 @@ export const AuthPage: React.FC<AuthPageProps> = ({ defaultTab }) => {
           
           {!isLogin && (
             <div>
-              <label className="block text-xs font-bold uppercase tracking-wider text-slate-700 dark:text-slate-300 mb-1.5">
+              <label className="block text-xs font-bold uppercase tracking-wider text-body mb-1.5">
                 Choose Your Hero Class
               </label>
               <div className="grid grid-cols-2 gap-2.5">
@@ -206,12 +206,12 @@ export const AuthPage: React.FC<AuthPageProps> = ({ defaultTab }) => {
                       onClick={() => setHeroClass(c.id)}
                       className={`btn-tactile p-3 rounded-xl border text-left transition ${
                         isSelected
-                          ? 'border-indigo-500 bg-indigo-50 dark:bg-indigo-500/10 shadow-sm ring-1 ring-indigo-400/40 font-bold'
-                          : 'border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-900/50 hover:bg-slate-100 dark:hover:bg-slate-800/40'
+                          ? 'border-indigo-500 bg-indigo-50 dark:bg-indigo-950/10 shadow-sm ring-1 ring-indigo-400/40 font-bold'
+                          : 'border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800/50 hover:bg-slate-100 dark:hover:bg-slate-700/40'
                       }`}
                     >
                       <div className="flex items-center justify-between mb-1">
-                        <div className="flex items-center space-x-1.5 font-bold text-xs text-slate-900 dark:text-slate-200">
+                        <div className="flex items-center space-x-1.5 font-bold text-xs text-title">
                           <Icon className="w-3.5 h-3.5 text-indigo-600 dark:text-indigo-400" />
                           <span>{c.name}</span>
                         </div>
@@ -220,7 +220,7 @@ export const AuthPage: React.FC<AuthPageProps> = ({ defaultTab }) => {
                       <span className="text-[10px] font-semibold text-emerald-700 dark:text-emerald-400 block mb-0.5">
                         {c.perks}
                       </span>
-                      <p className="text-[10px] text-slate-600 dark:text-slate-400 line-clamp-1">
+                      <p className="text-[10px] text-body line-clamp-1">
                         {c.desc}
                       </p>
                     </button>
@@ -232,7 +232,7 @@ export const AuthPage: React.FC<AuthPageProps> = ({ defaultTab }) => {
 
           {/* Email or Username */}
           <div>
-            <label className="block text-xs font-bold uppercase tracking-wider text-slate-700 dark:text-slate-300 mb-1.5">
+            <label className="block text-xs font-bold uppercase tracking-wider text-body mb-1.5">
               {isLogin ? 'Hero Email or Username' : 'Email Address *'}
             </label>
             <div className="relative">
@@ -243,7 +243,7 @@ export const AuthPage: React.FC<AuthPageProps> = ({ defaultTab }) => {
                 onChange={(e) => setEmail(e.target.value)}
                 placeholder={isLogin ? 'e.g., hero@zephyr.com or AegisKnight' : 'hero@domain.com'}
                 required
-                className="w-full pl-10 pr-4 py-2.5 rounded-xl bg-white dark:bg-slate-900/90 border border-slate-300 dark:border-slate-700 text-slate-900 dark:text-slate-100 placeholder-slate-400 dark:placeholder-slate-500 text-sm focus:outline-none focus:border-indigo-500 transition shadow-sm"
+                className="w-full pl-10 pr-4 py-2.5 rounded-xl input text-sm focus:outline-none focus:border-indigo-500 transition shadow-sm"
               />
             </div>
           </div>
@@ -251,7 +251,7 @@ export const AuthPage: React.FC<AuthPageProps> = ({ defaultTab }) => {
           {!isLogin && (
             <div className="grid grid-cols-2 gap-3">
               <div>
-                <label className="block text-xs font-bold uppercase tracking-wider text-slate-700 dark:text-slate-300 mb-1.5">
+                <label className="block text-xs font-bold uppercase tracking-wider text-body mb-1.5">
                   Account Handle *
                 </label>
                 <div className="relative">
@@ -262,13 +262,13 @@ export const AuthPage: React.FC<AuthPageProps> = ({ defaultTab }) => {
                     onChange={(e) => setUsername(e.target.value)}
                     placeholder="ShadowHunter"
                     required
-                    className="w-full pl-10 pr-4 py-2.5 rounded-xl bg-white dark:bg-slate-900/90 border border-slate-300 dark:border-slate-700 text-slate-900 dark:text-slate-100 placeholder-slate-400 dark:placeholder-slate-500 text-sm focus:outline-none focus:border-indigo-500 transition shadow-sm"
+                    className="w-full pl-10 pr-4 py-2.5 rounded-xl input text-sm focus:outline-none focus:border-indigo-500 transition shadow-sm"
                   />
                 </div>
               </div>
 
               <div>
-                <label className="block text-xs font-bold uppercase tracking-wider text-slate-700 dark:text-slate-300 mb-1.5">
+                <label className="block text-xs font-bold uppercase tracking-wider text-body mb-1.5">
                   Hero Title / Name
                 </label>
                 <div className="relative">
@@ -278,7 +278,7 @@ export const AuthPage: React.FC<AuthPageProps> = ({ defaultTab }) => {
                     value={characterName}
                     onChange={(e) => setCharacterName(e.target.value)}
                     placeholder="Sir Valerius"
-                    className="w-full pl-10 pr-4 py-2.5 rounded-xl bg-white dark:bg-slate-900/90 border border-slate-300 dark:border-slate-700 text-slate-900 dark:text-slate-100 placeholder-slate-400 dark:placeholder-slate-500 text-sm focus:outline-none focus:border-indigo-500 transition shadow-sm"
+                    className="w-full pl-10 pr-4 py-2.5 rounded-xl input text-sm focus:outline-none focus:border-indigo-500 transition shadow-sm"
                   />
                 </div>
               </div>
@@ -287,7 +287,7 @@ export const AuthPage: React.FC<AuthPageProps> = ({ defaultTab }) => {
 
           {/* Password */}
           <div>
-            <label className="block text-xs font-bold uppercase tracking-wider text-slate-700 dark:text-slate-300 mb-1.5">
+            <label className="block text-xs font-bold uppercase tracking-wider text-body mb-1.5">
               Passcode *
             </label>
             <div className="relative">
@@ -298,7 +298,7 @@ export const AuthPage: React.FC<AuthPageProps> = ({ defaultTab }) => {
                 onChange={(e) => setPassword(e.target.value)}
                 placeholder="••••••••"
                 required
-                className="w-full pl-10 pr-4 py-2.5 rounded-xl bg-white dark:bg-slate-900/90 border border-slate-300 dark:border-slate-700 text-slate-900 dark:text-slate-100 placeholder-slate-400 dark:placeholder-slate-500 text-sm focus:outline-none focus:border-indigo-500 transition shadow-sm"
+                className="w-full pl-10 pr-4 py-2.5 rounded-xl input text-sm focus:outline-none focus:border-indigo-500 transition shadow-sm"
               />
             </div>
           </div>
@@ -307,7 +307,7 @@ export const AuthPage: React.FC<AuthPageProps> = ({ defaultTab }) => {
           <button
             type="submit"
             disabled={loading}
-            className="btn-tactile w-full py-3.5 mt-2 rounded-xl bg-gradient-to-r from-indigo-600 via-indigo-500 to-violet-600 hover:from-indigo-500 hover:to-violet-500 text-white font-fantasy font-black text-sm tracking-wider shadow-lg shadow-indigo-600/25 transition transform hover:-translate-y-0.5 active:translate-y-0 disabled:opacity-50 flex items-center justify-center space-x-2"
+            className="btn-tactile w-full py-3.5 mt-2 rounded-xl btn-primary text-white font-fantasy font-black text-sm tracking-wider shadow-lg shadow-indigo-600/25 transition transform hover:-translate-y-0.5 active:translate-y-0 disabled:opacity-50 flex items-center justify-center space-x-2"
           >
             <span>{loading ? 'OPENING PORTAL...' : isLogin ? 'COMMENCE EXPEDITION' : 'AWAKEN HERO'}</span>
             <ArrowRight className="w-4 h-4" />
@@ -315,8 +315,8 @@ export const AuthPage: React.FC<AuthPageProps> = ({ defaultTab }) => {
         </form>
 
         {/* Demo Quick Fill Helper for Hackathon Judges */}
-        <div className="mt-6 pt-5 border-t border-slate-200 dark:border-slate-800/80 text-center">
-          <p className="text-[11px] text-slate-500 mb-2">
+        <div className="mt-6 pt-5 border-t border-slate-200 dark:border-slate-700/80 text-center">
+          <p className="text-[11px] text-muted mb-2">
             Hackathon Evaluator Quick-Start:
           </p>
           <button

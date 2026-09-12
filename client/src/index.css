@@ -30,6 +30,72 @@
   }
 }
 
+/* ===== SEMANTIC DUAL-MODE UTILITY CLASSES ===== */
+/* Use these instead of hardcoded color classes for bulletproof light/dark support */
+
+/* Surface containers - cards, panels, modals */
+.surface {
+  @apply bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-slate-900 dark:text-slate-100;
+}
+.surface-elevated {
+  @apply bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-900 dark:text-slate-100 shadow-lg;
+}
+.surface-panel {
+  @apply bg-slate-50 dark:bg-slate-900/50 border border-slate-200 dark:border-slate-800 text-slate-900 dark:text-slate-100;
+}
+.surface-overlay {
+  @apply bg-white/95 dark:bg-slate-900/95 border border-slate-200 dark:border-slate-800/80 text-slate-900 dark:text-slate-100 backdrop-blur-sm;
+}
+
+/* Input fields */
+.input {
+  @apply bg-white dark:bg-slate-900 border border-slate-300 dark:border-slate-700 text-slate-900 dark:text-slate-100 placeholder-slate-400 dark:placeholder-slate-500;
+}
+.input:focus {
+  @apply outline-none ring-2 ring-indigo-500/50 border-indigo-500;
+}
+
+/* Buttons */
+.btn-primary {
+  @apply bg-gradient-to-r from-indigo-600 via-indigo-500 to-violet-600 hover:from-indigo-500 hover:to-violet-500 text-white shadow-lg shadow-indigo-600/25;
+}
+.btn-secondary {
+  @apply bg-white dark:bg-slate-800 border border-slate-300 dark:border-slate-700 text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-700;
+}
+.btn-ghost {
+  @apply text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800;
+}
+.btn-danger {
+  @apply bg-rose-100 dark:bg-rose-950/40 text-rose-700 dark:text-rose-400 hover:bg-rose-200 dark:hover:bg-rose-950/60 hover:text-rose-800 dark:hover:text-rose-300 border border-rose-200 dark:border-rose-800/50;
+}
+
+/* Text colors */
+.text-title {
+  @apply text-slate-900 dark:text-slate-100;
+}
+.text-body {
+  @apply text-slate-600 dark:text-slate-400;
+}
+.text-muted {
+  @apply text-slate-500 dark:text-slate-500;
+}
+.text-link {
+  @apply text-indigo-600 dark:text-indigo-400 hover:text-indigo-700 dark:hover:text-indigo-300;
+}
+
+/* Badge base */
+.badge {
+  @apply inline-flex items-center gap-1 px-2.5 py-0.5 rounded-lg text-xs font-semibold border;
+}
+
+/* Progress bar track */
+.progress-track {
+  @apply bg-slate-200 dark:bg-slate-800 border border-slate-300 dark:border-slate-700;
+}
+
+/* Scrollbar (handled in base but here for reference) */
+/* ===== END SEMANTIC UTILITIES ===== */
+
 /* Global Smooth Theme Interpolation */
 html body,
 html div,

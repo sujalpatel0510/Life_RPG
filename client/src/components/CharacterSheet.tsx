@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { useAuth } from '../context/AuthContext';
-import { useTheme } from '../context/ThemeContext';
 import { api } from '../utils/api';
 import { 
   User, 
@@ -20,7 +19,6 @@ import {
 
 export const CharacterSheet: React.FC = () => {
   const { character, setCharacter } = useAuth();
-  const { theme } = useTheme();
   const [profileData, setProfileData] = useState<any>(null);
   const [loading, setLoading] = useState(true);
 
@@ -72,7 +70,7 @@ export const CharacterSheet: React.FC = () => {
     <div className="space-y-6">
       
       {/* Top Identity Card */}
-      <div className="bg-white dark:bg-[#111827] border border-slate-200 dark:border-slate-800 rounded-2xl p-6 sm:p-8 flex flex-col md:flex-row items-center gap-6 shadow-sm">
+      <div className="surface rounded-2xl p-6 sm:p-8 flex flex-col md:flex-row items-center gap-6 shadow-sm">
         
         {/* Class Crest / Avatar */}
         <div className="relative flex-shrink-0">
@@ -88,7 +86,7 @@ export const CharacterSheet: React.FC = () => {
         {/* Hero Credentials */}
         <div className="space-y-2 text-center md:text-left flex-1">
           <div className="flex flex-wrap items-center justify-center md:justify-start gap-2">
-            <h1 className="font-fantasy text-2xl sm:text-3xl font-bold text-slate-900 dark:text-slate-100">
+            <h1 className="font-fantasy text-2xl sm:text-3xl font-bold text-title">
               {character.name}
             </h1>
             <span className="badge-gold px-3 py-0.5 rounded-full text-xs font-bold tracking-wide">
@@ -97,7 +95,7 @@ export const CharacterSheet: React.FC = () => {
           </div>
 
           <div className="flex flex-wrap items-center justify-center md:justify-start gap-2">
-            <span className="text-xs text-slate-600 dark:text-slate-400 font-semibold">Active Title:</span>
+            <span className="text-xs text-body font-semibold">Active Title:</span>
             <select
               value={character.title}
               onChange={async (e) => {
@@ -111,7 +109,7 @@ export const CharacterSheet: React.FC = () => {
                   alert(err.message || 'Failed to equip title');
                 }
               }}
-              className="bg-white dark:bg-slate-900 border border-slate-300 dark:border-slate-700/80 hover:border-indigo-500/60 rounded-lg px-2.5 py-1 text-xs text-indigo-800 dark:text-indigo-300 font-serif italic focus:outline-none focus:border-indigo-500 transition cursor-pointer shadow-sm"
+              className="input rounded-lg px-2.5 py-1 text-xs text-indigo-800 dark:text-indigo-300 font-serif italic focus:outline-none focus:border-indigo-500 transition cursor-pointer shadow-sm"
             >
               {[
                 'The Awakened',
@@ -131,16 +129,16 @@ export const CharacterSheet: React.FC = () => {
           </div>
 
           <div className="flex flex-wrap items-center justify-center md:justify-start gap-4 pt-2 text-xs">
-            <div className="bg-white/80 dark:bg-slate-900/80 px-3 py-1.5 rounded-lg border border-slate-200 dark:border-slate-800 shadow-sm">
-              <span className="text-slate-500 dark:text-slate-400">Max HP:</span>{' '}
+            <div className="surface-elevated px-3 py-1.5 rounded-lg shadow-sm">
+              <span className="text-muted">Max HP:</span>{' '}
               <span className="font-bold text-rose-600 dark:text-rose-400">{character.maxHp}</span>
             </div>
-            <div className="bg-white/80 dark:bg-slate-900/80 px-3 py-1.5 rounded-lg border border-slate-200 dark:border-slate-800 shadow-sm">
-              <span className="text-slate-500 dark:text-slate-400">XP to Next Level:</span>{' '}
+            <div className="surface-elevated px-3 py-1.5 rounded-lg shadow-sm">
+              <span className="text-muted">XP to Next Level:</span>{' '}
               <span className="font-bold text-indigo-600 dark:text-indigo-400">{character.nextLevelXp - character.currentXp} XP</span>
             </div>
-            <div className="bg-white/80 dark:bg-slate-900/80 px-3 py-1.5 rounded-lg border border-slate-200 dark:border-slate-800 shadow-sm">
-              <span className="text-slate-500 dark:text-slate-400">Completed Quests:</span>{' '}
+            <div className="surface-elevated px-3 py-1.5 rounded-lg shadow-sm">
+              <span className="text-muted">Completed Quests:</span>{' '}
               <span className="font-bold text-emerald-600 dark:text-emerald-400">{profileData?.stats?.totalCompletedQuests || 0}</span>
             </div>
           </div>
@@ -148,8 +146,8 @@ export const CharacterSheet: React.FC = () => {
       </div>
 
       {/* Level Milestone Progression Roadmap */}
-      <div className="bg-white dark:bg-[#111827] border border-slate-200 dark:border-slate-800 rounded-2xl p-5 shadow-sm">
-        <h3 className="font-fantasy text-sm font-bold text-slate-900 dark:text-slate-200 mb-3 flex items-center gap-2">
+      <div className="surface rounded-2xl p-5 shadow-sm">
+        <h3 className="font-fantasy text-sm font-bold text-title mb-3 flex items-center gap-2">
           <Crown className="w-4 h-4 text-indigo-500 dark:text-indigo-400" />
           Level Milestone Progression Roadmap
         </h3>
@@ -166,7 +164,7 @@ export const CharacterSheet: React.FC = () => {
               className={`card-hover-lift p-3 rounded-xl border flex flex-col items-center text-center transition ${
                 m.unlocked
                   ? 'bg-indigo-50 dark:bg-indigo-950/20 border-indigo-300 dark:border-indigo-500/40 text-indigo-900 dark:text-indigo-300 shadow-sm'
-                  : 'bg-slate-50 dark:bg-slate-900/40 border-slate-200 dark:border-slate-800/80 text-slate-500 opacity-60'
+                  : 'bg-slate-50 dark:bg-slate-800/40 border-slate-200 dark:border-slate-700/80 text-slate-500 opacity-60'
               }`}
             >
               <span className={`text-[10px] font-bold px-2 py-0.5 rounded-full mb-1 ${
@@ -185,12 +183,12 @@ export const CharacterSheet: React.FC = () => {
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
         
         {/* 6-Axis Radar Spider Chart (5 Cols) */}
-        <div className="lg:col-span-5 bg-white dark:bg-[#111827] border border-slate-200 dark:border-slate-800 rounded-2xl p-6 flex flex-col items-center justify-center shadow-sm">
-          <h3 className="font-fantasy text-base font-bold text-slate-900 dark:text-slate-200 mb-2 flex items-center gap-2">
+        <div className="lg:col-span-5 surface rounded-2xl p-6 flex flex-col items-center justify-center shadow-sm">
+          <h3 className="font-fantasy text-base font-bold text-title mb-2 flex items-center gap-2">
             <Activity className="w-4 h-4 text-indigo-500 dark:text-indigo-400" />
             Attribute Radar
           </h3>
-          <p className="text-[11px] text-slate-600 dark:text-slate-400 text-center mb-4">
+          <p className="text-[11px] text-body text-center mb-4">
             Visual balance of your real-world developmental domains
           </p>
 
@@ -207,9 +205,11 @@ export const CharacterSheet: React.FC = () => {
                   key={lvl}
                   points={gridPoints}
                   fill="none"
-                  stroke={theme === 'light' ? '#cbd5e1' : '#1e293b'}
+                  stroke="currentColor"
+                  strokeOpacity="0.2"
                   strokeWidth="1"
                   strokeDasharray="2,2"
+                  className="text-slate-400 dark:text-slate-600"
                 />
               );
             })}
@@ -226,8 +226,10 @@ export const CharacterSheet: React.FC = () => {
                   y1={centerY}
                   x2={x2}
                   y2={y2}
-                  stroke={theme === 'light' ? '#cbd5e1' : '#1e293b'}
+                  stroke="currentColor"
+                  strokeOpacity="0.2"
                   strokeWidth="1"
+                  className="text-slate-400 dark:text-slate-600"
                 />
               );
             })}
@@ -235,7 +237,7 @@ export const CharacterSheet: React.FC = () => {
             {/* Hero Attribute Polygon */}
             <polygon
               points={points}
-              fill={theme === 'light' ? 'rgba(99, 102, 241, 0.2)' : 'rgba(99, 102, 241, 0.28)'}
+              fill="rgba(99, 102, 241, 0.2)"
               stroke="#6366f1"
               strokeWidth="2.5"
               className="transition-all duration-500 ease-out"
@@ -255,14 +257,15 @@ export const CharacterSheet: React.FC = () => {
 
               return (
                 <g key={stat.key}>
-                  <circle cx={x} cy={y} r="4.5" fill="#06b6d4" stroke={theme === 'light' ? '#ffffff' : '#0B0F19'} strokeWidth="1.5" />
+                  <circle cx={x} cy={y} r="4.5" fill="#06b6d4" stroke="currentColor" strokeWidth="1.5" className="text-white dark:text-slate-950" />
                   <text
                     x={lx}
                     y={ly + 4}
-                    fill={theme === 'light' ? '#0f172a' : '#cbd5e1'}
+                    fill="currentColor"
                     fontSize="10"
                     fontWeight="bold"
                     textAnchor="middle"
+                    className="text-slate-900 dark:text-slate-100"
                   >
                     {stat.label.substring(0, 3)} ({stat.val})
                   </text>
@@ -273,8 +276,8 @@ export const CharacterSheet: React.FC = () => {
         </div>
 
         {/* Detailed Attribute Breakdown (7 Cols) */}
-        <div className="lg:col-span-7 bg-white dark:bg-[#111827] border border-slate-200 dark:border-slate-800 rounded-2xl p-6 space-y-4 shadow-sm">
-          <h3 className="font-fantasy text-base font-bold text-slate-900 dark:text-slate-200">
+        <div className="lg:col-span-7 surface rounded-2xl p-6 space-y-4 shadow-sm">
+          <h3 className="font-fantasy text-base font-bold text-title">
             Attribute Specializations
           </h3>
 
@@ -284,23 +287,23 @@ export const CharacterSheet: React.FC = () => {
               return (
                 <div 
                   key={stat.key}
-                  className="card-hover-lift bg-slate-50 dark:bg-slate-900/70 border border-slate-200 dark:border-slate-800 rounded-xl p-3.5 space-y-2 hover:border-indigo-500/40 transition shadow-sm"
+                  className="card-hover-lift surface-panel rounded-xl p-3.5 space-y-2 hover:border-indigo-500/40 transition shadow-sm"
                 >
                   <div className="flex items-center justify-between">
                     <div className="flex items-center space-x-2">
                       <Icon className={`w-4 h-4 ${stat.color}`} />
-                      <span className="text-xs font-bold text-slate-900 dark:text-slate-200">{stat.label}</span>
+                      <span className="text-xs font-bold text-title">{stat.label}</span>
                     </div>
-                    <span className="text-sm font-black text-slate-900 dark:text-slate-100 font-mono">
+                    <span className="text-sm font-black text-title font-mono">
                       {stat.val}
                     </span>
                   </div>
 
-                  <p className="text-[10px] text-slate-600 dark:text-slate-400 line-clamp-1">
+                  <p className="text-[10px] text-body line-clamp-1">
                     {stat.desc}
                   </p>
 
-                  <div className="w-full bg-slate-200 dark:bg-slate-800 rounded-full h-1.5 overflow-hidden">
+                  <div className="w-full progress-track rounded-full h-1.5 overflow-hidden">
                     <div 
                       className={`${stat.barColor} h-full rounded-full transition-all duration-500`}
                       style={{ width: `${Math.min(100, (stat.val / maxScale) * 100)}%` }}
@@ -312,8 +315,8 @@ export const CharacterSheet: React.FC = () => {
           </div>
 
           {/* Equipped Gear Section */}
-          <div className="pt-4 border-t border-slate-200 dark:border-slate-800">
-            <h4 className="text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 mb-3 flex items-center gap-2">
+          <div className="pt-4 border-t border-slate-200 dark:border-slate-700">
+            <h4 className="text-xs font-bold uppercase tracking-wider text-muted mb-3 flex items-center gap-2">
               <Sword className="w-3.5 h-3.5 text-indigo-500" />
               Equipped Loadout
             </h4>
@@ -321,12 +324,12 @@ export const CharacterSheet: React.FC = () => {
             {profileData?.equippedGear && profileData.equippedGear.length > 0 ? (
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                 {profileData.equippedGear.map((eg: any) => (
-                  <div key={eg.id} className="bg-slate-50 dark:bg-slate-900/90 border border-indigo-500/30 rounded-xl p-3 flex items-center space-x-3 shadow-sm">
+                  <div key={eg.id} className="surface-elevated border-indigo-500/30 rounded-xl p-3 flex items-center space-x-3 shadow-sm">
                     <div className="w-10 h-10 rounded-lg bg-indigo-500/10 border border-indigo-500/30 flex items-center justify-center flex-shrink-0">
                       <Shield className="w-5 h-5 text-indigo-500 dark:text-indigo-400" />
                     </div>
                     <div className="min-w-0 flex-1">
-                      <span className="text-xs font-bold text-slate-900 dark:text-slate-200 block truncate">
+                      <span className="text-xs font-bold text-title block truncate">
                         {eg.item.name}
                       </span>
                       <span className="text-[10px] text-indigo-600 dark:text-indigo-400/90 font-medium">
@@ -337,7 +340,7 @@ export const CharacterSheet: React.FC = () => {
                 ))}
               </div>
             ) : (
-              <p className="text-xs text-slate-500 italic">
+              <p className="text-xs text-muted italic">
                 No artifacts currently equipped. Visit the Armoury to equip forged gear.
               </p>
             )}

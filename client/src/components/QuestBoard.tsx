@@ -187,7 +187,7 @@ export const QuestBoard: React.FC<QuestBoardProps> = ({
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
             placeholder="Search active quests or lore..."
-            className="w-full pl-10 pr-4 py-2.5 rounded-xl bg-white dark:bg-[#101626] border border-slate-300 dark:border-slate-700/80 text-slate-900 dark:text-slate-200 placeholder-slate-400 dark:placeholder-slate-500 text-xs sm:text-sm focus:outline-none focus:border-indigo-500 transition shadow-sm"
+            className="w-full pl-10 pr-4 py-2.5 rounded-xl input text-xs sm:text-sm focus:outline-none focus:border-indigo-500 transition shadow-sm"
           />
         </div>
 
@@ -198,7 +198,7 @@ export const QuestBoard: React.FC<QuestBoardProps> = ({
             setQuestToEdit(null);
             setModalOpen(true);
           }}
-          className="btn-tactile flex items-center justify-center space-x-2 px-5 py-2.5 rounded-xl bg-gradient-to-r from-indigo-600 via-indigo-500 to-violet-600 hover:from-indigo-500 hover:to-violet-500 text-white font-fantasy font-bold text-xs sm:text-sm shadow-lg shadow-indigo-600/25 transition transform hover:-translate-y-0.5 active:translate-y-0 flex-shrink-0"
+          className="btn-tactile flex items-center justify-center space-x-2 px-5 py-2.5 rounded-xl btn-primary text-white font-fantasy font-bold text-xs sm:text-sm shadow-lg shadow-indigo-600/25 transition transform hover:-translate-y-0.5 active:translate-y-0 flex-shrink-0"
         >
           <Plus className="w-4 h-4 stroke-[3]" />
           <span>DETAILED SUMMON (N)</span>
@@ -217,7 +217,7 @@ export const QuestBoard: React.FC<QuestBoardProps> = ({
             className={`btn-tactile flex items-center space-x-1.5 px-3.5 py-1.5 rounded-xl text-xs font-semibold whitespace-nowrap transition-all ${
               activeCadence === c.id
                 ? 'bg-indigo-600 text-white shadow-md font-bold ring-2 ring-indigo-400/40'
-                : 'bg-white dark:bg-[#101626] text-slate-600 dark:text-slate-400 border border-slate-200 dark:border-slate-800 hover:border-indigo-400/60 hover:text-slate-900 dark:hover:text-slate-200 shadow-sm'
+                : 'bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-400 border border-slate-200 dark:border-slate-700 hover:border-indigo-400/60 hover:text-slate-900 dark:hover:text-slate-200 shadow-sm'
             }`}
           >
             <span>{c.label}</span>
@@ -242,8 +242,8 @@ export const QuestBoard: React.FC<QuestBoardProps> = ({
             }}
             className={`btn-tactile px-2.5 py-1 rounded-lg text-[11px] font-semibold whitespace-nowrap transition ${
               activeCategory === cat.id
-                ? 'bg-indigo-100 dark:bg-indigo-950/50 text-indigo-800 dark:text-indigo-300 border border-indigo-300 dark:border-indigo-600/50 shadow-sm font-bold'
-                : 'text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-slate-200 bg-white/60 dark:bg-slate-900/50 border border-slate-200 dark:border-slate-800'
+                ? 'bg-indigo-50 dark:bg-indigo-950/50 text-indigo-800 dark:text-indigo-300 border border-indigo-300 dark:border-indigo-600/50 shadow-sm font-bold'
+                : 'text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-slate-200 bg-white/60 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700'
             }`}
           >
             {cat.label}
@@ -255,7 +255,7 @@ export const QuestBoard: React.FC<QuestBoardProps> = ({
       {loading ? (
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           {[1, 2, 3, 4].map((n) => (
-            <div key={n} className="h-32 rounded-2xl bg-slate-100 dark:bg-slate-900/40 border border-slate-200 dark:border-slate-800 skeleton" />
+            <div key={n} className="h-32 rounded-2xl bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 skeleton" />
           ))}
         </div>
       ) : activeQuests.length > 0 ? (
@@ -275,16 +275,16 @@ export const QuestBoard: React.FC<QuestBoardProps> = ({
         </div>
       ) : (
         /* Empty State */
-        <div className="text-center py-16 px-4 rounded-3xl bg-white dark:bg-[#0e1424] border border-dashed border-slate-300 dark:border-slate-800 space-y-4 shadow-sm">
+        <div className="text-center py-16 px-4 rounded-3xl surface border-2 border-dashed border-slate-300 dark:border-slate-700 space-y-4 shadow-sm">
           <div className="w-16 h-16 mx-auto rounded-2xl bg-indigo-500/10 border border-indigo-500/20 flex items-center justify-center">
             <Sparkles className="w-8 h-8 text-indigo-500" />
           </div>
           <div>
-            <h3 className="font-fantasy text-lg font-bold text-slate-900 dark:text-slate-200">
+            <h3 className="font-fantasy text-lg font-bold text-title">
               No Active Quests in Your Journal
             </h3>
-            <p className="text-xs text-slate-500 dark:text-slate-400 max-w-sm mx-auto mt-1">
-              Type in the Quick-Add bar above or press <kbd className="px-1.5 py-0.5 rounded bg-slate-200 dark:bg-slate-800 text-indigo-600 dark:text-indigo-400 font-mono text-[10px]">N</kbd> to summon your first objective.
+            <p className="text-xs text-body max-w-sm mx-auto mt-1">
+              Type in the Quick-Add bar above or press <kbd className="px-1.5 py-0.5 rounded bg-slate-100 dark:bg-slate-800 text-indigo-600 dark:text-indigo-400 font-mono text-[10px] border border-slate-200 dark:border-slate-700">N</kbd> to summon your first objective.
             </p>
           </div>
         </div>
@@ -292,14 +292,14 @@ export const QuestBoard: React.FC<QuestBoardProps> = ({
 
       {/* Conquered Chronicles Accordion (Completed Quests Archive) */}
       {completedQuests.length > 0 && (
-        <div className="pt-4 border-t border-slate-200 dark:border-slate-800/80">
+        <div className="pt-4 border-t border-slate-200 dark:border-slate-800">
           <button
             type="button"
             onClick={() => {
               playClick();
               setShowCompleted(prev => !prev);
             }}
-            className="w-full flex items-center justify-between p-3.5 rounded-xl bg-slate-100 dark:bg-slate-900/40 hover:bg-slate-200/80 dark:hover:bg-slate-900/80 border border-slate-200 dark:border-slate-800/80 text-slate-700 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-200 transition"
+            className="w-full flex items-center justify-between p-3.5 rounded-xl bg-slate-50 dark:bg-slate-800/50 hover:bg-slate-100 dark:hover:bg-slate-800/80 border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-200 transition"
           >
             <div className="flex items-center space-x-2 text-xs font-bold uppercase tracking-wider">
               <CheckCircle2 className="w-4 h-4 text-emerald-600 dark:text-emerald-400" />

@@ -95,12 +95,12 @@ export const ArmouryShop: React.FC = () => {
 
   const getRarityStyle = (rarity: string) => {
     switch (rarity) {
-      case 'COMMON': return 'border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900/60 text-slate-800 dark:text-slate-300';
-      case 'UNCOMMON': return 'border-emerald-300 dark:border-emerald-500/40 bg-emerald-50/50 dark:bg-emerald-950/20 text-emerald-900 dark:text-emerald-400';
-      case 'RARE': return 'border-blue-300 dark:border-blue-500/50 bg-blue-50/50 dark:bg-blue-950/30 text-blue-900 dark:text-blue-400 item-glow-rare';
-      case 'EPIC': return 'border-purple-300 dark:border-purple-500/50 bg-purple-50/50 dark:bg-purple-950/30 text-purple-900 dark:text-purple-300 item-glow-epic';
-      case 'LEGENDARY': return 'border-amber-400/80 dark:border-amber-500/70 bg-amber-50/60 dark:bg-amber-950/30 text-amber-950 dark:text-amber-300 item-glow-legendary animate-pulse-glow';
-      default: return 'border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900/60 text-slate-800 dark:text-slate-300';
+      case 'COMMON': return 'border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-slate-100';
+      case 'UNCOMMON': return 'border-emerald-300 dark:border-emerald-500/40 bg-emerald-50 dark:bg-emerald-950/20 text-emerald-900 dark:text-emerald-400';
+      case 'RARE': return 'border-blue-300 dark:border-blue-500/50 bg-blue-50 dark:bg-blue-950/30 text-blue-900 dark:text-blue-400 item-glow-rare';
+      case 'EPIC': return 'border-purple-300 dark:border-purple-500/50 bg-purple-50 dark:bg-purple-950/30 text-purple-900 dark:text-purple-300 item-glow-epic';
+      case 'LEGENDARY': return 'border-amber-400/80 dark:border-amber-500/70 bg-amber-50 dark:bg-amber-950/30 text-amber-950 dark:text-amber-300 item-glow-legendary animate-pulse-glow';
+      default: return 'border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-slate-100';
     }
   };
 
@@ -134,20 +134,20 @@ export const ArmouryShop: React.FC = () => {
     <div className="space-y-6">
       
       {/* Armoury Header */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 bg-white dark:bg-[#111827] border border-slate-200 dark:border-slate-800 rounded-2xl p-6 shadow-sm">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 surface rounded-2xl p-6 shadow-sm">
         <div>
-          <h2 className="font-fantasy text-2xl font-bold text-slate-900 dark:text-slate-100 flex items-center gap-2.5">
+          <h2 className="font-fantasy text-2xl font-bold text-title flex items-center gap-2.5">
             <ShoppingBag className="w-6 h-6 text-indigo-600 dark:text-indigo-400" />
             The Royal Armoury & Item Emporium
           </h2>
-          <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-400 mt-1">
+          <p className="text-xs sm:text-sm text-body mt-1">
             Exchange your quest gold and gems for equipment that boosts your real-world productivity stats and boss damage.
           </p>
         </div>
 
         {/* Treasury Display */}
         {character && (
-          <div className="flex items-center space-x-3 bg-slate-50 dark:bg-slate-900/90 border border-slate-200 dark:border-slate-700 px-4 py-2.5 rounded-xl flex-shrink-0">
+          <div className="flex items-center space-x-3 bg-slate-50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700 px-4 py-2.5 rounded-xl flex-shrink-0">
             <div className="flex items-center space-x-1.5 text-amber-700 dark:text-amber-400 font-bold text-sm">
               <Coins className="w-4 h-4" />
               <span>{character.gold} Gold</span>
@@ -163,7 +163,7 @@ export const ArmouryShop: React.FC = () => {
 
       {/* Status Toast */}
       {statusMessage && (
-        <div className="p-3.5 rounded-xl bg-indigo-50 dark:bg-slate-900 border border-indigo-300 dark:border-indigo-500/50 text-indigo-900 dark:text-indigo-300 text-xs sm:text-sm font-semibold flex items-center justify-between shadow-lg animate-fade-in">
+        <div className="p-3.5 rounded-xl bg-indigo-50 dark:bg-indigo-950/20 border border-indigo-300 dark:border-indigo-500/50 text-indigo-900 dark:text-indigo-300 text-xs sm:text-sm font-semibold flex items-center justify-between shadow-lg animate-fade-in">
           <span>{statusMessage}</span>
           <button onClick={() => setStatusMessage(null)} className="text-indigo-700 dark:text-indigo-400 hover:text-indigo-900 dark:hover:text-indigo-200">✕</button>
         </div>
@@ -181,7 +181,7 @@ export const ArmouryShop: React.FC = () => {
             className={`btn-tactile px-4 py-2 rounded-xl text-xs font-semibold whitespace-nowrap transition ${
               selectedCategory === c.id
                 ? 'bg-indigo-600 text-white font-bold shadow-md'
-                : 'bg-white dark:bg-slate-900/60 text-slate-600 dark:text-slate-400 border border-slate-200 dark:border-slate-800 hover:border-slate-300 dark:hover:border-slate-700 hover:text-slate-950 dark:hover:text-slate-200'
+                : 'bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-400 border border-slate-200 dark:border-slate-700 hover:border-slate-300 dark:hover:border-slate-600 hover:text-slate-900 dark:hover:text-slate-200'
             }`}
           >
             {c.label}
@@ -193,7 +193,7 @@ export const ArmouryShop: React.FC = () => {
       {loading ? (
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
           {[1, 2, 3, 4, 5, 6].map((n) => (
-            <div key={n} className="h-56 rounded-2xl bg-slate-100 dark:bg-slate-900/40 border border-slate-200 dark:border-slate-800 skeleton" />
+            <div key={n} className="h-56 rounded-2xl bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 skeleton" />
           ))}
         </div>
       ) : (
@@ -210,7 +210,7 @@ export const ArmouryShop: React.FC = () => {
               >
                 <div>
                   <div className="flex items-start justify-between gap-3">
-                    <div className="w-12 h-12 rounded-xl bg-slate-100 dark:bg-slate-950/80 border border-current flex items-center justify-center flex-shrink-0 shadow-sm">
+                    <div className="w-12 h-12 rounded-xl bg-slate-100 dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700 flex items-center justify-center flex-shrink-0 shadow-sm">
                       <Icon className="w-6 h-6" />
                     </div>
 
@@ -225,10 +225,10 @@ export const ArmouryShop: React.FC = () => {
                   </div>
 
 
-                  <h3 className="font-fantasy text-base font-bold text-slate-900 dark:text-slate-100 mt-3">
+                  <h3 className="font-fantasy text-base font-bold text-title mt-3">
                     {item.name}
                   </h3>
-                  <p className="text-xs text-slate-600 dark:text-slate-400 mt-1 line-clamp-2">
+                  <p className="text-xs text-body mt-1 line-clamp-2">
                     {item.description}
                   </p>
 
@@ -273,7 +273,7 @@ export const ArmouryShop: React.FC = () => {
                 </div>
 
                 {/* Price and Action Buttons */}
-                <div className="mt-5 pt-3 border-t border-slate-200 dark:border-slate-800/80 flex items-center justify-between gap-3">
+                <div className="mt-5 pt-3 border-t border-slate-200 dark:border-slate-700 flex items-center justify-between gap-3">
                   <div className="flex items-center space-x-2 text-xs font-bold">
                     <span className="badge-gold px-2 py-0.5 rounded-lg flex items-center gap-1 font-bold">
                       <Coins className="w-3.5 h-3.5" /> {item.priceGold}
@@ -307,7 +307,7 @@ export const ArmouryShop: React.FC = () => {
                       <button
                         onClick={() => handleBuy(item)}
                         disabled={purchasingId === item.id}
-                        className="btn-tactile px-4 py-1.5 rounded-xl bg-gradient-to-r from-indigo-600 via-indigo-500 to-violet-600 hover:from-indigo-500 hover:to-violet-500 text-white text-xs font-bold transition shadow-md shadow-indigo-600/20"
+                        className="btn-tactile px-4 py-1.5 rounded-xl btn-primary text-white text-xs font-bold transition shadow-md shadow-indigo-600/20"
                       >
                         {purchasingId === item.id ? 'Forging...' : 'Forge & Buy'}
                       </button>
@@ -322,3 +322,11 @@ export const ArmouryShop: React.FC = () => {
     </div>
   );
 };
+
+const categories = [
+  { id: 'ALL', label: 'All Artifacts' },
+  { id: 'WEAPON', label: 'Weapons' },
+  { id: 'ARMOR', label: 'Armor' },
+  { id: 'RELIC', label: 'Relics' },
+  { id: 'POTION', label: 'Potions' },
+];

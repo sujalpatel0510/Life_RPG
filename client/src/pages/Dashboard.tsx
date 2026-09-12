@@ -116,7 +116,7 @@ export const Dashboard: React.FC<DashboardProps> = ({ activeTab: propActiveTab }
   }, [playClick, toggleMute]);
 
   return (
-    <div className="min-h-screen relative flex flex-col bg-slate-50 dark:bg-[#0b0f19] text-slate-900 dark:text-slate-100 selection:bg-indigo-600 selection:text-white overflow-x-hidden transition-colors duration-300">
+    <div className="min-h-screen relative flex flex-col bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-slate-100 selection:bg-indigo-600 selection:text-white overflow-x-hidden transition-colors duration-300">
       
       {/* Dark Fantasy Floating Ambient Embers Background */}
       <AmbientEmbers />
@@ -161,11 +161,11 @@ export const Dashboard: React.FC<DashboardProps> = ({ activeTab: propActiveTab }
         {activeTab === 'boss' && (
           <div key="boss" className="animate-tab-enter space-y-6">
             <BossRaid lastDamage={lastBossDamage} />
-            <div className="bg-white dark:bg-[#111827] border border-slate-200 dark:border-slate-800 rounded-3xl p-6 sm:p-8 shadow-sm">
-              <h3 className="font-fantasy text-xl font-bold text-slate-900 dark:text-slate-100 mb-2">
+            <div className="surface rounded-3xl p-6 sm:p-8 shadow-sm">
+              <h3 className="font-fantasy text-xl font-bold text-title mb-2">
                 Conquest & Raid Guide
               </h3>
-              <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-400 leading-relaxed max-w-2xl">
+              <p className="text-xs sm:text-sm text-body leading-relaxed max-w-2xl">
                 To inflict critical strikes upon this raid behemoth, complete real-world tasks in your Quest Log. 
                 Higher difficulty quests, your Character Strength attribute, and equipped weapons in your Armoury deal massive bonus damage multipliers!
               </p>
@@ -207,11 +207,11 @@ export const Dashboard: React.FC<DashboardProps> = ({ activeTab: propActiveTab }
       />
 
       {/* Footer / Hackathon Compliance Bar */}
-      <footer className="border-t border-slate-200 dark:border-slate-800/80 bg-white dark:bg-[#060911] py-6 text-xs text-slate-600 dark:text-slate-500 shadow-inner">
+      <footer className="border-t border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-950 py-6 text-xs text-slate-600 dark:text-slate-500 shadow-inner">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4">
           <div className="flex items-center space-x-3">
-            <span className="font-fantasy font-bold text-slate-900 dark:text-slate-300">LIFE RPG</span>
-            <span>• Tech Zephyr 4.0 Hackathon Build</span>
+            <span className="font-fantasy font-bold text-title">LIFE RPG</span>
+            <span className="text-body">• Tech Zephyr 4.0 Hackathon Build</span>
             <button
               onClick={() => setIsHotkeysOpen(true)}
               className="hidden sm:inline-flex items-center gap-1 text-[11px] text-indigo-600 dark:text-indigo-400 hover:text-indigo-700 dark:hover:text-indigo-300 ml-2 font-medium"

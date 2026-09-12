@@ -77,12 +77,12 @@ export const QuestCard: React.FC<QuestCardProps> = ({ quest, onComplete, onEdit,
 
   return (
     <div 
-      className={`group relative card-hover-lift card-glow-indigo animate-fade-in-up bg-white dark:bg-[#101626]/90 border rounded-2xl p-4 sm:p-5 transition-all duration-300 shadow-sm ${
+      className={`group relative card-hover-lift card-glow-indigo animate-fade-in-up surface border rounded-2xl p-4 sm:p-5 transition-all duration-300 shadow-sm ${
         justCompleted
-          ? 'border-indigo-500 bg-indigo-950/30 scale-[1.02] shadow-[0_0_30px_rgba(99,102,241,0.4)] ring-2 ring-indigo-500/50'
+          ? 'border-indigo-500 bg-indigo-50 dark:bg-indigo-950/30 scale-[1.02] shadow-[0_0_30px_rgba(99,102,241,0.4)] ring-2 ring-indigo-500/50'
           : quest.isCompleted 
-          ? 'card-glow-emerald border-slate-200 dark:border-slate-800/60 opacity-60 bg-slate-50 dark:bg-slate-900/40' 
-          : 'border-slate-200 dark:border-slate-800/90 hover:border-indigo-500/50 hover:shadow-[0_8px_25px_-5px_rgba(99,102,241,0.15)]'
+          ? 'card-glow-emerald border-slate-200 dark:border-slate-700 opacity-60 bg-slate-50 dark:bg-slate-800/40' 
+          : 'border-slate-200 dark:border-slate-700 hover:border-indigo-500/50 hover:shadow-[0_8px_25px_-5px_rgba(99,102,241,0.15)]'
       }`}
     >
       <div className="flex items-start justify-between gap-3 sm:gap-4">
@@ -95,7 +95,7 @@ export const QuestCard: React.FC<QuestCardProps> = ({ quest, onComplete, onEdit,
           className={`mt-0.5 flex-shrink-0 w-8 h-8 rounded-xl border-2 flex items-center justify-center transition-all duration-200 transform btn-tactile sparkle-burst ${
             quest.isCompleted
               ? 'bg-gradient-to-tr from-emerald-600 to-teal-500 border-emerald-400 text-white shadow-[0_0_15px_rgba(16,185,129,0.5)]'
-              : 'border-slate-300 dark:border-slate-700 bg-slate-100 dark:bg-slate-900/90 hover:border-indigo-500 text-transparent hover:text-indigo-500 hover:scale-105 active:scale-95 shadow-sm'
+              : 'border-slate-300 dark:border-slate-700 bg-slate-100 dark:bg-slate-800/90 hover:border-indigo-500 text-transparent hover:text-indigo-500 hover:scale-105 active:scale-95 shadow-sm'
           } ${isCompleting ? 'scale-125' : ''}`}
         >
           <Check className={`w-4 h-4 stroke-[3] ${quest.isCompleted ? 'text-white' : ''}`} />
@@ -116,13 +116,13 @@ export const QuestCard: React.FC<QuestCardProps> = ({ quest, onComplete, onEdit,
             </span>
 
             {/* Type Tag */}
-            <span className="px-1.5 py-0.5 rounded-md text-[10px] bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-300 font-medium border border-slate-300 dark:border-slate-700">
+            <span className="px-1.5 py-0.5 rounded-md text-[10px] bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 font-medium border border-slate-200 dark:border-slate-700">
               {quest.questType}
             </span>
 
             {/* Habit Streak and Increment button */}
             {quest.questType === 'HABIT' && (
-              <div className="inline-flex items-center gap-1 bg-amber-50 dark:bg-amber-950/40 px-2 py-0.5 rounded-lg border border-amber-300 dark:border-amber-500/30">
+              <div className="inline-flex items-center gap-1 bg-amber-50 dark:bg-amber-950/40 px-2 py-0.5 rounded-lg border border-amber-200 dark:border-amber-500/30">
                 <Flame className="w-3 h-3 fill-amber-500 text-amber-500" />
                 <span className="text-[11px] text-amber-700 dark:text-amber-400 font-bold">{quest.streakCount} Streak</span>
                 <button
@@ -130,7 +130,7 @@ export const QuestCard: React.FC<QuestCardProps> = ({ quest, onComplete, onEdit,
                   onClick={handleComplete}
                   disabled={isCompleting}
                   title="Increment habit streak"
-                  className="ml-1 px-1.5 py-0.2 rounded bg-amber-200 dark:bg-amber-500/20 hover:bg-amber-300 dark:hover:bg-amber-500/40 text-amber-900 dark:text-amber-300 hover:text-black dark:hover:text-white text-[10px] font-bold transition"
+                  className="ml-1 px-1.5 py-0.2 rounded bg-amber-100 dark:bg-amber-500/20 hover:bg-amber-200 dark:hover:bg-amber-500/40 text-amber-900 dark:text-amber-300 hover:text-black dark:hover:text-white text-[10px] font-bold transition"
                 >
                   +1 Rep
                 </button>
@@ -138,14 +138,14 @@ export const QuestCard: React.FC<QuestCardProps> = ({ quest, onComplete, onEdit,
             )}
           </div>
 
-          <h3 className={`font-semibold text-sm sm:text-base text-slate-900 dark:text-slate-100 leading-snug transition ${
+          <h3 className={`font-semibold text-sm sm:text-base text-title leading-snug transition ${
             quest.isCompleted ? 'line-through text-slate-400 dark:text-slate-500' : 'group-hover:text-indigo-600 dark:group-hover:text-indigo-300'
           }`}>
             {quest.title}
           </h3>
 
           {quest.description && (
-            <p className="text-xs text-slate-500 dark:text-slate-400 mt-1 line-clamp-2">
+            <p className="text-xs text-body mt-1 line-clamp-2">
               {quest.description}
             </p>
           )}
