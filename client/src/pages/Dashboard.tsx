@@ -16,6 +16,7 @@ import { useTheme } from '../context/ThemeContext';
 import { AmbientEmbers } from '../components/AmbientEmbers';
 import { EquippedLoadoutCard } from '../components/EquippedLoadoutCard';
 import { Database, ShieldCheck, Cpu, Keyboard } from 'lucide-react';
+import { api } from '../utils/api';
 
 const VALID_TABS = ['quests', 'boss', 'armoury', 'character', 'history'];
 
@@ -116,6 +117,15 @@ export const Dashboard: React.FC<DashboardProps> = ({ activeTab: propActiveTab }
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, [playClick, toggleMute]);
+
+  // Periodic keep-alive heartbeat so PostgreSQL & Render stay warm while tab is open
+  useEffect(() => {
+    const interval = setInterval(() => {
+      api.health.check().catch(() => {});
+    }, 8 * 60 * 1000);
+
+    return () => clearInterval(interval);
+  }, []);
 
   return (
     <div className="min-h-screen relative flex flex-col bg-[#f8fafc] dark:bg-[#090a0f] text-slate-900 dark:text-[#f8fafc] selection:bg-indigo-600 selection:text-white overflow-x-clip transition-colors duration-200">
