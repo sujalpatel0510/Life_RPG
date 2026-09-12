@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useAuth } from '../context/AuthContext';
+import { useTheme } from '../context/ThemeContext';
 import { api } from '../utils/api';
 import { 
   User, 
@@ -19,6 +20,7 @@ import {
 
 export const CharacterSheet: React.FC = () => {
   const { character, setCharacter } = useAuth();
+  const { theme } = useTheme();
   const [profileData, setProfileData] = useState<any>(null);
   const [loading, setLoading] = useState(true);
 
@@ -204,7 +206,7 @@ export const CharacterSheet: React.FC = () => {
                   key={lvl}
                   points={gridPoints}
                   fill="none"
-                  stroke="#1e293b"
+                  stroke={theme === 'light' ? '#cbd5e1' : '#1e293b'}
                   strokeWidth="1"
                   strokeDasharray="2,2"
                 />
@@ -223,7 +225,7 @@ export const CharacterSheet: React.FC = () => {
                   y1={centerY}
                   x2={x2}
                   y2={y2}
-                  stroke="#1e293b"
+                  stroke={theme === 'light' ? '#cbd5e1' : '#1e293b'}
                   strokeWidth="1"
                 />
               );
@@ -232,7 +234,7 @@ export const CharacterSheet: React.FC = () => {
             {/* Hero Attribute Polygon */}
             <polygon
               points={points}
-              fill="rgba(245, 158, 11, 0.3)"
+              fill={theme === 'light' ? 'rgba(245, 158, 11, 0.22)' : 'rgba(245, 158, 11, 0.3)'}
               stroke="#F59E0B"
               strokeWidth="2.5"
               className="transition-all duration-500 ease-out"
@@ -252,11 +254,11 @@ export const CharacterSheet: React.FC = () => {
 
               return (
                 <g key={stat.key}>
-                  <circle cx={x} cy={y} r="4" fill="#F59E0B" stroke="#0B0F19" strokeWidth="1.5" />
+                  <circle cx={x} cy={y} r="4" fill="#F59E0B" stroke={theme === 'light' ? '#ffffff' : '#0B0F19'} strokeWidth="1.5" />
                   <text
                     x={lx}
                     y={ly + 4}
-                    fill="#94a3b8"
+                    fill={theme === 'light' ? '#334155' : '#94a3b8'}
                     fontSize="10"
                     fontWeight="bold"
                     textAnchor="middle"

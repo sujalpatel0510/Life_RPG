@@ -1,6 +1,7 @@
 import React from 'react';
 import { useAuth } from '../context/AuthContext';
 import { useSound } from '../context/SoundContext';
+import { useTheme } from '../context/ThemeContext';
 import { 
   Shield, 
   Flame, 
@@ -19,7 +20,9 @@ import {
   Keyboard,
   Wand2,
   Zap,
-  HelpCircle
+  HelpCircle,
+  Sun,
+  Moon
 } from 'lucide-react';
 
 interface NavbarProps {
@@ -31,6 +34,7 @@ interface NavbarProps {
 export const Navbar: React.FC<NavbarProps> = ({ activeTab, setActiveTab, onOpenHotkeys }) => {
   const { character, logout } = useAuth();
   const { isMuted, toggleMute, playClick } = useSound();
+  const { theme, toggleTheme } = useTheme();
 
   if (!character) return null;
 
@@ -164,6 +168,23 @@ export const Navbar: React.FC<NavbarProps> = ({ activeTab, setActiveTab, onOpenH
               <Gem className="w-4 h-4 text-cyan-400" />
               <span className="text-xs font-bold">{character.gems}</span>
             </div>
+
+            {/* Theme Toggle Button (Light / Dark) */}
+            <button
+              onClick={() => {
+                playClick();
+                toggleTheme();
+              }}
+              className="p-2 rounded-lg bg-slate-800/80 hover:bg-slate-700 text-slate-300 border border-slate-700 transition"
+              title={theme === 'dark' ? 'Switch to Parchment Light Theme' : 'Switch to Dark Realm Theme'}
+              aria-label="Toggle Theme"
+            >
+              {theme === 'dark' ? (
+                <Sun className="w-4 h-4 text-amber-400 hover:rotate-90 transition-transform duration-300" />
+              ) : (
+                <Moon className="w-4 h-4 text-indigo-400 hover:-rotate-12 transition-transform duration-300" />
+              )}
+            </button>
 
             {/* Hotkeys Modal Button */}
             <button

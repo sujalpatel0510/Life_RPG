@@ -10,6 +10,7 @@ import { HotkeyGuideModal } from '../components/HotkeyGuideModal';
 import { FloatingCombatText, FloatingTextItem } from '../components/FloatingCombatText';
 import { useAuth } from '../context/AuthContext';
 import { useSound } from '../context/SoundContext';
+import { useTheme } from '../context/ThemeContext';
 import { AmbientEmbers } from '../components/AmbientEmbers';
 import { EquippedLoadoutCard } from '../components/EquippedLoadoutCard';
 import { Database, ShieldCheck, Cpu, Keyboard } from 'lucide-react';
@@ -17,6 +18,7 @@ import { Database, ShieldCheck, Cpu, Keyboard } from 'lucide-react';
 export const Dashboard: React.FC = () => {
   const { character } = useAuth();
   const { toggleMute, playClick } = useSound();
+  const { toggleTheme } = useTheme();
   const [activeTab, setActiveTab] = useState<string>('quests');
   const [levelUpModal, setLevelUpModal] = useState<number | null>(null);
   const [isHotkeysOpen, setIsHotkeysOpen] = useState(false);
@@ -72,6 +74,10 @@ export const Dashboard: React.FC = () => {
         e.preventDefault();
         playClick();
         setActiveTab('history');
+      } else if (key === 't') {
+        e.preventDefault();
+        playClick();
+        toggleTheme();
       } else if (key === 'm') {
         e.preventDefault();
         toggleMute();

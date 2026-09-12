@@ -1,7 +1,9 @@
 import React, { useEffect, useRef } from 'react';
+import { useTheme } from '../context/ThemeContext';
 
 export const AmbientEmbers: React.FC = () => {
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
+  const { theme } = useTheme();
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -33,7 +35,9 @@ export const AmbientEmbers: React.FC = () => {
     }
 
     const particleCount = Math.min(35, Math.floor(width / 40));
-    const colors = ['#F59E0B', '#EAB308', '#8B5CF6', '#EF4444'];
+    const darkColors = ['#F59E0B', '#EAB308', '#8B5CF6', '#EF4444'];
+    const lightColors = ['#D97706', '#2563EB', '#059669', '#7C3AED'];
+    const colors = theme === 'light' ? lightColors : darkColors;
     const particles: Particle[] = [];
 
     for (let i = 0; i < particleCount; i++) {

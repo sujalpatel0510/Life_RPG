@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useAuth } from '../context/AuthContext';
 import { useSound } from '../context/SoundContext';
+import { useTheme } from '../context/ThemeContext';
 import { HeroClass } from '../types';
 import { 
   Shield, 
@@ -12,12 +13,15 @@ import {
   Mail, 
   User as UserIcon, 
   ArrowRight,
-  Check
+  Check,
+  Sun,
+  Moon
 } from 'lucide-react';
 
 export const AuthPage: React.FC = () => {
   const { login, register } = useAuth();
   const { playClick, playCoin } = useSound();
+  const { theme, toggleTheme } = useTheme();
   const [isLogin, setIsLogin] = useState(true);
 
   // Form State
@@ -97,7 +101,26 @@ export const AuthPage: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center p-4 bg-gradient-to-br from-[#060810] via-[#0b0f1d] to-[#04060c]">
+    <div className="min-h-screen flex items-center justify-center p-4 bg-gradient-to-br from-[#060810] via-[#0b0f1d] to-[#04060c] relative">
+      {/* Top-Right Theme Toggle */}
+      <div className="absolute top-4 right-4 z-20">
+        <button
+          onClick={() => {
+            playClick();
+            toggleTheme();
+          }}
+          className="p-2.5 rounded-xl bg-slate-800/80 hover:bg-slate-700 text-slate-300 border border-slate-700/80 transition shadow-lg"
+          title={theme === 'dark' ? 'Switch to Parchment Light Theme' : 'Switch to Dark Realm Theme'}
+          aria-label="Toggle Theme"
+        >
+          {theme === 'dark' ? (
+            <Sun className="w-5 h-5 text-amber-400" />
+          ) : (
+            <Moon className="w-5 h-5 text-indigo-400" />
+          )}
+        </button>
+      </div>
+
       <div className="relative w-full max-w-xl bg-[#0f1526]/90 border border-slate-700/80 rounded-3xl p-6 sm:p-10 shadow-2xl backdrop-blur-xl">
         
         {/* Glow Halo Background */}

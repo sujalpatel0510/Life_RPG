@@ -1,6 +1,7 @@
 import React from 'react';
 import { AuthProvider, useAuth } from './context/AuthContext';
 import { SoundProvider } from './context/SoundContext';
+import { ThemeProvider } from './context/ThemeContext';
 import { AuthPage } from './pages/AuthPage';
 import { Dashboard } from './pages/Dashboard';
 import { Shield, Loader2 } from 'lucide-react';
@@ -27,11 +28,13 @@ const MainApp: React.FC = () => {
 
 export const App: React.FC = () => {
   return (
-    <AuthProvider>
-      <SoundProvider>
-        <MainApp />
-      </SoundProvider>
-    </AuthProvider>
+    <ThemeProvider>
+      <AuthProvider>
+        <SoundProvider>
+          <MainApp />
+        </SoundProvider>
+      </AuthProvider>
+    </ThemeProvider>
   );
 };
 

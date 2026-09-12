@@ -19,6 +19,7 @@ export const HotkeyGuideModal: React.FC<HotkeyGuideModalProps> = ({ isOpen, onCl
     { key: '3', desc: 'Navigate to Armoury Shop' },
     { key: '4', desc: 'Navigate to Hero Sheet & Radar' },
     { key: '5', desc: 'Navigate to Chronicles & History' },
+    { key: 'T', desc: 'Toggle Light / Dark Theme' },
     { key: 'M', desc: 'Toggle Sound Effects (Mute / Unmute)' },
     { key: '?', desc: 'Toggle this Hotkeys Reference' },
     { key: 'Esc', desc: 'Close any active modal' },
