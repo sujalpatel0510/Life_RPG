@@ -10,6 +10,8 @@ import { HotkeyGuideModal } from '../components/HotkeyGuideModal';
 import { FloatingCombatText, FloatingTextItem } from '../components/FloatingCombatText';
 import { useAuth } from '../context/AuthContext';
 import { useSound } from '../context/SoundContext';
+import { AmbientEmbers } from '../components/AmbientEmbers';
+import { EquippedLoadoutCard } from '../components/EquippedLoadoutCard';
 import { Database, ShieldCheck, Cpu, Keyboard } from 'lucide-react';
 
 export const Dashboard: React.FC = () => {
@@ -89,8 +91,11 @@ export const Dashboard: React.FC = () => {
   }, [playClick, toggleMute]);
 
   return (
-    <div className="min-h-screen flex flex-col bg-[#070a12] text-slate-100 selection:bg-amber-500 selection:text-black">
+    <div className="min-h-screen relative flex flex-col bg-[#070a12] text-slate-100 selection:bg-amber-500 selection:text-black overflow-x-hidden">
       
+      {/* Dark Fantasy Floating Ambient Embers Background */}
+      <AmbientEmbers />
+
       {/* Floating Combat Text Layer */}
       <FloatingCombatText items={floatingTexts} />
 
@@ -102,21 +107,29 @@ export const Dashboard: React.FC = () => {
       />
 
       {/* Main Content Area */}
-      <main className="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8 space-y-8">
+      <main className="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8 space-y-8 z-10">
         
         {activeTab === 'quests' && (
-          <div className="space-y-8">
-            {/* Boss Banner Preview */}
-            <BossRaid lastDamage={lastBossDamage} />
-            
-            {/* Core Quest System */}
-            <QuestBoard 
-              onLevelUp={(lvl) => setLevelUpModal(lvl)}
-              onBossDamage={handleBossDamage}
-              onAddFloatingText={addFloatingText}
-              isModalOpenExternal={isSummonModalOpen}
-              setIsModalOpenExternal={setIsSummonModalOpen}
-            />
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+            {/* Left 8 Cols: Primary Quest Journal & Quick-Add */}
+            <div className="lg:col-span-8 space-y-6">
+              <QuestBoard 
+                onLevelUp={(lvl) => setLevelUpModal(lvl)}
+                onBossDamage={handleBossDamage}
+                onAddFloatingText={addFloatingText}
+                isModalOpenExternal={isSummonModalOpen}
+                setIsModalOpenExternal={setIsSummonModalOpen}
+              />
+            </div>
+
+            {/* Right 4 Cols: Tactical Sidebar (Boss Raid + Equipped Gear) */}
+            <div className="lg:col-span-4 space-y-6 sticky top-24">
+              {/* World Boss Encounter */}
+              <BossRaid lastDamage={lastBossDamage} />
+
+              {/* Active Hero Loadout Paperdoll */}
+              <EquippedLoadoutCard onOpenArmoury={() => setActiveTab('armoury')} />
+            </div>
           </div>
         )}
 

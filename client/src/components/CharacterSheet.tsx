@@ -18,7 +18,7 @@ import {
 } from 'lucide-react';
 
 export const CharacterSheet: React.FC = () => {
-  const { character } = useAuth();
+  const { character, setCharacter } = useAuth();
   const [profileData, setProfileData] = useState<any>(null);
   const [loading, setLoading] = useState(true);
 
@@ -93,9 +93,39 @@ export const CharacterSheet: React.FC = () => {
             </span>
           </div>
 
-          <p className="text-sm text-slate-400 italic">
-            "{character.title}"
-          </p>
+          <div className="flex flex-wrap items-center justify-center md:justify-start gap-2">
+            <span className="text-xs text-slate-400 font-semibold">Active Title:</span>
+            <select
+              value={character.title}
+              onChange={async (e) => {
+                const newTitle = e.target.value;
+                try {
+                  const res = await api.character.update({ title: newTitle });
+                  if (res && res.character) {
+                    setCharacter(res.character);
+                  }
+                } catch (err: any) {
+                  alert(err.message || 'Failed to equip title');
+                }
+              }}
+              className="bg-slate-900 border border-slate-700/80 hover:border-amber-500/60 rounded-lg px-2.5 py-1 text-xs text-amber-300 font-serif italic focus:outline-none focus:border-amber-500 transition cursor-pointer"
+            >
+              {[
+                'The Awakened',
+                'Novice Adventurer',
+                'Task Slayer',
+                'Iron Will Vanguard',
+                'Code Mage',
+                'Architect of Focus',
+                'Mythic Champion',
+                'Zephyr Conqueror'
+              ].map(t => (
+                <option key={t} value={t} className="bg-slate-900 text-slate-200">
+                  "{t}"
+                </option>
+              ))}
+            </select>
+          </div>
 
           <div className="flex flex-wrap items-center justify-center md:justify-start gap-4 pt-2 text-xs">
             <div className="bg-slate-900/80 px-3 py-1.5 rounded-lg border border-slate-800">
@@ -111,6 +141,40 @@ export const CharacterSheet: React.FC = () => {
               <span className="font-bold text-emerald-400">{profileData?.stats?.totalCompletedQuests || 0}</span>
             </div>
           </div>
+        </div>
+      </div>
+
+      {/* Level Milestone Progression Roadmap */}
+      <div className="bg-[#101626] border border-slate-800 rounded-2xl p-5">
+        <h3 className="font-fantasy text-sm font-bold text-slate-200 mb-3 flex items-center gap-2">
+          <Crown className="w-4 h-4 text-amber-400" />
+          Level Milestone Progression Roadmap
+        </h3>
+        <div className="grid grid-cols-2 sm:grid-cols-5 gap-3">
+          {[
+            { lvl: 1, title: 'Awakened', perk: 'Base Combat Stats', unlocked: character.level >= 1 },
+            { lvl: 2, title: 'Apprentice', perk: '+15% Boss Damage', unlocked: character.level >= 2 },
+            { lvl: 3, title: 'Veteran', perk: '+10% Gold Rewards', unlocked: character.level >= 3 },
+            { lvl: 5, title: 'Master', perk: 'Relic Slot Synergy', unlocked: character.level >= 5 },
+            { lvl: 10, title: 'Grandmaster', perk: 'Mythic Title & Glow', unlocked: character.level >= 10 },
+          ].map((m) => (
+            <div
+              key={m.lvl}
+              className={`p-3 rounded-xl border flex flex-col items-center text-center transition ${
+                m.unlocked
+                  ? 'bg-amber-950/20 border-amber-500/40 text-amber-300 shadow-sm'
+                  : 'bg-slate-900/40 border-slate-800/80 text-slate-500 opacity-60'
+              }`}
+            >
+              <span className={`text-[10px] font-bold px-2 py-0.5 rounded-full mb-1 ${
+                m.unlocked ? 'bg-amber-500/20 text-amber-400 border border-amber-500/30' : 'bg-slate-800 text-slate-400'
+              }`}>
+                Level {m.lvl}
+              </span>
+              <span className="text-xs font-bold text-slate-200 mt-1">{m.title}</span>
+              <span className="text-[10px] text-slate-400 mt-0.5">{m.perk}</span>
+            </div>
+          ))}
         </div>
       </div>
 

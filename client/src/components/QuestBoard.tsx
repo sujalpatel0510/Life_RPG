@@ -166,6 +166,11 @@ export const QuestBoard: React.FC<QuestBoardProps> = ({
     { id: 'CHARISMA', label: 'Charisma' },
   ];
 
+  // Partition active vs completed quests
+  const activeQuests = filteredQuests.filter(q => !q.isCompleted || q.questType === 'HABIT');
+  const completedQuests = filteredQuests.filter(q => q.isCompleted && q.questType !== 'HABIT');
+  const [showCompleted, setShowCompleted] = useState(false);
+
   return (
     <div className="space-y-6">
       
@@ -253,9 +258,9 @@ export const QuestBoard: React.FC<QuestBoardProps> = ({
             <div key={n} className="h-32 rounded-2xl bg-slate-900/40 border border-slate-800 animate-pulse" />
           ))}
         </div>
-      ) : filteredQuests.length > 0 ? (
+      ) : activeQuests.length > 0 ? (
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          {filteredQuests.map((quest) => (
+          {activeQuests.map((quest) => (
             <QuestCard
               key={quest.id}
               quest={quest}
@@ -282,6 +287,48 @@ export const QuestBoard: React.FC<QuestBoardProps> = ({
               Type in the Quick-Add bar above or press <kbd className="px-1.5 py-0.5 rounded bg-slate-800 text-amber-400 font-mono text-[10px]">N</kbd> to summon your first objective.
             </p>
           </div>
+        </div>
+      )}
+
+      {/* Conquered Chronicles Accordion (Completed Quests Archive) */}
+      {completedQuests.length > 0 && (
+        <div className="pt-4 border-t border-slate-800/80">
+          <button
+            type="button"
+            onClick={() => {
+              playClick();
+              setShowCompleted(prev => !prev);
+            }}
+            className="w-full flex items-center justify-between p-3.5 rounded-xl bg-slate-900/40 hover:bg-slate-900/80 border border-slate-800/80 text-slate-400 hover:text-slate-200 transition"
+          >
+            <div className="flex items-center space-x-2 text-xs font-bold uppercase tracking-wider">
+              <CheckCircle2 className="w-4 h-4 text-emerald-400" />
+              <span>Conquered Chronicles</span>
+              <span className="px-2 py-0.5 rounded-full bg-emerald-950/60 text-emerald-400 border border-emerald-500/30 text-[10px]">
+                {completedQuests.length}
+              </span>
+            </div>
+            <span className="text-xs text-slate-500">
+              {showCompleted ? '▲ Hide Completed' : '▼ Show Completed'}
+            </span>
+          </button>
+
+          {showCompleted && (
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4 animate-in fade-in duration-200">
+              {completedQuests.map((quest) => (
+                <QuestCard
+                  key={quest.id}
+                  quest={quest}
+                  onComplete={handleCompleteQuest}
+                  onEdit={(q) => {
+                    setQuestToEdit(q);
+                    setModalOpen(true);
+                  }}
+                  onDelete={handleDeleteQuest}
+                />
+              ))}
+            </div>
+          )}
         </div>
       )}
 

@@ -120,12 +120,21 @@ export const QuestCard: React.FC<QuestCardProps> = ({ quest, onComplete, onEdit,
               {quest.questType}
             </span>
 
-            {/* Habit Streak if applicable */}
-            {quest.questType === 'HABIT' && quest.streakCount > 0 && (
-              <span className="inline-flex items-center gap-0.5 text-[11px] text-orange-400 font-bold bg-orange-950/40 px-2 py-0.5 rounded-lg border border-orange-500/30">
-                <Flame className="w-3 h-3 fill-orange-500" />
-                {quest.streakCount} Streak
-              </span>
+            {/* Habit Streak and Increment button */}
+            {quest.questType === 'HABIT' && (
+              <div className="inline-flex items-center gap-1 bg-orange-950/40 px-2 py-0.5 rounded-lg border border-orange-500/30">
+                <Flame className="w-3 h-3 fill-orange-500 text-orange-500" />
+                <span className="text-[11px] text-orange-400 font-bold">{quest.streakCount} Streak</span>
+                <button
+                  type="button"
+                  onClick={handleComplete}
+                  disabled={isCompleting}
+                  title="Increment habit streak"
+                  className="ml-1 px-1.5 py-0.2 rounded bg-orange-500/20 hover:bg-orange-500/40 text-orange-300 hover:text-white text-[10px] font-bold transition"
+                >
+                  +1 Rep
+                </button>
+              </div>
             )}
           </div>
 
