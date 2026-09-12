@@ -57,7 +57,7 @@ export const HeroCommandBanner: React.FC<HeroCommandBannerProps> = ({
   const crestGradient = getClassCrestStyle(character.heroClass);
 
   return (
-    <div className="relative overflow-hidden rounded-3xl bg-white dark:bg-[#12131a] border border-slate-200 dark:border-[#222533] p-5 sm:p-6 shadow-sm transition-all">
+    <div className="surface relative overflow-hidden rounded-3xl p-5 sm:p-6 shadow-sm transition-all">
       {/* Background Subtle Ambience */}
       <div className="absolute -top-24 -right-24 w-72 h-72 bg-indigo-500/5 dark:bg-indigo-500/10 rounded-full blur-3xl pointer-events-none" />
 

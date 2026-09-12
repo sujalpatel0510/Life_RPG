@@ -118,7 +118,7 @@ export const Dashboard: React.FC<DashboardProps> = ({ activeTab: propActiveTab }
   }, [playClick, toggleMute]);
 
   return (
-    <div className="min-h-screen relative flex flex-col bg-rpg-light-bg dark:bg-rpg-dark-bg text-slate-900 dark:text-[#f4f3f0] selection:bg-indigo-600 selection:text-white overflow-x-hidden transition-colors duration-300">
+    <div className="min-h-screen relative flex flex-col bg-[#f8fafc] dark:bg-[#090a0f] text-slate-900 dark:text-[#f8fafc] selection:bg-indigo-600 selection:text-white overflow-x-hidden transition-colors duration-200">
       
       {/* Dark Fantasy Floating Ambient Embers Background */}
       <AmbientEmbers />

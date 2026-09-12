@@ -30,15 +30,29 @@ const getSavedTheme = (): Theme | null => {
 const applyThemeToDom = (theme: Theme) => {
   if (typeof document === 'undefined') return;
   const root = document.documentElement;
+  const body = document.body;
+
   if (theme === 'dark') {
-    root.classList.add('dark');
     root.classList.remove('light');
+    root.classList.add('dark');
+    if (body) {
+      body.classList.remove('light');
+      body.classList.add('dark');
+    }
   } else {
-    root.classList.add('light');
     root.classList.remove('dark');
+    root.classList.add('light');
+    if (body) {
+      body.classList.remove('dark');
+      body.classList.add('light');
+    }
   }
   root.setAttribute('data-theme', theme);
   root.style.colorScheme = theme;
+  if (body) {
+    body.setAttribute('data-theme', theme);
+    body.style.colorScheme = theme;
+  }
 };
 
 const ThemeContext = createContext<ThemeContextType | undefined>(undefined);

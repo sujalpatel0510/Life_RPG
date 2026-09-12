@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en" class="dark">
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%236366F1'><path d='M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z'/></svg>" />
@@ -25,10 +25,7 @@
       (function() {
         try {
           var saved = localStorage.getItem('liferpg_theme');
-          var prefersLight = (window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches);
-          var theme = saved === 'light' || saved === 'dark'
-            ? saved
-            : (prefersLight ? 'light' : 'dark');
+          var theme = (saved === 'light' || saved === 'dark') ? saved : 'dark';
           var root = document.documentElement;
           if (theme === 'light') {
             root.classList.remove('dark');
