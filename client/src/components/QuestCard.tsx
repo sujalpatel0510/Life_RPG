@@ -32,30 +32,30 @@ export const QuestCard: React.FC<QuestCardProps> = ({ quest, onComplete, onEdit,
   const getCategoryMeta = (cat: string) => {
     switch (cat) {
       case 'STRENGTH':
-        return { label: 'Strength', icon: Dumbbell, color: 'text-red-400 bg-red-950/40 border-red-500/30' };
+        return { label: 'Strength', icon: Dumbbell, color: 'text-rose-600 dark:text-rose-400 bg-rose-50 dark:bg-rose-950/40 border-rose-200 dark:border-rose-500/30' };
       case 'INTELLECT':
-        return { label: 'Intellect', icon: Brain, color: 'text-blue-400 bg-blue-950/40 border-blue-500/30' };
+        return { label: 'Intellect', icon: Brain, color: 'text-blue-600 dark:text-blue-400 bg-blue-50 dark:bg-blue-950/40 border-blue-200 dark:border-blue-500/30' };
       case 'VITALITY':
-        return { label: 'Vitality', icon: Heart, color: 'text-emerald-400 bg-emerald-950/40 border-emerald-500/30' };
+        return { label: 'Vitality', icon: Heart, color: 'text-emerald-600 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-950/40 border-emerald-200 dark:border-emerald-500/30' };
       case 'WISDOM':
-        return { label: 'Wisdom', icon: BookOpen, color: 'text-purple-400 bg-purple-950/40 border-purple-500/30' };
+        return { label: 'Wisdom', icon: BookOpen, color: 'text-purple-600 dark:text-purple-400 bg-purple-50 dark:bg-purple-950/40 border-purple-200 dark:border-purple-500/30' };
       case 'AGILITY':
-        return { label: 'Agility', icon: Zap, color: 'text-orange-400 bg-orange-950/40 border-orange-500/30' };
+        return { label: 'Agility', icon: Zap, color: 'text-amber-600 dark:text-orange-400 bg-amber-50 dark:bg-orange-950/40 border-amber-200 dark:border-orange-500/30' };
       case 'CHARISMA':
-        return { label: 'Charisma', icon: Users, color: 'text-pink-400 bg-pink-950/40 border-pink-500/30' };
+        return { label: 'Charisma', icon: Users, color: 'text-pink-600 dark:text-pink-400 bg-pink-50 dark:bg-pink-950/40 border-pink-200 dark:border-pink-500/30' };
       default:
-        return { label: 'General', icon: Sparkles, color: 'text-amber-400 bg-amber-950/40 border-amber-500/30' };
+        return { label: 'General', icon: Sparkles, color: 'text-amber-600 dark:text-amber-400 bg-amber-50 dark:bg-amber-950/40 border-amber-200 dark:border-amber-500/30' };
     }
   };
 
   const getDifficultyColor = (diff: string) => {
     switch (diff) {
-      case 'TRIVIAL': return 'text-slate-400 border-slate-700 bg-slate-800/60';
-      case 'EASY': return 'text-emerald-400 border-emerald-500/30 bg-emerald-950/30';
-      case 'MEDIUM': return 'text-amber-400 border-amber-500/30 bg-amber-950/30';
-      case 'HARD': return 'text-orange-400 border-orange-500/30 bg-orange-950/30';
-      case 'EPIC': return 'text-rose-400 border-rose-500/40 bg-rose-950/40 animate-pulse';
-      default: return 'text-slate-400 border-slate-700';
+      case 'TRIVIAL': return 'text-slate-600 dark:text-slate-400 border-slate-200 dark:border-slate-700 bg-slate-100 dark:bg-slate-800/60';
+      case 'EASY': return 'text-emerald-700 dark:text-emerald-400 border-emerald-200 dark:border-emerald-500/30 bg-emerald-50 dark:bg-emerald-950/30';
+      case 'MEDIUM': return 'text-amber-700 dark:text-amber-400 border-amber-200 dark:border-amber-500/30 bg-amber-50 dark:bg-amber-950/30';
+      case 'HARD': return 'text-orange-700 dark:text-orange-400 border-orange-200 dark:border-orange-500/30 bg-orange-50 dark:bg-orange-950/30';
+      case 'EPIC': return 'text-rose-700 dark:text-rose-400 border-rose-300 dark:border-rose-500/40 bg-rose-50 dark:bg-rose-950/40 animate-pulse';
+      default: return 'text-slate-600 dark:text-slate-400 border-slate-200 dark:border-slate-700';
     }
   };
 
