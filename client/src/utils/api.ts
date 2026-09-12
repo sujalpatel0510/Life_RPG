@@ -1,4 +1,5 @@
-const API_BASE = '/api';
+const VITE_API_URL = import.meta.env.VITE_API_URL ? String(import.meta.env.VITE_API_URL).replace(/\/$/, '') : '';
+const API_BASE = VITE_API_URL ? `${VITE_API_URL}/api` : '/api';
 
 const getHeaders = () => {
   const token = localStorage.getItem('liferpg_token');
