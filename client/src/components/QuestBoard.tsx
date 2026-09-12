@@ -255,7 +255,7 @@ export const QuestBoard: React.FC<QuestBoardProps> = ({
       {loading ? (
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           {[1, 2, 3, 4].map((n) => (
-            <div key={n} className="h-32 rounded-2xl bg-slate-900/40 border border-slate-800 animate-pulse" />
+            <div key={n} className="h-32 rounded-2xl bg-slate-100 dark:bg-slate-900/40 border border-slate-200 dark:border-slate-800 animate-pulse" />
           ))}
         </div>
       ) : activeQuests.length > 0 ? (
@@ -292,26 +292,27 @@ export const QuestBoard: React.FC<QuestBoardProps> = ({
 
       {/* Conquered Chronicles Accordion (Completed Quests Archive) */}
       {completedQuests.length > 0 && (
-        <div className="pt-4 border-t border-slate-800/80">
+        <div className="pt-4 border-t border-slate-200 dark:border-slate-800/80">
           <button
             type="button"
             onClick={() => {
               playClick();
               setShowCompleted(prev => !prev);
             }}
-            className="w-full flex items-center justify-between p-3.5 rounded-xl bg-slate-900/40 hover:bg-slate-900/80 border border-slate-800/80 text-slate-400 hover:text-slate-200 transition"
+            className="w-full flex items-center justify-between p-3.5 rounded-xl bg-slate-100 dark:bg-slate-900/40 hover:bg-slate-200/80 dark:hover:bg-slate-900/80 border border-slate-200 dark:border-slate-800/80 text-slate-700 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-200 transition"
           >
             <div className="flex items-center space-x-2 text-xs font-bold uppercase tracking-wider">
-              <CheckCircle2 className="w-4 h-4 text-emerald-400" />
+              <CheckCircle2 className="w-4 h-4 text-emerald-600 dark:text-emerald-400" />
               <span>Conquered Chronicles</span>
-              <span className="px-2 py-0.5 rounded-full bg-emerald-950/60 text-emerald-400 border border-emerald-500/30 text-[10px]">
+              <span className="px-2 py-0.5 rounded-full bg-emerald-100 dark:bg-emerald-950/60 text-emerald-700 dark:text-emerald-400 border border-emerald-300 dark:border-emerald-500/30 text-[10px] font-bold">
                 {completedQuests.length}
               </span>
             </div>
-            <span className="text-xs text-slate-500">
+            <span className="text-xs text-slate-500 dark:text-slate-400">
               {showCompleted ? '▲ Hide Completed' : '▼ Show Completed'}
             </span>
           </button>
+
 
           {showCompleted && (
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4 animate-in fade-in duration-200">

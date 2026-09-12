@@ -76,13 +76,14 @@ export const CharacterSheet: React.FC = () => {
         
         {/* Class Crest / Avatar */}
         <div className="relative flex-shrink-0">
-          <div className="w-28 h-28 rounded-2xl bg-gradient-to-br from-indigo-600/20 via-slate-100 dark:via-slate-900 to-indigo-950/40 border-2 border-indigo-500/40 flex items-center justify-center shadow-xl">
-            <Shield className="w-14 h-14 text-indigo-500 dark:text-indigo-400 fill-indigo-500/20" />
+          <div className="w-28 h-28 rounded-2xl bg-gradient-to-br from-indigo-100 via-white to-indigo-50 dark:from-indigo-600/20 dark:via-slate-900 dark:to-indigo-950/40 border-2 border-indigo-300 dark:border-indigo-500/40 flex items-center justify-center shadow-md dark:shadow-xl">
+            <Shield className="w-14 h-14 text-indigo-600 dark:text-indigo-400 fill-indigo-500/20" />
           </div>
           <div className="absolute -bottom-2 -right-2 bg-white dark:bg-slate-950 border border-indigo-500 rounded-full px-2.5 py-0.5 text-xs font-bold text-indigo-800 dark:text-indigo-400 shadow">
             Lv. {character.level}
           </div>
         </div>
+
 
         {/* Hero Credentials */}
         <div className="space-y-2 text-center md:text-left flex-1">

@@ -1,4 +1,5 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useEffect, useCallback, useMemo } from 'react';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { Navbar } from '../components/Navbar';
 import { QuestBoard } from '../components/QuestBoard';
 import { BossRaid } from '../components/BossRaid';
@@ -17,56 +18,38 @@ import { Database, ShieldCheck, Cpu, Keyboard } from 'lucide-react';
 
 const VALID_TABS = ['quests', 'boss', 'armoury', 'character', 'history'];
 
-export const Dashboard: React.FC = () => {
+interface DashboardProps {
+  activeTab?: string;
+}
+
+export const Dashboard: React.FC<DashboardProps> = ({ activeTab: propActiveTab }) => {
+  const navigate = useNavigate();
+  const location = useLocation();
   const { character } = useAuth();
   const { toggleMute, playClick } = useSound();
   const { toggleTheme } = useTheme();
 
-  // Read initial tab from URL hash (#/quests, #/boss, #/armoury, etc.) or default to 'quests'
-  const getInitialTab = (): string => {
-    const hash = window.location.hash.replace(/^#\/?/, '').toLowerCase();
-    return VALID_TABS.includes(hash) ? hash : 'quests';
-  };
+  // Compute active tab from prop or route pathname
+  const activeTab = useMemo(() => {
+    if (propActiveTab && VALID_TABS.includes(propActiveTab)) {
+      return propActiveTab;
+    }
+    const path = location.pathname.replace(/^\//, '').toLowerCase();
+    return VALID_TABS.includes(path) ? path : 'quests';
+  }, [propActiveTab, location.pathname]);
 
-  const [activeTab, setActiveTabState] = useState<string>(getInitialTab);
   const [levelUpModal, setLevelUpModal] = useState<number | null>(null);
   const [isHotkeysOpen, setIsHotkeysOpen] = useState(false);
   const [isSummonModalOpen, setIsSummonModalOpen] = useState(false);
   const [lastBossDamage, setLastBossDamage] = useState<{ amount: number; timestamp: number } | null>(null);
   const [floatingTexts, setFloatingTexts] = useState<FloatingTextItem[]>([]);
 
-  // Function to set active tab and update the browser URL
+  // Navigate to new tab URL
   const setActiveTab = useCallback((tab: string) => {
     if (!VALID_TABS.includes(tab)) return;
-    setActiveTabState(tab);
-    if (window.location.hash !== `#/${tab}`) {
-      window.history.pushState(null, '', `#/${tab}`);
-    }
-  }, []);
+    navigate(`/${tab}`);
+  }, [navigate]);
 
-  // Listen for browser Back/Forward navigation (popstate & hashchange)
-  useEffect(() => {
-    const handleLocationChange = () => {
-      const hash = window.location.hash.replace(/^#\/?/, '').toLowerCase();
-      if (VALID_TABS.includes(hash)) {
-        setActiveTabState(hash);
-      } else {
-        setActiveTabState('quests');
-      }
-    };
-
-    // Ensure default hash is present in URL if empty
-    if (!window.location.hash) {
-      window.history.replaceState(null, '', '#/quests');
-    }
-
-    window.addEventListener('popstate', handleLocationChange);
-    window.addEventListener('hashchange', handleLocationChange);
-    return () => {
-      window.removeEventListener('popstate', handleLocationChange);
-      window.removeEventListener('hashchange', handleLocationChange);
-    };
-  }, []);
 
   // Add floating combat text
   const addFloatingText = useCallback((text: string, color: string, x: number, y: number) => {

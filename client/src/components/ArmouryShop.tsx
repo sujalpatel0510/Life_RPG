@@ -193,7 +193,7 @@ export const ArmouryShop: React.FC = () => {
       {loading ? (
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
           {[1, 2, 3, 4, 5, 6].map((n) => (
-            <div key={n} className="h-56 rounded-2xl bg-slate-900/40 border border-slate-800 animate-pulse" />
+            <div key={n} className="h-56 rounded-2xl bg-slate-100 dark:bg-slate-900/40 border border-slate-200 dark:border-slate-800 animate-pulse" />
           ))}
         </div>
       ) : (
@@ -210,7 +210,7 @@ export const ArmouryShop: React.FC = () => {
               >
                 <div>
                   <div className="flex items-start justify-between gap-3">
-                    <div className="w-12 h-12 rounded-xl bg-slate-950/80 border border-current flex items-center justify-center flex-shrink-0 shadow">
+                    <div className="w-12 h-12 rounded-xl bg-slate-100 dark:bg-slate-950/80 border border-current flex items-center justify-center flex-shrink-0 shadow-sm">
                       <Icon className="w-6 h-6" />
                     </div>
 
@@ -218,11 +218,12 @@ export const ArmouryShop: React.FC = () => {
                       <span className="text-[10px] font-black uppercase tracking-wider px-2 py-0.5 rounded border border-current">
                         {item.rarity}
                       </span>
-                      <span className="text-[10px] text-slate-400 mt-1">
+                      <span className="text-[10px] text-slate-500 dark:text-slate-400 mt-1">
                         {item.category}
                       </span>
                     </div>
                   </div>
+
 
                   <h3 className="font-fantasy text-base font-bold text-slate-900 dark:text-slate-100 mt-3">
                     {item.name}

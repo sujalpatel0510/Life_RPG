@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import { useSound } from '../context/SoundContext';
 import { useTheme } from '../context/ThemeContext';
@@ -18,11 +19,29 @@ import {
   Moon
 } from 'lucide-react';
 
-export const AuthPage: React.FC = () => {
+
+interface AuthPageProps {
+  defaultTab?: 'login' | 'register';
+}
+
+export const AuthPage: React.FC<AuthPageProps> = ({ defaultTab }) => {
+  const navigate = useNavigate();
+  const location = useLocation();
   const { login, register } = useAuth();
   const { playClick, playCoin } = useSound();
   const { theme, toggleTheme } = useTheme();
-  const [isLogin, setIsLogin] = useState(true);
+
+  const isRegisterRoute = defaultTab === 'register' || location.pathname === '/register';
+  const [isLogin, setIsLogin] = useState(!isRegisterRoute);
+
+  useEffect(() => {
+    if (location.pathname === '/register') {
+      setIsLogin(false);
+    } else if (location.pathname === '/login') {
+      setIsLogin(true);
+    }
+  }, [location.pathname]);
+
 
   // Form State
   const [email, setEmail] = useState('');
@@ -148,6 +167,7 @@ export const AuthPage: React.FC = () => {
               playClick();
               setIsLogin(true);
               setError('');
+              navigate('/login');
             }}
             className={`btn-tactile py-2 text-xs sm:text-sm font-bold rounded-lg transition ${
               isLogin 
@@ -163,6 +183,7 @@ export const AuthPage: React.FC = () => {
               playClick();
               setIsLogin(false);
               setError('');
+              navigate('/register');
             }}
             className={`btn-tactile py-2 text-xs sm:text-sm font-bold rounded-lg transition ${
               !isLogin 
@@ -172,6 +193,7 @@ export const AuthPage: React.FC = () => {
           >
             FORGE HERO (SIGNUP)
           </button>
+
         </div>
 
         {/* Error Alert */}

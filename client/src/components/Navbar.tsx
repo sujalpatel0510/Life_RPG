@@ -1,4 +1,5 @@
 import React from 'react';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import { useSound } from '../context/SoundContext';
 import { useTheme } from '../context/ThemeContext';
@@ -32,6 +33,8 @@ interface NavbarProps {
 }
 
 export const Navbar: React.FC<NavbarProps> = ({ activeTab, setActiveTab, onOpenHotkeys }) => {
+  const navigate = useNavigate();
+  const location = useLocation();
   const { character, logout } = useAuth();
   const { isMuted, toggleMute, playClick } = useSound();
   const { theme, toggleTheme } = useTheme();
@@ -65,12 +68,13 @@ export const Navbar: React.FC<NavbarProps> = ({ activeTab, setActiveTab, onOpenH
   const crestGradient = getClassCrestStyle(character.heroClass);
 
   const navItems = [
-    { id: 'quests', label: 'Quest Log', icon: Scroll, shortcut: '1' },
-    { id: 'boss', label: 'World Boss', icon: Sword, shortcut: '2' },
-    { id: 'armoury', label: 'Armoury', icon: ShoppingBag, shortcut: '3' },
-    { id: 'character', label: 'Hero Sheet', icon: User, shortcut: '4' },
-    { id: 'history', label: 'Chronicles', icon: History, shortcut: '5' },
+    { id: 'quests', path: '/quests', label: 'Quest Log', icon: Scroll, shortcut: '1' },
+    { id: 'boss', path: '/boss', label: 'World Boss', icon: Sword, shortcut: '2' },
+    { id: 'armoury', path: '/armoury', label: 'Armoury', icon: ShoppingBag, shortcut: '3' },
+    { id: 'character', path: '/character', label: 'Hero Sheet', icon: User, shortcut: '4' },
+    { id: 'history', path: '/history', label: 'Chronicles', icon: History, shortcut: '5' },
   ];
+
 
   return (
     <header className="sticky top-0 z-40 bg-white/95 dark:bg-[#0c111e]/90 backdrop-blur-md border-b border-slate-200 dark:border-slate-800/80 shadow-sm transition-colors duration-200">
@@ -217,6 +221,7 @@ export const Navbar: React.FC<NavbarProps> = ({ activeTab, setActiveTab, onOpenH
               onClick={() => {
                 playClick();
                 logout();
+                navigate('/login');
               }}
               className="btn-tactile p-2 rounded-lg bg-slate-100 dark:bg-slate-800/80 hover:bg-rose-100 dark:hover:bg-rose-950/40 text-slate-600 dark:text-slate-400 hover:text-rose-700 dark:hover:text-rose-400 border border-slate-300 dark:border-slate-700 hover:border-rose-300 dark:hover:border-rose-500/30 transition shadow-sm"
               title="Retire from Realm (Logout)"
@@ -248,15 +253,16 @@ export const Navbar: React.FC<NavbarProps> = ({ activeTab, setActiveTab, onOpenH
           <nav className="flex space-x-1 sm:space-x-3 overflow-x-auto py-2 no-scrollbar" aria-label="Tabs">
             {navItems.map((item) => {
               const Icon = item.icon;
-              const isActive = activeTab === item.id;
+              const isActive = location.pathname === item.path || activeTab === item.id || (item.id === 'quests' && location.pathname === '/');
               return (
                 <a
                   key={item.id}
-                  href={`#/${item.id}`}
+                  href={item.path}
                   onClick={(e) => {
                     e.preventDefault();
                     playClick();
-                    setActiveTab(item.id);
+                    navigate(item.path);
+                    if (setActiveTab) setActiveTab(item.id);
                   }}
                   className={`btn-tactile flex items-center space-x-2 px-3.5 py-1.5 rounded-lg text-xs sm:text-sm font-medium whitespace-nowrap transition-all ${
                     isActive

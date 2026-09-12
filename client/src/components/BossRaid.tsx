@@ -84,9 +84,9 @@ export const BossRaid: React.FC<BossRaidProps> = ({ lastDamage }) => {
 
   if (loading) {
     return (
-      <div className="p-8 rounded-2xl bg-[#101626] border border-slate-800 animate-pulse text-center space-y-4">
-        <div className="w-24 h-24 mx-auto rounded-full bg-slate-800" />
-        <div className="h-6 w-48 mx-auto bg-slate-800 rounded" />
+      <div className="p-8 rounded-2xl bg-white dark:bg-[#101626] border border-slate-200 dark:border-slate-800 animate-pulse text-center space-y-4 shadow-sm">
+        <div className="w-24 h-24 mx-auto rounded-full bg-slate-200 dark:bg-slate-800" />
+        <div className="h-6 w-48 mx-auto bg-slate-200 dark:bg-slate-800 rounded" />
       </div>
     );
   }
@@ -120,8 +120,9 @@ export const BossRaid: React.FC<BossRaidProps> = ({ lastDamage }) => {
               ? 'bg-slate-100 dark:bg-slate-900 border-slate-300 dark:border-slate-700 opacity-70 grayscale'
               : isHit
               ? 'animate-boss-hit bg-rose-500/20 border-rose-400 ring-4 ring-rose-500/50'
-              : 'bg-gradient-to-tr from-indigo-900/30 via-slate-900/50 to-slate-950 border-indigo-500/40 shadow-[0_0_40px_rgba(99,102,241,0.25)] animate-pulse-glow animate-creature-idle'
+              : 'bg-gradient-to-tr from-indigo-100 via-white to-slate-100 dark:from-indigo-900/30 dark:via-slate-900/50 dark:to-slate-950 border-indigo-300 dark:border-indigo-500/40 shadow-[0_0_40px_rgba(99,102,241,0.15)] dark:shadow-[0_0_40px_rgba(99,102,241,0.25)] animate-pulse-glow animate-creature-idle'
           }`}>
+
             {isDefeated ? (
               <div className="text-center p-2">
                 <Gift className="w-16 h-16 text-indigo-400 mx-auto animate-chest-pulse" />
