@@ -51,23 +51,23 @@ export default {
             900: '#134e4a',
             950: '#042f2e',
           },
-          // Dark mode surfaces - rich midnight
+          // Dark mode surfaces - Executive Obsidian
           dark: {
-            bg: '#0a0e1a',
-            bgSecondary: '#111523',
-            surface: '#161b2e',
-            surfaceHover: '#1d2340',
-            border: '#252d4a',
-            borderHover: '#333d5e',
+            bg: '#090a0f',
+            bgSecondary: '#0c0d14',
+            surface: '#12131a',
+            surfaceHover: '#171922',
+            border: '#222533',
+            borderHover: '#2d3247',
           },
-          // Light mode surfaces - warm cream
+          // Light mode surfaces - Studio White
           light: {
-            bg: '#faf9f5',
-            bgSecondary: '#f5f3ed',
+            bg: '#f8fafc',
+            bgSecondary: '#f1f5f9',
             surface: '#ffffff',
-            surfaceHover: '#fefcf8',
-            border: '#e8e4db',
-            borderHover: '#dcd8ce',
+            surfaceHover: '#f8fafc',
+            border: '#e2e8f0',
+            borderHover: '#cbd5e1',
           },
           // Stat colors
           stats: {

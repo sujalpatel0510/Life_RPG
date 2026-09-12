@@ -4,48 +4,42 @@
 
 @layer base {
   :root {
-    /* Light mode - warm cream theme */
-    --bg-primary: #faf9f5;
-    --bg-secondary: #f5f3ed;
+    /* Light mode - Studio White & Slate */
+    --bg-primary: #f8fafc;
+    --bg-secondary: #f1f5f9;
     --bg-surface: #ffffff;
-    --bg-surface-hover: #fefcf8;
-    --border-color: #e8e4db;
-    --border-hover: #dcd8ce;
+    --bg-surface-hover: #f8fafc;
+    --border-color: #e2e8f0;
+    --border-hover: #cbd5e1;
     --accent-primary: #4f46e5;
     --accent-primary-hover: #4338ca;
     --accent-gold: #d97706;
-    --accent-teal: #0d9488;
-    --text-primary: #1a1a2e;
-    --text-secondary: #4a4a5a;
-    --text-muted: #8a8a9a;
-    --text-inverse: #faf9f5;
+    --accent-teal: #0284c7;
+    --text-primary: #0f172a;
+    --text-secondary: #475569;
+    --text-muted: #64748b;
+    --text-inverse: #ffffff;
   }
 
   html.dark {
-    /* Dark mode - rich midnight theme */
-    --bg-primary: #0a0e1a;
-    --bg-secondary: #111523;
-    --bg-surface: #161b2e;
-    --bg-surface-hover: #1d2340;
-    --border-color: #252d4a;
-    --border-hover: #333d5e;
+    /* Dark mode - Executive Obsidian */
+    --bg-primary: #090a0f;
+    --bg-secondary: #0c0d14;
+    --bg-surface: #12131a;
+    --bg-surface-hover: #171922;
+    --border-color: #222533;
+    --border-hover: #2d3247;
     --accent-primary: #6366f1;
     --accent-primary-hover: #818cf8;
-    --accent-gold: #f59e0b;
-    --accent-teal: #14b8a6;
-    --text-primary: #f4f3f0;
-    --text-secondary: #c4c0b8;
-    --text-muted: #8a8680;
-    --text-inverse: #0a0e1a;
+    --accent-gold: #fbbf24;
+    --accent-teal: #38bdf8;
+    --text-primary: #f8fafc;
+    --text-secondary: #94a3b8;
+    --text-muted: #64748b;
+    --text-inverse: #090a0f;
   }
 
   body {
-    background-color: var(--bg-primary);
-    color: var(--text-primary);
-    transition: background-color 0.3s ease, color 0.3s ease;
-  }
-
-  html.dark body {
     background-color: var(--bg-primary);
     color: var(--text-primary);
   }
@@ -53,55 +47,51 @@
   h1, h2, h3, .font-fantasy {
     font-family: 'Cinzel', serif;
   }
-
-  * {
-    transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease, fill 0.2s ease, stroke 0.2s ease;
-  }
 }
 
 /* ===== SEMANTIC DUAL-MODE UTILITY CLASSES ===== */
 
 .surface {
-  @apply bg-white dark:bg-[#161b2e] border border-slate-200 dark:border-[#252d4a] text-slate-900 dark:text-[#f4f3f0] transition-colors duration-200;
+  @apply bg-white dark:bg-[#12131a] border border-slate-200 dark:border-[#222533] text-slate-900 dark:text-[#f8fafc] transition-colors duration-150;
 }
 .surface-elevated {
-  @apply bg-white dark:bg-[#1d2340] border border-slate-200 dark:border-[#333d5e] text-slate-900 dark:text-[#f4f3f0] shadow-xl transition-colors duration-200;
+  @apply bg-white dark:bg-[#171922] border border-slate-200 dark:border-[#2d3247] text-slate-900 dark:text-[#f8fafc] shadow-xl transition-colors duration-150;
 }
 .surface-panel {
-  @apply bg-slate-50 dark:bg-[#111523] border border-slate-200 dark:border-[#252d4a] text-slate-900 dark:text-[#f4f3f0] transition-colors duration-200;
+  @apply bg-slate-50 dark:bg-[#0c0d14] border border-slate-200 dark:border-[#222533] text-slate-900 dark:text-[#f8fafc] transition-colors duration-150;
 }
 .surface-overlay {
-  @apply bg-white/95 dark:bg-[#0a0e1a]/95 backdrop-blur-md border border-slate-200 dark:border-[#252d4a] text-slate-900 dark:text-[#f4f3f0] transition-colors duration-200;
+  @apply bg-white/95 dark:bg-[#090a0f]/95 backdrop-blur-md border border-slate-200 dark:border-[#222533] text-slate-900 dark:text-[#f8fafc] transition-colors duration-150;
 }
 
 .input {
-  @apply bg-white dark:bg-[#161b2e] border border-slate-300 dark:border-[#333d5e] text-slate-900 dark:text-[#f4f3f0] placeholder-slate-400 dark:placeholder-slate-500 transition-colors duration-200;
+  @apply bg-white dark:bg-[#12131a] border border-slate-300 dark:border-[#2d3247] text-slate-900 dark:text-[#f8fafc] placeholder-slate-400 dark:placeholder-slate-500 transition-colors duration-150;
 }
 .input:focus {
   @apply outline-none ring-2 ring-[#6366f1]/40 border-[#6366f1];
 }
 
 .btn-primary {
-  @apply bg-[#4f46e5] hover:bg-[#6366f1] active:bg-[#4338ca] text-white shadow-sm shadow-[#6366f1]/20 font-medium transition-colors duration-200;
+  @apply bg-[#4f46e5] hover:bg-[#6366f1] active:bg-[#4338ca] text-white shadow-sm shadow-[#6366f1]/20 font-medium transition-colors duration-150;
 }
 .btn-primary:disabled {
   @apply opacity-50 cursor-not-allowed;
 }
 .btn-secondary {
-  @apply bg-white dark:bg-[#1d2340] border border-slate-200 dark:border-[#333d5e] text-slate-700 dark:text-slate-200 hover:bg-slate-50 dark:hover:bg-[#161b2e] transition-colors duration-200;
+  @apply bg-white dark:bg-[#171922] border border-slate-200 dark:border-[#2d3247] text-slate-700 dark:text-slate-200 hover:bg-slate-50 dark:hover:bg-[#1f2230] transition-colors duration-150;
 }
 .btn-ghost {
-  @apply text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-[#f4f3f0] hover:bg-slate-100 dark:hover:bg-[#1d2340] transition-colors duration-200;
+  @apply text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-[#f8fafc] hover:bg-slate-100 dark:hover:bg-[#171922] transition-colors duration-150;
 }
 .btn-danger {
-  @apply bg-rose-50 dark:bg-rose-950/30 text-rose-700 dark:text-rose-400 hover:bg-rose-100 dark:hover:bg-rose-950/50 border border-rose-200 dark:border-rose-900/40 transition-colors duration-200;
+  @apply bg-rose-50 dark:bg-rose-950/30 text-rose-700 dark:text-rose-400 hover:bg-rose-100 dark:hover:bg-rose-950/50 border border-rose-200 dark:border-rose-900/40 transition-colors duration-150;
 }
 .btn-gold {
-  @apply bg-[#d97706] hover:bg-[#f59e0b] active:bg-[#b45309] text-white shadow-sm shadow-[#f59e0b]/20 font-medium transition-colors duration-200;
+  @apply bg-[#d97706] hover:bg-[#f59e0b] active:bg-[#b45309] text-white shadow-sm shadow-[#f59e0b]/20 font-medium transition-colors duration-150;
 }
 
 .text-title {
-  @apply text-slate-900 dark:text-[#f4f3f0];
+  @apply text-slate-900 dark:text-[#f8fafc];
 }
 .text-body {
   @apply text-slate-600 dark:text-slate-300;

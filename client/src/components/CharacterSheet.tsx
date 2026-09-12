@@ -74,10 +74,10 @@ export const CharacterSheet: React.FC = () => {
         
         {/* Class Crest / Avatar */}
         <div className="relative flex-shrink-0">
-          <div className="w-28 h-28 rounded-2xl bg-gradient-to-br from-indigo-100 via-white to-indigo-50 dark:from-indigo-600/20 dark:via-slate-900 dark:to-indigo-950/40 border-2 border-indigo-300 dark:border-indigo-500/40 flex items-center justify-center shadow-md dark:shadow-xl">
+          <div className="w-28 h-28 rounded-2xl bg-gradient-to-br from-indigo-100 via-white to-indigo-50 dark:from-[#171922] dark:via-[#12131a] dark:to-[#0c0d14] border-2 border-indigo-300 dark:border-indigo-500/40 flex items-center justify-center shadow-md dark:shadow-xl">
             <Shield className="w-14 h-14 text-indigo-600 dark:text-indigo-400 fill-indigo-500/20" />
           </div>
-          <div className="absolute -bottom-2 -right-2 bg-white dark:bg-slate-950 border border-indigo-500 rounded-full px-2.5 py-0.5 text-xs font-bold text-indigo-800 dark:text-indigo-400 shadow">
+          <div className="absolute -bottom-2 -right-2 bg-white dark:bg-[#12131a] border border-indigo-500 rounded-full px-2.5 py-0.5 text-xs font-bold text-indigo-800 dark:text-indigo-400 shadow">
             Lv. {character.level}
           </div>
         </div>
@@ -164,11 +164,11 @@ export const CharacterSheet: React.FC = () => {
               className={`card-hover-lift p-3 rounded-xl border flex flex-col items-center text-center transition ${
                 m.unlocked
                   ? 'bg-indigo-50 dark:bg-indigo-950/20 border-indigo-300 dark:border-indigo-500/40 text-indigo-900 dark:text-indigo-300 shadow-sm'
-                  : 'bg-slate-50 dark:bg-slate-800/40 border-slate-200 dark:border-slate-700/80 text-slate-500 opacity-60'
+                  : 'bg-slate-50 dark:bg-[#151722] border-slate-200 dark:border-[#222533] text-slate-500 opacity-60'
               }`}
             >
               <span className={`text-[10px] font-bold px-2 py-0.5 rounded-full mb-1 ${
-                m.unlocked ? 'bg-indigo-100 dark:bg-indigo-500/20 text-indigo-900 dark:text-indigo-400 border border-indigo-300 dark:border-indigo-500/30 font-extrabold' : 'bg-slate-200 dark:bg-slate-800 text-slate-600 dark:text-slate-400'
+                m.unlocked ? 'bg-indigo-100 dark:bg-indigo-500/20 text-indigo-900 dark:text-indigo-400 border border-indigo-300 dark:border-indigo-500/30 font-extrabold' : 'bg-slate-200 dark:bg-[#1a1d2b] text-slate-600 dark:text-slate-400'
               }`}>
                 Level {m.lvl}
               </span>
@@ -315,7 +315,7 @@ export const CharacterSheet: React.FC = () => {
           </div>
 
           {/* Equipped Gear Section */}
-          <div className="pt-4 border-t border-slate-200 dark:border-slate-700">
+          <div className="pt-4 border-t border-slate-200 dark:border-[#222533]">
             <h4 className="text-xs font-bold uppercase tracking-wider text-muted mb-3 flex items-center gap-2">
               <Sword className="w-3.5 h-3.5 text-indigo-500" />
               Equipped Loadout

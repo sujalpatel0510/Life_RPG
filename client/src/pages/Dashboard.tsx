@@ -134,7 +134,7 @@ export const Dashboard: React.FC<DashboardProps> = ({ activeTab: propActiveTab }
       />
 
       {/* Main Content Area */}
-      <main className="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8 space-y-6 sm:space-y-8 z-10">
+      <main className="flex-1 w-full max-w-[1800px] mx-auto px-4 sm:px-6 lg:px-10 xl:px-12 py-6 sm:py-8 space-y-6 sm:space-y-8 z-10">
         
         {/* Top Hero Command Center */}
         <HeroCommandBanner 
@@ -220,8 +220,8 @@ export const Dashboard: React.FC<DashboardProps> = ({ activeTab: propActiveTab }
       />
 
       {/* Footer / Hackathon Compliance Bar */}
-      <footer className="border-t border-slate-200 dark:border-[#252d4a] surface py-6 text-xs text-body">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4">
+      <footer className="border-t border-slate-200 dark:border-[#222533] surface py-6 text-xs text-body">
+        <div className="w-full max-w-[1800px] mx-auto px-4 sm:px-6 lg:px-10 xl:px-12 flex flex-col sm:flex-row items-center justify-between gap-4">
           <div className="flex items-center space-x-3">
             <span className="font-fantasy font-bold text-title">LIFE RPG</span>
             <span className="text-body">• Tech Zephyr 4.0 Hackathon Build</span>

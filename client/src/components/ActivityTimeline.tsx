@@ -61,7 +61,7 @@ export const ActivityTimeline: React.FC = () => {
       {loading ? (
         <div className="space-y-3">
           {[1, 2, 3, 4].map(n => (
-            <div key={n} className="h-16 rounded-xl bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 skeleton" />
+            <div key={n} className="h-16 rounded-xl bg-slate-100 dark:bg-[#151722] border border-slate-200 dark:border-[#222533] skeleton" />
           ))}
         </div>
       ) : logs.length > 0 ? (
@@ -80,7 +80,7 @@ export const ActivityTimeline: React.FC = () => {
             return (
               <div 
                 key={log.id} 
-                className="card-hover-lift animate-fade-in-up surface border border-slate-200 dark:border-slate-700 rounded-xl p-4 flex items-center justify-between gap-4 hover:border-indigo-500/40 transition shadow-sm"
+                className="card-hover-lift animate-fade-in-up surface border border-slate-200 dark:border-[#222533] rounded-xl p-4 flex items-center justify-between gap-4 hover:border-indigo-500/40 transition shadow-sm"
               >
                 <div className="flex items-center space-x-3.5 min-w-0">
                   <div className={`w-9 h-9 rounded-lg border flex items-center justify-center flex-shrink-0 ${meta.color}`}>
@@ -92,7 +92,7 @@ export const ActivityTimeline: React.FC = () => {
                         {meta.label}
                       </span>
                       {details.category && (
-                        <span className="text-[10px] px-1.5 py-0.2 rounded bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-400 border border-slate-300 dark:border-slate-700 font-semibold">
+                        <span className="text-[10px] px-1.5 py-0.2 rounded bg-slate-100 dark:bg-[#151722] text-slate-700 dark:text-slate-400 border border-slate-300 dark:border-[#222533] font-semibold">
                           {details.category}
                         </span>
                       )}
@@ -124,7 +124,7 @@ export const ActivityTimeline: React.FC = () => {
           })}
         </div>
       ) : (
-        <div className="text-center py-16 px-4 rounded-2xl surface border border-slate-200 dark:border-slate-700 shadow-sm">
+        <div className="text-center py-16 px-4 rounded-2xl surface border border-slate-200 dark:border-[#222533] shadow-sm">
           <History className="w-10 h-10 text-slate-400 dark:text-slate-600 mx-auto mb-2" />
           <p className="text-sm text-body">No heroic feats recorded yet in this chronicle.</p>
         </div>

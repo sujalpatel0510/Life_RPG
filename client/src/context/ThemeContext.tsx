@@ -22,34 +22,48 @@ const getSavedTheme = (): Theme | null => {
     const saved = localStorage.getItem(THEME_KEY);
     if (saved === 'light' || saved === 'dark') return saved;
   } catch (e) {
-    // ignore storage access errors
+    // ignore
   }
   return null;
 };
 
 const applyThemeToDom = (theme: Theme) => {
+  if (typeof document === 'undefined') return;
   const root = document.documentElement;
-  root.classList.toggle('dark', theme === 'dark');
-  root.classList.toggle('light', theme === 'light');
+  if (theme === 'dark') {
+    root.classList.add('dark');
+    root.classList.remove('light');
+  } else {
+    root.classList.add('light');
+    root.classList.remove('dark');
+  }
+  root.setAttribute('data-theme', theme);
+  root.style.colorScheme = theme;
 };
 
 const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
 
 export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-  const [theme, setThemeState] = useState<Theme>(() => getSavedTheme() ?? getSystemTheme());
+  const [theme, setThemeState] = useState<Theme>(() => {
+    const initial = getSavedTheme() ?? getSystemTheme();
+    applyThemeToDom(initial);
+    return initial;
+  });
 
-  // Synchronize the <html> class with the active theme on every change
+  // Synchronize DOM whenever theme changes
   useEffect(() => {
     applyThemeToDom(theme);
   }, [theme]);
 
-  // Follow the OS preference live, but ONLY until the user makes an explicit choice
+  // Live OS preference sync if user hasn't chosen a preference yet
   useEffect(() => {
     if (typeof window === 'undefined' || !window.matchMedia) return;
     const media = window.matchMedia('(prefers-color-scheme: light)');
     const onChange = () => {
       if (!getSavedTheme()) {
-        setThemeState(getSystemTheme());
+        const sysTheme = getSystemTheme();
+        setThemeState(sysTheme);
+        applyThemeToDom(sysTheme);
       }
     };
     media.addEventListener?.('change', onChange);
@@ -62,8 +76,9 @@ export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({ childre
       try {
         localStorage.setItem(THEME_KEY, next);
       } catch (e) {
-        // ignore storage access errors
+        // ignore
       }
+      applyThemeToDom(next);
       return next;
     });
   }, []);
@@ -73,11 +88,12 @@ export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({ childre
     try {
       localStorage.setItem(THEME_KEY, t);
     } catch (e) {
-      // ignore storage access errors
+      // ignore
     }
+    applyThemeToDom(t);
   }, []);
 
-  // Global keyboard shortcut: toggle theme with 'T' on every screen
+  // Global hotkey 'T' to toggle theme anywhere
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key.toLowerCase() !== 't' || e.metaKey || e.ctrlKey || e.altKey) return;

@@ -33,15 +33,19 @@
           if (theme === 'light') {
             root.classList.remove('dark');
             root.classList.add('light');
+            root.setAttribute('data-theme', 'light');
+            root.style.colorScheme = 'light';
           } else {
             root.classList.remove('light');
             root.classList.add('dark');
+            root.setAttribute('data-theme', 'dark');
+            root.style.colorScheme = 'dark';
           }
         } catch (e) {}
       })();
     </script>
   </head>
-  <body class="font-sans antialiased min-h-screen bg-rpg-light-bg dark:bg-rpg-dark-bg text-slate-900 dark:text-rpg-light-bg transition-colors duration-300 selection:bg-rpg-primary-600 selection:text-white">
+  <body class="font-sans antialiased min-h-screen bg-[#f8fafc] dark:bg-[#090a0f] text-slate-900 dark:text-[#f4f5f8] selection:bg-indigo-600 selection:text-white">
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
   </body>

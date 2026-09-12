@@ -95,12 +95,12 @@ export const ArmouryShop: React.FC = () => {
 
   const getRarityStyle = (rarity: string) => {
     switch (rarity) {
-      case 'COMMON': return 'border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-slate-100';
+      case 'COMMON': return 'border-slate-200 dark:border-[#222533] bg-white dark:bg-[#12131a] text-slate-900 dark:text-[#f8fafc]';
       case 'UNCOMMON': return 'border-emerald-300 dark:border-emerald-500/40 bg-emerald-50 dark:bg-emerald-950/20 text-emerald-900 dark:text-emerald-400';
       case 'RARE': return 'border-blue-300 dark:border-blue-500/50 bg-blue-50 dark:bg-blue-950/30 text-blue-900 dark:text-blue-400 item-glow-rare';
       case 'EPIC': return 'border-purple-300 dark:border-purple-500/50 bg-purple-50 dark:bg-purple-950/30 text-purple-900 dark:text-purple-300 item-glow-epic';
       case 'LEGENDARY': return 'border-amber-400/80 dark:border-amber-500/70 bg-amber-50 dark:bg-amber-950/30 text-amber-950 dark:text-amber-300 item-glow-legendary animate-pulse-glow';
-      default: return 'border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-slate-100';
+      default: return 'border-slate-200 dark:border-[#222533] bg-white dark:bg-[#12131a] text-slate-900 dark:text-[#f8fafc]';
     }
   };
 
@@ -147,12 +147,12 @@ export const ArmouryShop: React.FC = () => {
 
         {/* Treasury Display */}
         {character && (
-          <div className="flex items-center space-x-3 bg-slate-50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700 px-4 py-2.5 rounded-xl flex-shrink-0">
+          <div className="flex items-center space-x-3 bg-slate-50 dark:bg-[#151722] border border-slate-200 dark:border-[#222533] px-4 py-2.5 rounded-xl flex-shrink-0">
             <div className="flex items-center space-x-1.5 text-amber-700 dark:text-amber-400 font-bold text-sm">
               <Coins className="w-4 h-4" />
               <span>{character.gold} Gold</span>
             </div>
-            <div className="h-4 w-px bg-slate-300 dark:bg-slate-700" />
+            <div className="h-4 w-px bg-slate-200 dark:bg-[#222533]" />
             <div className="flex items-center space-x-1.5 text-cyan-700 dark:text-cyan-400 font-bold text-sm">
               <Gem className="w-4 h-4" />
               <span>{character.gems} Gems</span>
@@ -181,7 +181,7 @@ export const ArmouryShop: React.FC = () => {
             className={`btn-tactile px-4 py-2 rounded-xl text-xs font-semibold whitespace-nowrap transition ${
               selectedCategory === c.id
                 ? 'bg-indigo-600 text-white font-bold shadow-md'
-                : 'bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-400 border border-slate-200 dark:border-slate-700 hover:border-slate-300 dark:hover:border-slate-600 hover:text-slate-900 dark:hover:text-slate-200'
+                : 'bg-white dark:bg-[#151722] text-slate-600 dark:text-slate-400 border border-slate-200 dark:border-[#222533] hover:text-slate-900 dark:hover:text-[#f8fafc]'
             }`}
           >
             {c.label}
@@ -191,13 +191,13 @@ export const ArmouryShop: React.FC = () => {
 
       {/* Item Catalog Grid */}
       {loading ? (
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
-          {[1, 2, 3, 4, 5, 6].map((n) => (
-            <div key={n} className="h-56 rounded-2xl bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 skeleton" />
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
+          {[1, 2, 3, 4, 5, 6, 7, 8].map((n) => (
+            <div key={n} className="h-56 rounded-2xl bg-slate-100 dark:bg-[#151722] border border-slate-200 dark:border-[#222533] skeleton" />
           ))}
         </div>
       ) : (
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
           {filteredItems.map((item) => {
             const Icon = getItemIcon(item.icon);
             const isOwned = item.isOwned;
@@ -210,7 +210,7 @@ export const ArmouryShop: React.FC = () => {
               >
                 <div>
                   <div className="flex items-start justify-between gap-3">
-                    <div className="w-12 h-12 rounded-xl bg-slate-100 dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700 flex items-center justify-center flex-shrink-0 shadow-sm">
+                    <div className="w-12 h-12 rounded-xl bg-slate-100 dark:bg-[#171922] border border-slate-200 dark:border-[#222533] flex items-center justify-center flex-shrink-0 shadow-sm">
                       <Icon className="w-6 h-6" />
                     </div>
 
@@ -273,7 +273,7 @@ export const ArmouryShop: React.FC = () => {
                 </div>
 
                 {/* Price and Action Buttons */}
-                <div className="mt-5 pt-3 border-t border-slate-200 dark:border-slate-700 flex items-center justify-between gap-3">
+                <div className="mt-5 pt-3 border-t border-slate-200 dark:border-[#222533] flex items-center justify-between gap-3">
                   <div className="flex items-center space-x-2 text-xs font-bold">
                     <span className="badge-gold px-2 py-0.5 rounded-lg flex items-center gap-1 font-bold">
                       <Coins className="w-3.5 h-3.5" /> {item.priceGold}
@@ -294,7 +294,7 @@ export const ArmouryShop: React.FC = () => {
                           className={`px-4 py-1.5 rounded-xl text-xs font-bold transition flex items-center gap-1.5 btn-tactile ${
                             isEquipped
                               ? 'bg-emerald-600 text-white shadow-md hover:bg-emerald-500'
-                              : 'bg-slate-100 dark:bg-slate-800 text-slate-800 dark:text-slate-200 hover:bg-slate-200 dark:hover:bg-slate-700 border border-slate-300 dark:border-slate-700'
+                              : 'bg-slate-100 dark:bg-[#171922] text-slate-800 dark:text-slate-200 hover:bg-slate-200 dark:hover:bg-[#1f2230] border border-slate-300 dark:border-[#282c3e]'
                           }`}
                         >
                           {isEquipped && <Check className="w-3.5 h-3.5 stroke-[3]" />}

@@ -72,9 +72,9 @@ export const Navbar: React.FC<NavbarProps> = ({ activeTab, setActiveTab, onOpenH
   ];
 
   return (
-    <header className="sticky top-0 z-40 surface-overlay border-b border-slate-200 dark:border-[#252d4a] shadow-sm transition-colors duration-300">
+    <header className="sticky top-0 z-40 surface-overlay border-b border-slate-200 dark:border-[#222533] shadow-sm">
       {/* Top Banner - Hero Vitals & Currencies */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-2.5">
+      <div className="w-full max-w-[1800px] mx-auto px-4 sm:px-6 lg:px-10 xl:px-12 py-2.5">
         <div className="flex flex-wrap items-center justify-between gap-4">
           
           {/* Logo & Hero Identity */}
@@ -177,7 +177,7 @@ export const Navbar: React.FC<NavbarProps> = ({ activeTab, setActiveTab, onOpenH
                 playClick();
                 onOpenHotkeys();
               }}
-              className="btn-tactile p-2 rounded-lg surface hover:bg-slate-100 dark:hover:bg-[#1d2340] text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-[#252d4a] transition shadow-sm"
+              className="btn-tactile p-2 rounded-lg surface hover:bg-slate-100 dark:hover:bg-[#171922] text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-[#222533] transition shadow-sm"
               title="Keyboard Shortcuts (?)"
               aria-label="Keyboard Shortcuts"
             >
@@ -190,7 +190,7 @@ export const Navbar: React.FC<NavbarProps> = ({ activeTab, setActiveTab, onOpenH
                 toggleMute();
                 playClick();
               }}
-              className="btn-tactile p-2 rounded-lg surface hover:bg-slate-100 dark:hover:bg-[#1d2340] text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-[#252d4a] transition shadow-sm"
+              className="btn-tactile p-2 rounded-lg surface hover:bg-slate-100 dark:hover:bg-[#171922] text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-[#222533] transition shadow-sm"
               title={isMuted ? 'Unmute Sound Effects (M)' : 'Mute Sound Effects (M)'}
               aria-label={isMuted ? 'Unmute Sound Effects' : 'Mute Sound Effects'}
             >
@@ -204,7 +204,7 @@ export const Navbar: React.FC<NavbarProps> = ({ activeTab, setActiveTab, onOpenH
                 logout();
                 navigate('/login');
               }}
-              className="btn-tactile p-2 rounded-lg surface hover:bg-rose-50 dark:hover:bg-rose-950/35 text-slate-600 dark:text-slate-400 hover:text-rose-700 dark:hover:text-rose-400 border border-slate-200 dark:border-[#252d4a] hover:border-rose-300 dark:hover:border-rose-900/40 transition shadow-sm"
+              className="btn-tactile p-2 rounded-lg surface hover:bg-rose-50 dark:hover:bg-rose-950/35 text-slate-600 dark:text-slate-400 hover:text-rose-700 dark:hover:text-rose-400 border border-slate-200 dark:border-[#222533] hover:border-rose-300 dark:hover:border-rose-900/40 transition shadow-sm"
               title="Retire from Realm (Logout)"
               aria-label="Logout"
             >
@@ -229,8 +229,8 @@ export const Navbar: React.FC<NavbarProps> = ({ activeTab, setActiveTab, onOpenH
       </div>
 
       {/* Navigation Tabs with Shortcut badges */}
-      <div className="border-t border-slate-200 dark:border-[#252d4a] bg-slate-50/95 dark:bg-[#111523]/95">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="border-t border-slate-200 dark:border-[#222533] bg-slate-50/95 dark:bg-[#0c0d14]/95">
+        <div className="w-full max-w-[1800px] mx-auto px-4 sm:px-6 lg:px-10 xl:px-12">
           <nav className="flex space-x-1 sm:space-x-2 overflow-x-auto py-2 no-scrollbar" aria-label="Tabs">
             {navItems.map((item) => {
               const Icon = item.icon;
@@ -247,8 +247,8 @@ export const Navbar: React.FC<NavbarProps> = ({ activeTab, setActiveTab, onOpenH
                   }}
                   className={`btn-tactile flex items-center space-x-2 px-3.5 py-1.5 rounded-xl text-xs sm:text-sm font-medium whitespace-nowrap transition-all ${
                     isActive
-                      ? 'bg-white dark:bg-[#1d2340] text-indigo-700 dark:text-indigo-400 border border-slate-200 dark:border-[#333d5e] shadow-sm font-semibold'
-                      : 'text-slate-600 dark:text-slate-400 hover:text-title dark:hover:text-[#f4f3f0] hover:bg-slate-100 dark:hover:bg-[#1d2340]'
+                      ? 'bg-white dark:bg-[#171922] text-indigo-700 dark:text-indigo-400 border border-slate-200 dark:border-[#2d3247] shadow-sm font-semibold'
+                      : 'text-slate-600 dark:text-slate-400 hover:text-title dark:hover:text-[#f8fafc] hover:bg-slate-100 dark:hover:bg-[#171922]'
                   }`}
                 >
                   <Icon className={`w-4 h-4 ${isActive ? 'text-indigo-600 dark:text-indigo-400' : 'text-slate-400 dark:text-slate-500'}`} />
@@ -256,7 +256,7 @@ export const Navbar: React.FC<NavbarProps> = ({ activeTab, setActiveTab, onOpenH
                   <span className={`hidden lg:inline text-[9px] px-1.5 py-0.2 rounded font-mono font-bold ${
                     isActive 
                       ? 'bg-indigo-50 dark:bg-indigo-950/60 text-indigo-700 dark:text-indigo-300' 
-                      : 'bg-slate-200/80 dark:bg-[#1e2130] text-slate-600 dark:text-slate-400'
+                      : 'bg-slate-200/80 dark:bg-[#1f2230] text-slate-600 dark:text-slate-400'
                   }`}>
                     {item.shortcut}
                   </span>
