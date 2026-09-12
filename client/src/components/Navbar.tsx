@@ -53,11 +53,11 @@ export const Navbar: React.FC<NavbarProps> = ({ activeTab, setActiveTab, onOpenH
 
   const getClassCrestStyle = (heroClass: string) => {
     switch (heroClass) {
-      case 'WARRIOR': return 'from-red-500 to-amber-600 border-red-400/50 shadow-red-500/20';
-      case 'MAGE': return 'from-blue-500 to-purple-600 border-blue-400/50 shadow-blue-500/20';
-      case 'ROGUE': return 'from-amber-500 to-orange-600 border-orange-400/50 shadow-orange-500/20';
-      case 'PALADIN': return 'from-amber-400 to-yellow-500 border-yellow-400/50 shadow-yellow-500/20';
-      default: return 'from-amber-500 to-amber-700 border-amber-400/50 shadow-amber-500/20';
+      case 'WARRIOR': return 'from-rose-600 to-red-800 border-rose-400/50 shadow-rose-600/25';
+      case 'MAGE': return 'from-violet-600 to-purple-800 border-violet-400/50 shadow-violet-600/25';
+      case 'ROGUE': return 'from-red-600 to-zinc-800 border-red-400/50 shadow-red-600/25';
+      case 'PALADIN': return 'from-slate-200 to-slate-400 border-slate-300/80 shadow-slate-500/25 text-slate-900';
+      default: return 'from-rose-600 to-red-900 border-rose-500/50 shadow-rose-600/25';
     }
   };
 
@@ -84,7 +84,7 @@ export const Navbar: React.FC<NavbarProps> = ({ activeTab, setActiveTab, onOpenH
               <div className={`w-11 h-11 rounded-xl bg-gradient-to-br ${crestGradient} flex items-center justify-center shadow-lg border`}>
                 <ClassIcon className="w-6 h-6 text-slate-950 fill-slate-950/20" />
               </div>
-              <div className="absolute -bottom-1 -right-1 bg-white dark:bg-slate-900 border border-amber-500 rounded-full px-1.5 py-0.2 text-[10px] font-bold text-amber-800 dark:text-amber-400 shadow-sm">
+              <div className="absolute -bottom-1 -right-1 bg-white dark:bg-slate-900 border border-rose-500 rounded-full px-1.5 py-0.2 text-[10px] font-bold text-rose-700 dark:text-rose-400 shadow-sm">
                 Lv.{character.level}
               </div>
             </div>
@@ -94,7 +94,7 @@ export const Navbar: React.FC<NavbarProps> = ({ activeTab, setActiveTab, onOpenH
                 <span className="font-fantasy text-base font-bold text-slate-900 dark:text-slate-100 tracking-wide">
                   {character.name}
                 </span>
-                <span className="text-[11px] px-2 py-0.5 rounded-full bg-amber-100 dark:bg-slate-800 text-amber-800 dark:text-amber-400 font-bold border border-amber-300 dark:border-slate-700">
+                <span className="text-[11px] px-2 py-0.5 rounded-full bg-rose-50 dark:bg-rose-950/40 text-rose-800 dark:text-rose-300 font-bold border border-rose-200 dark:border-rose-900/50">
                   {character.heroClass}
                 </span>
               </div>
@@ -109,14 +109,14 @@ export const Navbar: React.FC<NavbarProps> = ({ activeTab, setActiveTab, onOpenH
             {/* XP Bar */}
             <div>
               <div className="flex justify-between text-[11px] font-semibold text-slate-700 dark:text-slate-300 mb-0.5">
-                <span className="flex items-center gap-1 text-amber-700 dark:text-amber-400 font-bold">
-                  <Sparkles className="w-3 h-3 text-amber-500" /> XP Progress
+                <span className="flex items-center gap-1 text-rose-700 dark:text-rose-400 font-bold">
+                  <Sparkles className="w-3 h-3 text-rose-500" /> XP Progress
                 </span>
                 <span>{character.currentXp} / {character.nextLevelXp} ({xpPercent}%)</span>
               </div>
               <div className="w-full bg-slate-200 dark:bg-slate-800/80 rounded-full h-2.5 overflow-hidden border border-slate-300 dark:border-slate-700/60 p-0.5">
                 <div 
-                  className="bg-gradient-to-r from-amber-500 to-yellow-400 h-full rounded-full transition-all duration-500 ease-out shadow-[0_0_10px_rgba(245,158,11,0.5)]"
+                  className="bg-gradient-to-r from-rose-600 via-rose-500 to-red-500 h-full rounded-full transition-all duration-500 ease-out shadow-[0_0_10px_rgba(225,29,72,0.5)]"
                   style={{ width: `${xpPercent}%` }}
                 />
               </div>
@@ -125,14 +125,14 @@ export const Navbar: React.FC<NavbarProps> = ({ activeTab, setActiveTab, onOpenH
             {/* HP Bar */}
             <div>
               <div className="flex justify-between text-[11px] font-semibold text-slate-700 dark:text-slate-300 mb-0.5">
-                <span className="flex items-center gap-1 text-rose-600 dark:text-rose-400 font-bold">
-                  <Heart className="w-3 h-3 fill-rose-500/40 text-rose-500" /> Health Pool
+                <span className="flex items-center gap-1 text-red-600 dark:text-red-400 font-bold">
+                  <Heart className="w-3 h-3 fill-red-500/40 text-red-500" /> Health Pool
                 </span>
                 <span>{character.hp} / {character.maxHp} HP</span>
               </div>
               <div className="w-full bg-slate-200 dark:bg-slate-800/80 rounded-full h-2 overflow-hidden border border-slate-300 dark:border-slate-700/60 p-0.5">
                 <div 
-                  className="bg-gradient-to-r from-rose-600 to-rose-400 h-full rounded-full transition-all duration-300 ease-out"
+                  className="bg-gradient-to-r from-red-600 to-red-400 h-full rounded-full transition-all duration-300 ease-out"
                   style={{ width: `${hpPercent}%` }}
                 />
               </div>
@@ -196,7 +196,7 @@ export const Navbar: React.FC<NavbarProps> = ({ activeTab, setActiveTab, onOpenH
               title="Keyboard Shortcuts (?)"
               aria-label="Keyboard Shortcuts"
             >
-              <Keyboard className="w-4 h-4 text-amber-600 dark:text-amber-400" />
+              <Keyboard className="w-4 h-4 text-rose-600 dark:text-rose-400" />
             </button>
 
             {/* Audio Toggle */}
@@ -235,7 +235,7 @@ export const Navbar: React.FC<NavbarProps> = ({ activeTab, setActiveTab, onOpenH
           </div>
           <div className="w-full bg-slate-200 dark:bg-slate-800 rounded-full h-2 overflow-hidden border border-slate-300 dark:border-slate-700">
             <div 
-              className="bg-gradient-to-r from-amber-500 to-yellow-400 h-full rounded-full transition-all duration-300"
+              className="bg-gradient-to-r from-rose-600 to-red-500 h-full rounded-full transition-all duration-300"
               style={{ width: `${xpPercent}%` }}
             />
           </div>
@@ -260,11 +260,11 @@ export const Navbar: React.FC<NavbarProps> = ({ activeTab, setActiveTab, onOpenH
                   }}
                   className={`btn-tactile flex items-center space-x-2 px-3.5 py-1.5 rounded-lg text-xs sm:text-sm font-medium whitespace-nowrap transition-all ${
                     isActive
-                      ? 'bg-amber-500/20 dark:bg-amber-500/15 text-amber-900 dark:text-amber-300 border border-amber-400 dark:border-amber-500/40 shadow-sm font-bold'
+                      ? 'bg-rose-500/20 dark:bg-rose-500/15 text-rose-900 dark:text-rose-300 border border-rose-400 dark:border-rose-500/40 shadow-sm font-bold'
                       : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-200 hover:bg-slate-200/60 dark:hover:bg-slate-800/50'
                   }`}
                 >
-                  <Icon className={`w-4 h-4 ${isActive ? 'text-amber-600 dark:text-amber-400' : 'text-slate-400'}`} />
+                  <Icon className={`w-4 h-4 ${isActive ? 'text-rose-600 dark:text-rose-400' : 'text-slate-400'}`} />
                   <span>{item.label}</span>
                   <span className="hidden lg:inline text-[9px] px-1 rounded bg-slate-200 dark:bg-slate-800 text-slate-600 dark:text-slate-400 font-mono font-bold">
                     {item.shortcut}

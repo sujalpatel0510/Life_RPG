@@ -99,7 +99,7 @@ export const ArmouryShop: React.FC = () => {
       case 'UNCOMMON': return 'border-emerald-300 dark:border-emerald-500/40 bg-emerald-50/50 dark:bg-emerald-950/20 text-emerald-900 dark:text-emerald-400';
       case 'RARE': return 'border-blue-300 dark:border-blue-500/50 bg-blue-50/50 dark:bg-blue-950/30 text-blue-900 dark:text-blue-400 item-glow-rare';
       case 'EPIC': return 'border-purple-300 dark:border-purple-500/50 bg-purple-50/50 dark:bg-purple-950/30 text-purple-900 dark:text-purple-300 item-glow-epic';
-      case 'LEGENDARY': return 'border-amber-300 dark:border-amber-500/60 bg-amber-50/60 dark:bg-amber-950/30 text-amber-950 dark:text-amber-300 item-glow-legendary animate-pulse-glow';
+      case 'LEGENDARY': return 'border-rose-400/80 dark:border-rose-500/70 bg-rose-50/60 dark:bg-rose-950/30 text-rose-950 dark:text-rose-300 item-glow-legendary animate-pulse-glow';
       default: return 'border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900/60 text-slate-800 dark:text-slate-300';
     }
   };
@@ -137,7 +137,7 @@ export const ArmouryShop: React.FC = () => {
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 bg-white dark:bg-[#111827] border border-slate-200 dark:border-slate-800 rounded-2xl p-6 shadow-sm">
         <div>
           <h2 className="font-fantasy text-2xl font-bold text-slate-900 dark:text-slate-100 flex items-center gap-2.5">
-            <ShoppingBag className="w-6 h-6 text-amber-500 dark:text-amber-400" />
+            <ShoppingBag className="w-6 h-6 text-rose-600 dark:text-rose-400" />
             The Royal Armoury & Item Emporium
           </h2>
           <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-400 mt-1">
@@ -163,9 +163,9 @@ export const ArmouryShop: React.FC = () => {
 
       {/* Status Toast */}
       {statusMessage && (
-        <div className="p-3.5 rounded-xl bg-amber-50 dark:bg-slate-900 border border-amber-300 dark:border-amber-500/50 text-amber-900 dark:text-amber-300 text-xs sm:text-sm font-semibold flex items-center justify-between shadow-lg animate-fade-in">
+        <div className="p-3.5 rounded-xl bg-rose-50 dark:bg-slate-900 border border-rose-300 dark:border-rose-500/50 text-rose-900 dark:text-rose-300 text-xs sm:text-sm font-semibold flex items-center justify-between shadow-lg animate-fade-in">
           <span>{statusMessage}</span>
-          <button onClick={() => setStatusMessage(null)} className="text-amber-700 dark:text-amber-400 hover:text-amber-900 dark:hover:text-amber-200">✕</button>
+          <button onClick={() => setStatusMessage(null)} className="text-rose-700 dark:text-rose-400 hover:text-rose-900 dark:hover:text-rose-200">✕</button>
         </div>
       )}
 
@@ -180,7 +180,7 @@ export const ArmouryShop: React.FC = () => {
             }}
             className={`btn-tactile px-4 py-2 rounded-xl text-xs font-semibold whitespace-nowrap transition ${
               selectedCategory === c.id
-                ? 'bg-amber-500 text-slate-950 font-bold shadow-md'
+                ? 'bg-rose-600 text-white font-bold shadow-md'
                 : 'bg-white dark:bg-slate-900/60 text-slate-600 dark:text-slate-400 border border-slate-200 dark:border-slate-800 hover:border-slate-300 dark:hover:border-slate-700 hover:text-slate-950 dark:hover:text-slate-200'
             }`}
           >
@@ -306,7 +306,7 @@ export const ArmouryShop: React.FC = () => {
                       <button
                         onClick={() => handleBuy(item)}
                         disabled={purchasingId === item.id}
-                        className="px-4 py-1.5 rounded-xl bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-400 hover:to-amber-500 text-slate-950 text-xs font-bold transition shadow"
+                        className="px-4 py-1.5 rounded-xl bg-gradient-to-r from-rose-600 to-red-600 hover:from-rose-500 hover:to-red-500 text-white text-xs font-bold transition shadow-md shadow-rose-600/20"
                       >
                         {purchasingId === item.id ? 'Forging...' : 'Forge & Buy'}
                       </button>

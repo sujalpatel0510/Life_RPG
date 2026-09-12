@@ -139,7 +139,7 @@ export const Dashboard: React.FC = () => {
   }, [playClick, toggleMute]);
 
   return (
-    <div className="min-h-screen relative flex flex-col bg-slate-50 dark:bg-[#0b0f19] text-slate-900 dark:text-slate-100 selection:bg-amber-500 selection:text-black overflow-x-hidden">
+    <div className="min-h-screen relative flex flex-col bg-slate-50 dark:bg-[#0b0f19] text-slate-900 dark:text-slate-100 selection:bg-rose-600 selection:text-white overflow-x-hidden">
       
       {/* Dark Fantasy Floating Ambient Embers Background */}
       <AmbientEmbers />
@@ -225,7 +225,7 @@ export const Dashboard: React.FC = () => {
             <span>• Tech Zephyr 4.0 Hackathon Build</span>
             <button
               onClick={() => setIsHotkeysOpen(true)}
-              className="hidden sm:inline-flex items-center gap-1 text-[11px] text-amber-700 dark:text-amber-400 hover:text-amber-800 dark:hover:text-amber-300 ml-2 font-medium"
+              className="hidden sm:inline-flex items-center gap-1 text-[11px] text-rose-700 dark:text-rose-400 hover:text-rose-800 dark:hover:text-rose-300 ml-2 font-medium"
             >
               <Keyboard className="w-3.5 h-3.5" />
               <span>Press '?' for Hotkeys</span>
@@ -239,7 +239,7 @@ export const Dashboard: React.FC = () => {
             <span className="flex items-center gap-1 text-blue-700 dark:text-blue-400 font-semibold">
               <Cpu className="w-3.5 h-3.5" /> Express + Prisma Backend
             </span>
-            <span className="flex items-center gap-1 text-amber-700 dark:text-amber-400 font-semibold">
+            <span className="flex items-center gap-1 text-rose-700 dark:text-rose-400 font-semibold">
               <ShieldCheck className="w-3.5 h-3.5" /> Anti-Cheat Server Engine
             </span>
           </div>

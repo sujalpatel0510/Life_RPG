@@ -76,10 +76,10 @@ export const CharacterSheet: React.FC = () => {
         
         {/* Class Crest / Avatar */}
         <div className="relative flex-shrink-0">
-          <div className="w-28 h-28 rounded-2xl bg-gradient-to-br from-amber-500/20 via-slate-100 dark:via-slate-900 to-amber-950/40 border-2 border-amber-500/40 flex items-center justify-center shadow-xl">
-            <Shield className="w-14 h-14 text-amber-500 dark:text-amber-400 fill-amber-500/20" />
+          <div className="w-28 h-28 rounded-2xl bg-gradient-to-br from-rose-600/20 via-slate-100 dark:via-slate-900 to-rose-950/40 border-2 border-rose-500/40 flex items-center justify-center shadow-xl">
+            <Shield className="w-14 h-14 text-rose-500 dark:text-rose-400 fill-rose-500/20" />
           </div>
-          <div className="absolute -bottom-2 -right-2 bg-white dark:bg-slate-950 border border-amber-500 rounded-full px-2.5 py-0.5 text-xs font-bold text-amber-800 dark:text-amber-400 shadow">
+          <div className="absolute -bottom-2 -right-2 bg-white dark:bg-slate-950 border border-rose-500 rounded-full px-2.5 py-0.5 text-xs font-bold text-rose-800 dark:text-rose-400 shadow">
             Lv. {character.level}
           </div>
         </div>
@@ -110,7 +110,7 @@ export const CharacterSheet: React.FC = () => {
                   alert(err.message || 'Failed to equip title');
                 }
               }}
-              className="bg-white dark:bg-slate-900 border border-slate-300 dark:border-slate-700/80 hover:border-amber-500/60 rounded-lg px-2.5 py-1 text-xs text-amber-800 dark:text-amber-300 font-serif italic focus:outline-none focus:border-amber-500 transition cursor-pointer shadow-sm"
+              className="bg-white dark:bg-slate-900 border border-slate-300 dark:border-slate-700/80 hover:border-rose-500/60 rounded-lg px-2.5 py-1 text-xs text-rose-800 dark:text-rose-300 font-serif italic focus:outline-none focus:border-rose-500 transition cursor-pointer shadow-sm"
             >
               {[
                 'The Awakened',
@@ -136,7 +136,7 @@ export const CharacterSheet: React.FC = () => {
             </div>
             <div className="bg-white/80 dark:bg-slate-900/80 px-3 py-1.5 rounded-lg border border-slate-200 dark:border-slate-800 shadow-sm">
               <span className="text-slate-500 dark:text-slate-400">XP to Next Level:</span>{' '}
-              <span className="font-bold text-amber-600 dark:text-amber-400">{character.nextLevelXp - character.currentXp} XP</span>
+              <span className="font-bold text-rose-600 dark:text-rose-400">{character.nextLevelXp - character.currentXp} XP</span>
             </div>
             <div className="bg-white/80 dark:bg-slate-900/80 px-3 py-1.5 rounded-lg border border-slate-200 dark:border-slate-800 shadow-sm">
               <span className="text-slate-500 dark:text-slate-400">Completed Quests:</span>{' '}
@@ -150,7 +150,7 @@ export const CharacterSheet: React.FC = () => {
       {/* Milestone Roadmap */}
       <div className="bg-white dark:bg-[#111827] border border-slate-200 dark:border-slate-800 rounded-2xl p-5 shadow-sm">
         <h3 className="font-fantasy text-sm font-bold text-slate-900 dark:text-slate-200 mb-3 flex items-center gap-2">
-          <Crown className="w-4 h-4 text-amber-500 dark:text-amber-400" />
+          <Crown className="w-4 h-4 text-rose-500 dark:text-rose-400" />
           Level Milestone Progression Roadmap
         </h3>
         <div className="grid grid-cols-2 sm:grid-cols-5 gap-3">
@@ -165,12 +165,12 @@ export const CharacterSheet: React.FC = () => {
               key={m.lvl}
               className={`card-hover-lift p-3 rounded-xl border flex flex-col items-center text-center transition ${
                 m.unlocked
-                  ? 'bg-amber-50 dark:bg-amber-950/20 border-amber-300 dark:border-amber-500/40 text-amber-900 dark:text-amber-300 shadow-sm'
+                  ? 'bg-rose-50 dark:bg-rose-950/20 border-rose-300 dark:border-rose-500/40 text-rose-900 dark:text-rose-300 shadow-sm'
                   : 'bg-slate-50 dark:bg-slate-900/40 border-slate-200 dark:border-slate-800/80 text-slate-500 opacity-60'
               }`}
             >
               <span className={`text-[10px] font-bold px-2 py-0.5 rounded-full mb-1 ${
-                m.unlocked ? 'bg-amber-100 dark:bg-amber-500/20 text-amber-900 dark:text-amber-400 border border-amber-300 dark:border-amber-500/30 font-extrabold' : 'bg-slate-200 dark:bg-slate-800 text-slate-600 dark:text-slate-400'
+                m.unlocked ? 'bg-rose-100 dark:bg-rose-500/20 text-rose-900 dark:text-rose-400 border border-rose-300 dark:border-rose-500/30 font-extrabold' : 'bg-slate-200 dark:bg-slate-800 text-slate-600 dark:text-slate-400'
               }`}>
                 Level {m.lvl}
               </span>
@@ -187,7 +187,7 @@ export const CharacterSheet: React.FC = () => {
         {/* 6-Axis Radar Spider Chart (5 Cols) */}
         <div className="lg:col-span-5 bg-white dark:bg-[#111827] border border-slate-200 dark:border-slate-800 rounded-2xl p-6 flex flex-col items-center justify-center shadow-sm">
           <h3 className="font-fantasy text-base font-bold text-slate-900 dark:text-slate-200 mb-2 flex items-center gap-2">
-            <Activity className="w-4 h-4 text-amber-500 dark:text-amber-400" />
+            <Activity className="w-4 h-4 text-rose-500 dark:text-rose-400" />
             Attribute Radar
           </h3>
           <p className="text-[11px] text-slate-600 dark:text-slate-400 text-center mb-4">
@@ -235,8 +235,8 @@ export const CharacterSheet: React.FC = () => {
             {/* Hero Attribute Polygon */}
             <polygon
               points={points}
-              fill={theme === 'light' ? 'rgba(245, 158, 11, 0.22)' : 'rgba(245, 158, 11, 0.3)'}
-              stroke="#F59E0B"
+              fill={theme === 'light' ? 'rgba(225, 29, 72, 0.2)' : 'rgba(225, 29, 72, 0.28)'}
+              stroke="#e11d48"
               strokeWidth="2.5"
               className="transition-all duration-500 ease-out"
             />
@@ -255,7 +255,7 @@ export const CharacterSheet: React.FC = () => {
 
               return (
                 <g key={stat.key}>
-                  <circle cx={x} cy={y} r="4" fill="#F59E0B" stroke={theme === 'light' ? '#ffffff' : '#0B0F19'} strokeWidth="1.5" />
+                  <circle cx={x} cy={y} r="4" fill="#f43f5e" stroke={theme === 'light' ? '#ffffff' : '#0B0F19'} strokeWidth="1.5" />
                   <text
                     x={lx}
                     y={ly + 4}
@@ -284,7 +284,7 @@ export const CharacterSheet: React.FC = () => {
               return (
                 <div 
                   key={stat.key}
-                  className="card-hover-lift bg-slate-50 dark:bg-slate-900/70 border border-slate-200 dark:border-slate-800 rounded-xl p-3.5 space-y-2 hover:border-amber-500/40 transition shadow-sm"
+                  className="card-hover-lift bg-slate-50 dark:bg-slate-900/70 border border-slate-200 dark:border-slate-800 rounded-xl p-3.5 space-y-2 hover:border-rose-500/40 transition shadow-sm"
                 >
                   <div className="flex items-center justify-between">
                     <div className="flex items-center space-x-2">
@@ -312,24 +312,24 @@ export const CharacterSheet: React.FC = () => {
           </div>
 
           {/* Equipped Gear Section */}
-          <div className="pt-4 border-t border-slate-800">
-            <h4 className="text-xs font-bold uppercase tracking-wider text-slate-400 mb-3 flex items-center gap-2">
-              <Sword className="w-3.5 h-3.5 text-amber-400" />
+          <div className="pt-4 border-t border-slate-200 dark:border-slate-800">
+            <h4 className="text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 mb-3 flex items-center gap-2">
+              <Sword className="w-3.5 h-3.5 text-rose-500" />
               Equipped Loadout
             </h4>
 
             {profileData?.equippedGear && profileData.equippedGear.length > 0 ? (
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                 {profileData.equippedGear.map((eg: any) => (
-                  <div key={eg.id} className="bg-slate-900/90 border border-amber-500/30 rounded-xl p-3 flex items-center space-x-3">
-                    <div className="w-10 h-10 rounded-lg bg-amber-500/10 border border-amber-500/30 flex items-center justify-center flex-shrink-0">
-                      <Shield className="w-5 h-5 text-amber-400" />
+                  <div key={eg.id} className="bg-slate-50 dark:bg-slate-900/90 border border-rose-500/30 rounded-xl p-3 flex items-center space-x-3 shadow-sm">
+                    <div className="w-10 h-10 rounded-lg bg-rose-500/10 border border-rose-500/30 flex items-center justify-center flex-shrink-0">
+                      <Shield className="w-5 h-5 text-rose-500 dark:text-rose-400" />
                     </div>
                     <div className="min-w-0 flex-1">
-                      <span className="text-xs font-bold text-slate-200 block truncate">
+                      <span className="text-xs font-bold text-slate-900 dark:text-slate-200 block truncate">
                         {eg.item.name}
                       </span>
-                      <span className="text-[10px] text-amber-400/90 font-medium">
+                      <span className="text-[10px] text-rose-600 dark:text-rose-400/90 font-medium">
                         {eg.item.category} • +{eg.item.damageBonus || 0} Boss DMG
                       </span>
                     </div>

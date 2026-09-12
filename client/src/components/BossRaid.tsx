@@ -101,7 +101,7 @@ export const BossRaid: React.FC<BossRaidProps> = ({ lastDamage }) => {
       
       {/* Background Ambient Runes */}
       <div className="absolute -top-16 -right-16 w-72 h-72 bg-red-600/10 rounded-full blur-3xl pointer-events-none" />
-      <div className="absolute -bottom-16 -left-16 w-72 h-72 bg-amber-600/10 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute -bottom-16 -left-16 w-72 h-72 bg-rose-600/10 rounded-full blur-3xl pointer-events-none" />
 
       <div className="relative z-10 flex flex-col md:flex-row items-center gap-8">
         
@@ -124,15 +124,15 @@ export const BossRaid: React.FC<BossRaidProps> = ({ lastDamage }) => {
           }`}>
             {isDefeated ? (
               <div className="text-center p-2">
-                <Gift className="w-16 h-16 text-amber-400 mx-auto animate-chest-pulse" />
-                <span className="text-[11px] font-fantasy font-bold text-amber-300 block mt-1">
+                <Gift className="w-16 h-16 text-rose-400 mx-auto animate-chest-pulse" />
+                <span className="text-[11px] font-fantasy font-bold text-rose-300 block mt-1">
                   VICTORY CHEST
                 </span>
               </div>
             ) : (
               <div className="relative flex items-center justify-center">
                 <Flame className="w-20 h-20 text-red-500 fill-red-600/70 drop-shadow-[0_0_20px_rgba(239,68,68,0.8)]" />
-                <Skull className="w-7 h-7 text-amber-300 absolute -bottom-1 opacity-90" />
+                <Skull className="w-7 h-7 text-slate-200 absolute -bottom-1 opacity-90" />
               </div>
             )}
           </div>
@@ -167,7 +167,7 @@ export const BossRaid: React.FC<BossRaidProps> = ({ lastDamage }) => {
               <span className="text-slate-700 dark:text-slate-300 flex items-center gap-1.5">
                 <Target className="w-4 h-4 text-red-500" /> Raid Boss Vitality
               </span>
-              <span className={hpPercent > 30 ? 'text-red-600 dark:text-red-400' : 'text-amber-600 dark:text-amber-400 animate-pulse'}>
+              <span className={hpPercent > 30 ? 'text-red-600 dark:text-red-400' : 'text-rose-500 animate-pulse'}>
                 {boss.hp} / {boss.maxHp} HP ({hpPercent}%)
               </span>
             </div>
@@ -178,7 +178,7 @@ export const BossRaid: React.FC<BossRaidProps> = ({ lastDamage }) => {
                   hpPercent > 50 
                     ? 'bg-gradient-to-r from-red-700 to-red-500 shadow-[0_0_12px_rgba(239,68,68,0.7)]'
                     : hpPercent > 20
-                    ? 'bg-gradient-to-r from-amber-600 to-amber-400 shadow-[0_0_12px_rgba(245,158,11,0.7)]'
+                    ? 'bg-gradient-to-r from-rose-600 to-red-400 shadow-[0_0_12px_rgba(225,29,72,0.7)]'
                     : 'bg-gradient-to-r from-rose-600 to-purple-600 animate-pulse'
                 }`}
                 style={{ width: `${hpPercent}%` }}
@@ -189,7 +189,7 @@ export const BossRaid: React.FC<BossRaidProps> = ({ lastDamage }) => {
           {/* Raid Mechanics & Victory Rewards */}
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2 max-w-xl">
             <div className="bg-white dark:bg-slate-900/70 border border-slate-200 dark:border-slate-800/80 rounded-xl p-3 flex items-center space-x-3 text-left shadow-sm">
-              <Sword className="w-6 h-6 text-amber-500 flex-shrink-0" />
+              <Sword className="w-6 h-6 text-rose-500 flex-shrink-0" />
               <div>
                 <span className="text-[11px] font-bold text-slate-800 dark:text-slate-300 block">Strike Action</span>
                 <span className="text-[10px] text-slate-600 dark:text-slate-400">Completing quests unleashes real physical damage based on your STR & weapons.</span>
@@ -197,10 +197,10 @@ export const BossRaid: React.FC<BossRaidProps> = ({ lastDamage }) => {
             </div>
 
             <div className="bg-white dark:bg-slate-900/70 border border-slate-200 dark:border-slate-800/80 rounded-xl p-3 flex items-center space-x-3 text-left shadow-sm">
-              <Trophy className="w-6 h-6 text-yellow-500 flex-shrink-0" />
+              <Trophy className="w-6 h-6 text-amber-500 flex-shrink-0" />
               <div>
                 <span className="text-[11px] font-bold text-slate-800 dark:text-slate-300 block">Bounty Rewards</span>
-                <span className="text-[10px] text-amber-800 dark:text-yellow-400/90 font-semibold">
+                <span className="text-[10px] text-rose-800 dark:text-rose-300 font-semibold">
                   +{boss.rewardGold} Gold, +{boss.rewardXp} XP & Title "{boss.rewardBadge}"
                 </span>
               </div>
@@ -213,7 +213,7 @@ export const BossRaid: React.FC<BossRaidProps> = ({ lastDamage }) => {
               <button
                 onClick={handleResurrect}
                 disabled={isResurrecting}
-                className="inline-flex items-center space-x-2 px-6 py-2.5 rounded-xl bg-gradient-to-r from-amber-500 to-yellow-500 hover:from-amber-400 hover:to-yellow-400 text-slate-950 font-fantasy font-black text-xs sm:text-sm tracking-wide shadow-lg shadow-amber-500/30 transition transform hover:-translate-y-0.5"
+                className="inline-flex items-center space-x-2 px-6 py-2.5 rounded-xl bg-gradient-to-r from-rose-600 to-red-600 hover:from-rose-500 hover:to-red-500 text-white font-fantasy font-black text-xs sm:text-sm tracking-wide shadow-lg shadow-rose-600/30 transition transform hover:-translate-y-0.5"
               >
                 <RefreshCw className={`w-4 h-4 ${isResurrecting ? 'animate-spin' : ''}`} />
                 <span>SUMMON NEXT BEHEMOTH</span>

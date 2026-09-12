@@ -27,12 +27,12 @@ export const HotkeyGuideModal: React.FC<HotkeyGuideModalProps> = ({ isOpen, onCl
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm animate-fade-in">
-      <div className="relative w-full max-w-md bg-white dark:bg-[#111827] border border-amber-500/50 rounded-2xl p-6 shadow-2xl animate-scale-up text-slate-900 dark:text-slate-100">
+      <div className="relative w-full max-w-md bg-white dark:bg-[#111827] border border-rose-500/50 rounded-2xl p-6 shadow-2xl animate-scale-up text-slate-900 dark:text-slate-100">
         
         {/* Header */}
         <div className="flex items-center justify-between pb-4 border-b border-slate-200 dark:border-slate-800">
           <div className="flex items-center space-x-2 text-slate-900 dark:text-slate-100 font-fantasy font-bold text-lg">
-            <Keyboard className="w-5 h-5 text-amber-500 dark:text-amber-400" />
+            <Keyboard className="w-5 h-5 text-rose-600 dark:text-rose-400" />
             <span>Power-User Hotkeys</span>
           </div>
           <button
@@ -51,7 +51,7 @@ export const HotkeyGuideModal: React.FC<HotkeyGuideModalProps> = ({ isOpen, onCl
           {shortcuts.map((s) => (
             <div key={s.key} className="py-2.5 flex items-center justify-between">
               <span className="text-slate-700 dark:text-slate-300 font-medium">{s.desc}</span>
-              <kbd className="px-2.5 py-1 rounded-lg bg-slate-100 dark:bg-slate-900 border border-slate-300 dark:border-slate-700 text-amber-800 dark:text-amber-400 font-mono font-bold text-xs shadow-sm">
+              <kbd className="px-2.5 py-1 rounded-lg bg-slate-100 dark:bg-slate-900 border border-slate-300 dark:border-slate-700 text-rose-700 dark:text-rose-400 font-mono font-bold text-xs shadow-sm">
                 {s.key}
               </kbd>
             </div>
@@ -63,7 +63,7 @@ export const HotkeyGuideModal: React.FC<HotkeyGuideModalProps> = ({ isOpen, onCl
             playClick();
             onClose();
           }}
-          className="btn-tactile w-full py-2.5 rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-800 dark:text-slate-200 font-bold text-xs border border-slate-300 dark:border-slate-700 transition"
+          className="btn-tactile w-full py-2.5 rounded-xl bg-gradient-to-r from-rose-600 to-red-600 hover:from-rose-500 hover:to-red-500 text-white font-bold text-xs shadow-md shadow-rose-600/20 transition"
         >
           Got it, Adventurer
         </button>

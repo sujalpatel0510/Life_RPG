@@ -95,7 +95,7 @@ export const QuestModal: React.FC<QuestModalProps> = ({
         {/* Modal Header */}
         <div className="flex items-center justify-between px-6 py-4 border-b border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-900/50">
           <h2 className="font-fantasy text-xl font-bold text-slate-900 dark:text-slate-100 flex items-center gap-2">
-            <Sparkles className="w-5 h-5 text-amber-500 dark:text-amber-400" />
+            <Sparkles className="w-5 h-5 text-rose-500" />
             {questToEdit ? 'Reforge Quest Objective' : 'Summon New Quest'}
           </h2>
           <button
@@ -127,7 +127,7 @@ export const QuestModal: React.FC<QuestModalProps> = ({
               value={title}
               onChange={(e) => setTitle(e.target.value)}
               placeholder="e.g., Read 20 pages of System Design, 1 Hour Gym Workout..."
-              className="w-full px-3.5 py-2.5 rounded-xl bg-white dark:bg-slate-900/90 border border-slate-300 dark:border-slate-700 text-slate-900 dark:text-slate-100 placeholder-slate-400 dark:placeholder-slate-500 focus:outline-none focus:border-amber-500 text-sm transition"
+              className="w-full px-3.5 py-2.5 rounded-xl bg-white dark:bg-slate-900/90 border border-slate-300 dark:border-slate-700 text-slate-900 dark:text-slate-100 placeholder-slate-400 dark:placeholder-slate-500 focus:outline-none focus:border-rose-500 text-sm transition"
               autoFocus
             />
           </div>
@@ -142,7 +142,7 @@ export const QuestModal: React.FC<QuestModalProps> = ({
               onChange={(e) => setDescription(e.target.value)}
               placeholder="Add specifics, criteria, or sub-tasks..."
               rows={2}
-              className="w-full px-3.5 py-2.5 rounded-xl bg-white dark:bg-slate-900/90 border border-slate-300 dark:border-slate-700 text-slate-900 dark:text-slate-100 placeholder-slate-400 dark:placeholder-slate-500 focus:outline-none focus:border-amber-500 text-sm transition resize-none"
+              className="w-full px-3.5 py-2.5 rounded-xl bg-white dark:bg-slate-900/90 border border-slate-300 dark:border-slate-700 text-slate-900 dark:text-slate-100 placeholder-slate-400 dark:placeholder-slate-500 focus:outline-none focus:border-rose-500 text-sm transition resize-none"
             />
           </div>
 
@@ -159,7 +159,7 @@ export const QuestModal: React.FC<QuestModalProps> = ({
                   onClick={() => setQuestType(t)}
                   className={`btn-tactile py-1.5 px-2 rounded-lg text-xs font-semibold border transition ${
                     questType === t
-                      ? 'bg-amber-100 dark:bg-amber-500/20 border-amber-400 dark:border-amber-500 text-amber-900 dark:text-amber-400 shadow-sm font-bold'
+                      ? 'bg-rose-100 dark:bg-rose-500/20 border-rose-400 dark:border-rose-500 text-rose-900 dark:text-rose-400 shadow-sm font-bold'
                       : 'border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-900/50 text-slate-600 dark:text-slate-400 hover:border-slate-300 dark:hover:border-slate-700'
                   }`}
                 >
@@ -185,7 +185,7 @@ export const QuestModal: React.FC<QuestModalProps> = ({
                     onClick={() => setCategory(c.id)}
                     className={`btn-tactile flex items-center gap-2 p-2 rounded-xl border text-xs font-medium transition ${
                       isSelected
-                        ? `${c.color} bg-amber-50 dark:bg-slate-800/80 shadow-sm ring-1 ring-amber-400/40 font-bold`
+                        ? `${c.color} bg-rose-50 dark:bg-slate-800/80 shadow-sm ring-1 ring-rose-400/40 font-bold`
                         : 'border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-900/40 text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800/40'
                     }`}
                   >
@@ -210,7 +210,7 @@ export const QuestModal: React.FC<QuestModalProps> = ({
                   onClick={() => setDifficulty(d.id)}
                   className={`btn-tactile py-2 px-1 text-center rounded-lg border text-xs font-bold transition ${
                     difficulty === d.id
-                      ? 'bg-amber-100 dark:bg-amber-500/20 border-amber-400 dark:border-amber-500 text-amber-900 dark:text-amber-400 shadow-sm font-extrabold'
+                      ? 'bg-rose-100 dark:bg-rose-500/20 border-rose-400 dark:border-rose-500 text-rose-900 dark:text-rose-400 shadow-sm font-extrabold'
                       : 'border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-900/40 text-slate-600 dark:text-slate-400 hover:border-slate-300 dark:hover:border-slate-700'
                   }`}
                 >
@@ -224,11 +224,11 @@ export const QuestModal: React.FC<QuestModalProps> = ({
           <div className="p-3 rounded-xl bg-slate-50 dark:bg-slate-900/80 border border-slate-200 dark:border-slate-800 flex items-center justify-between text-xs">
             <span className="text-slate-600 dark:text-slate-400 font-medium">Conquest Bounty:</span>
             <div className="flex items-center space-x-3 font-bold">
-              <span className="text-amber-700 dark:text-amber-400 flex items-center gap-1">
-                <Sparkles className="w-3.5 h-3.5 text-amber-500" /> +{activeReward.xp} XP
+              <span className="text-rose-700 dark:text-rose-400 flex items-center gap-1">
+                <Sparkles className="w-3.5 h-3.5 text-rose-500" /> +{activeReward.xp} XP
               </span>
-              <span className="text-amber-800 dark:text-yellow-400 flex items-center gap-1">
-                <Coins className="w-3.5 h-3.5 text-yellow-500" /> +{activeReward.gold} Gold
+              <span className="text-amber-800 dark:text-amber-300 flex items-center gap-1">
+                <Coins className="w-3.5 h-3.5 text-amber-500" /> +{activeReward.gold} Gold
               </span>
               {activeReward.gems > 0 && (
                 <span className="text-cyan-700 dark:text-cyan-400 flex items-center gap-1">
@@ -250,7 +250,7 @@ export const QuestModal: React.FC<QuestModalProps> = ({
             <button
               type="submit"
               disabled={isSubmitting}
-              className="btn-tactile px-5 py-2.5 rounded-xl bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-400 hover:to-amber-500 text-slate-950 font-bold text-xs tracking-wide shadow-lg shadow-amber-500/20 transition disabled:opacity-50"
+              className="btn-tactile px-5 py-2.5 rounded-xl bg-gradient-to-r from-rose-600 to-red-600 hover:from-rose-500 hover:to-red-500 text-white font-bold text-xs tracking-wide shadow-lg shadow-rose-600/20 transition disabled:opacity-50"
             >
               {isSubmitting ? 'Summoning...' : questToEdit ? 'Save Changes' : 'Summon Quest'}
             </button>

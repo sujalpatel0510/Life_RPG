@@ -12,10 +12,10 @@ const MainApp: React.FC = () => {
   if (isLoading) {
     return (
       <div className="min-h-screen flex flex-col items-center justify-center bg-[#070a12] text-slate-200">
-        <div className="w-16 h-16 rounded-2xl bg-gradient-to-tr from-amber-500 to-amber-700 flex items-center justify-center shadow-lg shadow-amber-500/20 border border-amber-400/50 mb-4 animate-pulse">
-          <Shield className="w-8 h-8 text-slate-950 fill-amber-300" />
+        <div className="w-16 h-16 rounded-2xl bg-gradient-to-tr from-rose-600 to-red-800 flex items-center justify-center shadow-lg shadow-rose-600/25 border border-rose-400/50 mb-4 animate-pulse">
+          <Shield className="w-8 h-8 text-slate-950 fill-rose-300" />
         </div>
-        <div className="flex items-center space-x-2 text-sm font-fantasy font-bold text-amber-400">
+        <div className="flex items-center space-x-2 text-sm font-fantasy font-bold text-rose-400">
           <Loader2 className="w-4 h-4 animate-spin" />
           <span>Synchronizing with PostgreSQL Realm...</span>
         </div>

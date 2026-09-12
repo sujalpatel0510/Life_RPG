@@ -57,10 +57,10 @@ export const QuickAddQuest: React.FC<QuickAddQuestProps> = ({ onAdd }) => {
   return (
     <form 
       onSubmit={handleSubmit}
-      className="bg-[#101626]/90 border border-slate-700/80 hover:border-amber-500/40 rounded-2xl p-2.5 sm:p-3 shadow-lg transition-all duration-300 focus-within:border-amber-500/60 focus-within:shadow-[0_0_20px_rgba(245,158,11,0.12)]"
+      className="bg-white dark:bg-[#101626]/90 border border-slate-300 dark:border-slate-700/80 hover:border-rose-500/40 rounded-2xl p-2.5 sm:p-3 shadow-sm dark:shadow-lg transition-all duration-300 focus-within:border-rose-500/60 focus-within:shadow-[0_0_20px_rgba(225,29,72,0.15)]"
     >
       <div className="flex items-center gap-2">
-        <div className="w-8 h-8 rounded-xl bg-amber-500/10 border border-amber-500/30 flex items-center justify-center flex-shrink-0 text-amber-400">
+        <div className="w-8 h-8 rounded-xl bg-rose-500/10 border border-rose-500/30 flex items-center justify-center flex-shrink-0 text-rose-500">
           <Sparkles className="w-4 h-4" />
         </div>
 
@@ -70,7 +70,7 @@ export const QuickAddQuest: React.FC<QuickAddQuestProps> = ({ onAdd }) => {
           value={title}
           onChange={(e) => setTitle(e.target.value)}
           placeholder="Quick add quest objective... (e.g., '10 LeetCode MCQs', 'Drink 1L Water', 'Review PR')"
-          className="flex-1 bg-transparent text-slate-100 placeholder-slate-500 text-xs sm:text-sm focus:outline-none px-2"
+          className="flex-1 bg-transparent text-slate-900 dark:text-slate-100 placeholder-slate-400 dark:placeholder-slate-500 text-xs sm:text-sm focus:outline-none px-2"
           disabled={isSubmitting}
         />
 
@@ -78,7 +78,7 @@ export const QuickAddQuest: React.FC<QuickAddQuestProps> = ({ onAdd }) => {
         <button
           type="submit"
           disabled={!title.trim() || isSubmitting}
-          className="btn-tactile flex items-center space-x-1.5 px-3 py-1.5 rounded-xl bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-400 hover:to-amber-500 disabled:opacity-40 text-slate-950 font-bold text-xs transition shadow-md shadow-amber-500/20 flex-shrink-0 cursor-pointer"
+          className="btn-tactile flex items-center space-x-1.5 px-3 py-1.5 rounded-xl bg-gradient-to-r from-rose-600 to-red-600 hover:from-rose-500 hover:to-red-500 disabled:opacity-40 text-white font-bold text-xs transition shadow-md shadow-rose-600/20 flex-shrink-0 cursor-pointer"
           title="Press Enter to Summon"
         >
           <span>{isSubmitting ? 'Summoning...' : 'Add'}</span>
@@ -87,7 +87,7 @@ export const QuickAddQuest: React.FC<QuickAddQuestProps> = ({ onAdd }) => {
       </div>
 
       {/* Attribute Chips & Cadence Row */}
-      <div className="mt-2.5 pt-2 border-t border-slate-800/80 flex flex-wrap items-center justify-between gap-2 text-xs">
+      <div className="mt-2.5 pt-2 border-t border-slate-200 dark:border-slate-800/80 flex flex-wrap items-center justify-between gap-2 text-xs">
         
         {/* Category Pills */}
         <div className="flex items-center space-x-1.5 overflow-x-auto no-scrollbar py-0.5">
@@ -107,7 +107,7 @@ export const QuickAddQuest: React.FC<QuickAddQuestProps> = ({ onAdd }) => {
                 }}
                 className={`flex items-center space-x-1 px-2 py-0.5 rounded-lg border text-[11px] font-semibold transition ${
                   isSelected
-                    ? 'bg-amber-100 dark:bg-slate-800 border-amber-400 dark:border-amber-500/60 text-amber-900 dark:text-amber-300 ring-1 ring-amber-400/30'
+                    ? 'bg-rose-100 dark:bg-rose-950/40 border-rose-400 dark:border-rose-500/60 text-rose-900 dark:text-rose-300 ring-1 ring-rose-400/30'
                     : 'border-slate-200 dark:border-slate-800/80 bg-white/50 dark:bg-slate-900/40 text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-200'
                 }`}
               >
@@ -130,7 +130,7 @@ export const QuickAddQuest: React.FC<QuickAddQuestProps> = ({ onAdd }) => {
               }}
               className={`px-2 py-0.5 rounded-md text-[10px] font-bold uppercase transition ${
                 questType === type
-                  ? 'bg-amber-500/20 text-amber-800 dark:text-amber-400 border border-amber-400 dark:border-amber-500/40 font-extrabold'
+                  ? 'bg-rose-500/20 text-rose-800 dark:text-rose-400 border border-rose-400 dark:border-rose-500/40 font-extrabold'
                   : 'text-slate-500 hover:text-slate-900 dark:hover:text-slate-300'
               }`}
             >

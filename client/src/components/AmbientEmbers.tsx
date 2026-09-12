@@ -35,8 +35,9 @@ export const AmbientEmbers: React.FC = () => {
     }
 
     const particleCount = Math.min(35, Math.floor(width / 40));
-    const darkColors = ['#F59E0B', '#EAB308', '#8B5CF6', '#EF4444'];
-    const lightColors = ['#D97706', '#2563EB', '#059669', '#7C3AED'];
+    // Crimson Blood Moon (Ruby, Crimson, Silver-slate)
+    const darkColors = ['#e11d48', '#f43f5e', '#fb7185', '#cbd5e1', '#9f1239'];
+    const lightColors = ['#e11d48', '#be123c', '#475569', '#9f1239'];
     const colors = theme === 'light' ? lightColors : darkColors;
     const particles: Particle[] = [];
 
@@ -88,7 +89,7 @@ export const AmbientEmbers: React.FC = () => {
       window.removeEventListener('resize', handleResize);
       cancelAnimationFrame(animationFrameId);
     };
-  }, []);
+  }, [theme]);
 
   return (
     <canvas

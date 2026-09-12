@@ -9,18 +9,21 @@ export default {
     extend: {
       colors: {
         rpg: {
-          dark: '#0B0F19',
-          card: '#121829',
-          border: '#2A344D',
-          gold: '#F59E0B',
-          goldLight: '#FDE68A',
-          gem: '#06B6D4',
-          crimson: '#EF4444',
-          mana: '#3B82F6',
-          vitality: '#10B981',
-          wisdom: '#A855F7',
-          agility: '#F97316',
-          charisma: '#EC4899',
+          onyx: '#0c0e14',
+          dark: '#090a0f',
+          card: '#13151f',
+          cardLight: '#181b28',
+          border: '#232736',
+          crimson: '#e11d48',
+          crimsonHover: '#f43f5e',
+          ruby: '#f43f5e',
+          rubyLight: '#fb7185',
+          silver: '#cbd5e1',
+          silverLight: '#f1f5f9',
+          ember: '#f97316',
+          gem: '#06b6d4',
+          vitality: '#10b981',
+          wisdom: '#a855f7',
         }
       },
       fontFamily: {
@@ -33,8 +36,8 @@ export default {
       },
       keyframes: {
         pulseGlow: {
-          '0%, 100%': { opacity: '1', filter: 'drop-shadow(0 0 15px rgba(245, 158, 11, 0.6))' },
-          '50%': { opacity: '0.8', filter: 'drop-shadow(0 0 5px rgba(245, 158, 11, 0.2))' },
+          '0%, 100%': { opacity: '1', filter: 'drop-shadow(0 0 15px rgba(225, 29, 72, 0.65))' },
+          '50%': { opacity: '0.8', filter: 'drop-shadow(0 0 5px rgba(225, 29, 72, 0.25))' },
         },
         float: {
           '0%, 100%': { transform: 'translateY(0px)' },

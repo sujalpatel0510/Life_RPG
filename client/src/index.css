@@ -4,17 +4,19 @@
 
 @layer base {
   :root {
-    --bg-primary: #0b0f19;
-    --bg-card: #111827;
-    --bg-panel: #162035;
-    --border-card: #1e293b;
+    --bg-primary: #090a0f;
+    --bg-card: #12141e;
+    --bg-panel: #181b28;
+    --border-card: #232738;
+    --accent-crimson: #e11d48;
+    --accent-ruby: #f43f5e;
     --text-title: #f8fafc;
     --text-body: #cbd5e1;
     --text-muted: #94a3b8;
   }
 
   html.dark body {
-    background-color: #0b0f19;
+    background-color: #090a0f;
     color: #e2e8f0;
   }
 
@@ -28,10 +30,10 @@
   }
 }
 
-/* Unified RPG Semantic Cards & Surfaces */
+/* Unified Crimson & Onyx Semantic Cards & Surfaces */
 .rpg-card {
-  background-color: #111827;
-  border: 1px solid #1e293b;
+  background-color: #12141e;
+  border: 1px solid #232738;
   color: #e2e8f0;
   transition: all 0.25s ease;
 }
@@ -44,8 +46,8 @@ html.light .rpg-card {
 }
 
 .rpg-panel {
-  background-color: #162035;
-  border: 1px solid #1e293b;
+  background-color: #181b28;
+  border: 1px solid #232738;
 }
 
 html.light .rpg-panel {
@@ -55,14 +57,14 @@ html.light .rpg-panel {
 
 /* Light & Dark High-Contrast Semantic Badges */
 .badge-gold {
-  background-color: rgba(245, 158, 11, 0.12);
-  color: #fbbf24;
-  border: 1px solid rgba(245, 158, 11, 0.35);
+  background-color: rgba(225, 29, 72, 0.12);
+  color: #fb7185;
+  border: 1px solid rgba(225, 29, 72, 0.35);
 }
 html.light .badge-gold {
-  background-color: #fef3c7 !important;
-  color: #92400e !important;
-  border-color: #fcd34d !important;
+  background-color: #ffe4e6 !important;
+  color: #9f1239 !important;
+  border-color: #fecdd3 !important;
 }
 
 .badge-gem {
@@ -88,26 +90,26 @@ html.light .badge-streak {
 }
 
 .badge-boss {
-  background-color: rgba(239, 68, 68, 0.15);
-  color: #f87171;
-  border: 1px solid rgba(239, 68, 68, 0.35);
+  background-color: rgba(225, 29, 72, 0.18);
+  color: #fda4af;
+  border: 1px solid rgba(225, 29, 72, 0.45);
 }
 html.light .badge-boss {
   background-color: #ffe4e6 !important;
-  color: #9f1239 !important;
-  border-color: #fecdd3 !important;
+  color: #881337 !important;
+  border-color: #f43f5e !important;
 }
 
 /* Character Attribute Specific Badges */
 .badge-stat-str {
-  background-color: rgba(239, 68, 68, 0.15);
-  color: #fca5a5;
-  border: 1px solid rgba(239, 68, 68, 0.3);
+  background-color: rgba(225, 29, 72, 0.15);
+  color: #fda4af;
+  border: 1px solid rgba(225, 29, 72, 0.35);
 }
 html.light .badge-stat-str {
-  background-color: #fee2e2 !important;
-  color: #991b1b !important;
-  border-color: #fca5a5 !important;
+  background-color: #ffe4e6 !important;
+  color: #9f1239 !important;
+  border-color: #fecdd3 !important;
 }
 
 .badge-stat-int {
@@ -165,8 +167,10 @@ html.light .badge-stat-cha {
   border-color: #f9a8d4 !important;
 }
 
-/* Light Theme Overrides & Parchment RPG Styling */
-html.light .bg-\[\#070a12\] {
+/* Light Theme Overrides & Silver Paladin RPG Styling */
+html.light .bg-\[\#070a12\],
+html.light .bg-\[\#090a0f\],
+html.light .bg-\[\#0c0e14\] {
   background-color: #f8fafc !important;
 }
 
@@ -186,7 +190,9 @@ html.light .bg-\[\#101626\],
 html.light .bg-\[\#101626\]\/90,
 html.light .bg-\[\#0f1526\],
 html.light .bg-\[\#0f1526\]\/90,
-html.light .bg-\[\#0e1424\] {
+html.light .bg-\[\#0e1424\],
+html.light .bg-\[\#12141e\],
+html.light .bg-\[\#13151f\] {
   background-color: #ffffff !important;
   border-color: #e2e8f0 !important;
   box-shadow: 0 4px 20px -2px rgba(15, 23, 42, 0.06) !important;
@@ -211,21 +217,23 @@ html.light textarea::placeholder {
 }
 
 html.light .bg-gradient-to-b.from-\[\#141b2e\].via-\[\#0d1222\].to-\[\#070b16\],
-html.light .bg-gradient-to-b.from-\[\#181f33\].via-\[\#121827\].to-\[\#0b0f19\] {
+html.light .bg-gradient-to-b.from-\[\#181f33\].via-\[\#121827\].to-\[\#0b0f19\],
+html.light .bg-gradient-to-b.from-\[\#1f141a\].via-\[\#171017\].to-\[\#0d0a0f\] {
   background: linear-gradient(to bottom, #fff1f2, #ffffff, #f8fafc) !important;
   border-color: #fecdd3 !important;
 }
 
-html.light .bg-gradient-to-br.from-\[\#060810\].via-\[\#0b0f1d\].to-\[\#04060c\] {
+html.light .bg-gradient-to-br.from-\[\#060810\].via-\[\#0b0f1d\].to-\[\#04060c\],
+html.light .bg-gradient-to-br.from-\[\#0a0508\].via-\[\#10080d\].to-\[\#060408\] {
   background: linear-gradient(to bottom right, #f8fafc, #f1f5f9, #e2e8f0) !important;
 }
 
 html.light .boss-glow {
-  box-shadow: 0 10px 30px -5px rgba(239, 68, 68, 0.12) !important;
+  box-shadow: 0 10px 30px -5px rgba(225, 29, 72, 0.15) !important;
 }
 
 html.light .rpg-box-glow {
-  box-shadow: 0 10px 30px -5px rgba(245, 158, 11, 0.12) !important;
+  box-shadow: 0 10px 30px -5px rgba(225, 29, 72, 0.15) !important;
 }
 
 /* Custom RPG Scrollbars */
@@ -234,23 +242,23 @@ html.light .rpg-box-glow {
   height: 8px;
 }
 ::-webkit-scrollbar-track {
-  background: #0b0f19;
+  background: #090a0f;
 }
 ::-webkit-scrollbar-thumb {
-  background: #1e293b;
+  background: #232738;
   border-radius: 4px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #334155;
+  background: #e11d48;
 }
 
 /* Glowing RPG Card borders */
 .rpg-box-glow {
-  box-shadow: 0 0 25px -5px rgba(245, 158, 11, 0.15), 0 0 10px -5px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 0 25px -5px rgba(225, 29, 72, 0.25), 0 0 10px -5px rgba(0, 0, 0, 0.6);
 }
 
 .boss-glow {
-  box-shadow: 0 0 35px -5px rgba(239, 68, 68, 0.25), 0 0 15px -5px rgba(0, 0, 0, 0.8);
+  box-shadow: 0 0 35px -5px rgba(225, 29, 72, 0.35), 0 0 15px -5px rgba(0, 0, 0, 0.8);
 }
 
 .item-glow-legendary {
