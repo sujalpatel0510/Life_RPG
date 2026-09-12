@@ -75,6 +75,6 @@ app.use((err: any, _req: Request, res: Response, _next: NextFunction) => {
   });
 });
 
-app.listen(PORT, () => {
-  console.log(`⚡ Life RPG Server awakened and listening on http://localhost:${PORT}`);
+app.listen(Number(PORT), '0.0.0.0', () => {
+  console.log(`⚡ Life RPG Server awakened and listening on http://127.0.0.1:${PORT}`);
 });

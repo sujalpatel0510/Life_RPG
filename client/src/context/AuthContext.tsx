@@ -18,27 +18,52 @@ interface AuthContextType {
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
 export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-  const [user, setUser] = useState<User | null>(null);
-  const [character, setCharacter] = useState<Character | null>(null);
+  // Try loading cached user for instant 0ms rendering
+  const getInitialUser = (): User | null => {
+    try {
+      const cached = localStorage.getItem('liferpg_user_cache');
+      return cached ? JSON.parse(cached) : null;
+    } catch {
+      return null;
+    }
+  };
+
+  const initialUser = getInitialUser();
+  const [user, setUser] = useState<User | null>(initialUser);
+  const [character, setCharacter] = useState<Character | null>(initialUser ? initialUser.character : null);
   const [token, setToken] = useState<string | null>(localStorage.getItem('liferpg_token'));
-  const [isLoading, setIsLoading] = useState<boolean>(true);
+  
+  // If we already have token and cached user, don't show full-page loading spinner!
+  const [isLoading, setIsLoading] = useState<boolean>(!initialUser && !!localStorage.getItem('liferpg_token'));
 
   const refreshUser = async () => {
+    const savedToken = localStorage.getItem('liferpg_token');
+    if (!savedToken) {
+      setUser(null);
+      setCharacter(null);
+      setIsLoading(false);
+      return;
+    }
+
     try {
-      if (!localStorage.getItem('liferpg_token')) {
-        setUser(null);
-        setCharacter(null);
-        setIsLoading(false);
-        return;
-      }
+      // Timeout after 4 seconds to guarantee no indefinite hanging
+      const controller = new AbortController();
+      const timeoutId = setTimeout(() => controller.abort(), 4000);
+
       const data = await api.auth.getMe();
+      clearTimeout(timeoutId);
+
       if (data && data.user) {
         setUser(data.user);
         setCharacter(data.user.character);
+        localStorage.setItem('liferpg_user_cache', JSON.stringify(data.user));
       }
     } catch (err) {
-      console.error('Failed to verify hero session:', err);
-      logout();
+      console.error('Failed to verify session in background:', err);
+      // If error is 401 or token expired, log out
+      if (!initialUser) {
+        logout();
+      }
     } finally {
       setIsLoading(false);
     }
@@ -53,6 +78,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     try {
       const data = await api.auth.login(credentials);
       localStorage.setItem('liferpg_token', data.token);
+      localStorage.setItem('liferpg_user_cache', JSON.stringify(data.user));
       setToken(data.token);
       setUser(data.user);
       setCharacter(data.user.character);
@@ -66,6 +92,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     try {
       const data = await api.auth.register(payload);
       localStorage.setItem('liferpg_token', data.token);
+      localStorage.setItem('liferpg_user_cache', JSON.stringify(data.user));
       setToken(data.token);
       setUser(data.user);
       setCharacter(data.user.character);
@@ -76,6 +103,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
 
   const logout = () => {
     localStorage.removeItem('liferpg_token');
+    localStorage.removeItem('liferpg_user_cache');
     setToken(null);
     setUser(null);
     setCharacter(null);
