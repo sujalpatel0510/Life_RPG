@@ -72,7 +72,7 @@ export const Navbar: React.FC<NavbarProps> = ({ activeTab, setActiveTab, onOpenH
   ];
 
   return (
-    <header className="sticky top-0 z-40 bg-white/95 dark:bg-[#090a0f]/95 backdrop-blur-md border-b border-slate-200 dark:border-[#222533] shadow-sm transition-colors duration-200">
+    <header className="sticky top-0 z-40 surface-overlay border-b border-slate-200 dark:border-[#252d4a] shadow-sm transition-colors duration-300">
       {/* Top Banner - Hero Vitals & Currencies */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-2.5">
         <div className="flex flex-wrap items-center justify-between gap-4">
@@ -83,21 +83,21 @@ export const Navbar: React.FC<NavbarProps> = ({ activeTab, setActiveTab, onOpenH
               <div className={`w-11 h-11 rounded-xl bg-gradient-to-br ${crestGradient} flex items-center justify-center shadow-md border transition-transform duration-200 group-hover:scale-105`}>
                 <ClassIcon className="w-6 h-6 text-white fill-white/20" />
               </div>
-              <div className="absolute -bottom-1 -right-1 bg-white dark:bg-[#151722] border border-indigo-500/60 rounded-full px-1.5 py-0.2 text-[10px] font-bold text-indigo-700 dark:text-indigo-400 shadow-sm">
+              <div className="absolute -bottom-1 -right-1 surface border border-indigo-500/60 rounded-full px-1.5 py-0.2 text-[10px] font-bold text-indigo-700 dark:text-indigo-400 shadow-sm">
                 Lv.{character.level}
               </div>
             </div>
 
             <div>
               <div className="flex items-center space-x-2">
-                <span className="font-fantasy text-base font-bold text-slate-900 dark:text-[#f4f5f8] tracking-wide">
+                <span className="font-fantasy text-base font-bold text-title tracking-wide">
                   {character.name}
                 </span>
                 <span className="text-[11px] px-2 py-0.5 rounded-full bg-indigo-50 dark:bg-indigo-950/40 text-indigo-700 dark:text-indigo-300 font-semibold border border-indigo-200 dark:border-indigo-800/60">
                   {character.heroClass}
                 </span>
               </div>
-              <p className="text-xs text-slate-500 dark:text-slate-400 italic">
+              <p className="text-xs text-muted italic">
                 {character.title}
               </p>
             </div>
@@ -107,13 +107,13 @@ export const Navbar: React.FC<NavbarProps> = ({ activeTab, setActiveTab, onOpenH
           <div className="flex-1 max-w-md min-w-[220px] space-y-1.5 hidden md:block">
             {/* XP Bar */}
             <div>
-              <div className="flex justify-between text-[11px] font-semibold text-slate-700 dark:text-slate-300 mb-0.5">
+              <div className="flex justify-between text-[11px] font-semibold text-body mb-0.5">
                 <span className="flex items-center gap-1 text-indigo-600 dark:text-indigo-400 font-medium">
                   <Sparkles className="w-3 h-3 text-indigo-500" /> XP Progress
                 </span>
-                <span className="font-mono text-[10px] text-slate-500 dark:text-slate-400">{character.currentXp} / {character.nextLevelXp} ({xpPercent}%)</span>
+                <span className="font-mono text-[10px] text-muted">{character.currentXp} / {character.nextLevelXp} ({xpPercent}%)</span>
               </div>
-              <div className="w-full bg-slate-200 dark:bg-[#1a1c26] rounded-full h-2 overflow-hidden border border-slate-300 dark:border-[#282c3e]">
+              <div className="w-full progress-track rounded-full h-2 overflow-hidden progress-shine">
                 <div 
                   className="bg-gradient-to-r from-indigo-600 to-cyan-500 h-full rounded-full transition-all duration-500 ease-out"
                   style={{ width: `${xpPercent}%` }}
@@ -123,13 +123,13 @@ export const Navbar: React.FC<NavbarProps> = ({ activeTab, setActiveTab, onOpenH
 
             {/* HP Bar */}
             <div>
-              <div className="flex justify-between text-[11px] font-semibold text-slate-700 dark:text-slate-300 mb-0.5">
-                <span className="flex items-center gap-1 text-rose-600 dark:text-rose-400 font-medium">
-                  <Heart className="w-3 h-3 fill-rose-500/40 text-rose-500" /> Vitality
+              <div className="flex justify-between text-[11px] font-semibold text-body mb-0.5">
+                <span className="flex items-center gap-1 text-rpg-stats-vitality font-medium">
+                  <Heart className="w-3 h-3 fill-rpg-stats-vitality/40 text-rpg-stats-vitality" /> Vitality
                 </span>
-                <span className="font-mono text-[10px] text-slate-500 dark:text-slate-400">{character.hp} / {character.maxHp} HP</span>
+                <span className="font-mono text-[10px] text-muted">{character.hp} / {character.maxHp} HP</span>
               </div>
-              <div className="w-full bg-slate-200 dark:bg-[#1a1c26] rounded-full h-2 overflow-hidden border border-slate-300 dark:border-[#282c3e]">
+              <div className="w-full progress-track rounded-full h-2 overflow-hidden progress-shine">
                 <div 
                   className="bg-gradient-to-r from-rose-600 to-red-500 h-full rounded-full transition-all duration-300 ease-out"
                   style={{ width: `${hpPercent}%` }}
@@ -177,7 +177,7 @@ export const Navbar: React.FC<NavbarProps> = ({ activeTab, setActiveTab, onOpenH
                 playClick();
                 onOpenHotkeys();
               }}
-              className="btn-tactile p-2 rounded-lg bg-slate-100 dark:bg-[#151722] hover:bg-slate-200 dark:hover:bg-[#1e2232] text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-[#282c3e] transition shadow-sm"
+              className="btn-tactile p-2 rounded-lg surface hover:bg-slate-100 dark:hover:bg-[#1d2340] text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-[#252d4a] transition shadow-sm"
               title="Keyboard Shortcuts (?)"
               aria-label="Keyboard Shortcuts"
             >
@@ -190,7 +190,7 @@ export const Navbar: React.FC<NavbarProps> = ({ activeTab, setActiveTab, onOpenH
                 toggleMute();
                 playClick();
               }}
-              className="btn-tactile p-2 rounded-lg bg-slate-100 dark:bg-[#151722] hover:bg-slate-200 dark:hover:bg-[#1e2232] text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-[#282c3e] transition shadow-sm"
+              className="btn-tactile p-2 rounded-lg surface hover:bg-slate-100 dark:hover:bg-[#1d2340] text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-[#252d4a] transition shadow-sm"
               title={isMuted ? 'Unmute Sound Effects (M)' : 'Mute Sound Effects (M)'}
               aria-label={isMuted ? 'Unmute Sound Effects' : 'Mute Sound Effects'}
             >
@@ -204,7 +204,7 @@ export const Navbar: React.FC<NavbarProps> = ({ activeTab, setActiveTab, onOpenH
                 logout();
                 navigate('/login');
               }}
-              className="btn-tactile p-2 rounded-lg bg-slate-100 dark:bg-[#151722] hover:bg-rose-50 dark:hover:bg-rose-950/35 text-slate-600 dark:text-slate-400 hover:text-rose-700 dark:hover:text-rose-400 border border-slate-200 dark:border-[#282c3e] hover:border-rose-300 dark:hover:border-rose-900/40 transition shadow-sm"
+              className="btn-tactile p-2 rounded-lg surface hover:bg-rose-50 dark:hover:bg-rose-950/35 text-slate-600 dark:text-slate-400 hover:text-rose-700 dark:hover:text-rose-400 border border-slate-200 dark:border-[#252d4a] hover:border-rose-300 dark:hover:border-rose-900/40 transition shadow-sm"
               title="Retire from Realm (Logout)"
               aria-label="Logout"
             >
@@ -215,11 +215,11 @@ export const Navbar: React.FC<NavbarProps> = ({ activeTab, setActiveTab, onOpenH
 
         {/* Mobile XP Bar */}
         <div className="mt-2 block md:hidden">
-          <div className="flex justify-between text-[10px] font-semibold text-slate-700 dark:text-slate-300 mb-0.5">
+          <div className="flex justify-between text-[10px] font-semibold text-body mb-0.5">
             <span>XP: {character.currentXp} / {character.nextLevelXp}</span>
             <span>HP: {character.hp} / {character.maxHp}</span>
           </div>
-          <div className="w-full bg-slate-200 dark:bg-[#1a1c26] rounded-full h-2 overflow-hidden border border-slate-300 dark:border-[#282c3e]">
+          <div className="w-full progress-track rounded-full h-2 overflow-hidden progress-shine">
             <div 
               className="bg-gradient-to-r from-indigo-600 to-cyan-500 h-full rounded-full transition-all duration-300"
               style={{ width: `${xpPercent}%` }}
@@ -229,7 +229,7 @@ export const Navbar: React.FC<NavbarProps> = ({ activeTab, setActiveTab, onOpenH
       </div>
 
       {/* Navigation Tabs with Shortcut badges */}
-      <div className="border-t border-slate-200 dark:border-[#222533] bg-[#f8fafc]/95 dark:bg-[#0c0e15]/95">
+      <div className="border-t border-slate-200 dark:border-[#252d4a] bg-slate-50/95 dark:bg-[#111523]/95">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <nav className="flex space-x-1 sm:space-x-2 overflow-x-auto py-2 no-scrollbar" aria-label="Tabs">
             {navItems.map((item) => {
@@ -247,8 +247,8 @@ export const Navbar: React.FC<NavbarProps> = ({ activeTab, setActiveTab, onOpenH
                   }}
                   className={`btn-tactile flex items-center space-x-2 px-3.5 py-1.5 rounded-xl text-xs sm:text-sm font-medium whitespace-nowrap transition-all ${
                     isActive
-                      ? 'bg-white dark:bg-[#171924] text-indigo-700 dark:text-indigo-400 border border-slate-200 dark:border-[#2e3245] shadow-sm font-semibold'
-                      : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-[#f4f5f8] hover:bg-slate-100 dark:hover:bg-[#141620]'
+                      ? 'bg-white dark:bg-[#1d2340] text-indigo-700 dark:text-indigo-400 border border-slate-200 dark:border-[#333d5e] shadow-sm font-semibold'
+                      : 'text-slate-600 dark:text-slate-400 hover:text-title dark:hover:text-[#f4f3f0] hover:bg-slate-100 dark:hover:bg-[#1d2340]'
                   }`}
                 >
                   <Icon className={`w-4 h-4 ${isActive ? 'text-indigo-600 dark:text-indigo-400' : 'text-slate-400 dark:text-slate-500'}`} />

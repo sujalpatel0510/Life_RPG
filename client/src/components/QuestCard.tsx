@@ -50,12 +50,12 @@ export const QuestCard: React.FC<QuestCardProps> = ({ quest, onComplete, onEdit,
 
   const getDifficultyColor = (diff: string) => {
     switch (diff) {
-      case 'TRIVIAL': return 'text-slate-600 dark:text-slate-400 border-slate-200 dark:border-[#222533] bg-slate-100 dark:bg-[#151722]';
+      case 'TRIVIAL': return 'text-slate-600 dark:text-slate-400 border-slate-200 dark:border-slate-700 bg-slate-100 dark:bg-slate-800/60';
       case 'EASY': return 'text-emerald-700 dark:text-emerald-400 border-emerald-200 dark:border-emerald-500/30 bg-emerald-50 dark:bg-emerald-950/30';
       case 'MEDIUM': return 'text-indigo-700 dark:text-indigo-400 border-indigo-200 dark:border-indigo-500/30 bg-indigo-50 dark:bg-indigo-950/30';
       case 'HARD': return 'text-violet-700 dark:text-violet-400 border-violet-200 dark:border-violet-500/30 bg-violet-50 dark:bg-violet-950/30';
       case 'EPIC': return 'text-rose-700 dark:text-rose-400 border-rose-300 dark:border-rose-500/40 bg-rose-50 dark:bg-rose-950/40 animate-pulse';
-      default: return 'text-slate-600 dark:text-slate-400 border-slate-200 dark:border-[#222533]';
+      default: return 'text-slate-600 dark:text-slate-400 border-slate-200 dark:border-slate-700';
     }
   };
 
@@ -81,8 +81,8 @@ export const QuestCard: React.FC<QuestCardProps> = ({ quest, onComplete, onEdit,
         justCompleted
           ? 'border-indigo-500 bg-indigo-50 dark:bg-indigo-950/30 scale-[1.02] shadow-[0_0_30px_rgba(99,102,241,0.4)] ring-2 ring-indigo-500/50'
           : quest.isCompleted 
-          ? 'card-glow-emerald border-slate-200 dark:border-[#222533] opacity-60 bg-slate-50 dark:bg-[#12131a]/60' 
-          : 'border-slate-200 dark:border-[#222533] hover:border-indigo-500/50 hover:shadow-[0_8px_25px_-5px_rgba(99,102,241,0.15)]'
+          ? 'card-glow-emerald border-slate-200 dark:border-[#252d4a] opacity-60 bg-slate-50 dark:bg-slate-800/40' 
+          : 'border-slate-200 dark:border-[#252d4a] hover:border-indigo-500/50 hover:shadow-[0_8px_25px_-5px_rgba(99,102,241,0.15)]'
       }`}
     >
       <div className="flex items-start justify-between gap-3 sm:gap-4">
@@ -95,7 +95,7 @@ export const QuestCard: React.FC<QuestCardProps> = ({ quest, onComplete, onEdit,
           className={`mt-0.5 flex-shrink-0 w-8 h-8 rounded-xl border-2 flex items-center justify-center transition-all duration-200 transform btn-tactile sparkle-burst ${
             quest.isCompleted
               ? 'bg-gradient-to-tr from-emerald-600 to-teal-500 border-emerald-400 text-white shadow-[0_0_15px_rgba(16,185,129,0.5)]'
-              : 'border-slate-300 dark:border-[#222533] bg-slate-100 dark:bg-[#171922] hover:border-indigo-500 text-transparent hover:text-indigo-500 hover:scale-105 active:scale-95 shadow-sm'
+              : 'border-slate-300 dark:border-[#252d4a] bg-slate-100 dark:bg-[#1d2340] hover:border-indigo-500 text-transparent hover:text-indigo-500 hover:scale-105 active:scale-95 shadow-sm'
           } ${isCompleting ? 'scale-125' : ''}`}
         >
           <Check className={`w-4 h-4 stroke-[3] ${quest.isCompleted ? 'text-white' : ''}`} />
@@ -116,7 +116,7 @@ export const QuestCard: React.FC<QuestCardProps> = ({ quest, onComplete, onEdit,
             </span>
 
             {/* Type Tag */}
-            <span className="px-1.5 py-0.5 rounded-md text-[10px] bg-slate-100 dark:bg-[#151722] text-slate-700 dark:text-slate-300 font-medium border border-slate-200 dark:border-[#222533]">
+            <span className="px-1.5 py-0.5 rounded-md text-[10px] bg-slate-100 dark:bg-[#1d2340] text-slate-700 dark:text-slate-300 font-medium border border-slate-200 dark:border-[#252d4a]">
               {quest.questType}
             </span>
 
@@ -176,7 +176,7 @@ export const QuestCard: React.FC<QuestCardProps> = ({ quest, onComplete, onEdit,
               playClick();
               onEdit(quest);
             }}
-            className="p-1.5 rounded-lg hover:bg-slate-100 dark:hover:bg-[#1f2230] text-slate-400 hover:text-slate-700 dark:hover:text-[#f4f5f8] transition"
+            className="p-1.5 rounded-lg hover:bg-slate-100 dark:hover:bg-[#1d2340] text-slate-400 hover:text-slate-700 dark:hover:text-slate-200 transition"
             title="Edit Quest"
             aria-label="Edit Quest"
           >
