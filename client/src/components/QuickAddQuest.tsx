@@ -57,7 +57,7 @@ export const QuickAddQuest: React.FC<QuickAddQuestProps> = ({ onAdd }) => {
   return (
     <form 
       onSubmit={handleSubmit}
-      className="surface border border-slate-300 dark:border-slate-700 hover:border-indigo-500/40 rounded-2xl p-2.5 sm:p-3 shadow-sm transition-all duration-300 focus-within:border-indigo-500/60 focus-within:shadow-[0_0_20px_rgba(99,102,241,0.15)]"
+      className="surface border border-slate-200 dark:border-[#222533] hover:border-indigo-500/40 rounded-2xl p-2.5 sm:p-3 shadow-sm transition-all duration-300 focus-within:border-indigo-500/60 focus-within:shadow-[0_0_20px_rgba(99,102,241,0.15)]"
     >
       <div className="flex items-center gap-2">
         <div className="w-8 h-8 rounded-xl bg-indigo-500/10 border border-indigo-500/30 flex items-center justify-center flex-shrink-0 text-indigo-500">
@@ -87,7 +87,7 @@ export const QuickAddQuest: React.FC<QuickAddQuestProps> = ({ onAdd }) => {
       </div>
 
       {/* Attribute Chips & Cadence Row */}
-      <div className="mt-2.5 pt-2 border-t border-slate-200 dark:border-slate-700 flex flex-wrap items-center justify-between gap-2 text-xs">
+      <div className="mt-2.5 pt-2 border-t border-slate-200 dark:border-[#222533] flex flex-wrap items-center justify-between gap-2 text-xs">
         
         {/* Category Pills */}
         <div className="flex items-center space-x-1.5 overflow-x-auto no-scrollbar py-0.5">
@@ -108,7 +108,7 @@ export const QuickAddQuest: React.FC<QuickAddQuestProps> = ({ onAdd }) => {
                 className={`btn-tactile flex items-center space-x-1 px-2.5 py-1 rounded-lg border text-[11px] font-semibold transition ${
                   isSelected
                     ? 'bg-indigo-50 dark:bg-indigo-950/60 border-indigo-400 dark:border-indigo-500/60 text-indigo-800 dark:text-indigo-300 ring-1 ring-indigo-400/40 font-bold shadow-sm'
-                    : 'border-slate-200 dark:border-slate-700/80 bg-white/80 dark:bg-slate-800/60 text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100 hover:border-slate-300'
+                    : 'border-slate-200 dark:border-[#222533] bg-white/80 dark:bg-[#151722] text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-[#f4f5f8] hover:border-slate-300'
                 }`}
               >
                 <Icon className="w-3.5 h-3.5" />
@@ -119,7 +119,7 @@ export const QuickAddQuest: React.FC<QuickAddQuestProps> = ({ onAdd }) => {
         </div>
 
         {/* Cadence Pills */}
-        <div className="flex items-center space-x-1 p-0.5 rounded-lg bg-slate-100 dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700/80">
+        <div className="flex items-center space-x-1 p-0.5 rounded-lg bg-slate-100 dark:bg-[#151722] border border-slate-200 dark:border-[#222533]">
           {(['TODO', 'DAILY', 'HABIT'] as QuestType[]).map((type) => (
             <button
               type="button"
@@ -131,7 +131,7 @@ export const QuickAddQuest: React.FC<QuickAddQuestProps> = ({ onAdd }) => {
               className={`btn-tactile px-2.5 py-0.5 rounded-md text-[10px] font-bold uppercase transition ${
                 questType === type
                   ? 'bg-white dark:bg-indigo-600 text-indigo-700 dark:text-white shadow-sm font-extrabold border border-indigo-200 dark:border-transparent'
-                  : 'text-slate-500 hover:text-slate-900 dark:hover:text-slate-200'
+                  : 'text-slate-500 hover:text-slate-900 dark:hover:text-[#f4f5f8]'
               }`}
             >
               {type}

@@ -93,7 +93,7 @@ export const QuestModal: React.FC<QuestModalProps> = ({
       <div className="relative w-full max-w-lg surface rounded-2xl shadow-2xl overflow-hidden animate-modal-card">
         
         {/* Modal Header */}
-        <div className="flex items-center justify-between px-6 py-4 border-b border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800/50">
+        <div className="flex items-center justify-between px-6 py-4 border-b border-slate-200 dark:border-[#222533] bg-slate-50 dark:bg-[#151722]">
           <h2 className="font-fantasy text-xl font-bold text-title flex items-center gap-2">
             <Sparkles className="w-5 h-5 text-indigo-500" />
             {questToEdit ? 'Reforge Quest Objective' : 'Summon New Quest'}
@@ -103,7 +103,7 @@ export const QuestModal: React.FC<QuestModalProps> = ({
               playClick();
               onClose();
             }}
-            className="p-1 rounded-lg text-slate-400 hover:text-slate-700 dark:hover:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800 transition"
+            className="p-1 rounded-lg text-slate-400 hover:text-slate-700 dark:hover:text-[#f4f5f8] hover:bg-slate-100 dark:hover:bg-[#1f2230] transition"
           >
             <X className="w-5 h-5" />
           </button>
@@ -160,7 +160,7 @@ export const QuestModal: React.FC<QuestModalProps> = ({
                   className={`btn-tactile py-1.5 px-2 rounded-lg text-xs font-semibold border transition ${
                     questType === t
                       ? 'bg-indigo-50 dark:bg-indigo-950/20 border-indigo-400 dark:border-indigo-500 text-indigo-900 dark:text-indigo-400 shadow-sm font-bold'
-                      : 'border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800/50 text-slate-600 dark:text-slate-400 hover:border-slate-300 dark:hover:border-slate-600'
+                      : 'border-slate-200 dark:border-[#222533] bg-slate-50 dark:bg-[#151722] text-slate-600 dark:text-slate-400 hover:border-slate-300 dark:hover:border-[#2f3346]'
                   }`}
                 >
                   {t}
@@ -186,7 +186,7 @@ export const QuestModal: React.FC<QuestModalProps> = ({
                     className={`btn-tactile flex items-center gap-2 p-2 rounded-xl border text-xs font-medium transition ${
                       isSelected
                         ? `${c.color} bg-indigo-50 dark:bg-indigo-950/20 shadow-sm ring-1 ring-indigo-400/40 font-bold`
-                        : 'border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800/50 text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-700/50'
+                        : 'border-slate-200 dark:border-[#222533] bg-slate-50 dark:bg-[#151722] text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-[#1a1d2b]'
                     }`}
                   >
                     <Icon className="w-4 h-4 flex-shrink-0" />
@@ -211,7 +211,7 @@ export const QuestModal: React.FC<QuestModalProps> = ({
                   className={`btn-tactile py-2 px-1 text-center rounded-lg border text-xs font-bold transition ${
                     difficulty === d.id
                       ? 'bg-indigo-50 dark:bg-indigo-950/20 border-indigo-400 dark:border-indigo-500 text-indigo-900 dark:text-indigo-400 shadow-sm font-extrabold'
-                      : 'border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800/50 text-slate-600 dark:text-slate-400 hover:border-slate-300 dark:hover:border-slate-600'
+                      : 'border-slate-200 dark:border-[#222533] bg-slate-50 dark:bg-[#151722] text-slate-600 dark:text-slate-400 hover:border-slate-300 dark:hover:border-[#2f3346]'
                   }`}
                 >
                   {d.label}
@@ -221,7 +221,7 @@ export const QuestModal: React.FC<QuestModalProps> = ({
           </div>
 
           {/* Live Bounty Preview */}
-          <div className="p-3 rounded-xl surface-panel border border-slate-200 dark:border-slate-700 flex items-center justify-between text-xs">
+          <div className="p-3 rounded-xl surface-panel border border-slate-200 dark:border-[#222533] flex items-center justify-between text-xs">
             <span className="text-body font-medium">Conquest Bounty:</span>
             <div className="flex items-center space-x-3 font-bold">
               <span className="text-indigo-600 dark:text-indigo-400 flex items-center gap-1">

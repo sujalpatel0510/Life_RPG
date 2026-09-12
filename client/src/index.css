@@ -4,20 +4,20 @@
 
 @layer base {
   :root {
-    --bg-primary: #090d16;
-    --bg-card: #111827;
-    --bg-panel: #162035;
-    --border-card: #1e293b;
-    --accent-indigo: #6366f1;
-    --accent-cyan: #06b6d4;
-    --text-title: #f8fafc;
-    --text-body: #cbd5e1;
-    --text-muted: #94a3b8;
+    --bg-canvas: #090a0f;
+    --bg-card: #12131a;
+    --bg-elevated: #171922;
+    --bg-panel: #1a1c26;
+    --border-color: #222533;
+    --brand-primary: #6366f1;
+    --text-title: #f4f5f8;
+    --text-body: #9ca3af;
+    --text-muted: #64748b;
   }
 
   html.dark body {
-    background-color: #090d16;
-    color: #f1f5f9;
+    background-color: #090a0f;
+    color: #f4f5f8;
   }
 
   html.light body {
@@ -31,53 +31,51 @@
 }
 
 /* ===== SEMANTIC DUAL-MODE UTILITY CLASSES ===== */
-/* Use these instead of hardcoded color classes for bulletproof light/dark support */
-
 /* Surface containers - cards, panels, modals */
 .surface {
-  @apply bg-white dark:bg-[#0e1424] border border-slate-200/90 dark:border-slate-800 text-slate-900 dark:text-slate-100 shadow-sm transition-colors duration-200;
+  @apply bg-white dark:bg-[#12131a] border border-slate-200 dark:border-[#222533] text-slate-900 dark:text-[#f4f5f8] shadow-sm transition-colors duration-200;
 }
 .surface-elevated {
-  @apply bg-white dark:bg-[#121a2e] border border-slate-200 dark:border-slate-700/80 text-slate-900 dark:text-slate-100 shadow-md transition-colors duration-200;
+  @apply bg-white dark:bg-[#171922] border border-slate-200 dark:border-[#292c3d] text-slate-900 dark:text-[#f4f5f8] shadow-md transition-colors duration-200;
 }
 .surface-panel {
-  @apply bg-slate-50/80 dark:bg-slate-900/50 border border-slate-200/80 dark:border-slate-800 text-slate-900 dark:text-slate-100;
+  @apply bg-slate-50 dark:bg-[#1a1c26] border border-slate-200 dark:border-[#222533] text-slate-900 dark:text-[#f4f5f8];
 }
 .surface-overlay {
-  @apply bg-white/95 dark:bg-[#0c111e]/95 border border-slate-200 dark:border-slate-800/80 text-slate-900 dark:text-slate-100 backdrop-blur-md;
+  @apply bg-white/95 dark:bg-[#090a0f]/95 border border-slate-200 dark:border-[#222533] text-slate-900 dark:text-[#f4f5f8] backdrop-blur-md;
 }
 
 /* Input fields */
 .input {
-  @apply bg-white dark:bg-slate-900 border border-slate-300 dark:border-slate-700 text-slate-900 dark:text-slate-100 placeholder-slate-400 dark:placeholder-slate-500;
+  @apply bg-white dark:bg-[#151722] border border-slate-300 dark:border-[#282c3e] text-slate-900 dark:text-[#f4f5f8] placeholder-slate-400 dark:placeholder-slate-500;
 }
 .input:focus {
-  @apply outline-none ring-2 ring-indigo-500/50 border-indigo-500;
+  @apply outline-none ring-2 ring-indigo-500/40 border-indigo-500;
 }
 
 /* Buttons */
 .btn-primary {
-  @apply bg-gradient-to-r from-indigo-600 via-indigo-500 to-violet-600 hover:from-indigo-500 hover:to-violet-500 text-white shadow-lg shadow-indigo-600/25;
+  @apply bg-indigo-600 hover:bg-indigo-500 active:bg-indigo-700 text-white shadow-sm shadow-indigo-600/20 font-medium;
 }
 .btn-secondary {
-  @apply bg-white dark:bg-slate-800 border border-slate-300 dark:border-slate-700 text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-700;
+  @apply bg-white dark:bg-[#171922] border border-slate-200 dark:border-[#282c3e] text-slate-700 dark:text-slate-200 hover:bg-slate-50 dark:hover:bg-[#1e2230];
 }
 .btn-ghost {
-  @apply text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800;
+  @apply text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100 hover:bg-slate-100 dark:hover:bg-[#181a25];
 }
 .btn-danger {
-  @apply bg-rose-100 dark:bg-rose-950/40 text-rose-700 dark:text-rose-400 hover:bg-rose-200 dark:hover:bg-rose-950/60 hover:text-rose-800 dark:hover:text-rose-300 border border-rose-200 dark:border-rose-800/50;
+  @apply bg-rose-50 dark:bg-rose-950/30 text-rose-700 dark:text-rose-400 hover:bg-rose-100 dark:hover:bg-rose-950/50 border border-rose-200 dark:border-rose-900/40;
 }
 
 /* Text colors */
 .text-title {
-  @apply text-slate-900 dark:text-slate-100;
+  @apply text-slate-900 dark:text-[#f4f5f8];
 }
 .text-body {
   @apply text-slate-600 dark:text-slate-400;
 }
 .text-muted {
-  @apply text-slate-500 dark:text-slate-500;
+  @apply text-slate-400 dark:text-slate-500;
 }
 .text-link {
   @apply text-indigo-600 dark:text-indigo-400 hover:text-indigo-700 dark:hover:text-indigo-300;
@@ -90,35 +88,34 @@
 
 /* Progress bar track */
 .progress-track {
-  @apply bg-slate-200 dark:bg-slate-800 border border-slate-300 dark:border-slate-700;
+  @apply bg-slate-200 dark:bg-[#1a1c26] border border-slate-300 dark:border-[#282c3e];
 }
 
 /* Scoped Theme Smooth Transition */
 .theme-transition {
   transition-property: background-color, border-color, color;
-  transition-duration: 250ms;
+  transition-duration: 200ms;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-
-/* Unified Astral Indigo & Obsidian Semantic Cards & Surfaces */
+/* Unified Semantic Cards & Surfaces */
 .rpg-card {
-  background-color: #111827;
-  border: 1px solid #1e293b;
-  color: #f1f5f9;
-  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  background-color: #12131a;
+  border: 1px solid #222533;
+  color: #f4f5f8;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 html.light .rpg-card {
   background-color: #ffffff !important;
   border-color: #e2e8f0 !important;
   color: #0f172a !important;
-  box-shadow: 0 4px 20px -2px rgba(15, 23, 42, 0.05) !important;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.04) !important;
 }
 
 .rpg-panel {
-  background-color: #162035;
-  border: 1px solid #1e293b;
+  background-color: #171922;
+  border: 1px solid #222533;
 }
 
 html.light .rpg-panel {
@@ -128,9 +125,9 @@ html.light .rpg-panel {
 
 /* Light & Dark High-Contrast Semantic Badges */
 .badge-gold {
-  background-color: rgba(245, 158, 11, 0.12);
+  background-color: rgba(245, 158, 11, 0.1);
   color: #fbbf24;
-  border: 1px solid rgba(245, 158, 11, 0.35);
+  border: 1px solid rgba(245, 158, 11, 0.25);
 }
 html.light .badge-gold {
   background-color: #fef3c7 !important;
@@ -139,37 +136,38 @@ html.light .badge-gold {
 }
 
 .badge-gem {
-  background-color: rgba(6, 182, 212, 0.12);
-  color: #22d3ee;
-  border: 1px solid rgba(6, 182, 212, 0.35);
+  background-color: rgba(56, 189, 248, 0.1);
+  color: #38bdf8;
+  border: 1px solid rgba(56, 189, 248, 0.25);
 }
 html.light .badge-gem {
   background-color: #e0f2fe !important;
-  color: #0369a1 !important;
-  border-color: #7dd3fc !important;
+  color: #0284c7 !important;
+  border-color: #bae6fd !important;
 }
 
 .badge-streak {
-  background-color: rgba(249, 115, 22, 0.12);
+  background-color: rgba(249, 115, 22, 0.1);
   color: #fb923c;
-  border: 1px solid rgba(249, 115, 22, 0.35);
+  border: 1px solid rgba(249, 115, 22, 0.25);
 }
 html.light .badge-streak {
   background-color: #ffedd5 !important;
   color: #c2410c !important;
-  border-color: #fdba74 !important;
+  border-color: #fed7aa !important;
 }
 
 .badge-boss {
-  background-color: rgba(99, 102, 241, 0.15);
+  background-color: rgba(99, 102, 241, 0.1);
   color: #a5b4fc;
-  border: 1px solid rgba(99, 102, 241, 0.4);
+  border: 1px solid rgba(99, 102, 241, 0.25);
 }
 html.light .badge-boss {
   background-color: #e0e7ff !important;
-  color: #3730a3 !important;
+  color: #4338ca !important;
   border-color: #c7d2fe !important;
 }
+
 
 /* Character Attribute Specific Badges */
 .badge-stat-str {

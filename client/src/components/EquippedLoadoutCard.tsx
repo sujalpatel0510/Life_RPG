@@ -39,12 +39,12 @@ export const EquippedLoadoutCard: React.FC<EquippedLoadoutCardProps> = ({ onOpen
 
   const getRarityGlow = (rarity: string) => {
     switch (rarity) {
-      case 'COMMON': return 'border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-slate-100';
+      case 'COMMON': return 'border-slate-200 dark:border-[#222533] bg-white dark:bg-[#151722] text-slate-900 dark:text-[#f4f5f8]';
       case 'UNCOMMON': return 'border-emerald-300 dark:border-emerald-500/50 bg-emerald-50 dark:bg-emerald-950/20 text-emerald-900 dark:text-emerald-400';
       case 'RARE': return 'border-blue-300 dark:border-blue-500/60 bg-blue-50 dark:bg-blue-950/30 text-blue-900 dark:text-blue-400 item-glow-rare';
       case 'EPIC': return 'border-purple-300 dark:border-purple-500/60 bg-purple-50 dark:bg-purple-950/30 text-purple-900 dark:text-purple-300 item-glow-epic';
       case 'LEGENDARY': return 'border-amber-400/80 dark:border-amber-500/70 bg-amber-50 dark:bg-amber-950/30 text-amber-950 dark:text-amber-300 item-glow-legendary animate-pulse-glow';
-      default: return 'border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-slate-100';
+      default: return 'border-slate-200 dark:border-[#222533] bg-white dark:bg-[#151722] text-slate-900 dark:text-[#f4f5f8]';
     }
   };
 
@@ -56,7 +56,7 @@ export const EquippedLoadoutCard: React.FC<EquippedLoadoutCardProps> = ({ onOpen
 
   return (
     <div className="surface rounded-3xl p-5 shadow-sm space-y-4">
-      <div className="flex items-center justify-between pb-2 border-b border-slate-200 dark:border-slate-700">
+      <div className="flex items-center justify-between pb-2 border-b border-slate-200 dark:border-[#222533]">
         <h3 className="font-fantasy font-bold text-sm text-title flex items-center gap-2">
           <Shield className="w-4 h-4 text-indigo-600 dark:text-indigo-400" />
           Active Armaments
@@ -76,7 +76,7 @@ export const EquippedLoadoutCard: React.FC<EquippedLoadoutCardProps> = ({ onOpen
       {loading ? (
         <div className="space-y-2.5">
           {[1, 2, 3].map((n) => (
-            <div key={n} className="h-14 rounded-xl bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 skeleton" />
+            <div key={n} className="h-14 rounded-xl bg-slate-100 dark:bg-[#151722] border border-slate-200 dark:border-[#222533] skeleton" />
           ))}
         </div>
       ) : (
@@ -92,7 +92,7 @@ export const EquippedLoadoutCard: React.FC<EquippedLoadoutCardProps> = ({ onOpen
                   className={`card-hover-lift relative rounded-2xl border p-3 flex items-center justify-between transition-all ${getRarityGlow(item.rarity)}`}
                 >
                   <div className="flex items-center space-x-3 min-w-0">
-                    <div className="w-9 h-9 rounded-xl bg-slate-100 dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700 flex items-center justify-center flex-shrink-0 text-indigo-600 dark:text-indigo-400 shadow-sm">
+                    <div className="w-9 h-9 rounded-xl bg-slate-100 dark:bg-[#171922] border border-slate-200 dark:border-[#222533] flex items-center justify-center flex-shrink-0 text-indigo-600 dark:text-indigo-400 shadow-sm">
                       <Icon className="w-4 h-4" />
                     </div>
                     <div className="min-w-0">
@@ -115,10 +115,10 @@ export const EquippedLoadoutCard: React.FC<EquippedLoadoutCardProps> = ({ onOpen
                   playClick();
                   onOpenArmoury();
                 }}
-                className="w-full rounded-2xl border border-dashed border-slate-300 dark:border-slate-700 hover:border-indigo-400 dark:hover:border-indigo-500/40 bg-slate-50 dark:bg-slate-800/30 p-3 flex items-center justify-between group transition text-left"
+                className="w-full rounded-2xl border border-dashed border-slate-300 dark:border-[#222533] hover:border-indigo-400 dark:hover:border-indigo-500/40 bg-slate-50 dark:bg-[#12131a] p-3 flex items-center justify-between group transition text-left"
               >
                 <div className="flex items-center space-x-3">
-                  <div className="w-9 h-9 rounded-xl bg-white dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700 flex items-center justify-center text-slate-400 dark:text-slate-600 group-hover:text-indigo-500 transition shadow-sm">
+                  <div className="w-9 h-9 rounded-xl bg-white dark:bg-[#171922] border border-slate-200 dark:border-[#222533] flex items-center justify-center text-slate-400 dark:text-slate-600 group-hover:text-indigo-500 transition shadow-sm">
                     <Icon className="w-4 h-4" />
                   </div>
                   <div>

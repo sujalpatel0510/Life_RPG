@@ -103,9 +103,9 @@ export const BossRaid: React.FC<BossRaidProps> = ({ lastDamage, compact = false,
 
   if (compact) {
     return (
-      <div className="surface rounded-3xl p-5 shadow-sm space-y-4 relative overflow-hidden border border-slate-200/90 dark:border-slate-800">
+      <div className="surface rounded-3xl p-5 shadow-sm space-y-4 relative overflow-hidden border border-slate-200 dark:border-[#222533]">
         {/* Header */}
-        <div className="flex items-center justify-between pb-2 border-b border-slate-200 dark:border-slate-800">
+        <div className="flex items-center justify-between pb-2 border-b border-slate-200 dark:border-[#222533]">
           <div className="flex items-center space-x-2">
             <ShieldAlert className="w-4 h-4 text-rose-500" />
             <h3 className="font-fantasy font-bold text-sm text-title">
@@ -135,10 +135,10 @@ export const BossRaid: React.FC<BossRaidProps> = ({ lastDamage, compact = false,
 
           <div className={`w-28 h-28 mx-auto rounded-2xl flex items-center justify-center border-2 transition-all duration-300 ${
             isDefeated
-              ? 'bg-slate-100 dark:bg-slate-800 border-slate-300 dark:border-slate-700 opacity-70 grayscale'
+              ? 'bg-slate-100 dark:bg-[#151722] border-slate-300 dark:border-[#222533] opacity-70 grayscale'
               : isHit
               ? 'animate-boss-hit-enhanced bg-rose-500/20 border-rose-400 ring-4 ring-rose-500/50'
-              : 'bg-gradient-to-tr from-indigo-100 via-white to-slate-100 dark:from-indigo-900/30 dark:via-slate-900/50 dark:to-slate-950 border-indigo-300 dark:border-indigo-500/40 shadow-[0_0_25px_rgba(99,102,241,0.2)] animate-pulse-glow animate-creature-idle'
+              : 'bg-gradient-to-tr from-indigo-100 via-white to-slate-100 dark:from-[#151722] dark:via-[#12131a] dark:to-[#0c0d14] border-indigo-300 dark:border-[#222533] shadow-[0_0_25px_rgba(99,102,241,0.15)] animate-pulse-glow animate-creature-idle'
           }`}>
             {isDefeated ? (
               <div className="text-center p-1">
@@ -176,7 +176,7 @@ export const BossRaid: React.FC<BossRaidProps> = ({ lastDamage, compact = false,
             </span>
           </div>
 
-          <div className="w-full bg-slate-200 dark:bg-slate-800 rounded-full h-3 overflow-hidden p-0.5 border border-slate-300 dark:border-slate-700">
+          <div className="w-full bg-slate-200 dark:bg-[#1a1c26] rounded-full h-3 overflow-hidden p-0.5 border border-slate-300 dark:border-[#282c3e]">
             <div 
               className={`h-full rounded-full transition-all duration-500 ease-out ${
                 hpPercent > 50 
@@ -191,7 +191,7 @@ export const BossRaid: React.FC<BossRaidProps> = ({ lastDamage, compact = false,
         </div>
 
         {/* Footer Hint */}
-        <div className="flex items-center justify-between text-[10px] pt-1 text-slate-500 dark:text-slate-400 border-t border-slate-200 dark:border-slate-800/80">
+        <div className="flex items-center justify-between text-[10px] pt-1 text-slate-500 dark:text-slate-400 border-t border-slate-200 dark:border-[#222533]">
           <span>Bounty: +{boss.rewardGold}g • +{boss.rewardXp}xp</span>
           <span className="font-semibold text-indigo-600 dark:text-indigo-400">Complete Quests to Strike</span>
         </div>
@@ -200,7 +200,7 @@ export const BossRaid: React.FC<BossRaidProps> = ({ lastDamage, compact = false,
   }
 
   return (
-    <div className="relative overflow-hidden rounded-3xl bg-gradient-to-b from-indigo-50/80 via-white to-slate-50 dark:from-slate-900 dark:via-slate-950 dark:to-slate-900 border border-indigo-200 dark:border-indigo-500/30 p-6 sm:p-8 boss-glow shadow-md dark:shadow-2xl transition-all">
+    <div className="relative overflow-hidden rounded-3xl bg-white dark:bg-[#12131a] border border-slate-200 dark:border-[#222533] p-6 sm:p-8 boss-glow shadow-md dark:shadow-2xl transition-all">
       
       {/* Background Ambient Runes */}
       <div className="absolute -top-16 -right-16 w-72 h-72 bg-indigo-500/10 rounded-full blur-3xl pointer-events-none" />
@@ -221,10 +221,10 @@ export const BossRaid: React.FC<BossRaidProps> = ({ lastDamage, compact = false,
 
           <div className={`w-36 h-36 sm:w-44 sm:h-44 rounded-2xl flex items-center justify-center border-2 transition-all duration-300 ${
             isDefeated
-              ? 'bg-slate-100 dark:bg-slate-800 border-slate-300 dark:border-slate-700 opacity-70 grayscale'
+              ? 'bg-slate-100 dark:bg-[#151722] border-slate-300 dark:border-[#222533] opacity-70 grayscale'
               : isHit
               ? 'animate-boss-hit-enhanced bg-rose-500/20 border-rose-400 ring-4 ring-rose-500/50'
-              : 'bg-gradient-to-tr from-indigo-100 via-white to-slate-100 dark:from-indigo-900/30 dark:via-slate-900/50 dark:to-slate-950 border-indigo-300 dark:border-indigo-500/40 shadow-[0_0_40px_rgba(99,102,241,0.15)] dark:shadow-[0_0_40px_rgba(99,102,241,0.25)] animate-pulse-glow animate-creature-idle'
+              : 'bg-gradient-to-tr from-indigo-100 via-white to-slate-100 dark:from-[#151722] dark:via-[#12131a] dark:to-[#0c0d14] border-indigo-300 dark:border-[#222533] shadow-[0_0_40px_rgba(99,102,241,0.15)] animate-pulse-glow animate-creature-idle'
           }`}>
 
             {isDefeated ? (
@@ -242,7 +242,7 @@ export const BossRaid: React.FC<BossRaidProps> = ({ lastDamage, compact = false,
             )}
           </div>
 
-          <div className="absolute -bottom-2.5 left-1/2 -translate-x-1/2 px-3 py-0.5 rounded-full bg-white dark:bg-slate-800 border border-indigo-400/50 text-[11px] font-bold text-indigo-700 dark:text-indigo-400 whitespace-nowrap shadow">
+          <div className="absolute -bottom-2.5 left-1/2 -translate-x-1/2 px-3 py-0.5 rounded-full bg-white dark:bg-[#171922] border border-indigo-400/50 text-[11px] font-bold text-indigo-700 dark:text-indigo-400 whitespace-nowrap shadow">
             {isDefeated ? 'Boss Slayed!' : `Tier ${boss.level} World Boss`}
           </div>
         </div>
@@ -293,7 +293,7 @@ export const BossRaid: React.FC<BossRaidProps> = ({ lastDamage, compact = false,
 
           {/* Raid Mechanics & Victory Rewards */}
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2 max-w-xl">
-            <div className="bg-white/80 dark:bg-slate-800/70 border border-slate-200 dark:border-slate-700/80 rounded-xl p-3 flex items-center space-x-3 text-left shadow-sm">
+            <div className="bg-slate-50 dark:bg-[#151722] border border-slate-200 dark:border-[#222533] rounded-xl p-3 flex items-center space-x-3 text-left shadow-sm">
               <Sword className="w-6 h-6 text-indigo-600 dark:text-indigo-400 flex-shrink-0" />
               <div>
                 <span className="text-[11px] font-bold text-slate-800 dark:text-slate-300 block">Strike Action</span>
@@ -301,7 +301,7 @@ export const BossRaid: React.FC<BossRaidProps> = ({ lastDamage, compact = false,
               </div>
             </div>
 
-            <div className="bg-white/80 dark:bg-slate-800/70 border border-slate-200 dark:border-slate-700/80 rounded-xl p-3 flex items-center space-x-3 text-left shadow-sm">
+            <div className="bg-slate-50 dark:bg-[#151722] border border-slate-200 dark:border-[#222533] rounded-xl p-3 flex items-center space-x-3 text-left shadow-sm">
               <Trophy className="w-6 h-6 text-amber-500 flex-shrink-0" />
               <div>
                 <span className="text-[11px] font-bold text-slate-800 dark:text-slate-300 block">Bounty Rewards</span>

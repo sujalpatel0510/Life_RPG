@@ -117,13 +117,13 @@ export const AuthPage: React.FC<AuthPageProps> = ({ defaultTab }) => {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center p-4 bg-gradient-to-br from-slate-100 via-white to-indigo-50/50 dark:from-slate-950 dark:via-slate-900 dark:to-slate-950 relative">
+    <div className="min-h-screen flex items-center justify-center p-4 bg-[#f8fafc] dark:bg-[#090a0f] relative">
       {/* Top-Right Theme Toggle */}
       <div className="absolute top-4 right-4 z-20">
         <ThemeToggle size="md" />
       </div>
 
-      <div className="relative w-full max-w-xl surface border border-slate-200 dark:border-slate-700/80 rounded-3xl p-6 sm:p-10 shadow-2xl backdrop-blur-xl">
+      <div className="relative w-full max-w-xl surface border border-slate-200 dark:border-[#222533] rounded-3xl p-6 sm:p-10 shadow-2xl">
         
         {/* Glow Halo Background */}
         <div className="absolute -top-10 left-1/2 -translate-x-1/2 w-48 h-48 bg-indigo-500/10 rounded-full blur-3xl pointer-events-none" />
@@ -143,7 +143,7 @@ export const AuthPage: React.FC<AuthPageProps> = ({ defaultTab }) => {
         </div>
 
         {/* Tab Switcher (Login / Register) */}
-        <div className="grid grid-cols-2 p-1 bg-slate-100 dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 rounded-xl mb-6">
+        <div className="grid grid-cols-2 p-1 bg-slate-100 dark:bg-[#151722] border border-slate-200 dark:border-[#222533] rounded-xl mb-6">
           <button
             type="button"
             onClick={() => {
@@ -155,7 +155,7 @@ export const AuthPage: React.FC<AuthPageProps> = ({ defaultTab }) => {
             className={`btn-tactile py-2 text-xs sm:text-sm font-bold rounded-lg transition ${
               isLogin 
                 ? 'bg-indigo-600 text-white shadow' 
-                : 'text-slate-600 dark:text-slate-400 hover:text-title dark:hover:text-slate-200'
+                : 'text-slate-600 dark:text-slate-400 hover:text-title dark:hover:text-[#f4f5f8]'
             }`}
           >
             ENTER REALM (LOGIN)
@@ -171,7 +171,7 @@ export const AuthPage: React.FC<AuthPageProps> = ({ defaultTab }) => {
             className={`btn-tactile py-2 text-xs sm:text-sm font-bold rounded-lg transition ${
               !isLogin 
                 ? 'bg-indigo-600 text-white shadow' 
-                : 'text-slate-600 dark:text-slate-400 hover:text-title dark:hover:text-slate-200'
+                : 'text-slate-600 dark:text-slate-400 hover:text-title dark:hover:text-[#f4f5f8]'
             }`}
           >
             FORGE HERO (SIGNUP)
@@ -207,7 +207,7 @@ export const AuthPage: React.FC<AuthPageProps> = ({ defaultTab }) => {
                       className={`btn-tactile p-3 rounded-xl border text-left transition ${
                         isSelected
                           ? 'border-indigo-500 bg-indigo-50 dark:bg-indigo-950/10 shadow-sm ring-1 ring-indigo-400/40 font-bold'
-                          : 'border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800/50 hover:bg-slate-100 dark:hover:bg-slate-700/40'
+                          : 'border-slate-200 dark:border-[#222533] bg-slate-50 dark:bg-[#151722] hover:bg-slate-100 dark:hover:bg-[#1a1d2b]'
                       }`}
                     >
                       <div className="flex items-center justify-between mb-1">
@@ -315,7 +315,7 @@ export const AuthPage: React.FC<AuthPageProps> = ({ defaultTab }) => {
         </form>
 
         {/* Demo Quick Fill Helper for Hackathon Judges */}
-        <div className="mt-6 pt-5 border-t border-slate-200 dark:border-slate-700/80 text-center">
+        <div className="mt-6 pt-5 border-t border-slate-200 dark:border-[#222533] text-center">
           <p className="text-[11px] text-muted mb-2">
             Hackathon Evaluator Quick-Start:
           </p>

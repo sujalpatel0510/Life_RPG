@@ -118,7 +118,7 @@ export const Dashboard: React.FC<DashboardProps> = ({ activeTab: propActiveTab }
   }, [playClick, toggleMute]);
 
   return (
-    <div className="min-h-screen relative flex flex-col bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-slate-100 selection:bg-indigo-600 selection:text-white overflow-x-hidden transition-colors duration-300">
+    <div className="min-h-screen relative flex flex-col bg-[#f8fafc] dark:bg-[#090a0f] text-slate-900 dark:text-[#f4f5f8] selection:bg-indigo-600 selection:text-white overflow-x-hidden transition-colors duration-200">
       
       {/* Dark Fantasy Floating Ambient Embers Background */}
       <AmbientEmbers />
@@ -220,7 +220,7 @@ export const Dashboard: React.FC<DashboardProps> = ({ activeTab: propActiveTab }
       />
 
       {/* Footer / Hackathon Compliance Bar */}
-      <footer className="border-t border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-950 py-6 text-xs text-slate-600 dark:text-slate-500 shadow-inner">
+      <footer className="border-t border-slate-200 dark:border-[#222533] bg-white dark:bg-[#0c0d14] py-6 text-xs text-slate-600 dark:text-slate-400">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4">
           <div className="flex items-center space-x-3">
             <span className="font-fantasy font-bold text-title">LIFE RPG</span>
